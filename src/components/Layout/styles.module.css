@@ -1,0 +1,7 @@
+.mainContentWrapper{
+    height: calc(100vh - 4rem);
+}
+
+.routerContentWrapper{
+    background-color: var(--todo-theme-color-darker);
+}
