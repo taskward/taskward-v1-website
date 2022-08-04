@@ -12,3 +12,4 @@ This is a Todo List application.
 ## Others
 
 - Host by Vercel
+- UI Design inspired by Discord and Google Keep
