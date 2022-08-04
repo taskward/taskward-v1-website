@@ -13,3 +13,4 @@ This is a Todo List application.
 
 - Host by Vercel
 - UI Design inspired by Discord and Google Keep
+- Icon by [Font Awesome](https://fontawesome.com/icons) (only free and open-source)
