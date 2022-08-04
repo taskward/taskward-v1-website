@@ -5,7 +5,7 @@ export default function Header(): JSX.Element {
   return (
     <header
       className={clsx(
-        "w-full h-16 border-b border-black p-2 flex content-center justify-between",
+        "w-full h-16 border-b border-black p-2 flex content-center justify-between shadow shadow-white",
         styles.header
       )}
     >
