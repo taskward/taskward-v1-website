@@ -1,8 +1,14 @@
 import { type SvgProps } from ".";
 
-export default function Bulb({ width, height, fill }: SvgProps): JSX.Element {
+export default function Bulb({
+  width,
+  height,
+  fill,
+  svgClassName,
+}: SvgProps): JSX.Element {
   return (
     <svg
+      className={svgClassName}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 384 512"
       width={width}

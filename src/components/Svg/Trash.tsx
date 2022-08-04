@@ -1,8 +1,14 @@
 import { type SvgProps } from ".";
 
-export default function Trash({ width, height, fill }: SvgProps): JSX.Element {
+export default function Trash({
+  width,
+  height,
+  fill,
+  svgClassName,
+}: SvgProps): JSX.Element {
   return (
     <svg
+      className={svgClassName}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
       width={width}

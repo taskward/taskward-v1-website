@@ -12,5 +12,6 @@ This is a Todo List application.
 ## Others
 
 - Host by Vercel
-- UI Design inspired by Discord and Google Keep
+- UI Design inspired by Discord
+- Product inspired by Google Keep
 - Icon by [Font Awesome](https://fontawesome.com/icons) (only free and open-source)

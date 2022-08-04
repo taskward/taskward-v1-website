@@ -1,3 +1,7 @@
-.sidebarWrapper{
-    background-color: var(--todo-theme-color-darkest);
+.sidebarWrapper {
+  background-color: var(--todo-theme-color-darkest);
+}
+
+.bulbWrapper:hover .bulb path {
+  fill: yellow;
 }

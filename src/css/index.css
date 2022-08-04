@@ -1,18 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   margin: 0;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 #root {
   min-height: 100vh;
-  color:white;
+  color: white;
 }
 
-:root{
-  --todo-theme-color-dark: rgb(54,57,63);
-  --todo-theme-color-darker: rgb(47,49,54);
-  --todo-theme-color-darkest: rgb(32,34,37);
+:root {
+  --todo-theme-color-dark: rgb(54, 57, 63);
+  --todo-theme-color-darker: rgb(47, 49, 54);
+  --todo-theme-color-darkest: rgb(32, 34, 37);
 }
