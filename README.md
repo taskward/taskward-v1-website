@@ -7,6 +7,7 @@ This is a Todo List application.
 - React
 - TypeScript
 - Vite
+- TailwindCSS
 
 ## Others
 
