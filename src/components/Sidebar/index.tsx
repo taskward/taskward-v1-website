@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 export default function Sidebar(): JSX.Element {
   const { t } = useTranslation();
 
-  const [sidebarMode, setSidebarMode] = useState<"thin" | "fat">("fat");
+  const [sidebarMode, setSidebarMode] = useState<"thin" | "fat">("thin");
 
   return (
     <div
