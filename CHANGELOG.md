@@ -11,3 +11,5 @@
 - [ ] Tags
 - [ ] Archive
 - [ ] Trash
+- [ ] Search
+- [ ] Settings
