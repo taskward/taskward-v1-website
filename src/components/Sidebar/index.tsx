@@ -1,23 +1,26 @@
 import { useState } from "react";
 import clsx from "clsx";
-import styles from "./styles.module.css";
-import { Icon } from "..";
 import { useTranslation } from "react-i18next";
+import styles from "./styles.module.css";
+import SidebarItem from "./SidebarItem";
+import { Icon } from "..";
+
+export type SidebarMode = "collapse" | "expand";
 
 export default function Sidebar(): JSX.Element {
   const { t } = useTranslation();
 
-  const [sidebarMode, setSidebarMode] = useState<"thin" | "fat">("thin");
+  const [sidebarMode, setSidebarMode] = useState<SidebarMode>("expand");
 
   return (
     <div
       className={clsx(
-        "border-r border-black p-3 relative hover:transition-all transition-all flex flex-col gap-4",
+        "border-r dark:border-black p-3 relative flex flex-col gap-4 overflow-hidden",
         styles.sidebarWrapper,
-        sidebarMode === "fat" ? "w-40" : "w-20 items-center"
+        sidebarMode === "collapse" ? "w-18" : "w-56"
       )}
-      onMouseOver={() => setSidebarMode("fat")}
-      onMouseLeave={() => setSidebarMode("thin")}
+      onMouseOver={() => setSidebarMode("expand")}
+      onMouseLeave={() => setSidebarMode("collapse")}
     >
       <div className="flex flex-row items-center">
         <div
@@ -36,42 +39,34 @@ export default function Sidebar(): JSX.Element {
             />
           </div>
         </div>
-        {sidebarMode === "fat" && (
-          <div className="flex-grow text-center ml-3">
+        {sidebarMode === "expand" && (
+          <div className="flex-grow text-center ml-3 whitespace-nowrap">
             {t("SIDEBAR.RECORD")}
           </div>
         )}
       </div>
-
-      <div className="flex flex-row items-center">
-        <div
-          className="bg-yellow-100 w-12 h-12 rounded-full cursor-pointer relative shrink-0"
-          title={t("SIDEBAR.ARCHIVE")}
-        >
-          <div className="absolute inset-0 w-fit h-fit m-auto">
-            <Icon.Archive width="20" height="20" fill="black" />
-          </div>
-        </div>
-        {sidebarMode === "fat" && (
-          <div className="flex-grow text-center ml-3">
-            {t("SIDEBAR.ARCHIVE")}
-          </div>
-        )}
-      </div>
-
-      <div className="flex flex-row items-center">
-        <div
-          className="bg-yellow-100 w-12 h-12 rounded-full cursor-pointer relative shrink-0"
-          title={t("SIDEBAR.TRASH")}
-        >
-          <div className="absolute inset-0 w-fit h-fit m-auto">
-            <Icon.Trash width="22" height="22" fill="black" />
-          </div>
-        </div>
-        {sidebarMode === "fat" && (
-          <div className="flex-grow text-center ml-3">{t("SIDEBAR.TRASH")}</div>
-        )}
-      </div>
+      <SidebarItem
+        sidebarMode={sidebarMode}
+        icon={
+          <Icon.Bulb
+            width="25"
+            height="25"
+            fill="black"
+            svgClassName={styles.bulb}
+          />
+        }
+        title={t("SIDEBAR.RECORD")}
+      />
+      <SidebarItem
+        sidebarMode={sidebarMode}
+        icon={<Icon.Archive width="20" height="20" fill="black" />}
+        title={t("SIDEBAR.ARCHIVE")}
+      />
+      <SidebarItem
+        sidebarMode={sidebarMode}
+        icon={<Icon.Trash width="22" height="22" fill="black" />}
+        title={t("SIDEBAR.TRASH")}
+      />
     </div>
   );
 }

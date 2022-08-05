@@ -5,6 +5,7 @@ export default function Archive({
   height,
   fill,
   svgClassName,
+  onClick,
 }: SvgProps): JSX.Element {
   return (
     <svg
@@ -13,6 +14,7 @@ export default function Archive({
       viewBox="0 0 512 512"
       width={width}
       height={height}
+      onClick={onClick}
     >
       <path
         fill={fill}

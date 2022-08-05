@@ -5,6 +5,7 @@ export default function Language({
   height,
   fill,
   svgClassName,
+  onClick,
 }: SvgProps): JSX.Element {
   return (
     <svg
@@ -13,6 +14,7 @@ export default function Language({
       viewBox="0 0 640 512"
       width={width}
       height={height}
+      onClick={onClick}
     >
       <path
         fill={fill}

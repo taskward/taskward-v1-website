@@ -12,7 +12,11 @@ body {
 
 #root {
   min-height: 100vh;
-  color: white;
+  background-color: #ffffff;
+}
+
+html[class="dark"] #root {
+  color: #ffffff;
 }
 
 :root {

@@ -1,4 +1,4 @@
-.sidebarWrapper {
+html[class="dark"] .sidebarWrapper {
   background-color: var(--todo-theme-color-darkest);
 }
 
