@@ -8,6 +8,7 @@ This is a Todo List application.
 - TypeScript
 - Vite
 - TailwindCSS
+- styled-components
 
 ## Others
 
