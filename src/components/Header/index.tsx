@@ -27,7 +27,7 @@ export default function Header(): JSX.Element {
   return (
     <header
       className={clsx(
-        "w-full h-16 border-b dark:border-black px-4 py-3 flex content-center items-center justify-end gap-4",
+        "w-full h-16 border-b dark:border-black px-4 py-3 flex content-center items-center justify-end gap-4 transition-colors",
         styles.header
       )}
     >
@@ -37,28 +37,21 @@ export default function Header(): JSX.Element {
           <Icon.Language
             width="40"
             height="25"
-            fill={isDarkMode() ? "white" : "black"}
+            className="fill-black dark:fill-white"
           />
         </div>
         <div className="px-1 mt-1">{t("CURRENT.LANGUAGE")}</div>
       </div>
-      {darkMode ? (
-        <Icon.Moon
-          width="24"
-          height="24"
-          fill="white"
-          svgClassName="cursor-pointer"
-          onClick={changeTheme}
-        />
-      ) : (
-        <Icon.Sun
-          width="24"
-          height="24"
-          fill="black"
-          svgClassName="cursor-pointer"
-          onClick={changeTheme}
-        />
-      )}
+      <div
+        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors"
+        onClick={changeTheme}
+      >
+        {darkMode ? (
+          <Icon.Moon width="20" height="20" className="fill-white" />
+        ) : (
+          <Icon.Sun width="20" height="20" />
+        )}
+      </div>
     </header>
   );
 }

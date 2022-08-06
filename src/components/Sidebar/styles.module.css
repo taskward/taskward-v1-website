@@ -3,5 +3,5 @@ html[class="dark"] .sidebarWrapper {
 }
 
 .bulbWrapper:hover .bulb path {
-  fill: yellow;
+  fill: #50c878;
 }

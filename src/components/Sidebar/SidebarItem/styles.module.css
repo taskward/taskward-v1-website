@@ -1,0 +1,7 @@
+.iconWrapper:hover path {
+  fill: #ffffff;
+}
+
+html[class="dark"] .iconWrapper:hover path {
+  fill: #000000;
+}

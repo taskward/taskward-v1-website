@@ -15,7 +15,7 @@ export default function Sidebar(): JSX.Element {
   return (
     <div
       className={clsx(
-        "border-r dark:border-black p-3 relative flex flex-col gap-4 overflow-hidden",
+        "border-r dark:border-black p-3 relative flex flex-col gap-4 overflow-hidden transition-colors",
         styles.sidebarWrapper,
         sidebarMode === "collapse" ? "w-18" : "w-56"
       )}
@@ -31,12 +31,7 @@ export default function Sidebar(): JSX.Element {
           title={t("SIDEBAR.RECORD")}
         >
           <div className="absolute inset-0 w-fit h-fit m-auto">
-            <Icon.Bulb
-              width="25"
-              height="25"
-              fill="black"
-              svgClassName={styles.bulb}
-            />
+            <Icon.Bulb width="25" height="25" />
           </div>
         </div>
         {sidebarMode === "expand" && (
@@ -47,24 +42,17 @@ export default function Sidebar(): JSX.Element {
       </div>
       <SidebarItem
         sidebarMode={sidebarMode}
-        icon={
-          <Icon.Bulb
-            width="25"
-            height="25"
-            fill="black"
-            svgClassName={styles.bulb}
-          />
-        }
+        icon={<Icon.Bulb className="fill-black dark:fill-white" />}
         title={t("SIDEBAR.RECORD")}
       />
       <SidebarItem
         sidebarMode={sidebarMode}
-        icon={<Icon.Archive width="20" height="20" fill="black" />}
+        icon={<Icon.Archive className="fill-black dark:fill-white" />}
         title={t("SIDEBAR.ARCHIVE")}
       />
       <SidebarItem
         sidebarMode={sidebarMode}
-        icon={<Icon.Trash width="22" height="22" fill="black" />}
+        icon={<Icon.Trash className="fill-black dark:fill-white" />}
         title={t("SIDEBAR.TRASH")}
       />
     </div>

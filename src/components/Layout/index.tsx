@@ -9,7 +9,12 @@ export default function Layout(): JSX.Element {
       <Header />
       <div className={clsx("flex flex-row", styles.mainContentWrapper)}>
         <Sidebar />
-        <div className={clsx("flex-auto p-6", styles.routerContentWrapper)}>
+        <div
+          className={clsx(
+            "flex-auto p-6 transition-colors",
+            styles.routerContentWrapper
+          )}
+        >
           <Outlet />
         </div>
       </div>

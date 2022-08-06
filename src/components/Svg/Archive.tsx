@@ -1,26 +1,21 @@
 import { type SvgProps } from ".";
 
 export default function Archive({
-  width,
-  height,
-  fill,
-  svgClassName,
+  width = "24",
+  height = "24",
+  className = "fill-black",
   onClick,
 }: SvgProps): JSX.Element {
   return (
     <svg
-      className={svgClassName}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
+      viewBox="0 0 24 24"
       width={width}
       height={height}
+      className={className}
       onClick={onClick}
     >
-      <path
-        fill={fill}
-        d="M32 432C32 458.5 53.49 480 80 480h352c26.51 0 48-21.49 48-48V160H32V432zM160 236C160 229.4 165.4 224 172 224h168C346.6 224 352 229.4 352 236v8C352 250.6 346.6 256 340 256h-168C165.4 256 160 250.6 160 244V236zM480 32H32C14.31 32 0 46.31 0 64v48C0 120.8 7.188 128 16 128h480C504.8 128 512 120.8 512 112V64C512 46.31 497.7 32 480 32z"
-      />
+      <path d="M 5.75 3 A 1.0001 1.0001 0 0 0 4.8867188 3.4960938 L 3.1367188 6.4960938 A 1.0001 1.0001 0 0 0 3 7 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 7 A 1.0001 1.0001 0 0 0 20.863281 6.4960938 L 19.113281 3.4960938 A 1.0001 1.0001 0 0 0 18.25 3 L 5.75 3 z M 6.3242188 5 L 17.675781 5 L 18.841797 7 L 5.1582031 7 L 6.3242188 5 z M 5 9 L 19 9 L 19 19 L 5 19 L 5 9 z M 9 11 L 9 13 L 15 13 L 15 11 L 9 11 z" />
     </svg>
   );
 }
-// Source: https://fontawesome.com/icons/box-archive?s=solid

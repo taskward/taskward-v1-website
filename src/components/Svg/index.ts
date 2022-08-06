@@ -1,8 +1,7 @@
 export type SvgProps = {
   width?: string;
   height?: string;
-  fill?: string;
-  svgClassName?: string;
+  className?: string;
   onClick?: () => void;
 };
 

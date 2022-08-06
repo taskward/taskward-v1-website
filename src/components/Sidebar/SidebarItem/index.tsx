@@ -1,5 +1,7 @@
+import clsx from "clsx";
 import { ReactNode } from "react";
-import { type SidebarMode } from ".";
+import { type SidebarMode } from "..";
+import styles from "./styles.module.css";
 
 type SidebarItemProps = {
   sidebarMode: SidebarMode;
@@ -15,13 +17,18 @@ export default function SidebarItem({
   return (
     <div className="flex flex-row items-center">
       <div
-        className="bg-yellow-100 w-12 h-12 rounded-full cursor-pointer relative shrink-0"
+        className={clsx(
+          "hover:bg-emerald w-12 h-12 rounded-full cursor-pointer relative shrink-0",
+          styles.iconWrapper
+        )}
         title={title}
       >
         <div className="absolute inset-0 w-fit h-fit m-auto">{icon}</div>
       </div>
       {sidebarMode === "expand" && (
-        <div className="flex-grow ml-3 whitespace-nowrap">{title}</div>
+        <div className="flex-grow ml-3 whitespace-nowrap select-none">
+          {title}
+        </div>
       )}
     </div>
   );
