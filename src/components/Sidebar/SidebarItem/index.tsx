@@ -1,7 +1,5 @@
-import clsx from "clsx";
 import { ReactNode } from "react";
 import { type SidebarMode } from "..";
-import styles from "./styles.module.css";
 
 type SidebarItemProps = {
   sidebarMode: SidebarMode;
