@@ -17,10 +17,7 @@ export default function SidebarItem({
   return (
     <div className="flex flex-row items-center">
       <div
-        className={clsx(
-          "hover:bg-emerald w-12 h-12 rounded-full cursor-pointer relative shrink-0",
-          styles.iconWrapper
-        )}
+        className="hover:bg-emerald-300 dark:hover:bg-emerald-700 transition-colors w-12 h-12 rounded-full cursor-pointer relative shrink-0"
         title={title}
       >
         <div className="absolute inset-0 w-fit h-fit m-auto">{icon}</div>
