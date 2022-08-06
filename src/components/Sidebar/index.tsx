@@ -37,9 +37,11 @@ export default function Sidebar(): JSX.Element {
   return (
     <div
       className={clsx(
-        "border-r dark:border-black p-3 relative flex flex-col gap-4 overflow-hidden transition-colors",
+        "border-r dark:border-black p-3 relative flex flex-col gap-3 overflow-hidden transition-all",
         styles.sidebarWrapper,
-        sidebarMode === "collapse" && !shouldExpand ? "w-18" : "w-56"
+        sidebarMode === "collapse" && !shouldExpand
+          ? styles.collapse
+          : styles.expand
       )}
       onMouseOver={() => {
         sidebarMode === "collapse" && setShouldExpand(true);

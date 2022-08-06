@@ -1,3 +1,13 @@
 html[class="dark"] .sidebarWrapper {
   background-color: var(--todo-theme-color-darkest);
 }
+
+.collapse {
+  width: 4.5rem;
+  transition-duration: 300ms;
+}
+
+.expand {
+  width: 14rem;
+  transition-duration: 300ms;
+}
