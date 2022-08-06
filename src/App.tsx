@@ -1,24 +1,19 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Layout } from "./components";
+import { Record, Archive, Trash } from "./pages";
 
 export default function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Record />} />
+          <Route path="archive" element={<Archive />} />
+          <Route path="trash" element={<Trash />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  );
-}
-
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
   );
 }
 

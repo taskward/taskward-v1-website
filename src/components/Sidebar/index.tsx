@@ -1,59 +1,87 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
+import { useNavigate, NavigateFunction } from "react-router-dom";
 import styles from "./styles.module.css";
 import SidebarItem from "./SidebarItem";
 import { Icon } from "..";
 
 export type SidebarMode = "collapse" | "expand";
 
+export enum ActiveSideBarItem {
+  "Record",
+  "Archive",
+  "Trash",
+}
+
 export default function Sidebar(): JSX.Element {
   const { t } = useTranslation();
+  const navigate: NavigateFunction = useNavigate();
 
-  const [sidebarMode, setSidebarMode] = useState<SidebarMode>("expand");
+  const [sidebarMode, setSidebarMode] = useState<SidebarMode>("collapse");
+  const [shouldExpand, setShouldExpand] = useState<boolean>(false);
+  const [activeSideBarItem, setActiveSideBarItem] = useState<ActiveSideBarItem>(
+    ActiveSideBarItem.Record
+  );
+
+  function onClickSidebarItem(currentItem: ActiveSideBarItem) {
+    setActiveSideBarItem(currentItem);
+    if (currentItem === 0) {
+      navigate("/");
+      return;
+    }
+    navigate(`/${ActiveSideBarItem[currentItem].toLowerCase()}`);
+  }
 
   return (
     <div
       className={clsx(
         "border-r dark:border-black p-3 relative flex flex-col gap-4 overflow-hidden transition-colors",
         styles.sidebarWrapper,
-        sidebarMode === "collapse" ? "w-18" : "w-56"
+        sidebarMode === "collapse" && !shouldExpand ? "w-18" : "w-56"
       )}
-      onMouseOver={() => setSidebarMode("expand")}
-      onMouseLeave={() => setSidebarMode("collapse")}
+      onMouseOver={() => {
+        sidebarMode === "collapse" && setShouldExpand(true);
+      }}
+      onMouseLeave={() => {
+        sidebarMode === "collapse" && setShouldExpand(false);
+      }}
     >
-      <div className="flex flex-row items-center">
-        <div
-          className={clsx(
-            "bg-yellow-100 w-12 h-12 rounded-full cursor-pointer relative shrink-0 hover:bg-slate-300 hover:rounded-lg hover:transition-all hover:ease-in-out transition-all duration-1000",
-            styles.bulbWrapper
-          )}
-          title={t("SIDEBAR.RECORD")}
-        >
-          <div className="absolute inset-0 w-fit h-fit m-auto">
-            <Icon.Bulb width="25" height="25" />
-          </div>
-        </div>
-        {sidebarMode === "expand" && (
-          <div className="flex-grow text-center ml-3 whitespace-nowrap">
-            {t("SIDEBAR.RECORD")}
-          </div>
-        )}
-      </div>
       <SidebarItem
-        sidebarMode={sidebarMode}
+        shouldExpand={
+          sidebarMode === "expand" ||
+          (shouldExpand && sidebarMode === "collapse")
+        }
         icon={<Icon.Bulb className="fill-black dark:fill-white" />}
         title={t("SIDEBAR.RECORD")}
+        active={activeSideBarItem === ActiveSideBarItem.Record}
+        onClick={() => {
+          onClickSidebarItem(ActiveSideBarItem.Record);
+        }}
       />
       <SidebarItem
-        sidebarMode={sidebarMode}
+        shouldExpand={
+          sidebarMode === "expand" ||
+          (shouldExpand && sidebarMode === "collapse")
+        }
         icon={<Icon.Archive className="fill-black dark:fill-white" />}
         title={t("SIDEBAR.ARCHIVE")}
+        active={activeSideBarItem === ActiveSideBarItem.Archive}
+        onClick={() => {
+          onClickSidebarItem(ActiveSideBarItem.Archive);
+        }}
       />
       <SidebarItem
-        sidebarMode={sidebarMode}
+        shouldExpand={
+          sidebarMode === "expand" ||
+          (shouldExpand && sidebarMode === "collapse")
+        }
         icon={<Icon.Trash className="fill-black dark:fill-white" />}
         title={t("SIDEBAR.TRASH")}
+        active={activeSideBarItem === ActiveSideBarItem.Trash}
+        onClick={() => {
+          onClickSidebarItem(ActiveSideBarItem.Trash);
+        }}
       />
     </div>
   );

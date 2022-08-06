@@ -19,4 +19,3 @@ export default function Language({
     </svg>
   );
 }
-// Source: https://fontawesome.com/icons/language?s=solid

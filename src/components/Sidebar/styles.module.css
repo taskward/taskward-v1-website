@@ -1,7 +1,3 @@
 html[class="dark"] .sidebarWrapper {
   background-color: var(--todo-theme-color-darkest);
 }
-
-.bulbWrapper:hover .bulb path {
-  fill: #50c878;
-}
