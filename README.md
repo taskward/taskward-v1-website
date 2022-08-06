@@ -8,7 +8,8 @@ This is a Todo List application.
 - TypeScript
 - Vite
 - TailwindCSS
-- styled-components
+- React-Redux
+- react-i18n-next
 
 ## Others
 
