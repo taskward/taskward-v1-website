@@ -5,13 +5,20 @@
 - [ ] i18n Support
   - [ ] Detect user language
   - [x] Change language button
-- [ ] Dark Theme
+  - [x] Simplify Chinese
+  - [x] English
+  - [x] Japanese
+  - [ ] Korean
+- [x] Dark Theme
 - [ ] Responsive Design
-  - [ ] PC
+  - [x] PC
   - [ ] Mobile (Pending)
 - [ ] GitHub Auth
-- [ ] Tags
+- [ ] Note
+  - [ ] List View
+  - [ ] Card View
 - [ ] Archive
 - [ ] Trash
+- [ ] Tags
 - [ ] Search
 - [ ] Settings
