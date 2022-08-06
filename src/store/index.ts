@@ -10,4 +10,9 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export { sidebarAction } from "./sidebarSlice";
+export {
+  sidebarAction,
+  getSidebarStore,
+  getSidebarMode,
+  getSidebarCurrentTitleKey,
+} from "./sidebarSlice";

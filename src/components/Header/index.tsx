@@ -3,10 +3,15 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 import { Icon } from "..";
 import { useTranslation } from "react-i18next";
-import { useAppDispatch } from "@hooks";
-import { sidebarAction } from "@store";
+import { useAppDispatch, useAppSelector } from "@hooks";
+import { sidebarAction, getSidebarCurrentTitleKey } from "@store";
 
 export default function Header(): JSX.Element {
+  const { t } = useTranslation();
+  const sidebarTitleKey = useAppSelector((state) =>
+    getSidebarCurrentTitleKey(state)
+  );
+
   return (
     <header
       className={clsx(
@@ -16,6 +21,7 @@ export default function Header(): JSX.Element {
     >
       <div className="flex justify-start items-center gap-2">
         <MenuIcon />
+        <div className="ml-1 select-none">{t(sidebarTitleKey)}</div>
       </div>
       <div className="flex justify-end items-center gap-2">
         <LanguageIcon />

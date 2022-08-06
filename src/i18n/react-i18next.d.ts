@@ -1,6 +1,6 @@
 import { resources, LanguageType } from ".";
 
-type I18nStoreType = typeof resources[LanguageType.ZH_CN]["translation"];
+export type I18nStoreType = typeof resources[LanguageType.ZH_CN];
 
 export type I18nT = {
   (key: keyof I18nStoreType): string;

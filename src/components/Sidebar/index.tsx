@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import SidebarItem from "./SidebarItem";
 import { Icon } from "..";
-import { useAppSelector } from "@hooks";
+import { useAppSelector, useAppDispatch } from "@hooks";
+import { sidebarAction } from "@store";
 
 export enum ActiveSideBarItem {
-  "Record",
+  "Note",
   "Archive",
   "Trash",
 }
@@ -18,15 +19,26 @@ export default function Sidebar(): JSX.Element {
   const navigate = useNavigate();
 
   const sidebarMode = useAppSelector((state) => state.sidebar.sidebarMode);
-  console.log(sidebarMode);
+  const sidebarDispatch = useAppDispatch();
 
   const [shouldExpand, setShouldExpand] = useState<boolean>(false);
   const [activeSideBarItem, setActiveSideBarItem] = useState<ActiveSideBarItem>(
-    ActiveSideBarItem.Record
+    ActiveSideBarItem.Note
   );
 
   function onClickSidebarItem(currentItem: ActiveSideBarItem) {
     setActiveSideBarItem(currentItem);
+    switch (currentItem) {
+      case ActiveSideBarItem.Note:
+        sidebarDispatch(sidebarAction.changeCurrentTitleKey("SIDEBAR.NOTE"));
+        break;
+      case ActiveSideBarItem.Archive:
+        sidebarDispatch(sidebarAction.changeCurrentTitleKey("SIDEBAR.ARCHIVE"));
+        break;
+      case ActiveSideBarItem.Trash:
+        sidebarDispatch(sidebarAction.changeCurrentTitleKey("SIDEBAR.TRASH"));
+        break;
+    }
     if (currentItem === 0) {
       navigate("/");
       return;
@@ -56,10 +68,10 @@ export default function Sidebar(): JSX.Element {
           (shouldExpand && sidebarMode === "collapse")
         }
         icon={<Icon.Bulb className="fill-black dark:fill-white" />}
-        title={t("SIDEBAR.RECORD")}
-        active={activeSideBarItem === ActiveSideBarItem.Record}
+        title={t("SIDEBAR.NOTE")}
+        active={activeSideBarItem === ActiveSideBarItem.Note}
         onClick={() => {
-          onClickSidebarItem(ActiveSideBarItem.Record);
+          onClickSidebarItem(ActiveSideBarItem.Note);
         }}
       />
       <SidebarItem
