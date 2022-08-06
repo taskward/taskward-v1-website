@@ -1,7 +1,7 @@
 import { useState } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
-import { useNavigate, NavigateFunction } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import SidebarItem from "./SidebarItem";
 import { Icon } from "..";
@@ -15,9 +15,10 @@ export enum ActiveSideBarItem {
 
 export default function Sidebar(): JSX.Element {
   const { t } = useTranslation();
-  const navigate: NavigateFunction = useNavigate();
+  const navigate = useNavigate();
 
   const sidebarMode = useAppSelector((state) => state.sidebar.sidebarMode);
+  console.log(sidebarMode);
 
   const [shouldExpand, setShouldExpand] = useState<boolean>(false);
   const [activeSideBarItem, setActiveSideBarItem] = useState<ActiveSideBarItem>(

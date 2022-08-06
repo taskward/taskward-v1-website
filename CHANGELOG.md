@@ -7,6 +7,8 @@
   - [x] Change language button
 - [ ] Dark Theme
 - [ ] Responsive Design
+  - [ ] PC
+  - [ ] Mobile (Pending)
 - [ ] GitHub Auth
 - [ ] Tags
 - [ ] Archive

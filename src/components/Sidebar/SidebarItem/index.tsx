@@ -17,15 +17,13 @@ export default function SidebarItem({
   onClick,
 }: SidebarItemProps): JSX.Element {
   return (
-    <div
-      className="flex items-center cursor-pointer select-none"
-      onClick={onClick}
-    >
+    <div className="flex items-center cursor-pointer select-none">
       <div
         className={clsx(
           "hover:bg-emerald-300 dark:hover:bg-emerald-700 transition-colors w-12 h-12 rounded-full relative shrink-0",
           active && "bg-emerald-300 dark:bg-emerald-700"
         )}
+        onClick={onClick}
         title={title}
       >
         <div className="absolute inset-0 w-fit h-fit m-auto">{icon}</div>

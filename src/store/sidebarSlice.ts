@@ -25,8 +25,8 @@ export const sidebarSlice = createSlice({
   },
 });
 
-export const { changeMode } = sidebarSlice.actions;
-
 export const getSidebarMode = (state: RootState) => state.sidebar.sidebarMode;
+
+export const sidebarAction = sidebarSlice.actions;
 
 export default sidebarSlice.reducer;

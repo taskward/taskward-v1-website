@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { default as sidebarReducer } from "./menuSlice";
+import sidebarSlice from "./sidebarSlice";
 
 export const store = configureStore({
   reducer: {
-    sidebar: sidebarReducer,
+    sidebar: sidebarSlice,
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export { sidebarAction } from "./sidebarSlice";

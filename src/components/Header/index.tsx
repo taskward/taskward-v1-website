@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { Icon } from "..";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "../../hooks";
+import { sidebarAction } from "../../store";
 
 export default function Header(): JSX.Element {
   return (
@@ -26,11 +27,16 @@ export default function Header(): JSX.Element {
 
 function MenuIcon() {
   const sidebarDispatch = useAppDispatch();
+
+  function handleClickMenuIcon() {
+    sidebarDispatch(sidebarAction.changeMode());
+  }
+
   return (
     <div
       className="hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors w-12 h-12 rounded-full cursor-pointer relative select-none"
       onClick={() => {
-        sidebarDispatch({ type: "changeMode" });
+        handleClickMenuIcon();
       }}
     >
       <div className="absolute inset-0 w-fit h-fit m-auto">
