@@ -3,17 +3,24 @@ import { initReactI18next } from "react-i18next";
 import zh_cn from "./lang/zh-cn.json";
 import en from "./lang/en.json";
 
-i18n.use(initReactI18next).init({
-  resources: {
-    en: {
-      translation: en,
-    },
-    zh_cn: {
-      translation: zh_cn,
-    },
+export enum LanguageType {
+  ZH_CN = "zh_cn",
+  EN = "en",
+}
+
+export const resources = {
+  [LanguageType.EN]: {
+    translation: en,
   },
-  lng: "zh_cn",
-  fallbackLng: "zh_cn",
+  [LanguageType.ZH_CN]: {
+    translation: zh_cn,
+  },
+};
+
+i18n.use(initReactI18next).init({
+  resources: resources,
+  lng: LanguageType.ZH_CN,
+  fallbackLng: LanguageType.ZH_CN,
   interpolation: {
     escapeValue: false,
   },
