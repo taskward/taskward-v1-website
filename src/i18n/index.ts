@@ -2,10 +2,12 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import zh_cn from "./lang/zh-cn.json";
 import en from "./lang/en.json";
+import ja from "./lang/ja.json";
 
 export enum LanguageType {
   ZH_CN = "zh_cn",
   EN = "en",
+  JA = "ja",
 }
 
 export const resources = {
@@ -15,6 +17,7 @@ export const resources = {
   [LanguageType.ZH_CN]: {
     translation: zh_cn,
   },
+  [LanguageType.JA]: { translation: ja },
 };
 
 i18n.use(initReactI18next).init({

@@ -1,3 +1,6 @@
+import { useTranslation } from "react-i18next";
+
 export default function Trash(): JSX.Element {
-  return <>Trash</>;
+  const { t } = useTranslation();
+  return <>{t("SIDEBAR.TRASH")}</>;
 }

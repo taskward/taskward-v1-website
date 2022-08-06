@@ -56,22 +56,31 @@ function LanguageIcon() {
   const { t, i18n } = useTranslation();
 
   function changeLanguage() {
-    if (i18n.language === "en") {
-      i18n.changeLanguage("zh_cn");
-    } else {
-      i18n.changeLanguage("en");
+    switch (i18n.language) {
+      case "zh_cn":
+        i18n.changeLanguage("en");
+        break;
+      case "en":
+        i18n.changeLanguage("ja");
+        break;
+      case "ja":
+        i18n.changeLanguage("zh_cn");
+        break;
+      default:
+        return;
     }
   }
 
   return (
-    <div className="flex flex-col items-center text-xs">
-      <div className="cursor-pointer" onClick={changeLanguage}>
-        <Icon.Language
-          width="40"
-          height="25"
-          className="fill-black dark:fill-white"
-        />
-      </div>
+    <div
+      className="flex flex-col items-center text-xs cursor-pointer"
+      onClick={changeLanguage}
+    >
+      <Icon.Language
+        width="40"
+        height="25"
+        className="fill-black dark:fill-white"
+      />
       <div className="px-1 mt-1 select-none">{t("CURRENT.LANGUAGE")}</div>
     </div>
   );

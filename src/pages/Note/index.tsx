@@ -1,3 +1,6 @@
+import { useTranslation } from "react-i18next";
+
 export default function Note(): JSX.Element {
-  return <>Note</>;
+  const { t } = useTranslation();
+  return <>{t("SIDEBAR.NOTE")}</>;
 }

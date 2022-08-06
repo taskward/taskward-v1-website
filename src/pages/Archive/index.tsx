@@ -1,3 +1,6 @@
+import { useTranslation } from "react-i18next";
+
 export default function Archive(): JSX.Element {
-  return <>Archive</>;
+  const { t } = useTranslation();
+  return <>{t("SIDEBAR.ARCHIVE")}</>;
 }
