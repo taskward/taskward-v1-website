@@ -5,8 +5,7 @@ import { useNavigate, NavigateFunction } from "react-router-dom";
 import styles from "./styles.module.css";
 import SidebarItem from "./SidebarItem";
 import { Icon } from "..";
-
-export type SidebarMode = "collapse" | "expand";
+import { useAppSelector } from "../../hooks";
 
 export enum ActiveSideBarItem {
   "Record",
@@ -18,7 +17,8 @@ export default function Sidebar(): JSX.Element {
   const { t } = useTranslation();
   const navigate: NavigateFunction = useNavigate();
 
-  const [sidebarMode, setSidebarMode] = useState<SidebarMode>("collapse");
+  const sidebarMode = useAppSelector((state) => state.sidebar.sidebarMode);
+
   const [shouldExpand, setShouldExpand] = useState<boolean>(false);
   const [activeSideBarItem, setActiveSideBarItem] = useState<ActiveSideBarItem>(
     ActiveSideBarItem.Record

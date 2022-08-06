@@ -3,6 +3,7 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 import { Icon } from "..";
 import { useTranslation } from "react-i18next";
+import { useAppDispatch } from "../../hooks";
 
 export default function Header(): JSX.Element {
   return (
@@ -24,10 +25,13 @@ export default function Header(): JSX.Element {
 }
 
 function MenuIcon() {
+  const sidebarDispatch = useAppDispatch();
   return (
     <div
-      className="hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors w-12 h-12 rounded-full cursor-pointer relative"
-      onClick={() => {}}
+      className="hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors w-12 h-12 rounded-full cursor-pointer relative select-none"
+      onClick={() => {
+        sidebarDispatch({ type: "changeMode" });
+      }}
     >
       <div className="absolute inset-0 w-fit h-fit m-auto">
         <Icon.Menu className="fill-black dark:fill-white" />
@@ -56,7 +60,7 @@ function LanguageIcon() {
           className="fill-black dark:fill-white"
         />
       </div>
-      <div className="px-1 mt-1">{t("CURRENT.LANGUAGE")}</div>
+      <div className="px-1 mt-1 select-none">{t("CURRENT.LANGUAGE")}</div>
     </div>
   );
 }
