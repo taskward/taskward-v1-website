@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { Layout } from "./components";
-import { Record, Archive, Trash } from "./pages";
+import { Layout } from "@components";
+import { Record, Archive, Trash } from "@pages";
 
 export default function App(): JSX.Element {
   return (

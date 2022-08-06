@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import SidebarItem from "./SidebarItem";
 import { Icon } from "..";
-import { useAppSelector } from "../../hooks";
+import { useAppSelector } from "@hooks";
 
 export enum ActiveSideBarItem {
   "Record",

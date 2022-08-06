@@ -3,8 +3,8 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 import { Icon } from "..";
 import { useTranslation } from "react-i18next";
-import { useAppDispatch } from "../../hooks";
-import { sidebarAction } from "../../store";
+import { useAppDispatch } from "@hooks";
+import { sidebarAction } from "@store";
 
 export default function Header(): JSX.Element {
   return (

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Outlet } from "react-router-dom";
-import { Header, Sidebar } from "../index";
+import { Header, Sidebar } from "..";
 import styles from "./styles.module.css";
 
 export default function Layout(): JSX.Element {
