@@ -20,7 +20,7 @@ html[class="dark"] #root {
 }
 
 :root {
-  --todo-theme-color-dark: rgb(54, 57, 63);
-  --todo-theme-color-darker: rgb(47, 49, 54);
-  --todo-theme-color-darkest: rgb(32, 34, 37);
+  --taskward-theme-color-dark: rgb(54, 57, 63);
+  --taskward-theme-color-darker: rgb(47, 49, 54);
+  --taskward-theme-color-darkest: rgb(32, 34, 37);
 }

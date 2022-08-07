@@ -3,5 +3,5 @@
 }
 
 html[class="dark"] .routerContentWrapper {
-  background-color: var(--todo-theme-color-darker);
+  background-color: var(--taskward-theme-color-darker);
 }

@@ -1,5 +1,5 @@
 html[class="dark"] .sidebarWrapper {
-  background-color: var(--todo-theme-color-darkest);
+  background-color: var(--taskward-theme-color-darkest);
 }
 
 .collapse {
