@@ -3,5 +3,7 @@
   "SIDEBAR.NOTE": "ノート",
   "SIDEBAR.ARCHIVE": "記録",
   "SIDEBAR.TRASH": "ごみ箱",
-  "404.NOTFOUND": "ページが見つかりません"
+  "404.NOTFOUND": "ページが見つかりません",
+  "SWITCH.TO.LIGHT.MODE": "ライトモードに切り替える",
+  "SWITCH.TO.DARK.MODE": "ダークモードに切り替える"
 }
