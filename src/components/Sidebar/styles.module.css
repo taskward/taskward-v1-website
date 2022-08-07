@@ -4,10 +4,8 @@ html[class="dark"] .sidebarWrapper {
 
 .collapse {
   width: 4.5rem;
-  transition-duration: 300ms;
 }
 
 .expand {
   width: 14rem;
-  transition-duration: 300ms;
 }
