@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ export enum ActiveSideBarItem {
 }
 
 export default function Sidebar(): JSX.Element {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const sidebarDispatch = useAppDispatch();
 
@@ -25,6 +25,10 @@ export default function Sidebar(): JSX.Element {
   const [activeSideBarItem, setActiveSideBarItem] = useState<ActiveSideBarItem>(
     ActiveSideBarItem.Note
   );
+
+  useEffect(() => {
+    changeDocumentTitle(activeSideBarItem);
+  }, [activeSideBarItem, i18n.language]);
 
   function onClickSidebarItem(currentItem: ActiveSideBarItem) {
     setActiveSideBarItem(currentItem);
@@ -44,6 +48,20 @@ export default function Sidebar(): JSX.Element {
       return;
     }
     navigate(`/${ActiveSideBarItem[currentItem].toLowerCase()}`);
+  }
+
+  function changeDocumentTitle(activeSideBarItem: ActiveSideBarItem) {
+    switch (activeSideBarItem) {
+      case ActiveSideBarItem.Note:
+        document.title = t("SIDEBAR.NOTE") + " | Taskward";
+        break;
+      case ActiveSideBarItem.Archive:
+        document.title = t("SIDEBAR.ARCHIVE") + " | Taskward";
+        break;
+      case ActiveSideBarItem.Trash:
+        document.title = t("SIDEBAR.TRASH") + " | Taskward";
+        break;
+    }
   }
 
   return (

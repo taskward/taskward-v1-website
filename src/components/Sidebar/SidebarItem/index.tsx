@@ -38,7 +38,9 @@ export default function SidebarItem({
         <div className="absolute inset-0 w-fit h-fit m-auto icon">{icon}</div>
       </div>
       {shouldExpand && (
-        <div className="flex-grow ml-3 whitespace-nowrap">{title}</div>
+        <div className="flex-grow mx-3 whitespace-nowrap text-ellipsis overflow-hidden">
+          {title}
+        </div>
       )}
     </div>
   );
