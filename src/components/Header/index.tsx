@@ -5,6 +5,7 @@ import { Icon } from "..";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { sidebarAction } from "@store";
+import { Tooltip } from "@components";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -112,7 +113,7 @@ function DarkModeIcon() {
 
   return (
     <div
-      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors"
+      className="p-2 mr-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors"
       onClick={changeTheme}
     >
       {darkMode ? (

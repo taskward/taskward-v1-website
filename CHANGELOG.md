@@ -17,6 +17,7 @@
 - [ ] Note
   - [ ] List View
   - [ ] Card View
+  - [ ] Pin
 - [ ] Archive
 - [ ] Trash
 - [ ] Tags
