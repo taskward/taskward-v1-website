@@ -5,7 +5,6 @@ import { Icon } from "..";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { sidebarAction } from "@store";
-import { Tooltip } from "@components";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
