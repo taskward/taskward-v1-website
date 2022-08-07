@@ -2,5 +2,6 @@
   "CURRENT.LANGUAGE": "简体中文",
   "SIDEBAR.NOTE": "记事",
   "SIDEBAR.ARCHIVE": "归档",
-  "SIDEBAR.TRASH": "回收站"
+  "SIDEBAR.TRASH": "回收站",
+  "404.NOTFOUND": "页面未找到"
 }
