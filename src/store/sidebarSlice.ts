@@ -2,14 +2,21 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type SidebarMode = "collapse" | "expand";
 
+export enum ActiveSidebarItem {
+  "None",
+  "Note",
+  "Archive",
+  "Trash",
+}
+
 interface SidebarState {
   sidebarMode: SidebarMode;
-  currentTitleKey: any;
+  activeSidebarItem: ActiveSidebarItem;
 }
 
 const initialState = {
   sidebarMode: "collapse",
-  currentTitleKey: "SIDEBAR.NOTE",
+  activeSidebarItem: ActiveSidebarItem.Note,
 } as SidebarState;
 
 export const sidebarSlice = createSlice({
@@ -23,8 +30,11 @@ export const sidebarSlice = createSlice({
         state.sidebarMode = "collapse";
       }
     },
-    changeCurrentTitleKey: (state, action: PayloadAction<string>) => {
-      state.currentTitleKey = action.payload;
+    changeActiveSidebarItem: (
+      state,
+      action: PayloadAction<ActiveSidebarItem>
+    ) => {
+      state.activeSidebarItem = action.payload;
     },
   },
 });

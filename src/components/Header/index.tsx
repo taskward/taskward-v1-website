@@ -8,9 +8,23 @@ import { sidebarAction } from "@store";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
-  const sidebarTitleKey = useAppSelector(
-    (state) => state.sidebar.currentTitleKey
+  const activeSidebarItem = useAppSelector(
+    (state) => state.sidebar.activeSidebarItem
   );
+
+  function getActiveSidebarItemTitle(): string {
+    switch (activeSidebarItem) {
+      case 1:
+        return t("SIDEBAR.NOTE");
+      case 2:
+        return t("SIDEBAR.ARCHIVE");
+      case 3:
+        return t("SIDEBAR.TRASH");
+      case 0:
+      default:
+        return "";
+    }
+  }
 
   return (
     <header
@@ -21,7 +35,7 @@ export default function Header(): JSX.Element {
     >
       <div className="flex justify-start items-center gap-2">
         <MenuIcon />
-        <div className="ml-1 select-none">{t(sidebarTitleKey)}</div>
+        <div className="ml-1 select-none">{getActiveSidebarItemTitle()}</div>
       </div>
       <div className="flex justify-end items-center gap-2">
         <LanguageIcon />

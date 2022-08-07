@@ -1,2 +1,2 @@
 export { getQueryString } from "./routerUtils";
-export { isDarkMode } from "./styleUtils";
+export { isDarkMode, getDocumentTitle } from "./styleUtils";
