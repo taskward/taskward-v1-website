@@ -1,6 +1,6 @@
 # Taskward
 
-✅ Taskward is a Todo&Task application.
+Taskward is a Todo&Task application.
 
 ## Stack
 
