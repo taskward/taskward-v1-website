@@ -30,7 +30,7 @@ export default function SidebarItem({
     >
       <div
         className={clsx(
-          "w-12 h-12 rounded-full relative shrink-0 transition-all duration-300 ease-in-out",
+          "w-12 h-12 rounded-full relative shrink-0 transition-all ease-in-out",
           active && !shouldExpand && "bg-emerald-300 dark:bg-emerald-700"
         )}
         title={title}
