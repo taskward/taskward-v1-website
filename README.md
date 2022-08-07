@@ -1,6 +1,6 @@
-# todo
+# Taskward
 
-This is a Todo List application.
+Taskward is a Todo&Task application.
 
 ## Stack
 
@@ -9,10 +9,9 @@ This is a Todo List application.
 - Vite
 - TailwindCSS
 - React-Redux
-- react-i18n-next
+- React-i18n-next
 
 ## Others
 
 - Host by Vercel
-- UI Design inspired by Discord
-- Product inspired by Google Keep
+- UI Design inspired by Discord and Google Keep
