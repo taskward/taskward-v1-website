@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 
 export default function Layout(): JSX.Element {
   return (
-    <div>
+    <>
       <Header />
       <div className={clsx("flex flex-row", styles.mainContentWrapper)}>
         <Sidebar />
@@ -18,6 +18,6 @@ export default function Layout(): JSX.Element {
           <Outlet />
         </div>
       </div>
-    </div>
+    </>
   );
 }

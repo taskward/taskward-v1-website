@@ -7,6 +7,7 @@ import SidebarItem from "./SidebarItem";
 import { Icon } from "..";
 import { useAppSelector, useAppDispatch } from "@hooks";
 import { sidebarAction } from "@store";
+import { shallowEqual } from "react-redux";
 
 export enum ActiveSideBarItem {
   "Note",
@@ -17,9 +18,12 @@ export enum ActiveSideBarItem {
 export default function Sidebar(): JSX.Element {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  const sidebarMode = useAppSelector((state) => state.sidebar.sidebarMode);
   const sidebarDispatch = useAppDispatch();
+
+  const sidebarMode = useAppSelector(
+    (state) => state.sidebar.sidebarMode,
+    shallowEqual
+  );
 
   const [shouldExpand, setShouldExpand] = useState<boolean>(false);
   const [activeSideBarItem, setActiveSideBarItem] = useState<ActiveSideBarItem>(
@@ -56,10 +60,10 @@ export default function Sidebar(): JSX.Element {
           : styles.expand
       )}
       onMouseOver={() => {
-        sidebarMode === "collapse" && setShouldExpand(true);
+        setShouldExpand(true);
       }}
       onMouseLeave={() => {
-        sidebarMode === "collapse" && setShouldExpand(false);
+        setShouldExpand(false);
       }}
     >
       <SidebarItem

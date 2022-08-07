@@ -4,12 +4,12 @@ import styles from "./styles.module.css";
 import { Icon } from "..";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@hooks";
-import { sidebarAction, getSidebarCurrentTitleKey } from "@store";
+import { sidebarAction } from "@store";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
-  const sidebarTitleKey = useAppSelector((state) =>
-    getSidebarCurrentTitleKey(state)
+  const sidebarTitleKey = useAppSelector(
+    (state) => state.sidebar.currentTitleKey
   );
 
   return (
