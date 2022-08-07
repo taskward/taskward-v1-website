@@ -19,14 +19,9 @@ export default function Sidebar(): JSX.Element {
   const [shouldExpand, setShouldExpand] = useState<boolean>(false);
 
   function onClickSidebarItem(currentItem: ActiveSidebarItem) {
-    switch (currentItem) {
-      case 1:
-        navigate("/");
-        break;
-      case 2:
-      case 3:
+    switch (true) {
+      case currentItem > 0:
         navigate(`/${ActiveSidebarItem[currentItem].toLowerCase()}`);
-      case 0:
       default:
         return;
     }

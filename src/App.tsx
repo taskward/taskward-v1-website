@@ -9,6 +9,7 @@ export default function App(): JSX.Element {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Note />} />
+            <Route path="note" element={<Note />} />
             <Route path="archive" element={<Archive />} />
             <Route path="trash" element={<Trash />} />
             <Route path="*" element={<NotFound />} />
