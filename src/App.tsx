@@ -1,10 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "@components";
 import { Note, Archive, Trash, NotFound } from "@pages";
+import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 export default function App(): JSX.Element {
+  const { i18n } = useTranslation();
   return (
-    <div className="font-mono dark:text-white">
+    <div className={clsx("dark:text-white", i18n.language)}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>

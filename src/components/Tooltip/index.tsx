@@ -31,7 +31,6 @@ export default function Tooltip({ children }: TooltipProps): JSX.Element {
   return (
     <>
       {Children.map(children, (child: any) => {
-        console.log(child);
         return cloneElement(child, {
           className: "tooltipWrapper",
           //   onMouseEnter: mouseIn,
