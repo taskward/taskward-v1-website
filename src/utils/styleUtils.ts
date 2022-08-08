@@ -1,4 +1,4 @@
-import { DOCUMENT_TITLE_SUFFIX } from "./constants";
+import { APPLICATION_NAME } from "./constants";
 
 function isDarkMode(): boolean {
   return document.documentElement.className.includes("dark");
@@ -6,9 +6,9 @@ function isDarkMode(): boolean {
 
 function getDocumentTitle(prefix: string): string {
   if (!prefix) {
-    return DOCUMENT_TITLE_SUFFIX;
+    return APPLICATION_NAME;
   }
-  return prefix + " | " + DOCUMENT_TITLE_SUFFIX;
+  return prefix + " | " + APPLICATION_NAME;
 }
 
 export { isDarkMode, getDocumentTitle };

@@ -1,1 +1,1 @@
-export const DOCUMENT_TITLE_SUFFIX = "Taskward";
+export const APPLICATION_NAME = "Taskward";
