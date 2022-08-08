@@ -5,6 +5,7 @@ import { Icon } from "..";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { sidebarAction } from "@store";
+import { Tooltip } from "@components";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -118,7 +119,9 @@ function DarkModeIcon() {
       {darkMode ? (
         <Icon.Moon width="20" height="20" className="fill-white" />
       ) : (
-        <Icon.Sun width="20" height="20" />
+        <Tooltip>
+          <Icon.Sun width="20" height="20" />
+        </Tooltip>
       )}
     </div>
   );
