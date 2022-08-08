@@ -88,15 +88,14 @@ function LanguageIcon() {
 
   return (
     <div
-      className="flex flex-col items-center text-xs cursor-pointer"
+      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex justify-center items-center cursor-pointer transition-colors"
       onClick={changeLanguage}
     >
       <Icon.Language
-        width="40"
-        height="25"
+        width="24"
+        height="24"
         className="fill-black dark:fill-white"
       />
-      <div className="px-1 mt-1 select-none">{t("CURRENT.LANGUAGE")}</div>
     </div>
   );
 }
