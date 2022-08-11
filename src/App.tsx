@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 export default function App(): JSX.Element {
   const { i18n } = useTranslation();
-  console.log(import.meta.WIKI_API_URL);
+  console.log(import.meta.env.WIKI_API_URL);
   return (
     <div className={clsx("dark:text-white", i18n.language)}>
       <BrowserRouter>
