@@ -9,6 +9,7 @@
   - [x] English
   - [x] Japanese
   - [ ] Korean
+  - [x] France
 - [x] Dark Theme
 - [ ] Responsive Design
   - [x] PC
