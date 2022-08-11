@@ -24,6 +24,7 @@
       "@utils/*": ["src/utils/*"],
       "@pages": ["src/pages"],
       "@pages/*": ["src/pages/*"],
+      "@requests": ["src/requests"],
       "@store": ["src/store"]
     }
   },
