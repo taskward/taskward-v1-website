@@ -13,6 +13,7 @@ import Moon from "./Moon";
 import Sun from "./Sun";
 import Trash from "./Trash";
 import Search from "./Search";
+import Refresh from "./Refresh";
 
 export const Icon = {
   Archive,
@@ -23,4 +24,5 @@ export const Icon = {
   Sun,
   Trash,
   Search,
+  Refresh,
 };
