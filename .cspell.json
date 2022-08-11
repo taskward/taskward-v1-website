@@ -1,6 +1,13 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": ["tailwindcss", "clsx", "reduxjs", "Taskward", "lottiefiles"],
+  "words": [
+    "tailwindcss",
+    "clsx",
+    "reduxjs",
+    "Taskward",
+    "lottiefiles",
+    "vite"
+  ],
   "flagWords": []
 }
