@@ -12,6 +12,7 @@ import Menu from "./Menu";
 import Moon from "./Moon";
 import Sun from "./Sun";
 import Trash from "./Trash";
+import Search from "./Search";
 
 export const Icon = {
   Archive,
@@ -21,4 +22,5 @@ export const Icon = {
   Moon,
   Sun,
   Trash,
+  Search,
 };
