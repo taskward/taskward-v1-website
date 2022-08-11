@@ -34,11 +34,11 @@ export default function Header(): JSX.Element {
         styles.header
       )}
     >
-      <div className="flex justify-start items-center gap-2">
+      <div className="flex justify-start items-center gap-1">
         <MenuIcon />
-        <div className="ml-1 select-none">{getActiveSidebarItemTitle()}</div>
+        <div className="ml-2 select-none">{getActiveSidebarItemTitle()}</div>
       </div>
-      <div className="flex justify-end items-center gap-2">
+      <div className="flex justify-end items-center gap-1">
         <LanguageIcon />
         <DarkModeIcon />
       </div>
@@ -47,6 +47,7 @@ export default function Header(): JSX.Element {
 }
 
 function MenuIcon() {
+  const { t } = useTranslation();
   const sidebarDispatch = useAppDispatch();
 
   function handleClickMenuIcon() {
@@ -60,7 +61,10 @@ function MenuIcon() {
         handleClickMenuIcon();
       }}
     >
-      <div className="absolute inset-0 w-fit h-fit m-auto">
+      <div
+        className="absolute inset-0 w-fit h-fit m-auto"
+        title={t("HEADER.MENU")}
+      >
         <Icon.Menu className="fill-black dark:fill-white" />
       </div>
     </div>
@@ -68,7 +72,7 @@ function MenuIcon() {
 }
 
 function LanguageIcon() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   function changeLanguage() {
     switch (i18n.language) {
@@ -91,16 +95,13 @@ function LanguageIcon() {
       className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex justify-center items-center cursor-pointer transition-colors"
       onClick={changeLanguage}
     >
-      <Icon.Language
-        width="24"
-        height="24"
-        className="fill-black dark:fill-white"
-      />
+      <Icon.Language className="fill-black dark:fill-white" />
     </div>
   );
 }
 
 function DarkModeIcon() {
+  const { t } = useTranslation();
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
   function changeTheme() {
@@ -116,11 +117,13 @@ function DarkModeIcon() {
       onClick={changeTheme}
     >
       {darkMode ? (
-        <Icon.Moon width="20" height="20" className="fill-white" />
+        <div title={t("SWITCH.TO.DARK.MODE")}>
+          <Icon.Moon className="fill-white" />
+        </div>
       ) : (
-        <Tooltip>
-          <Icon.Sun width="20" height="20" />
-        </Tooltip>
+        <div title={t("SWITCH.TO.LIGHT.MODE")}>
+          <Icon.Sun />
+        </div>
       )}
     </div>
   );

@@ -35,7 +35,7 @@ export default function SidebarItem({
         )}
         title={title}
       >
-        <div className="absolute inset-0 w-fit h-fit m-auto icon">{icon}</div>
+        <div className="absolute inset-0 m-auto w-fit h-fit">{icon}</div>
       </div>
       {shouldExpand && (
         <div className="flex-grow mx-3 whitespace-nowrap text-ellipsis overflow-hidden">

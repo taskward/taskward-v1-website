@@ -1,4 +1,4 @@
-export type SvgProps = {
+export type SvgPropsType = {
   width?: string;
   height?: string;
   className?: string;
@@ -6,7 +6,7 @@ export type SvgProps = {
 };
 
 import Archive from "./Archive";
-import Bulb from "./Bulb";
+import Note from "./Note";
 import Language from "./Language";
 import Menu from "./Menu";
 import Moon from "./Moon";
@@ -15,7 +15,7 @@ import Trash from "./Trash";
 
 export const Icon = {
   Archive,
-  Bulb,
+  Note,
   Language,
   Menu,
   Moon,

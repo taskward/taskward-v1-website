@@ -48,7 +48,7 @@ export default function Sidebar(): JSX.Element {
           sidebarMode === "expand" ||
           (shouldExpand && sidebarMode === "collapse")
         }
-        icon={<Icon.Bulb className="fill-black dark:fill-white" />}
+        icon={<Icon.Note className="fill-black dark:fill-white" />}
         title={t("SIDEBAR.NOTE")}
         active={activeSidebarItem === ActiveSidebarItem.Note}
         onClick={() => {

@@ -1,21 +1,25 @@
-import { type SvgProps } from ".";
+import { type SvgPropsType } from ".";
 
 export default function Archive({
   width = "24",
   height = "24",
   className = "fill-black",
   onClick,
-}: SvgProps): JSX.Element {
+}: SvgPropsType): JSX.Element {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      enable-background="new 0 0 24 24"
       viewBox="0 0 24 24"
       width={width}
       height={height}
       className={className}
       onClick={onClick}
     >
-      <path d="M 5.75 3 A 1.0001 1.0001 0 0 0 4.8867188 3.4960938 L 3.1367188 6.4960938 A 1.0001 1.0001 0 0 0 3 7 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 7 A 1.0001 1.0001 0 0 0 20.863281 6.4960938 L 19.113281 3.4960938 A 1.0001 1.0001 0 0 0 18.25 3 L 5.75 3 z M 6.3242188 5 L 17.675781 5 L 18.841797 7 L 5.1582031 7 L 6.3242188 5 z M 5 9 L 19 9 L 19 19 L 5 19 L 5 9 z M 9 11 L 9 13 L 15 13 L 15 11 L 9 11 z" />
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM6.24 5h11.52l.81.97H5.44l.8-.97zM5 19V8h14v11H5zm8.45-9h-2.9v3H8l4 4 4-4h-2.55z" />
     </svg>
   );
 }
+
+// Google Material Icons - Archive
