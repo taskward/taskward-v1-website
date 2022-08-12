@@ -1,4 +1,16 @@
-import axios from "axios";
+import { axiosService } from "@requests";
+
+axiosService.interceptors.response.use(
+  function (response) {
+    console.log(response);
+    return response;
+  },
+  function (error) {
+    console.log(error);
+    return Promise.reject(error);
+  }
+);
+
 // const handleRequestHeader = (config: any) => {
 //   config["xxxx"] = "xxx";
 
