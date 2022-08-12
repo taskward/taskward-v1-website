@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "@components";
-import { Home, Note, Archive, Trash, NotFound } from "@pages";
+import { Home, Note, Archive, Trash, NotFound, Login } from "@pages";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
@@ -11,6 +11,7 @@ export default function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<Layout />}>
             <Route path="note" element={<Note />} />
             <Route path="archive" element={<Archive />} />
