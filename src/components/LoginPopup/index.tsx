@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import axios from "axios";
+import { axiosService } from "@requests";
 import { useQueryString } from "@hooks";
 
 export default function LoginPopup(): JSX.Element {
@@ -15,12 +15,11 @@ export default function LoginPopup(): JSX.Element {
   }, []);
 
   async function loginByGitHubCode() {
-    let response = await axios({
+    let response = await axiosService({
       method: "POST",
-      url: `${import.meta.env.VITE_WIKI_API_BASE_URL}auth/github`,
+      url: "auth/github",
       headers: {
         accept: "application/json",
-        withCredentials: false,
       },
     });
     console.log(response);
