@@ -1,13 +1,14 @@
-import axios from "axios";
+import { axiosService } from "@requests";
 
-async function githubOAuthRequest() {
-  try {
-    const response = await axios.get(
-      `https://github.com/login/oauth/authorize?client_id=7e015d8ce32370079895&redirect_uri=http://localhost:8080/oauth/redirect`
-    );
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
+async function loginByGitHubCode(code: string) {
+  let response = await axiosService({
+    method: "POST",
+    url: `auth/github?code=${code}`,
+    headers: {
+      accept: "application/json",
+    },
+  });
+  console.log(response);
 }
-export { githubOAuthRequest };
+
+export { loginByGitHubCode };
