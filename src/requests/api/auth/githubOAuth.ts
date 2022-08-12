@@ -10,7 +10,13 @@ async function loginByGitHubCode(code: string) {
       },
     });
     if (response.data) {
-      window.localStorage.setItem("taskwardToken", response.data);
+      response.data.token &&
+        window.localStorage.setItem("taskward_token", response.data.token);
+      response.data.user &&
+        window.localStorage.setItem(
+          "taskward_user",
+          JSON.stringify(response.data.user)
+        );
     }
   } catch (error) {
     console.error(error);
