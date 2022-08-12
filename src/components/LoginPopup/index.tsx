@@ -17,7 +17,7 @@ export default function LoginPopup(): JSX.Element {
   async function loginByGitHubCode() {
     let response = await axiosService({
       method: "POST",
-      url: "auth/github",
+      url: `auth/github?code=${code}`,
       headers: {
         accept: "application/json",
       },
