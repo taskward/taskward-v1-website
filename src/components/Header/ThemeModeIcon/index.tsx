@@ -15,7 +15,7 @@ export default function ThemeModeIcon() {
 
   return (
     <div
-      className="p-2 mr-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors"
+      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors"
       onClick={changeTheme}
     >
       {darkMode ? (

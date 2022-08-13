@@ -24,20 +24,9 @@ const initialState = {
   },
 } as UserState;
 
-const testState = {
-  userInfo: {
-    id: 1,
-    name: "Bruce",
-    avatarUrl: null,
-    biography: null,
-    email: null,
-    location: null,
-  },
-} as UserState;
-
 export const userSlice = createSlice({
   name: "user",
-  initialState: testState,
+  initialState,
   reducers: {
     updateUserInfo: (state, action: PayloadAction<UserInfo>) => {
       state.userInfo = action.payload;

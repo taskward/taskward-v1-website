@@ -14,7 +14,8 @@
 - [ ] Responsive Design
   - [x] PC
   - [ ] Mobile (Pending)
-- [ ] GitHub Auth
+- [ ] Authentication
+  - [x] GitHub OAuth2
 - [ ] Note
   - [ ] List View
   - [ ] Card View

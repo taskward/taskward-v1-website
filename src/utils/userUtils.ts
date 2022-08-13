@@ -9,10 +9,17 @@ function isLogin(): boolean {
   return hasToken !== null && hasToken !== "";
 }
 
-function getUserInfo(): UserInfo {
+function getUserInfoFromStorage(): UserInfo | null {
   let userData = window.localStorage.getItem(LOCAL_STORAGE_TASKWARD_USER);
-  let userInfo: UserInfo = JSON.parse(userData ?? "");
+  if (!userData) {
+    return null;
+  }
+  let userInfo: UserInfo = JSON.parse(userData);
   return userInfo;
 }
 
-export { isLogin, getUserInfo };
+function getToken(): string | null {
+  return window.localStorage.getItem(LOCAL_STORAGE_TASKWARD_TOKEN);
+}
+
+export { isLogin, getUserInfoFromStorage, getToken };

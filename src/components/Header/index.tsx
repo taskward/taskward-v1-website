@@ -5,6 +5,7 @@ import { useAppSelector } from "@hooks";
 import LanguageIcon from "./LanguageIcon";
 import ThemeModeIcon from "./ThemeModeIcon";
 import MenuIcon from "./MenuIcon";
+import UserAvatar from "./UserAvatar";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -33,13 +34,14 @@ export default function Header(): JSX.Element {
         styles.header
       )}
     >
-      <div className="flex justify-start items-center gap-1">
+      <div className="flex justify-start items-center gap-2">
         <MenuIcon />
-        <div className="ml-2 select-none">{getActiveSidebarItemTitle()}</div>
+        <div className="ml-1 select-none">{getActiveSidebarItemTitle()}</div>
       </div>
-      <div className="flex justify-end items-center gap-1">
+      <div className="flex justify-end items-center gap-2 mr-2">
         <LanguageIcon />
         <ThemeModeIcon />
+        <UserAvatar />
       </div>
     </header>
   );
