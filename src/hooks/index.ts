@@ -1,2 +1,3 @@
 export { useAppSelector, useAppDispatch } from "./reduxHooks";
-export { useQueryString } from "./useQueryString";
+export { default as useQueryString } from "./useQueryString";
+export { default as useImageLoaded } from "./useImageLoaded";

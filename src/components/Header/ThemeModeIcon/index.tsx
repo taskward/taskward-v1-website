@@ -4,7 +4,9 @@ import { Icon } from "@components";
 
 export default function ThemeModeIcon() {
   const { t } = useTranslation();
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(
+    document.documentElement.classList.contains("dark")
+  );
 
   function changeTheme() {
     darkMode

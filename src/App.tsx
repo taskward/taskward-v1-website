@@ -11,7 +11,13 @@ export default function App(): JSX.Element {
   return (
     <div className={clsx("dark:text-white", i18n.language)}>
       <BrowserRouter>
-        <Suspense fallback={<Loading />}>
+        <Suspense
+          fallback={
+            <div className="w-screen h-screen">
+              <Loading />
+            </div>
+          }
+        >
           <Routes>
             <Route index element={<Home />} />
             <Route path="/login" element={<Login />} />

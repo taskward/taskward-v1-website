@@ -1,23 +1,49 @@
+import { useEffect } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 import GitHubIcon from "./GitHubIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { APPLICATION_NAME } from "@utils";
 import taskward from "@assets/img/taskward.png";
-import { Icon } from "@components";
-import { useTranslation } from "react-i18next";
+import background from "@assets/background/background.jpg";
+import { Icon, Loading } from "@components";
+import { useTranslation, Trans } from "react-i18next";
 import { isLogin } from "@utils";
+import { useImageLoaded } from "@hooks";
+
+type HomeState = {
+  isBackHome: boolean;
+};
 
 export default function Home(): JSX.Element {
   const { t } = useTranslation();
-  const showLoginButton = !isLogin();
+  const navigate = useNavigate();
+  const loginStatus: boolean = isLogin();
+  const backgroundImageLoaded = useImageLoaded(background);
+  const { isBackHome } = useLocation().state
+    ? (useLocation().state as HomeState)
+    : { isBackHome: false };
 
+  useEffect(() => {
+    if (loginStatus && !isBackHome) {
+      navigate("/note");
+    }
+  }, []);
+
+  if (!backgroundImageLoaded) {
+    return (
+      <div className="w-screen h-screen">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <div
       className={clsx(
         "w-screen h-screen relative select-none",
         styles.background
       )}
+      style={{ backgroundImage: `url(${background})` }}
     >
       <div className="inset-0 absolute w-fit h-fit m-auto">
         <div className="flex flex-col gap-2 mb-36">
@@ -30,16 +56,22 @@ export default function Home(): JSX.Element {
             </span>
           </div>
           <span className="text-center text-lg text-gray-600">
-            {"Taskward means task-oriented, is a Todo&Tasks App."}
+            <Trans i18nKey="TASKWARD.APP.DESCRIPTION.FIRST.LINE">
+              {"Taskward means"}
+              <span className="underline decoration-dotted decoration-gray-500 hover:decoration-emerald-600 hover:text-emerald-600 underline-offset-4 transition-colors cursor-pointer">
+                {"task-oriented"}
+              </span>
+              {", is a Todo&Tasks App."}
+            </Trans>
           </span>
           <span className="text-center text-lg text-gray-600">
-            {"It can help you record something you plan to do."}
+            {t("TASKWARD.APP.DESCRIPTION.SECOND.LINE")}
           </span>
           <div className="flex justify-center items-center gap-4 mt-2">
-            {showLoginButton && (
+            {!loginStatus && (
               <Link
                 to="/login"
-                className="shadow-sm shadow-emerald-800 text-center w-fit min-w-20 p-1 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+                className="transition-colors shadow-sm shadow-emerald-800 text-center w-fit min-w-20 p-1 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
               >
                 <span className="whitespace-nowrap text-md flex items-center justify-center gap-1">
                   <Icon.Login
@@ -53,7 +85,7 @@ export default function Home(): JSX.Element {
             )}
             <Link
               to="/note"
-              className="shadow-sm shadow-emerald-800 text-center w-fit min-w-20 p-1 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+              className="transition-colors shadow-sm shadow-emerald-800 text-center w-fit min-w-20 p-1 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
             >
               <span className="whitespace-nowrap text-md flex items-center justify-center gap-1">
                 <img

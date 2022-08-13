@@ -16,7 +16,7 @@ axiosService.interceptors.response.use(
   },
   function (error) {
     if (error.message === "timeout of 10000ms exceeded") {
-      console.error(t("ERROR_TIMEOUT"));
+      console.error(t("ERROR.TIMEOUT"));
     } else if (error.response.status === 404) {
       console.error("404: " + error.message);
     } else {
