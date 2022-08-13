@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { loginByGitHubCode } from "@requests";
 import { useQueryString } from "@hooks";
 import { useNavigate } from "react-router-dom";
 import { LOCAL_STORAGE_TOKEN } from "@utils";
+import { Loading } from "@components";
 
 export default function LoginPopup(): JSX.Element {
   const CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID;
@@ -10,6 +11,8 @@ export default function LoginPopup(): JSX.Element {
   const REDIRECT_URL = `${import.meta.env.VITE_TASKWARD_BASE_URL}login`;
   const code = useQueryString("code");
   const navigate = useNavigate();
+
+  const [loginLoading, setLoginLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (window.localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
@@ -21,9 +24,15 @@ export default function LoginPopup(): JSX.Element {
 
   async function handleGitHubLogin() {
     if (code) {
+      setLoginLoading(true);
       const loginResult: boolean = await loginByGitHubCode(code);
+      setLoginLoading(false);
       loginResult && navigate("/note", { replace: true });
     }
+  }
+
+  if (loginLoading) {
+    return <Loading />;
   }
 
   return (
