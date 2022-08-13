@@ -3,7 +3,7 @@ import { axiosService } from "@requests";
 const LOCAL_STORAGE_TASKWARD_TOKEN = "taskward_token";
 const LOCAL_STORAGE_TASKWARD_USER = "taskward_user";
 
-async function loginByGitHubCode(code: string) {
+async function loginByGitHubCode(code: string): Promise<boolean> {
   try {
     let response = await axiosService({
       method: "POST",
@@ -12,7 +12,7 @@ async function loginByGitHubCode(code: string) {
         accept: "application/json",
       },
     });
-    if (response.data) {
+    if (response.status === 200 && response.data) {
       response.data.token &&
         window.localStorage.setItem(
           LOCAL_STORAGE_TASKWARD_TOKEN,
@@ -23,9 +23,12 @@ async function loginByGitHubCode(code: string) {
           LOCAL_STORAGE_TASKWARD_USER,
           JSON.stringify(response.data.user)
         );
+      return true;
     }
+    return false;
   } catch (error) {
     console.error(error);
+    return false;
   }
 }
 

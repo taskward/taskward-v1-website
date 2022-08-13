@@ -20,8 +20,8 @@ export default function LoginPopup(): JSX.Element {
 
   async function handleGitHubLogin() {
     if (code) {
-      await loginByGitHubCode(code);
-      navigate("/note", { replace: true });
+      const loginResult: boolean = await loginByGitHubCode(code);
+      loginResult && navigate("/note", { replace: true });
     }
   }
 
