@@ -30,7 +30,7 @@ export default function Header(): JSX.Element {
   return (
     <header
       className={clsx(
-        "w-full h-16 border-b dark:border-black p-3 gap-4 transition-colors flex justify-between",
+        "w-full h-16 border-b dark:border-black p-3 gap-4 transition-colors flex justify-between select-none",
         styles.header
       )}
     >

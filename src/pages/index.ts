@@ -1,6 +1,10 @@
-export { default as Home } from "./Home";
-export { default as Note } from "./Note";
-export { default as Archive } from "./Archive";
-export { default as Trash } from "./Trash";
-export { default as NotFound } from "./NotFound";
-export { default as Login } from "./Login";
+import { lazy } from "react";
+
+const Home = lazy(() => import("./Home"));
+const Note = lazy(() => import("./Note"));
+const Archive = lazy(() => import("./Archive"));
+const Trash = lazy(() => import("./Trash"));
+const NotFound = lazy(() => import("./NotFound"));
+const Login = lazy(() => import("./Login"));
+
+export { Home, Note, Archive, Trash, NotFound, Login };

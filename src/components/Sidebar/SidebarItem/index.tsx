@@ -19,7 +19,7 @@ export default function SidebarItem({
   return (
     <div
       className={clsx(
-        "flex items-center cursor-pointer select-none",
+        "flex items-center cursor-pointer",
         active
           ? shouldExpand &&
               "bg-emerald-300 dark:bg-emerald-700 rounded-md transition-all ease-in-out"

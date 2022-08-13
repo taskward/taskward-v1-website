@@ -16,7 +16,7 @@ export default function UserAvatar(): JSX.Element | null {
 
   useEffect(() => {
     const userInfoFromStorage = getUserInfoFromStorage();
-    if (!isLogin) {
+    if (!isLogin()) {
       navigate("/login");
       return;
     }
@@ -41,7 +41,7 @@ export default function UserAvatar(): JSX.Element | null {
             width="32"
             height="32"
             loading="eager"
-            className="rounded-full"
+            className="rounded-full pointer-events-none"
           />
         )}
       </div>
