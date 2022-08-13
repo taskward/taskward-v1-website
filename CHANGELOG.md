@@ -13,6 +13,7 @@
   - [ ] Korean
 - [x] Dark Theme
   - [ ] Detect user default theme
+  - [ ] Remember theme user chose
 - [ ] Responsive Design
   - [x] PC
   - [ ] Mobile (Pending)
@@ -48,5 +49,7 @@
   - [ ] User Info
 - [ ] Settings
   - [ ] Send feedback (Pending)
+  - [ ] Theme preference
+  - [ ] Language preference
 - [ ] Auto sync/refresh
 - [ ] More App (Pending)
