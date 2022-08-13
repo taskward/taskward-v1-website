@@ -9,6 +9,7 @@
   "SWITCH.TO.DARK.MODE": "Switch to dark mode",
   "START": "Start",
   "LOGIN": "Login",
+  "LOGIN.FAILED": "Login failed, please try again...",
   "ERROR.TIMEOUT": "Network Error: Timeout...",
   "TASKWARD.APP.DESCRIPTION.FIRST.LINE": "Taskward means <1>task-oriented</1>, is a Todo&Tasks App.",
   "TASKWARD.APP.DESCRIPTION.SECOND.LINE": "It can help you record something you plan to do."

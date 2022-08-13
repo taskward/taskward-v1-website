@@ -1,22 +1,29 @@
 import { axiosService } from "@requests";
 import { getToken, LOCAL_STORAGE_TOKEN, LOCAL_STORAGE_USER } from "@utils";
+import { t } from "i18next";
 
 async function loginByGitHubCode(code: string): Promise<boolean> {
-  let response = await axiosService({
-    method: "POST",
-    url: `auth/github?code=${code}`,
-  });
-  if (response.status === 200 && response.data) {
-    response.data.token &&
-      window.localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.token);
-    response.data.user &&
-      window.localStorage.setItem(
-        LOCAL_STORAGE_USER,
-        JSON.stringify(response.data.user)
-      );
-    return true;
+  try {
+    let response = await axiosService({
+      method: "POST",
+      url: `auth/github?code=${code}`,
+    });
+    if (response.status === 200 && response.data) {
+      response.data.token &&
+        window.localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.token);
+      response.data.user &&
+        window.localStorage.setItem(
+          LOCAL_STORAGE_USER,
+          JSON.stringify(response.data.user)
+        );
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.error(error);
+    history.replaceState({ message: t("LOGIN.FAILED") }, "", "/login");
+    return false;
   }
-  return false;
 }
 
 async function getUserInfo(): Promise<any> {

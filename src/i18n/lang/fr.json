@@ -9,6 +9,7 @@
   "SWITCH.TO.DARK.MODE": "Passer en mode sombre",
   "START": "début",
   "LOGIN": "Connexion",
+  "LOGIN.FAILED": "La connexion a échoué, veuillez réessayer...",
   "ERROR.TIMEOUT": "Erreur Réseau: Expiration du délai...",
   "TASKWARD.APP.DESCRIPTION.FIRST.LINE": "Taskward signifie <1>axé sur les tâches</1>, est une application Todo&Tasks.",
   "TASKWARD.APP.DESCRIPTION.SECOND.LINE": "Cela peut vous aider à enregistrer quelque chose que vous prévoyez de faire."

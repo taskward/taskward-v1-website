@@ -9,6 +9,7 @@
   "SWITCH.TO.DARK.MODE": "ダークモードに切り替える",
   "START": "始める",
   "LOGIN": "ログイン",
+  "LOGIN.FAILED": "ログインできませんでした。もう一度お試しください...",
   "ERROR.TIMEOUT": "ネットワーク エラー: タイムアウト...",
   "TASKWARD.APP.DESCRIPTION.FIRST.LINE": "タスクワードは<1>タスク指向</1>という意味で、Todo&Tasks アプリです。",
   "TASKWARD.APP.DESCRIPTION.SECOND.LINE": "やろうとしていることを記録するのに役立ちます。"
