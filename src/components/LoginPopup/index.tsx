@@ -1,18 +1,29 @@
 import { useEffect } from "react";
-import { loginByGitHubCode } from "@requests";
+import { loginByGitHubCode, LOCAL_STORAGE_TASKWARD_TOKEN } from "@requests";
 import { useQueryString } from "@hooks";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPopup(): JSX.Element {
   const CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID;
   const AUTHORIZE_URL = "https://github.com/login/oauth/authorize";
   const REDIRECT_URL = `${import.meta.env.VITE_TASKWARD_BASE_URL}login`;
   const code = useQueryString("code");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (code) {
-      loginByGitHubCode(code);
+    if (window.localStorage.getItem(LOCAL_STORAGE_TASKWARD_TOKEN)) {
+      navigate("/note", { replace: true });
+    } else {
+      handleGitHubLogin();
     }
   }, []);
+
+  async function handleGitHubLogin() {
+    if (code) {
+      await loginByGitHubCode(code);
+      navigate("/note", { replace: true });
+    }
+  }
 
   return (
     <a
