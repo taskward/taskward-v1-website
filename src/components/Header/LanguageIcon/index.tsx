@@ -1,22 +1,27 @@
 import { useTranslation } from "react-i18next";
 import { Icon } from "@components";
+import { LanguageType } from "@i18n";
 
 export default function LanguageIcon() {
   const { i18n } = useTranslation();
 
   function changeLanguage() {
     switch (i18n.language) {
-      case "zh_cn":
-        i18n.changeLanguage("en");
+      case LanguageType.ZH_CN:
+        i18n.changeLanguage(LanguageType.EN);
+        window.localStorage.setItem("lang", LanguageType.EN);
         break;
-      case "en":
-        i18n.changeLanguage("ja");
+      case LanguageType.EN:
+        i18n.changeLanguage(LanguageType.JA);
+        window.localStorage.setItem("lang", LanguageType.JA);
         break;
-      case "ja":
-        i18n.changeLanguage("fr");
+      case LanguageType.JA:
+        i18n.changeLanguage(LanguageType.FR);
+        window.localStorage.setItem("lang", LanguageType.FR);
         break;
-      case "fr":
-        i18n.changeLanguage("zh_cn");
+      case LanguageType.FR:
+        i18n.changeLanguage(LanguageType.ZH_CN);
+        window.localStorage.setItem("lang", LanguageType.ZH_CN);
         break;
       default:
         return;

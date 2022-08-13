@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { loginByGitHubCode, LOCAL_STORAGE_TASKWARD_TOKEN } from "@requests";
+import { loginByGitHubCode } from "@requests";
 import { useQueryString } from "@hooks";
 import { useNavigate } from "react-router-dom";
+import { LOCAL_STORAGE_TOKEN } from "@utils";
 
 export default function LoginPopup(): JSX.Element {
   const CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID;
@@ -11,7 +12,7 @@ export default function LoginPopup(): JSX.Element {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (window.localStorage.getItem(LOCAL_STORAGE_TASKWARD_TOKEN)) {
+    if (window.localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
       navigate("/note", { replace: true });
     } else {
       handleGitHubLogin();

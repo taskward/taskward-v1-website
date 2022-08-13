@@ -6,5 +6,8 @@
   "HEADER.MENU": "メニュー",
   "404.NOTFOUND": "ページが見つかりません",
   "SWITCH.TO.LIGHT.MODE": "ライトモードに切り替える",
-  "SWITCH.TO.DARK.MODE": "ダークモードに切り替える"
+  "SWITCH.TO.DARK.MODE": "ダークモードに切り替える",
+  "START": "始める",
+  "LOGIN": "ログイン",
+  "ERROR_TIMEOUT": "ネットワーク エラー: タイムアウト..."
 }

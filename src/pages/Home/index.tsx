@@ -1,27 +1,75 @@
 import clsx from "clsx";
-import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import taskward from "../../assets/img/taskward.png";
+import GitHubIcon from "./GitHubIcon";
+import { Link } from "react-router-dom";
+import { APPLICATION_NAME } from "@utils";
+import taskward from "@assets/img/taskward.png";
+import { Icon } from "@components";
+import { useTranslation } from "react-i18next";
+import { isLogin } from "@utils";
 
 export default function Home(): JSX.Element {
+  const { t } = useTranslation();
+  const showLoginButton = !isLogin();
+
   return (
     <div
       className={clsx(
-        styles.background,
-        "w-screen h-screen flex justify-center items-center"
+        "w-screen h-screen relative select-none",
+        styles.background
       )}
     >
-      <div className="basis-1/5 bg-slate-400 w-1/5 h-1/3">
-        <Link to="/note">
-          <h1 className="bg-white w-fit cursor-pointer rounded-md p-2 whitespace-nowrap hover:bg-slate-300">
-            Go to notes
-          </h1>
-        </Link>
-        <Link to="/login">
-          <h1 className="bg-white w-fit cursor-pointer rounded-md p-2 whitespace-nowrap hover:bg-slate-300">
-            Login
-          </h1>
-        </Link>
+      <div className="inset-0 absolute w-fit h-fit m-auto">
+        <div className="flex flex-col gap-2 mb-36">
+          <div className="flex flex-col items-center gap-2">
+            <span
+              className="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-violet-300
+            mb-2 select-none animate-[pulse_2s_linear_infinite]"
+            >
+              {APPLICATION_NAME}
+            </span>
+          </div>
+          <span className="text-center text-lg text-gray-600">
+            {"Taskward means task-oriented, is a Todo&Tasks App."}
+          </span>
+          <span className="text-center text-lg text-gray-600">
+            {"It can help you record something you plan to do."}
+          </span>
+          <div className="flex justify-center items-center gap-4 mt-2">
+            {showLoginButton && (
+              <Link
+                to="/login"
+                className="shadow-sm shadow-emerald-800 text-center w-fit min-w-20 p-1 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+              >
+                <span className="whitespace-nowrap text-md flex items-center justify-center gap-1">
+                  <Icon.Login
+                    width="16"
+                    height="16"
+                    className="fill-white flex-shrink-0"
+                  />
+                  {t("LOGIN")}
+                </span>
+              </Link>
+            )}
+            <Link
+              to="/note"
+              className="shadow-sm shadow-emerald-800 text-center w-fit min-w-20 p-1 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+            >
+              <span className="whitespace-nowrap text-md flex items-center justify-center gap-1">
+                <img
+                  src={taskward}
+                  width="16"
+                  height="16"
+                  className="flex-shrink-0"
+                />
+                {t("START")}
+              </span>
+            </Link>
+          </div>
+          <div className="mt-4">
+            <GitHubIcon />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -6,5 +6,8 @@
   "HEADER.MENU": "Menu",
   "404.NOTFOUND": "Page Not Found",
   "SWITCH.TO.LIGHT.MODE": "Switch to light mode",
-  "SWITCH.TO.DARK.MODE": "Switch to dark mode"
+  "SWITCH.TO.DARK.MODE": "Switch to dark mode",
+  "START": "Start",
+  "LOGIN": "Login",
+  "ERROR_TIMEOUT": "Network Error: Timeout..."
 }

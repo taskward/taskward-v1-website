@@ -6,5 +6,8 @@
   "HEADER.MENU": "Menu",
   "404.NOTFOUND": "Page non trouvée",
   "SWITCH.TO.LIGHT.MODE": "Passer en mode lumière",
-  "SWITCH.TO.DARK.MODE": "Passer en mode sombre"
+  "SWITCH.TO.DARK.MODE": "Passer en mode sombre",
+  "START": "début",
+  "LOGIN": "Connexion",
+  "ERROR_TIMEOUT": "Erreur Réseau: Expiration du délai..."
 }

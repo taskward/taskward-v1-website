@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import clsx from "clsx";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Header, Sidebar } from "..";
+import { Header, Sidebar, Loading } from "..";
 import styles from "./styles.module.css";
 import { isLogin } from "@utils";
 
@@ -26,7 +26,9 @@ export default function Layout(): JSX.Element {
             styles.routerContentWrapper
           )}
         >
-          <Outlet />
+          <Suspense fallback={<Loading />}>
+            <Outlet />
+          </Suspense>
         </div>
       </div>
     </>

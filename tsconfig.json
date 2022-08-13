@@ -25,7 +25,8 @@
       "@pages": ["src/pages"],
       "@pages/*": ["src/pages/*"],
       "@requests": ["src/requests"],
-      "@store": ["src/store"]
+      "@store": ["src/store"],
+      "@i18n": ["src/i18n"]
     }
   },
   "include": ["src"],

@@ -25,7 +25,7 @@ export const resources = {
 
 i18n.use(initReactI18next).init({
   resources: resources,
-  lng: LanguageType.ZH_CN,
+  lng: window.localStorage.getItem("lang") ?? LanguageType.EN,
   fallbackLng: LanguageType.ZH_CN,
   interpolation: {
     escapeValue: false,

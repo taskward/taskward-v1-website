@@ -14,6 +14,7 @@ import Sun from "./Sun";
 import Trash from "./Trash";
 import Search from "./Search";
 import Refresh from "./Refresh";
+import Login from "./Login";
 import Loading from "./Loading";
 
 export const Icon = {
@@ -26,5 +27,6 @@ export const Icon = {
   Trash,
   Search,
   Refresh,
+  Login,
   Loading,
 };

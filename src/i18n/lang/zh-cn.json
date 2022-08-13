@@ -6,5 +6,8 @@
   "HEADER.MENU": "菜单",
   "404.NOTFOUND": "页面未找到",
   "SWITCH.TO.LIGHT.MODE": "切换至浅色模式",
-  "SWITCH.TO.DARK.MODE": "切换至深色模式"
+  "SWITCH.TO.DARK.MODE": "切换至深色模式",
+  "START": "开始",
+  "LOGIN": "登录",
+  "ERROR_TIMEOUT": "网络错误：超时..."
 }
