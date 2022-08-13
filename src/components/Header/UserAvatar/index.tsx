@@ -7,7 +7,7 @@ import { shallowEqual } from "react-redux";
 import { getUserInfo } from "@requests";
 
 export default function UserAvatar(): JSX.Element | null {
-  const userInfo = useAppSelector<UserInfo>(
+  const userInfo = useAppSelector<UserInfo | null>(
     (state) => state.user.userInfo,
     shallowEqual
   );
@@ -18,6 +18,7 @@ export default function UserAvatar(): JSX.Element | null {
     const userInfoFromStorage = getUserInfoFromStorage();
     if (!isLogin) {
       navigate("/login");
+      return;
     }
     if (userInfoFromStorage) {
       userDispatch(userAction.updateUserInfo(userInfoFromStorage));
@@ -32,7 +33,19 @@ export default function UserAvatar(): JSX.Element | null {
   }
 
   if (userInfo) {
-    return <div>{userInfo.name}</div>;
+    return (
+      <div className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors">
+        {userInfo.avatarUrl && (
+          <img
+            src={userInfo.avatarUrl}
+            width="32"
+            height="32"
+            loading="eager"
+            className="rounded-full"
+          />
+        )}
+      </div>
+    );
   } else {
     return null;
   }

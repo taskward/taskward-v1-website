@@ -34,11 +34,11 @@ export default function Header(): JSX.Element {
         styles.header
       )}
     >
-      <div className="flex justify-start items-center gap-2">
+      <div className="flex justify-start items-center gap-1">
         <MenuIcon />
-        <div className="ml-1 select-none">{getActiveSidebarItemTitle()}</div>
+        <div className="ml-2 select-none">{getActiveSidebarItemTitle()}</div>
       </div>
-      <div className="flex justify-end items-center gap-2 mr-2">
+      <div className="flex justify-end items-center gap-1 mr-2">
         <LanguageIcon />
         <ThemeModeIcon />
         <UserAvatar />

@@ -10,18 +10,11 @@ export interface UserInfo {
 }
 
 interface UserState {
-  userInfo: UserInfo;
+  userInfo: UserInfo | null;
 }
 
 const initialState = {
-  userInfo: {
-    id: null,
-    name: null,
-    avatarUrl: null,
-    biography: null,
-    email: null,
-    location: null,
-  },
+  userInfo: null,
 } as UserState;
 
 export const userSlice = createSlice({
