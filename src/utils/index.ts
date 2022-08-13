@@ -5,5 +5,5 @@ export {
   LOCAL_STORAGE_USER,
 } from "./constants";
 export { getQueryString } from "./routerUtils";
-export { isDarkMode, getDocumentTitle } from "./styleUtils";
+export { isDarkMode, initialThemeMode, getDocumentTitle } from "./styleUtils";
 export { isLogin, getUserInfoFromStorage, getToken } from "./userUtils";

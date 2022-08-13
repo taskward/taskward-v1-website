@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon } from "@components";
+import { isDarkMode } from "@utils";
 
 export default function ThemeModeIcon() {
   const { t } = useTranslation();
-  const [darkMode, setDarkMode] = useState<boolean>(
-    document.documentElement.classList.contains("dark")
-  );
+  const [darkMode, setDarkMode] = useState<boolean>(isDarkMode());
 
   function changeTheme() {
-    darkMode
-      ? document.documentElement.classList.remove("dark")
-      : document.documentElement.classList.add("dark");
+    if (darkMode) {
+      document.documentElement.classList.remove("dark");
+      window.localStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.classList.add("dark");
+      window.localStorage.setItem("theme", "dark");
+    }
     setDarkMode(!darkMode);
   }
 

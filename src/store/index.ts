@@ -14,3 +14,4 @@ export type AppDispatch = typeof store.dispatch;
 
 export { sidebarAction, ActiveSidebarItem } from "./sidebarSlice";
 export { userAction, type UserInfo } from "./userSlice";
+export { styleAction, type ThemeMode } from "./styleSlice";

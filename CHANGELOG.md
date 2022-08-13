@@ -3,25 +3,50 @@
 ## Target
 
 - [ ] i18n Support
-  - [ ] Detect user language
+  - [ ] Detect user default language
+  - [x] Remember language user chose
   - [x] Change language button
   - [x] Simplify Chinese
   - [x] English
+  - [x] France
   - [x] Japanese
   - [ ] Korean
-  - [x] France
 - [x] Dark Theme
+  - [ ] Detect user default theme
 - [ ] Responsive Design
   - [x] PC
   - [ ] Mobile (Pending)
 - [ ] Authentication
+  - [ ] Email
+  - [ ] Google OAuth2 (Pending)
   - [x] GitHub OAuth2
+  - [ ] Wechat OAuth2 (Pending)
 - [ ] Note
-  - [ ] List View
-  - [ ] Card View
+  - [ ] List view
+  - [ ] Card view
   - [ ] Pin
+  - [ ] Todo checkbox list
+    - [ ] Add to top
+    - [ ] Finish to bottom
+  - [ ] External link
+  - [ ] Copy content
+  - [ ] Create time/Update time
+  - [ ] Custom background
+  - [ ] Mind me
 - [ ] Archive
+  - [ ] Pin
 - [ ] Trash
+  - [ ] Keep 7 days
+  - [ ] Force to delete
+  - [ ] Delete time
 - [ ] Tags
+  - [ ] Display in sidebar
 - [ ] Search
+  - [ ] By category, like pined, tags, archived
+- [ ] Profile
+  - [ ] Avatar
+  - [ ] User Info
 - [ ] Settings
+  - [ ] Send feedback (Pending)
+- [ ] Auto sync/refresh
+- [ ] More App (Pending)

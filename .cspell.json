@@ -7,7 +7,8 @@
     "reduxjs",
     "Taskward",
     "lottiefiles",
-    "vite"
+    "vite",
+    "wechat"
   ],
   "flagWords": []
 }
