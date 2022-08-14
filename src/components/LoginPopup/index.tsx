@@ -18,11 +18,15 @@ export default function LoginPopup(): JSX.Element {
   const [loginLoading, setLoginLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    const controller = new AbortController();
     if (localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
       navigate("/note", { replace: true });
     } else {
       handleGitHubLogin();
     }
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   async function handleGitHubLogin() {
