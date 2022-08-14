@@ -26,7 +26,7 @@ export default function Button({
       onClick={onClick}
       disabled={disabled}
       className={clsx(
-        "font-medium transition-colors shadow-sm shadow-emerald-800 text-center py-2 px-3 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800",
+        "font-medium transition-colors shadow-sm shadow-emerald-800 text-center py-2 px-3 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300",
         block ? "w-full" : "w-fit",
         className
       )}
