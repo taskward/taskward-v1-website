@@ -15,6 +15,7 @@ import Trash from "./Trash";
 import Search from "./Search";
 import Refresh from "./Refresh";
 import Login from "./Login";
+import Logout from "./Logout";
 import Loading from "./Loading";
 
 export const Icon = {
@@ -28,5 +29,6 @@ export const Icon = {
   Search,
   Refresh,
   Login,
+  Logout,
   Loading,
 };
