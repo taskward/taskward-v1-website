@@ -7,4 +7,9 @@ export {
 
 export { getQueryString } from "./routerUtils";
 export { getDocumentTitle } from "./styleUtils";
-export { isLogin, getUserInfoFromStorage, getToken } from "./userUtils";
+export {
+  isLogin,
+  getUserInfoFromStorage,
+  getToken,
+  clearLocalStorage,
+} from "./userUtils";

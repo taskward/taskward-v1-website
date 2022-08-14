@@ -19,4 +19,8 @@ function getToken(): string | null {
   return localStorage.getItem(LOCAL_STORAGE_USER);
 }
 
-export { isLogin, getUserInfoFromStorage, getToken };
+function clearLocalStorage() {
+  localStorage.clear();
+}
+
+export { isLogin, getUserInfoFromStorage, getToken, clearLocalStorage };

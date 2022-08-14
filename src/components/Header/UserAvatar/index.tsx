@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { isLogin, getUserInfoFromStorage } from "@utils";
+import { isLogin, getUserInfoFromStorage, clearLocalStorage } from "@utils";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "@hooks";
 import { type UserInfo, userAction } from "@store";
@@ -17,7 +17,7 @@ export default function UserAvatar(): JSX.Element | null {
   useEffect(() => {
     const userInfoFromStorage = getUserInfoFromStorage();
     if (!isLogin()) {
-      navigate("/login");
+      navigate("/login", { replace: true });
       return;
     }
     if (userInfoFromStorage) {
@@ -32,9 +32,17 @@ export default function UserAvatar(): JSX.Element | null {
     userDispatch(userAction.updateUserInfo(response));
   }
 
+  function logout() {
+    clearLocalStorage();
+    navigate("/", { replace: true });
+  }
+
   if (userInfo) {
     return (
-      <div className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors">
+      <div
+        className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors"
+        onClick={logout}
+      >
         {userInfo.avatarUrl && (
           <img
             src={userInfo.avatarUrl}
