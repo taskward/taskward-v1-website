@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sidebarSlice from "./sidebarSlice";
-import userSlice from "./userSlice";
+import sidebarReducer from "./sidebarSlice";
+import userReducer from "./userSlice";
+import styleReducer from "./styleSlice";
 
 export const store = configureStore({
   reducer: {
-    sidebar: sidebarSlice,
-    user: userSlice,
+    sidebar: sidebarReducer,
+    user: userReducer,
+    style: styleReducer,
   },
 });
 

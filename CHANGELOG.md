@@ -12,8 +12,8 @@
   - [x] Japanese
   - [ ] Korean
 - [x] Dark Theme
-  - [ ] Detect user default theme
-  - [ ] Remember theme user chose
+  - [x] Detect user default theme
+  - [x] Remember theme user chose
 - [ ] Responsive Design
   - [x] PC
   - [ ] Mobile (Pending)

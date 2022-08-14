@@ -6,8 +6,28 @@ interface StyleState {
   themeMode: ThemeMode;
 }
 
+// Theme Mode Priority:
+// 1. User Preference
+// 2. System Detect
+// 3. Default light mode
+// TODO: Save in db
+function initialThemeMode() {
+  const themeModeFromStorage: string | null = localStorage.theme;
+  const isDarkModeBySystemDetect = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+  if (themeModeFromStorage === "light") {
+    return "light";
+  } else if (themeModeFromStorage === "dark" || isDarkModeBySystemDetect) {
+    document.documentElement.classList.add("dark");
+    return "dark";
+  } else {
+    return "light";
+  }
+}
+
 const initialState: StyleState = {
-  themeMode: "light",
+  themeMode: initialThemeMode(),
 };
 
 export const styleSlice = createSlice({
