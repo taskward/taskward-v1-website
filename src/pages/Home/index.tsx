@@ -5,7 +5,7 @@ import GitHubIcon from "./GitHubIcon";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { APPLICATION_NAME } from "@utils";
 import taskward from "@assets/img/taskward.png";
-import background from "@assets/background/background.jpg";
+import homeBackground from "@assets/background/home.jpg";
 import { Icon, Loading } from "@components";
 import { useTranslation, Trans } from "react-i18next";
 import { isLogin } from "@utils";
@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
   const { t } = useTranslation(["common", "app"]);
   const navigate = useNavigate();
   const loginStatus: boolean = isLogin();
-  const backgroundImageLoaded = useImageLoaded(background);
+  const backgroundImageLoaded = useImageLoaded(homeBackground);
   const { isBackHome } = useLocation().state
     ? (useLocation().state as HomeState)
     : { isBackHome: false };
@@ -31,19 +31,16 @@ export default function Home(): JSX.Element {
   }, []);
 
   if (!backgroundImageLoaded) {
-    return (
-      <div className="w-screen h-screen">
-        <Loading />
-      </div>
-    );
+    return <Loading fullScreen />;
   }
+
   return (
     <div
       className={clsx(
-        "w-screen h-screen relative select-none",
+        "w-screen h-screen relative select-none bg-cover bg-center",
         styles.background
       )}
-      style={{ backgroundImage: `url(${background})` }}
+      style={{ backgroundImage: `url(${homeBackground})` }}
     >
       <div className="inset-0 absolute w-fit h-fit m-auto">
         <div className="flex flex-col gap-2 mb-36">
