@@ -1,20 +1,10 @@
-import { useEffect, Suspense } from "react";
+import { Suspense } from "react";
 import clsx from "clsx";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Header, Sidebar, Loading } from "..";
 import styles from "./styles.module.css";
-import { isLogin } from "@utils";
 
 export default function Layout(): JSX.Element {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const loginStatus: boolean = isLogin();
-    if (!loginStatus) {
-      navigate("/login");
-    }
-  }, []);
-
   return (
     <>
       <Header />
