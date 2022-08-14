@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { loginByGitHubCode } from "@requests";
 import { useQueryString } from "@hooks";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LOCAL_STORAGE_TOKEN } from "@utils";
 import { Loading } from "@components";
 import { useTranslation } from "react-i18next";
@@ -50,7 +50,7 @@ export default function LoginPopup(): JSX.Element {
       </a>
       {state?.message && (
         <div className="text-sm text-red-600 my-2 font-bold select-none">
-          {t(state.message)}
+          {state.message}
         </div>
       )}
     </div>

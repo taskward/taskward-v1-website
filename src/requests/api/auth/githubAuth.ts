@@ -1,6 +1,6 @@
 import { axiosService } from "@requests";
 import { getToken, LOCAL_STORAGE_TOKEN, LOCAL_STORAGE_USER } from "@utils";
-import { t } from "i18next";
+import { i18n } from "@i18n";
 
 async function loginByGitHubCode(code: string): Promise<boolean> {
   try {
@@ -10,9 +10,9 @@ async function loginByGitHubCode(code: string): Promise<boolean> {
     });
     if (response.status === 200 && response.data) {
       response.data.token &&
-        window.localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.token);
+        localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.token);
       response.data.user &&
-        window.localStorage.setItem(
+        localStorage.setItem(
           LOCAL_STORAGE_USER,
           JSON.stringify(response.data.user)
         );
@@ -21,7 +21,11 @@ async function loginByGitHubCode(code: string): Promise<boolean> {
     return false;
   } catch (error) {
     console.error(error);
-    history.replaceState({ message: t("LOGIN.FAILED") }, "", "/login");
+    history.replaceState(
+      { message: i18n.t("request:LOGIN.FAILED") },
+      "",
+      "/login"
+    );
     return false;
   }
 }
@@ -35,11 +39,11 @@ async function getUserInfo(): Promise<any> {
   });
   if (response.status === 200 && response.data) {
     response.data.userInfo
-      ? window.localStorage.setItem(
+      ? localStorage.setItem(
           LOCAL_STORAGE_USER,
           JSON.stringify(response.data.userInfo)
         )
-      : window.localStorage.removeItem(LOCAL_STORAGE_USER);
+      : localStorage.removeItem(LOCAL_STORAGE_USER);
     return response.data.userInfo;
   }
   return null;
