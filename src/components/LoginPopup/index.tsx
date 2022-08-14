@@ -18,7 +18,7 @@ export default function LoginPopup(): JSX.Element {
   const [loginLoading, setLoginLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (localStorage[LOCAL_STORAGE_TOKEN]) {
+    if (localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
       navigate("/note", { replace: true });
     } else {
       handleGitHubLogin();

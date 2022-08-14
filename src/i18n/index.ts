@@ -73,7 +73,7 @@ i18n.use(initReactI18next).init({
   defaultNS: defaultNs,
   ns: ["app", "common", "layout", "request", "validation"],
   resources: resources,
-  lng: localStorage.lang ?? LanguageType.EN,
+  lng: localStorage.getItem("lang") ?? LanguageType.EN,
   fallbackLng: LanguageType.EN,
   interpolation: {
     escapeValue: false,

@@ -12,7 +12,7 @@ interface StyleState {
 // 3. Default light mode
 // TODO: Save in db
 function initialThemeMode() {
-  const themeModeFromStorage: string | null = localStorage.theme;
+  const themeModeFromStorage: string | null = localStorage.getItem("theme");
   const isDarkModeBySystemDetect = window.matchMedia(
     "(prefers-color-scheme: dark)"
   ).matches;
