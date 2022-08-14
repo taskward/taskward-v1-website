@@ -1,8 +1,19 @@
 {
   "LOGIN": {
     "TITLE": "登录到 Taskward",
+    "PLACEHOLDER": {
+      "EMAIL": "输入您的邮箱",
+      "PASSWORD": "输入您的密码"
+    },
+    "WELCOME": {
+      "FIRST.LINE": "欢迎回来!",
+      "SECOND.LINE": "很高兴再次见到您!"
+    },
     "WITH": { "GITHUB": "使用 GitHub 登录" },
     "FAILED": "登录失败，请重试..."
+  },
+  "USER": {
+    "EMAIL": "邮箱"
   },
   "RESPONSE": {
     "ERROR": {

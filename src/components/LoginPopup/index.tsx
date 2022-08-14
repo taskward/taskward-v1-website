@@ -52,11 +52,22 @@ export default function LoginPopup(): JSX.Element {
         {t("request:LOGIN.TITLE")}
       </div>
       <div className="flex flex-col text-sm mt-2">
-        <span className="text-center">👏 欢迎回来！</span>
-        <span className="text-center">🎉 很高兴再次见到您！</span>
+        <span className="text-center">
+          👏 {t("request:LOGIN.WELCOME.FIRST.LINE")}
+        </span>
+        <span className="text-center">
+          🎉 {t("request:LOGIN.WELCOME.SECOND.LINE")}
+        </span>
       </div>
-      <Input className="mt-2" />
-      <Input />
+      <Input
+        className="mt-2"
+        title={t("request:USER.EMAIL")}
+        placeholder={t("request:LOGIN.PLACEHOLDER.EMAIL")}
+      />
+      <Input
+        title={t("common:PASSWORD")}
+        placeholder={t("request:LOGIN.PLACEHOLDER.PASSWORD")}
+      />
       <Button
         title={t("common:LOGIN")}
         block

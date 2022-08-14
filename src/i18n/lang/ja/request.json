@@ -1,8 +1,19 @@
 {
   "LOGIN": {
     "TITLE": "Taskward にサインイン",
+    "PLACEHOLDER": {
+      "EMAIL": "メールアドレスを入力してください",
+      "PASSWORD": "パスワードを入力してください"
+    },
+    "WELCOME": {
+      "FIRST.LINE": "お帰りなさい！",
+      "SECOND.LINE": "またお会いできてうれしいです！"
+    },
     "WITH": { "GITHUB": "GitHub でサインイン" },
     "FAILED": "ログインできませんでした。もう一度お試しください..."
+  },
+  "USER": {
+    "EMAIL": "電子メールアドレス"
   },
   "RESPONSE": {
     "ERROR": {

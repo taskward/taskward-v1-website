@@ -16,7 +16,7 @@ export default function Layout(): JSX.Element {
             styles.routerContentWrapper
           )}
         >
-          <Suspense fallback={<Loading fullScreen />}>
+          <Suspense fallback={<Loading />}>
             <Outlet />
           </Suspense>
         </div>

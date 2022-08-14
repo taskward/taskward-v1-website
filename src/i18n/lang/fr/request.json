@@ -1,8 +1,19 @@
 {
   "LOGIN": {
     "TITLE": "Connectez-vous à Taskward",
+    "PLACEHOLDER": {
+      "EMAIL": "Entrez votre adresse Email",
+      "PASSWORD": "Tapez votre mot de passe"
+    },
+    "WELCOME": {
+      "FIRST.LINE": "Content de te revoir!",
+      "SECOND.LINE": "C'est un plaisir de vous revoir!"
+    },
     "WITH": { "GITHUB": "Se Connecter Avec GitHub" },
     "FAILED": "La connexion a échoué, veuillez réessayer..."
+  },
+  "USER": {
+    "EMAIL": "Adresse Email"
   },
   "RESPONSE": {
     "ERROR": {
