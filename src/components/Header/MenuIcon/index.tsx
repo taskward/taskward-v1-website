@@ -4,7 +4,7 @@ import { sidebarAction } from "@store";
 import { Icon } from "@components";
 
 export default function MenuIcon() {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["layout"]);
   const sidebarDispatch = useAppDispatch();
 
   function handleClickMenuIcon() {
@@ -20,7 +20,7 @@ export default function MenuIcon() {
     >
       <div
         className="absolute inset-0 w-fit h-fit m-auto"
-        title={t("HEADER.MENU")}
+        title={t("layout:HEADER.TITLE.MENU")}
       >
         <Icon.Menu className="fill-black dark:fill-white" />
       </div>

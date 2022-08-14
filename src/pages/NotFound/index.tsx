@@ -8,7 +8,7 @@ import { APPLICATION_NAME } from "@utils";
 import taskward from "@assets/img/taskward.png";
 
 export default function NotFound(): JSX.Element {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(["app"]);
   const sidebarDispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function NotFound(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    document.title = getDocumentTitle(t("404.NOTFOUND"));
+    document.title = getDocumentTitle(t("app:CUSTOM.PAGE.NOTFOUND"));
   }, [i18n.language]);
 
   return (
@@ -36,7 +36,9 @@ export default function NotFound(): JSX.Element {
           </Link>
           <div className="text-md">{APPLICATION_NAME}</div>
         </div>
-        <div className="text-5xl animate-pulse">404 {t("404.NOTFOUND")}</div>
+        <div className="text-5xl animate-pulse">
+          404 {t("app:CUSTOM.PAGE.NOTFOUND")}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,9 @@
+{
+  "TASKWARD.APP": {
+    "DESCRIPTION": {
+      "FIRST.LINE": "タスクワードは<1>タスク指向</1>という意味で、Todo&Tasks アプリです。",
+      "SECOND.LINE": "やろうとしていることを記録するのに役立ちます。"
+    }
+  },
+  "CUSTOM.PAGE": { "NOTFOUND": "ページが見つかりません" }
+}

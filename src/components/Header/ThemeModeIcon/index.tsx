@@ -5,7 +5,7 @@ import { styleAction } from "@store";
 import { ThemeMode } from "../../../store/styleSlice";
 
 export default function ThemeModeIcon() {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["layout"]);
   const styleDispatch = useAppDispatch();
 
   const darkMode = useAppSelector<ThemeMode>((state) => state.style.themeMode);
@@ -14,11 +14,11 @@ export default function ThemeModeIcon() {
     if (darkMode === "dark") {
       styleDispatch(styleAction.updateUserInfo("light"));
       document.documentElement.classList.remove("dark");
-      window.localStorage.setItem("theme", "light");
+      localStorage.setItem("theme", "light");
     } else {
       styleDispatch(styleAction.updateUserInfo("dark"));
       document.documentElement.classList.add("dark");
-      window.localStorage.setItem("theme", "dark");
+      localStorage.setItem("theme", "dark");
     }
   }
 
@@ -28,11 +28,11 @@ export default function ThemeModeIcon() {
       onClick={changeThemeMode}
     >
       {darkMode === "light" ? (
-        <div title={t("SWITCH.TO.LIGHT.MODE")}>
+        <div title={t("layout:HEADER.TITLE.SWITCH.TO.LIGHT.MODE")}>
           <Icon.Sun />
         </div>
       ) : (
-        <div title={t("SWITCH.TO.DARK.MODE")}>
+        <div title={t("layout:HEADER.TITLE.SWITCH.TO.DARK.MODE")}>
           <Icon.Moon className="fill-white" />
         </div>
       )}

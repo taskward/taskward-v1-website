@@ -1,0 +1,9 @@
+{
+  "TASKWARD.APP": {
+    "DESCRIPTION": {
+      "FIRST.LINE": "Taskward 的意思是<1>以任务为导向</1>，是一个 Todo&Tasks 应用。",
+      "SECOND.LINE": "它可以帮助你记录计划去做的事情。"
+    }
+  },
+  "CUSTOM.PAGE": { "NOTFOUND": "页面未找到" }
+}

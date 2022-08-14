@@ -1,0 +1,16 @@
+{
+  "SIDEBAR": {
+    "TITLE": {
+      "NOTE": "ノート",
+      "ARCHIVE": "記録",
+      "TRASH": "ごみ箱"
+    }
+  },
+  "HEADER": {
+    "TITLE": {
+      "MENU": "メニュー",
+      "SWITCH.TO.LIGHT.MODE": "ライトモードに切り替える",
+      "SWITCH.TO.DARK.MODE": "ダークモードに切り替える"
+    }
+  }
+}

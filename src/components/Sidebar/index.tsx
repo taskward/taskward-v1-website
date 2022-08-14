@@ -9,7 +9,7 @@ import { useAppSelector } from "@hooks";
 import { ActiveSidebarItem } from "@store";
 
 export default function Sidebar(): JSX.Element {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["layout"]);
   const navigate = useNavigate();
   const sidebarMode = useAppSelector((state) => state.sidebar.sidebarMode);
   const activeSidebarItem = useAppSelector(
@@ -49,7 +49,7 @@ export default function Sidebar(): JSX.Element {
           (shouldExpand && sidebarMode === "collapse")
         }
         icon={<Icon.Note className="fill-black dark:fill-white" />}
-        title={t("SIDEBAR.NOTE")}
+        title={t("layout:SIDEBAR.TITLE.NOTE")}
         active={activeSidebarItem === ActiveSidebarItem.Note}
         onClick={() => {
           onClickSidebarItem(ActiveSidebarItem.Note);
@@ -61,7 +61,7 @@ export default function Sidebar(): JSX.Element {
           (shouldExpand && sidebarMode === "collapse")
         }
         icon={<Icon.Archive className="fill-black dark:fill-white" />}
-        title={t("SIDEBAR.ARCHIVE")}
+        title={t("layout:SIDEBAR.TITLE.ARCHIVE")}
         active={activeSidebarItem === ActiveSidebarItem.Archive}
         onClick={() => {
           onClickSidebarItem(ActiveSidebarItem.Archive);
@@ -73,7 +73,7 @@ export default function Sidebar(): JSX.Element {
           (shouldExpand && sidebarMode === "collapse")
         }
         icon={<Icon.Trash className="fill-black dark:fill-white" />}
-        title={t("SIDEBAR.TRASH")}
+        title={t("layout:SIDEBAR.TITLE.TRASH")}
         active={activeSidebarItem === ActiveSidebarItem.Trash}
         onClick={() => {
           onClickSidebarItem(ActiveSidebarItem.Trash);

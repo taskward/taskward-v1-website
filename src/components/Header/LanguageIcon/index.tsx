@@ -9,19 +9,19 @@ export default function LanguageIcon() {
     switch (i18n.language) {
       case LanguageType.ZH_CN:
         i18n.changeLanguage(LanguageType.EN);
-        window.localStorage.setItem("lang", LanguageType.EN);
+        localStorage.setItem("lang", LanguageType.EN);
         break;
       case LanguageType.EN:
         i18n.changeLanguage(LanguageType.JA);
-        window.localStorage.setItem("lang", LanguageType.JA);
+        localStorage.setItem("lang", LanguageType.JA);
         break;
       case LanguageType.JA:
         i18n.changeLanguage(LanguageType.FR);
-        window.localStorage.setItem("lang", LanguageType.FR);
+        localStorage.setItem("lang", LanguageType.FR);
         break;
       case LanguageType.FR:
         i18n.changeLanguage(LanguageType.ZH_CN);
-        window.localStorage.setItem("lang", LanguageType.ZH_CN);
+        localStorage.setItem("lang", LanguageType.ZH_CN);
         break;
       default:
         return;

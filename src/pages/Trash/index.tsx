@@ -5,7 +5,7 @@ import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
 
 export default function Trash(): JSX.Element {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(["layout"]);
   const sidebarDispatch = useAppDispatch();
 
   useEffect(() => {
@@ -15,8 +15,8 @@ export default function Trash(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    document.title = getDocumentTitle(t("SIDEBAR.TRASH"));
+    document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.TRASH"));
   }, [i18n.language]);
 
-  return <>{t("SIDEBAR.TRASH")}</>;
+  return <></>;
 }

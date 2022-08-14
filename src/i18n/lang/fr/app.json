@@ -1,0 +1,9 @@
+{
+  "TASKWARD.APP": {
+    "DESCRIPTION": {
+      "FIRST.LINE": "Taskward signifie <1>axé sur les tâches</1>, est une application Todo&Tasks.",
+      "SECOND.LINE": "Cela peut vous aider à enregistrer quelque chose que vous prévoyez de faire."
+    }
+  },
+  "CUSTOM.PAGE": { "NOTFOUND": "Page non trouvée" }
+}

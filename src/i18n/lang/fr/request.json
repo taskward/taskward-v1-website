@@ -1,0 +1,10 @@
+{
+  "LOGIN": {
+    "FAILED": "La connexion a échoué, veuillez réessayer..."
+  },
+  "RESPONSE": {
+    "ERROR": {
+      "TIMEOUT": "Erreur Réseau: Expiration du délai..."
+    }
+  }
+}

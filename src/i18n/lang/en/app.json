@@ -1,0 +1,9 @@
+{
+  "TASKWARD.APP": {
+    "DESCRIPTION": {
+      "FIRST.LINE": "Taskward means <1>task-oriented</1>, is a Todo&Tasks App.",
+      "SECOND.LINE": "It can help you record something you plan to do."
+    }
+  },
+  "CUSTOM.PAGE": { "NOTFOUND": "Page Not Found" }
+}

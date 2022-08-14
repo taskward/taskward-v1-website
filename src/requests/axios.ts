@@ -1,5 +1,5 @@
 import axios from "axios";
-import { t } from "i18next";
+import { i18n } from "@i18n";
 
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_API_BASE_URL,
@@ -16,7 +16,7 @@ axiosService.interceptors.response.use(
   },
   function (error) {
     if (error.message === "timeout of 10000ms exceeded") {
-      console.error(t("ERROR.TIMEOUT"));
+      console.error(i18n.t("ERROR.TIMEOUT"));
     } else if (error.response.status === 404) {
       console.error("404: " + error.message);
     } else {

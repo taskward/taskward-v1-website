@@ -1,0 +1,10 @@
+{
+  "LOGIN": {
+    "FAILED": "Login failed, please try again..."
+  },
+  "RESPONSE": {
+    "ERROR": {
+      "TIMEOUT": "Network Error: Timeout..."
+    }
+  }
+}

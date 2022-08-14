@@ -1,0 +1,16 @@
+{
+  "SIDEBAR": {
+    "TITLE": {
+      "NOTE": "Remarque",
+      "ARCHIVE": "Archive",
+      "TRASH": "Corbeille"
+    }
+  },
+  "HEADER": {
+    "TITLE": {
+      "MENU": "Menu",
+      "SWITCH.TO.LIGHT.MODE": "Passer en mode lumière",
+      "SWITCH.TO.DARK.MODE": "Passer en mode sombre"
+    }
+  }
+}

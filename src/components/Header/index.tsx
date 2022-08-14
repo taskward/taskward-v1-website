@@ -8,7 +8,7 @@ import MenuIcon from "./MenuIcon";
 import UserAvatar from "./UserAvatar";
 
 export default function Header(): JSX.Element {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["layout"]);
   const activeSidebarItem = useAppSelector(
     (state) => state.sidebar.activeSidebarItem
   );
@@ -16,11 +16,11 @@ export default function Header(): JSX.Element {
   function getActiveSidebarItemTitle(): string {
     switch (activeSidebarItem) {
       case 1:
-        return t("SIDEBAR.NOTE");
+        return t("layout:SIDEBAR.TITLE.NOTE");
       case 2:
-        return t("SIDEBAR.ARCHIVE");
+        return t("layout:SIDEBAR.TITLE.ARCHIVE");
       case 3:
-        return t("SIDEBAR.TRASH");
+        return t("layout:SIDEBAR.TITLE.TRASH");
       case 0:
       default:
         return "";

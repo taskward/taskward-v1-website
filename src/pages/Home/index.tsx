@@ -16,7 +16,7 @@ type HomeState = {
 };
 
 export default function Home(): JSX.Element {
-  const { t } = useTranslation();
+  const { t } = useTranslation(["common", "app"]);
   const navigate = useNavigate();
   const loginStatus: boolean = isLogin();
   const backgroundImageLoaded = useImageLoaded(background);
@@ -56,7 +56,7 @@ export default function Home(): JSX.Element {
             </span>
           </div>
           <span className="text-center text-lg text-gray-600">
-            <Trans i18nKey="TASKWARD.APP.DESCRIPTION.FIRST.LINE">
+            <Trans i18nKey="TASKWARD.APP.DESCRIPTION.FIRST.LINE" ns="app">
               {"Taskward means"}
               <span className="underline decoration-dotted decoration-gray-500 hover:decoration-emerald-600 hover:text-emerald-600 underline-offset-4 transition-colors cursor-pointer">
                 {"task-oriented"}
@@ -65,7 +65,7 @@ export default function Home(): JSX.Element {
             </Trans>
           </span>
           <span className="text-center text-lg text-gray-600">
-            {t("TASKWARD.APP.DESCRIPTION.SECOND.LINE")}
+            {t("app:TASKWARD.APP.DESCRIPTION.SECOND.LINE")}
           </span>
           <div className="flex justify-center items-center gap-4 mt-2">
             {!loginStatus && (
@@ -79,7 +79,7 @@ export default function Home(): JSX.Element {
                     height="16"
                     className="fill-white flex-shrink-0"
                   />
-                  {t("LOGIN")}
+                  {t("common:LOGIN")}
                 </span>
               </Link>
             )}
@@ -94,7 +94,7 @@ export default function Home(): JSX.Element {
                   height="16"
                   className="flex-shrink-0"
                 />
-                {t("START")}
+                {t("common:START")}
               </span>
             </Link>
           </div>
