@@ -68,7 +68,7 @@ export default function Home(): JSX.Element {
             {!loginStatus && (
               <Link
                 to="/login"
-                className="transition-colors shadow-sm shadow-emerald-800 text-center w-fit min-w-20 p-1 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+                className="font-medium transition-colors shadow-sm shadow-emerald-800 text-center w-fit py-2 px-3 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
               >
                 <span className="whitespace-nowrap text-md flex items-center justify-center gap-1">
                   <Icon.Login
@@ -82,7 +82,7 @@ export default function Home(): JSX.Element {
             )}
             <Link
               to="/note"
-              className="transition-colors shadow-sm shadow-emerald-800 text-center w-fit min-w-20 p-1 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+              className="font-medium transition-colors shadow-sm shadow-emerald-800 text-center w-fit py-2 px-3 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
             >
               <span className="whitespace-nowrap text-md flex items-center justify-center gap-1">
                 <img

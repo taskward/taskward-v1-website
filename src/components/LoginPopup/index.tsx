@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import { loginByGitHubCode } from "@requests";
 import { useQueryString } from "@hooks";
 import { useNavigate } from "react-router-dom";
-import { LOCAL_STORAGE_TOKEN } from "@utils";
-import { Loading } from "@components";
+import { LOCAL_STORAGE_TOKEN, getDocumentTitle } from "@utils";
+import { Loading, Button, Icon, Input } from "@components";
 import { useTranslation } from "react-i18next";
+import taskward from "@assets/img/taskward.png";
+import GitHubButton from "./GitHubButton/index";
 
 export default function LoginPopup(): JSX.Element {
-  const { t } = useTranslation();
-  const CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID;
-  const AUTHORIZE_URL = "https://github.com/login/oauth/authorize";
-  const REDIRECT_URL = `${import.meta.env.VITE_TASKWARD_BASE_URL}login`;
+  const { t, i18n } = useTranslation(["common", "request"]);
   const code = useQueryString("code");
   const navigate = useNavigate();
   const state: any = history.state;
@@ -29,6 +28,10 @@ export default function LoginPopup(): JSX.Element {
     };
   }, []);
 
+  useEffect(() => {
+    document.title = getDocumentTitle(t("request:LOGIN.TITLE"));
+  }, [i18n.language]);
+
   async function handleGitHubLogin() {
     if (code) {
       setLoginLoading(true);
@@ -43,19 +46,36 @@ export default function LoginPopup(): JSX.Element {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <a
-        href={`${AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}`}
-        className="text-center w-fit"
-      >
-        <h1 className="bg-white w-fit cursor-pointer rounded-md p-2 whitespace-nowrap hover:bg-slate-300 select-none">
-          GitHub Login
-        </h1>
-      </a>
+    <div className="flex flex-col min-w-[400px] min-h-fit p-6 gap-2 mb-20 shadow-md shadow-gray-600 bg-white dark:bg-[#36393f] text-gray-900 dark:text-gray-300 rounded-lg">
+      <div className="text-center font-semibold text-xl flex justify-center items-center gap-2">
+        <img src={taskward} width="28" height="28" loading="eager" />
+        {t("request:LOGIN.TITLE")}
+      </div>
+      <div className="flex flex-col text-sm mt-2">
+        <span className="text-center">👏 欢迎回来！</span>
+        <span className="text-center">🎉 很高兴再次见到您！</span>
+      </div>
+      <Input className="mt-2" />
+      <Input />
+      <Button
+        title={t("common:LOGIN")}
+        block
+        disabled
+        className="mt-3 cursor-not-allowed"
+        icon={
+          <Icon.Login
+            width="16"
+            height="16"
+            className="fill-white flex-shrink-0"
+          />
+        }
+      />
+      <div className="border mt-1 dark:border-gray-600 mx-1" />
+      <GitHubButton className="mt-1" />
       {state?.message && (
-        <div className="text-sm text-red-600 my-2 font-bold select-none">
+        <span className="text-sm text-red-600 mt-2 font-bold select-none text-center">
           {state.message}
-        </div>
+        </span>
       )}
     </div>
   );

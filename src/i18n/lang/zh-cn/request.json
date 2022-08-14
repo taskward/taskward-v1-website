@@ -1,5 +1,7 @@
 {
   "LOGIN": {
+    "TITLE": "登录到 Taskward",
+    "WITH": { "GITHUB": "使用 GitHub 登录" },
     "FAILED": "登录失败，请重试..."
   },
   "RESPONSE": {

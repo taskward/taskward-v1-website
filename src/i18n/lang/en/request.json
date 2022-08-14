@@ -1,5 +1,7 @@
 {
   "LOGIN": {
+    "TITLE": "Sign in to Taskward",
+    "WITH": { "GITHUB": "Sign In With GitHub" },
     "FAILED": "Login failed, please try again..."
   },
   "RESPONSE": {

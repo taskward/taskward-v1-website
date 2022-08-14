@@ -1,5 +1,7 @@
 {
   "LOGIN": {
+    "TITLE": "Connectez-vous à Taskward",
+    "WITH": { "GITHUB": "Se Connecter Avec GitHub" },
     "FAILED": "La connexion a échoué, veuillez réessayer..."
   },
   "RESPONSE": {

@@ -1,5 +1,7 @@
 {
   "LOGIN": {
+    "TITLE": "Taskward にサインイン",
+    "WITH": { "GITHUB": "GitHub でサインイン" },
     "FAILED": "ログインできませんでした。もう一度お試しください..."
   },
   "RESPONSE": {
