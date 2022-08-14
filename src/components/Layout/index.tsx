@@ -12,7 +12,7 @@ export default function Layout(): JSX.Element {
         <Sidebar />
         <div
           className={clsx(
-            "flex-auto p-6 transition-colors",
+            "flex-auto p-6 transition-[background-color]",
             styles.routerContentWrapper
           )}
         >
