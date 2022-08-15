@@ -2,7 +2,7 @@ import axios from "axios";
 import { i18n } from "@i18n";
 
 const axiosService = axios.create({
-  baseURL: import.meta.env.VITE_BRUCE_WORLD_API_BASE_URL,
+  baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
   timeout: 10000,
   headers: {
