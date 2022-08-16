@@ -1,15 +1,14 @@
 import { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation, Trans } from "react-i18next";
 import clsx from "clsx";
 import styles from "./styles.module.css";
+import { Icon, Loading, Button } from "@components";
+import { isLogin, APPLICATION_NAME } from "@utils";
+import { useImageLoaded } from "@hooks";
 import GitHubIcon from "./GitHubIcon";
-import { useNavigate, useLocation } from "react-router-dom";
-import { APPLICATION_NAME } from "@utils";
 import taskward from "@assets/img/taskward.png";
 import homeBackground from "@assets/background/home.jpg";
-import { Icon, Loading, Button } from "@components";
-import { useTranslation, Trans } from "react-i18next";
-import { isLogin } from "@utils";
-import { useImageLoaded } from "@hooks";
 
 type HomeState = {
   isBackHome: boolean;
