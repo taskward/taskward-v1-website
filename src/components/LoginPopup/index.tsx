@@ -17,11 +17,11 @@ export default function LoginPopup(): JSX.Element {
   const [loginLoading, setLoginLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    const controller = new AbortController();
+    const controller: AbortController = new AbortController();
     if (localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
       navigate("/note", { replace: true });
     } else {
-      handleGitHubLogin();
+      handleGitHubLogin(controller.signal);
     }
     return () => {
       controller.abort();
@@ -32,10 +32,13 @@ export default function LoginPopup(): JSX.Element {
     document.title = getDocumentTitle(t("request:LOGIN.TITLE"));
   }, [i18n.language]);
 
-  async function handleGitHubLogin() {
+  async function handleGitHubLogin(abortController: AbortSignal) {
     if (code) {
       setLoginLoading(true);
-      const loginResult: boolean = await loginByGitHubCode(code);
+      const loginResult: boolean = await loginByGitHubCode(
+        code,
+        abortController
+      );
       setLoginLoading(false);
       loginResult && navigate("/note", { replace: true });
     }

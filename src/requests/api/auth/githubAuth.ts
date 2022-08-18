@@ -2,11 +2,15 @@ import { axiosService } from "@requests";
 import { getToken, LOCAL_STORAGE_TOKEN, LOCAL_STORAGE_USER } from "@utils";
 import { i18n } from "@i18n";
 
-async function loginByGitHubCode(code: string): Promise<boolean> {
+async function loginByGitHubCode(
+  code: string,
+  abortSignal: AbortSignal
+): Promise<boolean> {
   try {
     let response = await axiosService({
       method: "POST",
       url: `auth/github?code=${code}`,
+      signal: abortSignal,
     });
     if (response.status === 200 && response.data) {
       response.data.token &&
@@ -32,6 +36,7 @@ async function loginByGitHubCode(code: string): Promise<boolean> {
 
 async function getUserInfo(): Promise<any> {
   let response = await axiosService({
+    method: "POST",
     url: `auth/github/user`,
     headers: {
       Authorization: "gt " + getToken(),
