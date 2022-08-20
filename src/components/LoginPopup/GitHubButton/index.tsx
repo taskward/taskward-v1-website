@@ -1,15 +1,15 @@
-import { useTranslation } from "react-i18next";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
+
+import { CustomComponentProps } from "@interfaces";
 
 export default function GitHubButton({
   className,
-}: {
-  className?: string;
-}): JSX.Element {
+}: CustomComponentProps): JSX.Element {
+  const { t } = useTranslation(["request"]);
   const CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID;
   const AUTHORIZE_URL = "https://github.com/login/oauth/authorize";
   const REDIRECT_URL = `${import.meta.env.VITE_TASKWARD_BASE_URL}login`;
-  const { t } = useTranslation(["request"]);
 
   function loginWithGitHub() {
     open(
