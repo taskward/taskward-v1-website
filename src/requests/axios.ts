@@ -6,7 +6,7 @@ const axiosService = axios.create({
   withCredentials: false,
   timeout: 10000,
   headers: {
-    accept: "application/json;charset=utf-8",
+    accept: "application/json; charset=utf-8",
   },
 });
 
