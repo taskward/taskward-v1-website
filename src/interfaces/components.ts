@@ -1,11 +1,11 @@
 import type { CSSProperties, HTMLInputTypeAttribute } from "react";
 
-interface ComponentProps {
+interface ComponentCommonProps {
   className: string;
   style: CSSProperties;
 }
 
-type CustomComponentProps = Partial<ComponentProps>;
+type CustomComponentProps = Partial<ComponentCommonProps>;
 
 interface InputProperties {
   type: HTMLInputTypeAttribute;
