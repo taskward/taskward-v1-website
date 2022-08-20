@@ -66,11 +66,13 @@ export default function LoginPopup(): JSX.Element {
         className="mt-2"
         title={t("request:USER.EMAIL")}
         placeholder={t("request:LOGIN.PLACEHOLDER.EMAIL")}
+        required
       />
       <Input
         title={t("common:PASSWORD")}
         type="password"
         placeholder={t("request:LOGIN.PLACEHOLDER.PASSWORD")}
+        required
       />
       <Button
         title={t("common:LOGIN")}

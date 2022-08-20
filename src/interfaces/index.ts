@@ -1,1 +1,1 @@
-export type { CustomComponentProps } from "./components";
+export type { CustomComponentProps, InputProps } from "./components";
