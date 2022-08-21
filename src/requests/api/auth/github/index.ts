@@ -13,7 +13,7 @@ async function loginByGitHubCode(
       url: `auth/github?code=${code}`,
       signal: abortSignal,
     });
-    if (response.status === 200 && response.data) {
+    if (response?.status === 200 && response?.data) {
       response.data.accessToken &&
         localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.accessToken);
       response.data.user &&
