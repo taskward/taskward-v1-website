@@ -2,10 +2,7 @@ import { axiosService } from "@requests";
 
 async function getUserInfo(): Promise<any> {
   try {
-    let response = await axiosService({
-      method: "GET",
-      url: "user",
-    });
+    let response = await axiosService.get("user");
     if (response?.status === 200 && response?.data) {
       return response.data;
     }

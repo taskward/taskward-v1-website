@@ -6,9 +6,6 @@ const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
   timeout: 15000,
-  headers: {
-    accept: "application/json;charset=utf-8",
-  },
 });
 
 if (localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
