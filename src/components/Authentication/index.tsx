@@ -19,9 +19,7 @@ export default function Authentication({
 
   useEffect(() => {
     if (!localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
-      localStorage.clear();
-      userDispatch(userAction.updateUserInfo(null));
-      navigate("/login", { replace: true });
+      clearLoginStatus();
     }
     if (!user) {
       initUserInfo();
@@ -33,8 +31,14 @@ export default function Authentication({
     if (userInfo) {
       userDispatch(userAction.updateUserInfo(userInfo));
     } else {
-      navigate("/login", { replace: true });
+      clearLoginStatus();
     }
+  };
+
+  const clearLoginStatus = () => {
+    localStorage.clear();
+    userDispatch(userAction.updateUserInfo(null));
+    navigate("/login", { replace: true });
   };
 
   return children;
