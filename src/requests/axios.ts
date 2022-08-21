@@ -3,6 +3,7 @@ import { i18n } from "@i18n";
 import { LOCAL_STORAGE_TOKEN } from "@utils";
 
 const axiosService = axios.create({
+  method: "GET",
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
   timeout: 15000,

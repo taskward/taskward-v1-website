@@ -3,7 +3,6 @@ import { axiosService } from "@requests";
 async function getUserInfo(): Promise<any> {
   try {
     let response = await axiosService({
-      method: "GET",
       url: "user",
     });
     if (response?.status === 200 && response?.data) {
