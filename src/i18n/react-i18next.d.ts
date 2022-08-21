@@ -3,8 +3,7 @@ import { resources, LanguageType, defaultNs } from ".";
 export type I18nStoreType = typeof resources[LanguageType.EN]["app"] &
   typeof resources[LanguageType.EN]["common"] &
   typeof resources[LanguageType.EN]["layout"] &
-  typeof resources[LanguageType.EN]["request"] &
-  typeof resources[LanguageType.EN]["validation"];
+  typeof resources[LanguageType.EN]["request"];
 
 export type I18nT = {
   (key: I18nStoreType): string;
