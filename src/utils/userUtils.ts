@@ -1,17 +1,17 @@
 import { LOCAL_STORAGE_TOKEN, LOCAL_STORAGE_USER } from "@utils";
-import { type UserInfo } from "@store";
+import { type User } from "@interfaces";
 
 function isLogin(): boolean {
   const hasToken: string | null = localStorage.getItem(LOCAL_STORAGE_TOKEN);
   return hasToken !== null && hasToken !== "";
 }
 
-function getUserInfoFromStorage(): UserInfo | null {
+function getUserInfoFromStorage(): User | null {
   let userData: string | null = localStorage.getItem(LOCAL_STORAGE_USER);
   if (!userData) {
     return null;
   }
-  let userInfo: UserInfo = JSON.parse(userData);
+  let userInfo: User = JSON.parse(userData);
   return userInfo;
 }
 

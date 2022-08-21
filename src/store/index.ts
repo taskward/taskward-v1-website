@@ -15,5 +15,5 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export { sidebarAction, ActiveSidebarItem } from "./sidebarSlice";
-export { userAction, type UserInfo } from "./userSlice";
+export { userAction } from "./userSlice";
 export { styleAction, type ThemeMode } from "./styleSlice";
