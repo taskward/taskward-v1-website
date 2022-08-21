@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { shallowEqual } from "react-redux";
 
 import { userAction } from "@store";
 import { User } from "@interfaces";
 import { useAppSelector, useAppDispatch } from "@hooks";
+import { LOCAL_STORAGE_TOKEN } from "@utils";
 
 export default function UserAvatar(): JSX.Element | null {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export default function UserAvatar(): JSX.Element | null {
   );
 
   function logout() {
-    localStorage.clear();
+    localStorage.removeItem(LOCAL_STORAGE_TOKEN);
     userDispatch(userAction.updateUserInfo(null));
     navigate("/", { replace: true });
   }
@@ -24,7 +24,7 @@ export default function UserAvatar(): JSX.Element | null {
   if (user) {
     return (
       <div
-        className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors"
+        className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 flex justify-center items-center cursor-pointer transition-colors"
         onClick={logout}
       >
         {user.avatarUrl && (

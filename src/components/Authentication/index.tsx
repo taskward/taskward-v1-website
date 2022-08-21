@@ -36,7 +36,7 @@ export default function Authentication({
   };
 
   const clearLoginStatus = () => {
-    localStorage.clear();
+    localStorage.removeItem(LOCAL_STORAGE_TOKEN);
     userDispatch(userAction.updateUserInfo(null));
     navigate("/login", { replace: true });
   };
