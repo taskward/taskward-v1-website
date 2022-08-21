@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
+import { shallowEqual } from "react-redux";
 import clsx from "clsx";
+
 import styles from "./styles.module.css";
+
+import { useImageLoaded, useAppSelector } from "@hooks";
+import { APPLICATION_NAME } from "@utils";
+
 import { Icon, Loading, Button } from "@components";
-import { isLogin, APPLICATION_NAME } from "@utils";
-import { useImageLoaded } from "@hooks";
 import GitHubIcon from "./GitHubIcon";
+
 import taskward from "@assets/img/taskward.png";
 import homeBackground from "@assets/background/home.jpg";
 
@@ -17,20 +22,22 @@ type HomeState = {
 export default function Home(): JSX.Element {
   const { t } = useTranslation(["common", "app"]);
   const navigate = useNavigate();
-  const loginStatus: boolean = isLogin();
   const backgroundImageLoaded = useImageLoaded(homeBackground);
+
   const { isBackHome } = useLocation().state
     ? (useLocation().state as HomeState)
     : { isBackHome: false };
 
+  const user = useAppSelector((state) => state.user.user, shallowEqual);
+
   useEffect(() => {
-    if (loginStatus && !isBackHome) {
+    if (user && !isBackHome) {
       navigate("/note", { replace: true });
     }
   }, []);
 
   function handleClickStartBtn() {
-    if (isLogin()) {
+    if (user) {
       navigate("/note");
     } else {
       navigate("/login");
@@ -76,7 +83,7 @@ export default function Home(): JSX.Element {
             {t("app:TASKWARD.APP.DESCRIPTION.SECOND.LINE")}
           </span>
           <div className="flex justify-center items-center gap-4 mt-2">
-            {!loginStatus && (
+            {!user && (
               <Button
                 title={t("common:LOGIN")}
                 onClick={() => {

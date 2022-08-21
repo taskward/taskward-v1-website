@@ -1,14 +1,20 @@
 import axios from "axios";
 import { i18n } from "@i18n";
+import { LOCAL_STORAGE_TOKEN } from "@utils";
 
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
-  timeout: 10000,
+  timeout: 15000,
   headers: {
     accept: "application/json;charset=utf-8",
   },
 });
+
+if (localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
+  axiosService.defaults.headers.common["Authorization"] =
+    "Bearer " + localStorage.getItem(LOCAL_STORAGE_TOKEN);
+}
 
 axiosService.interceptors.response.use(
   function (response) {

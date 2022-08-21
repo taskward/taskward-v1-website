@@ -1,5 +1,6 @@
+import { store, userAction } from "@store";
 import { axiosService } from "@requests";
-import { getToken, LOCAL_STORAGE_TOKEN, LOCAL_STORAGE_USER } from "@utils";
+import { LOCAL_STORAGE_TOKEN } from "@utils";
 import { i18n } from "@i18n";
 
 async function loginByGitHubCode(
@@ -13,13 +14,10 @@ async function loginByGitHubCode(
       signal: abortSignal,
     });
     if (response.status === 200 && response.data) {
-      response.data.token &&
-        localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.token);
+      response.data.accessToken &&
+        localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.accessToken);
       response.data.user &&
-        localStorage.setItem(
-          LOCAL_STORAGE_USER,
-          JSON.stringify(response.data.user)
-        );
+        store.dispatch(userAction.updateUserInfo(response.data.user));
       return true;
     }
     return false;
@@ -34,29 +32,4 @@ async function loginByGitHubCode(
   }
 }
 
-async function getUserInfo(): Promise<any> {
-  let response = await axiosService({
-    method: "POST",
-    url: `auth/github/user`,
-    headers: {
-      Authorization: "gt " + getToken(),
-    },
-  });
-  if (response.status === 200 && response.data) {
-    response.data.userInfo
-      ? localStorage.setItem(
-          LOCAL_STORAGE_USER,
-          JSON.stringify(response.data.userInfo)
-        )
-      : localStorage.removeItem(LOCAL_STORAGE_USER);
-    return response.data.userInfo;
-  }
-  return null;
-}
-
-export {
-  LOCAL_STORAGE_TOKEN,
-  LOCAL_STORAGE_USER,
-  loginByGitHubCode,
-  getUserInfo,
-};
+export { loginByGitHubCode };
