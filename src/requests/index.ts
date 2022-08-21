@@ -1,4 +1,4 @@
 export { axiosService } from "./axios";
 
-export { loginByGitHubCode } from "./api/auth/githubAuth";
+export { loginByGitHubCode } from "./api/auth/github";
 export { getUserInfo } from "./api/user";
