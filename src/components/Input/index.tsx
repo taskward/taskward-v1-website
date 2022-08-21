@@ -15,7 +15,7 @@ export default function Input({
           className={clsx(
             "block",
             "mb-1",
-            "text-sm font-medium text-slate-700",
+            "text-sm font-medium text-gray-900 dark:text-gray-300",
             required &&
               "after:content-['*'] after:ml-0.5 after:text-red-500 after:align-middle"
           )}
@@ -32,7 +32,7 @@ export default function Input({
           "bg-gray-50 dark:bg-gray-700",
           "border border-gray-200 dark:border-gray-600 rounded-md",
           "focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1",
-          "text-sm text-gray-900 dark:text-white",
+          "text-sm text-gray-900 dark:text-gray-300",
           className
         )}
         placeholder={placeholder}
