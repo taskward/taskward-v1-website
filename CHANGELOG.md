@@ -18,6 +18,7 @@
   - [x] PC
   - [ ] Mobile (Pending)
 - [ ] Authentication
+  - [ ] Username
   - [ ] Email
   - [ ] Google OAuth2 (Pending)
   - [x] GitHub OAuth2
@@ -47,6 +48,7 @@
 - [ ] Profile
   - [ ] Avatar
   - [ ] User Info
+  - [ ] Logout
 - [ ] Settings
   - [ ] Send feedback (Pending)
   - [ ] Theme preference
