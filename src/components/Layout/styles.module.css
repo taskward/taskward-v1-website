@@ -2,6 +2,6 @@
   height: calc(100vh - 4rem);
 }
 
-html[class="dark"] .routerContentWrapper {
+html[class*="dark"] .routerContentWrapper {
   background-color: var(--taskward-theme-color-darker);
 }
