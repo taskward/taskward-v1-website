@@ -17,6 +17,7 @@ import Refresh from "./Refresh";
 import Login from "./Login";
 import Logout from "./Logout";
 import Loading from "./Loading";
+import ArrowDropDown from "./ArrowDropDown";
 
 export const Icon = {
   Archive,
@@ -31,4 +32,5 @@ export const Icon = {
   Login,
   Logout,
   Loading,
+  ArrowDropDown,
 };
