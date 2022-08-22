@@ -38,7 +38,7 @@ export default function Header(): JSX.Element {
         <MenuIcon />
         <div className="ml-2">{getActiveSidebarItemTitle()}</div>
       </div>
-      <div className="flex justify-end items-center gap-1 mr-2">
+      <div className="flex justify-end items-center gap-2 mr-2">
         <LanguageIcon />
         <ThemeModeIcon />
         <UserAvatar />

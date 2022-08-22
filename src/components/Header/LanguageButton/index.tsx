@@ -37,36 +37,45 @@ export default function LanguageIcon() {
   }
 
   return (
-    <div className="relative w-34 flex justify-center items-center">
+    <div
+      className="relative w-34 flex justify-center items-center"
+      onMouseOver={() => {
+        setShowDropdown(true);
+      }}
+      onMouseLeave={() => {
+        setShowDropdown(false);
+      }}
+    >
       <div
         className={clsx(
           styles.btnWrapper,
-          "py-1 px-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex justify-center items-center cursor-pointer"
+          "py-1 pl-1.5 pr-0 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex justify-center items-center cursor-pointer"
         )}
-        onClick={changeLanguage}
       >
-        <Icon.Language className="fill-black dark:fill-white" />
+        <Icon.Language
+          className="fill-black dark:fill-white"
+          width="22"
+          height="22"
+        />
         <span className="text-sm ml-1.5">{t("CURRENT.LANGUAGE")}</span>
         <Icon.ArrowDropDown
           className="fill-black dark:fill-white"
-          width="24"
-          height="24"
+          width="22"
+          height="22"
         />
       </div>
       <div
         className={clsx(
-          showDropdown ? "opacity-100" : "opacity-0",
-          "z-10 w-44 bg-white rounded-lg divide-y divide-gray-100 shadow-xl dark:bg-gray-700 dark:divide-gray-600 absolute top-8 left-[-40px] m-auto transition-opacity duration-500"
+          showDropdown ? "visible opacity-100" : "invisible opacity-0",
+          styles.dropdownWrapper,
+          "z-10 w-44 bg-white rounded-lg divide-y divide-gray-100 drop-shadow-lg dark:bg-gray-700 dark:divide-gray-600 absolute top-8 left-[-40px] m-auto"
         )}
       >
         <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
           <div className="font-medium ">Pro User</div>
           <div className="truncate">name@flowbite.com</div>
         </div>
-        <ul
-          className="py-1 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
-        >
+        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
           <li>
             <a
               href="#"
