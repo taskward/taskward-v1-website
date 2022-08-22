@@ -37,16 +37,21 @@ export default function LanguageIcon() {
   }
 
   return (
-    <div className="relative w-34 flex justify-center">
+    <div className="relative w-34 flex justify-center items-center">
       <div
         className={clsx(
           styles.btnWrapper,
-          "py-1 px-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex gap-1 justify-center items-center cursor-pointer"
+          "py-1 px-2.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex justify-center items-center cursor-pointer"
         )}
         onClick={changeLanguage}
       >
         <Icon.Language className="fill-black dark:fill-white" />
-        <span className="text-sm">{t("CURRENT.LANGUAGE")}</span>
+        <span className="text-sm ml-1.5">{t("CURRENT.LANGUAGE")}</span>
+        <Icon.ArrowDropDown
+          className="fill-black dark:fill-white"
+          width="24"
+          height="24"
+        />
       </div>
       <div
         className={clsx(
