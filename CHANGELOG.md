@@ -31,6 +31,8 @@
     - [ ] Add to top
     - [ ] Finish to bottom
   - [ ] External link
+    - [ ] Copy external link
+    - [ ] Open external link
   - [ ] Copy content
   - [ ] Create time/Update time
   - [ ] Custom background
