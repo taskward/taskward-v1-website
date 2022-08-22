@@ -2,7 +2,7 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@hooks";
-import LanguageIcon from "./LanguageIcon";
+import LanguageIcon from "./LanguageButton";
 import ThemeModeIcon from "./ThemeModeIcon";
 import MenuIcon from "./MenuIcon";
 import UserAvatar from "./UserAvatar";
