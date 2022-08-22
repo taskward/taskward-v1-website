@@ -27,7 +27,8 @@
       "@requests": ["src/requests"],
       "@store": ["src/store"],
       "@i18n": ["src/i18n"],
-      "@interfaces": ["src/interfaces"]
+      "@interfaces": ["src/interfaces"],
+      "@constants": ["src/constants"]
     }
   },
   "include": ["src"],

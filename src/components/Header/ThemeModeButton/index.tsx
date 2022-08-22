@@ -1,10 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { Icon } from "@components";
 import { useAppSelector, useAppDispatch } from "@hooks";
-import { styleAction } from "@store";
-import { ThemeMode } from "../../../store/styleSlice";
+import { styleAction, ThemeMode } from "@store";
 
-export default function ThemeModeIcon() {
+export default function ThemeModeButton() {
   const { t } = useTranslation(["layout"]);
   const styleDispatch = useAppDispatch();
 

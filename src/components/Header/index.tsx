@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@hooks";
 import LanguageIcon from "./LanguageButton";
-import ThemeModeIcon from "./ThemeModeIcon";
+import ThemeModeButton from "./ThemeModeButton";
 import MenuIcon from "./MenuIcon";
 import UserAvatar from "./UserAvatar";
 
@@ -40,7 +40,7 @@ export default function Header(): JSX.Element {
       </div>
       <div className="flex justify-end items-center gap-2 mr-2">
         <LanguageIcon />
-        <ThemeModeIcon />
+        <ThemeModeButton />
         <UserAvatar />
       </div>
     </header>

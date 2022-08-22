@@ -5,41 +5,41 @@ import styles from "./styles.module.css";
 
 import { Icon } from "@components";
 import { LanguageType } from "@i18n";
+import { Language } from "@constants";
 
 export default function LanguageIcon() {
   const { t, i18n } = useTranslation();
 
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
-  function changeLanguage() {
-    setShowDropdown(!showDropdown);
-    return;
-    switch (i18n.language) {
+  const changeLanguage = (language: LanguageType) => {
+    setShowDropdown(false);
+    switch (language) {
       case LanguageType.ZH_CN:
+        i18n.changeLanguage(LanguageType.ZH_CN);
+        localStorage.setItem("lang", LanguageType.ZH_CN);
+        break;
+      case LanguageType.EN:
         i18n.changeLanguage(LanguageType.EN);
         localStorage.setItem("lang", LanguageType.EN);
         break;
-      case LanguageType.EN:
+      case LanguageType.JA:
         i18n.changeLanguage(LanguageType.JA);
         localStorage.setItem("lang", LanguageType.JA);
         break;
-      case LanguageType.JA:
+      case LanguageType.FR:
         i18n.changeLanguage(LanguageType.FR);
         localStorage.setItem("lang", LanguageType.FR);
-        break;
-      case LanguageType.FR:
-        i18n.changeLanguage(LanguageType.ZH_CN);
-        localStorage.setItem("lang", LanguageType.ZH_CN);
         break;
       default:
         return;
     }
-  }
+  };
 
   return (
     <div
-      className="relative w-34 flex justify-center items-center"
-      onMouseOver={() => {
+      className="relative flex justify-center items-center"
+      onMouseEnter={() => {
         setShowDropdown(true);
       }}
       onMouseLeave={() => {
@@ -49,7 +49,7 @@ export default function LanguageIcon() {
       <div
         className={clsx(
           styles.btnWrapper,
-          "py-1 pl-1.5 pr-0 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex justify-center items-center cursor-pointer"
+          "w-28 py-1 pl-1.5 pr-0 rounded-md hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex justify-center items-center cursor-pointer"
         )}
       >
         <Icon.Language
@@ -66,49 +66,63 @@ export default function LanguageIcon() {
       </div>
       <div
         className={clsx(
-          showDropdown ? "visible opacity-100" : "invisible opacity-0",
+          showDropdown
+            ? "visible opacity-100  translate-y-1"
+            : "invisible opacity-0",
           styles.dropdownWrapper,
-          "z-10 w-44 bg-white rounded-lg divide-y divide-gray-100 drop-shadow-lg dark:bg-gray-700 dark:divide-gray-600 absolute top-8 left-[-40px] m-auto"
+          "absolute top-8 z-10 w-28 bg-white rounded-md divide-y shadow-[rgb(0,0,0,0.2)_0_0_10px] divide-gray-100 dark:bg-gray-700 dark:divide-gray-600"
         )}
       >
-        <div className="py-3 px-4 text-sm text-gray-900 dark:text-white">
-          <div className="font-medium ">Pro User</div>
-          <div className="truncate">name@flowbite.com</div>
-        </div>
-        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-          <li>
-            <a
-              href="#"
-              className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        <ul className="text-sm text-gray-700 dark:text-gray-200 text-center">
+          <li className="p-1">
+            <span
+              className="block py-1 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
+              onClick={() => {
+                changeLanguage(LanguageType.ZH_CN);
+              }}
             >
-              中文
-            </a>
+              {Language.SIMPLIFY_CHINESE}
+            </span>
           </li>
-          <li>
-            <a
-              href="#"
-              className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          <li className="p-1">
+            <span
+              className="block py-1 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
+              onClick={() => {
+                changeLanguage(LanguageType.EN);
+              }}
             >
-              英文
-            </a>
+              {Language.ENGLISH}
+            </span>
           </li>
-          <li>
-            <a
-              href="#"
-              className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          <li className="p-1">
+            <span
+              className="block py-1 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
+              onClick={() => {
+                changeLanguage(LanguageType.JA);
+              }}
             >
-              日文
-            </a>
+              {Language.JAPANESE}
+            </span>
+          </li>
+          <li className="p-1">
+            <span
+              className="block py-1 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
+              onClick={() => {
+                changeLanguage(LanguageType.FR);
+              }}
+            >
+              {Language.FRENCH}
+            </span>
           </li>
         </ul>
-        <div className="py-1">
+        {/* <div className="py-1">
           <a
             href="#"
             className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
           >
-            法文
+            Help me translate
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   );

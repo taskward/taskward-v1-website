@@ -36,7 +36,7 @@ export default function Sidebar(): JSX.Element {
           ? styles.collapse
           : styles.expand
       )}
-      onMouseOver={() => {
+      onMouseEnter={() => {
         sidebarMode === "collapse" && setShouldExpand(true);
       }}
       onMouseLeave={() => {
