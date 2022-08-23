@@ -18,6 +18,8 @@ import Login from "./Login";
 import Logout from "./Logout";
 import Loading from "./Loading";
 import ArrowDropDown from "./ArrowDropDown";
+import Visibility from "./Visibility";
+import VisibilityOff from "./VisibilityOff";
 
 export const Icon = {
   Archive,
@@ -33,4 +35,6 @@ export const Icon = {
   Logout,
   Loading,
   ArrowDropDown,
+  Visibility,
+  VisibilityOff,
 };

@@ -1,15 +1,6 @@
 import clsx from "clsx";
-import { CSSProperties } from "react";
 
-type ButtonProps = {
-  icon?: JSX.Element;
-  title?: string;
-  onClick?: () => void;
-  className?: string;
-  style?: CSSProperties;
-  block?: boolean;
-  disabled?: boolean;
-};
+import { ButtonProps } from "@interfaces";
 
 export default function Button({
   icon,
@@ -19,6 +10,7 @@ export default function Button({
   style,
   block = false,
   disabled = false,
+  type,
 }: ButtonProps): JSX.Element {
   return (
     <button
@@ -30,6 +22,7 @@ export default function Button({
         block ? "w-full" : "w-fit",
         className
       )}
+      type={type}
     >
       <span className="text-md flex items-center justify-center gap-1 whitespace-nowrap">
         {icon}

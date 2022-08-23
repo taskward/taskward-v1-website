@@ -1,4 +1,9 @@
-import type { CSSProperties, HTMLInputTypeAttribute } from "react";
+import type {
+  CSSProperties,
+  HTMLInputTypeAttribute,
+  HTMLAttributes,
+  ButtonHTMLAttributes,
+} from "react";
 
 interface ComponentCommonProps {
   className: string;
@@ -7,13 +12,25 @@ interface ComponentCommonProps {
 
 type CustomComponentProps = Partial<ComponentCommonProps>;
 
-interface InputProperties {
+interface InputProperties extends HTMLAttributes<HTMLInputElement> {
+  inputWrapperClassName: string;
+  inputClassName: string;
   type: HTMLInputTypeAttribute;
-  title: string;
-  placeholder: string;
+  inputTitle: string;
   required: boolean;
+  register: object;
+  rightIcon: JSX.Element;
 }
 
 type InputProps = Partial<InputProperties> & CustomComponentProps;
 
-export type { CustomComponentProps, InputProps };
+interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
+  icon: JSX.Element;
+  title: string;
+  onClick: () => void;
+  block: boolean;
+}
+
+type ButtonProps = Partial<ButtonProperties> & CustomComponentProps;
+
+export type { CustomComponentProps, InputProps, ButtonProps };
