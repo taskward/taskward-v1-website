@@ -3,7 +3,8 @@
     "TITLE": "Connectez-vous à Taskward",
     "PLACEHOLDER": {
       "EMAIL": "Entrez votre adresse Email",
-      "PASSWORD": "Tapez votre mot de passe"
+      "PASSWORD": "Tapez votre mot de passe",
+      "USERNAME": "S'il vous plaît entrez votre nom d'utilisateur"
     },
     "WELCOME": {
       "FIRST.LINE": "Content de te revoir!",
@@ -11,10 +12,15 @@
     },
     "WITH": { "GITHUB": "Se Connecter Avec GitHub" },
     "FAILED": "La connexion a échoué, veuillez réessayer...",
-    "SESSION.EXPIRE": "Le statut de connexion a expiré, veuillez vous reconnecter..."
+    "SESSION.EXPIRE": "Le statut de connexion a expiré, veuillez vous reconnecter...",
+    "INVALID": {
+      "USERNAME": "Erreur de format du nom d'utilisateur",
+      "PASSWORD": "Mauvais format de mot de passe"
+    }
   },
   "USER": {
-    "EMAIL": "Adresse Email"
+    "EMAIL": "Adresse Email",
+    "USERNAME": "Nom d'utilisateur"
   },
   "RESPONSE": {
     "ERROR": {

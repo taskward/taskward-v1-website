@@ -3,7 +3,8 @@
     "TITLE": "Taskward にサインイン",
     "PLACEHOLDER": {
       "EMAIL": "メールアドレスを入力してください",
-      "PASSWORD": "パスワードを入力してください"
+      "PASSWORD": "パスワードを入力してください",
+      "USERNAME": "ユーザー名を入力してください"
     },
     "WELCOME": {
       "FIRST.LINE": "お帰りなさい！",
@@ -11,10 +12,15 @@
     },
     "WITH": { "GITHUB": "GitHub でサインイン" },
     "FAILED": "ログインできませんでした。もう一度お試しください...",
-    "SESSION.EXPIRE": "ログイン ステータスの有効期限が切れています。もう一度ログインしてください..."
+    "SESSION.EXPIRE": "ログイン ステータスの有効期限が切れています。もう一度ログインしてください...",
+    "INVALID": {
+      "USERNAME": "ユーザー名の形式エラー",
+      "PASSWORD": "間違ったパスワード形式"
+    }
   },
   "USER": {
-    "EMAIL": "電子メールアドレス"
+    "EMAIL": "電子メールアドレス",
+    "USERNAME": "ユーザー名"
   },
   "RESPONSE": {
     "ERROR": {

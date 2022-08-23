@@ -3,7 +3,8 @@
     "TITLE": "Sign in to Taskward",
     "PLACEHOLDER": {
       "EMAIL": "Enter your Email address",
-      "PASSWORD": "Enter your password"
+      "PASSWORD": "Enter your password",
+      "USERNAME": "Enter your username"
     },
     "WELCOME": {
       "FIRST.LINE": "Welcome back!",
@@ -11,10 +12,15 @@
     },
     "WITH": { "GITHUB": "Sign In With GitHub" },
     "FAILED": "Login failed, please try again...",
-    "SESSION.EXPIRE": "Login status has expired, please login again..."
+    "SESSION.EXPIRE": "Login status has expired, please login again...",
+    "INVALID": {
+      "USERNAME": "Username format error",
+      "PASSWORD": "Password format error"
+    }
   },
   "USER": {
-    "EMAIL": "Email Address"
+    "EMAIL": "Email Address",
+    "USERNAME": "Username"
   },
   "RESPONSE": {
     "ERROR": {

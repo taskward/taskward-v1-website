@@ -3,7 +3,8 @@
     "TITLE": "登录到 Taskward",
     "PLACEHOLDER": {
       "EMAIL": "输入您的邮箱",
-      "PASSWORD": "输入您的密码"
+      "PASSWORD": "输入您的密码",
+      "USERNAME": "输入您的用户名"
     },
     "WELCOME": {
       "FIRST.LINE": "欢迎回来!",
@@ -18,7 +19,8 @@
     }
   },
   "USER": {
-    "EMAIL": "邮箱"
+    "EMAIL": "邮箱",
+    "USERNAME": "用户名"
   },
   "RESPONSE": {
     "ERROR": {
