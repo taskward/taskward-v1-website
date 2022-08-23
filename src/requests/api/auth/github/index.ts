@@ -8,7 +8,7 @@ async function loginByGitHubCode(
   abortSignal: AbortSignal
 ): Promise<boolean> {
   try {
-    let response = await axiosService({
+    const response = await axiosService({
       method: "POST",
       url: `auth/github?code=${code}`,
       signal: abortSignal,

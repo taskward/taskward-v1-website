@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// TODO: Complete
 import { Children, cloneElement, ReactNode } from "react";
 
 type TooltipProps = {
@@ -13,8 +16,8 @@ type TooltipProps = {
 export default function Tooltip({ children }: TooltipProps): JSX.Element {
   function getOffset(dom: any) {
     let parent: any = dom;
-    let left: number = 0;
-    let top: number = 0;
+    let left = 0;
+    let top = 0;
     while (parent) {
       left += parent.offsetLeft;
       top += parent.offsetTop;

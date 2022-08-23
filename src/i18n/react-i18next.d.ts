@@ -10,6 +10,7 @@ export type I18nT = {
 };
 
 declare module "i18next" {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface TFunction extends I18nT {}
 }
 

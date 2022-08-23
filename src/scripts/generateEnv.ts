@@ -3,9 +3,9 @@ import fs from "fs";
 const generatedPath = ".env.development.local";
 const envPath = ".env.production";
 
-fs.stat(generatedPath, (error, stats) => {
+fs.stat(generatedPath, (error) => {
   if (error) {
-    fs.stat(envPath, (error, stats) => {
+    fs.stat(envPath, (error) => {
       if (error) {
         console.log("🚀[Taskward]: .env.production file Not Found!");
       } else {

@@ -22,6 +22,7 @@ export default function Sidebar(): JSX.Element {
     switch (true) {
       case currentItem > 0:
         navigate(`/${ActiveSidebarItem[currentItem].toLowerCase()}`);
+        break;
       default:
         return;
     }

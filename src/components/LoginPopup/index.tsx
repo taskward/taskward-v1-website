@@ -14,6 +14,7 @@ import taskward from "@assets/img/taskward.png";
 export default function LoginPopup(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "request"]);
   const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const state: any = history.state;
 
   const code = useQueryString("code");
