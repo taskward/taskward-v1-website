@@ -9,7 +9,8 @@
     "lottiefiles",
     "vite",
     "wechat",
-    "arrowParens"
+    "arrowParens",
+    "stylelint"
   ],
   "flagWords": []
 }
