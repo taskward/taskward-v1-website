@@ -55,25 +55,22 @@ export default function Home(): JSX.Element {
   return (
     <div
       className={clsx(
-        "w-screen h-screen relative select-none bg-cover bg-center",
+        "relative h-screen w-screen select-none bg-cover bg-center",
         styles.background
       )}
       style={{ backgroundImage: `url(${homeBackground})` }}
     >
-      <div className="inset-0 absolute w-fit h-fit m-auto">
-        <div className="flex flex-col gap-2 mb-36">
+      <div className="absolute inset-0 m-auto h-fit w-fit">
+        <div className="mb-36 flex flex-col gap-2">
           <div className="flex flex-col items-center gap-2">
-            <span
-              className="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-violet-300
-            mb-2 select-none animate-[pulse_2s_linear_infinite]"
-            >
+            <span className="mb-2 animate-[pulse_2s_linear_infinite] select-none bg-gradient-to-r from-emerald-600 to-violet-300 bg-clip-text text-7xl text-transparent">
               {APPLICATION_NAME}
             </span>
           </div>
           <span className="text-center text-lg text-gray-600">
             <Trans i18nKey="TASKWARD.APP.DESCRIPTION.FIRST.LINE" ns="app">
               {"Taskward means"}
-              <span className="underline decoration-dotted decoration-gray-500 hover:decoration-emerald-600 hover:text-emerald-600 underline-offset-4 transition-colors cursor-pointer">
+              <span className="cursor-pointer underline decoration-gray-500 decoration-dotted underline-offset-4 transition-colors hover:text-emerald-600 hover:decoration-emerald-600">
                 {"task-oriented"}
               </span>
               {", is a Todo&Tasks App."}
@@ -82,7 +79,7 @@ export default function Home(): JSX.Element {
           <span className="text-center text-lg text-gray-600">
             {t("app:TASKWARD.APP.DESCRIPTION.SECOND.LINE")}
           </span>
-          <div className="flex justify-center items-center gap-4 mt-2">
+          <div className="mt-2 flex items-center justify-center gap-4">
             {!user && (
               <Button
                 title={t("common:LOGIN")}
@@ -93,7 +90,7 @@ export default function Home(): JSX.Element {
                   <Icon.Login
                     width="16"
                     height="16"
-                    className="fill-white flex-shrink-0"
+                    className="flex-shrink-0 fill-white"
                   />
                 }
               />

@@ -24,7 +24,7 @@ export default function UserAvatar(): JSX.Element | null {
   if (user) {
     return (
       <div
-        className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 flex justify-center items-center cursor-pointer transition-colors"
+        className="flex cursor-pointer items-center justify-center rounded-full p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"
         onClick={logout}
       >
         {user.avatarUrl && (
@@ -33,7 +33,7 @@ export default function UserAvatar(): JSX.Element | null {
             width="32"
             height="32"
             loading="eager"
-            className="rounded-full pointer-events-none"
+            className="pointer-events-none rounded-full"
           />
         )}
       </div>

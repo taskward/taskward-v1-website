@@ -20,27 +20,27 @@ export default function SidebarItem({
   return (
     <div
       className={clsx(
-        "flex items-center cursor-pointer",
+        "flex cursor-pointer items-center",
         styles.sidebarItemWrapper,
         active
-          ? shouldExpand && "bg-emerald-300 dark:bg-emerald-700 rounded-md"
+          ? shouldExpand && "rounded-md bg-emerald-300 dark:bg-emerald-700"
           : shouldExpand &&
-              "hover:bg-gray-200 dark:hover:bg-gray-500 rounded-md"
+              "rounded-md hover:bg-gray-200 dark:hover:bg-gray-500"
       )}
       onClick={onClick}
     >
       <div
         className={clsx(
-          "w-12 h-12 rounded-full relative shrink-0",
+          "relative h-12 w-12 shrink-0 rounded-full",
           styles.iconWrapper,
           active && !shouldExpand && "bg-emerald-300 dark:bg-emerald-700"
         )}
         title={title}
       >
-        <div className="absolute inset-0 m-auto w-fit h-fit">{icon}</div>
+        <div className="absolute inset-0 m-auto h-fit w-fit">{icon}</div>
       </div>
       {shouldExpand && (
-        <span className="flex-grow mx-3 whitespace-nowrap text-ellipsis overflow-hidden duration-0">
+        <span className="duration-0 mx-3 flex-grow overflow-hidden text-ellipsis whitespace-nowrap">
           {title}
         </span>
       )}

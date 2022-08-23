@@ -22,8 +22,8 @@ export default function NotFound(): JSX.Element {
   }, [i18n.language]);
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center select-none">
-      <div className="flex justify-center items-center gap-8">
+    <div className="flex h-screen w-screen select-none items-center justify-center">
+      <div className="flex items-center justify-center gap-8">
         <div className="flex flex-col items-center gap-2">
           <Link to="/">
             <img
@@ -36,7 +36,7 @@ export default function NotFound(): JSX.Element {
           </Link>
           <div className="text-md">{APPLICATION_NAME}</div>
         </div>
-        <div className="text-5xl animate-pulse">
+        <div className="animate-pulse text-5xl">
           404 {t("app:CUSTOM.PAGE.NOTFOUND")}
         </div>
       </div>

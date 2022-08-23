@@ -23,7 +23,7 @@ export default function ThemeModeButton() {
 
   return (
     <div
-      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-500 flex justify-center items-center cursor-pointer transition-colors"
+      className="flex cursor-pointer items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-500"
       onClick={changeThemeMode}
     >
       {darkMode === "light" ? (

@@ -23,12 +23,12 @@ export default function GitHubButton({
     <button
       type="button"
       className={clsx(
-        "w-full text-white font-medium transition-colors shadow-sm text-center py-2 px-3 rounded-md cursor-pointer bg-black/80 dark:bg-[#050708]/60 hover:bg-[#484b4e]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 dark:focus:ring-gray-500 dark:hover:bg-[#202629]",
+        "w-full cursor-pointer rounded-md bg-black/80 py-2 px-3 text-center font-medium text-white shadow-sm transition-colors hover:bg-[#484b4e]/90 focus:outline-none focus:ring-4 focus:ring-[#24292F]/50 dark:bg-[#050708]/60 dark:hover:bg-[#202629] dark:focus:ring-gray-500",
         className
       )}
       onClick={loginWithGitHub}
     >
-      <span className="whitespace-nowrap text-md flex items-center justify-center gap-1">
+      <span className="text-md flex items-center justify-center gap-1 whitespace-nowrap">
         <svg
           role="img"
           xmlns="http://www.w3.org/2000/svg"

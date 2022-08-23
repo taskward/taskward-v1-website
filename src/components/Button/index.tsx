@@ -26,12 +26,12 @@ export default function Button({
       onClick={onClick}
       disabled={disabled}
       className={clsx(
-        "font-medium transition-colors shadow-sm shadow-emerald-800 text-center py-2 px-3 cursor-pointer rounded-md text-white bg-gradient-to-br from-emerald-300 to-emerald-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300",
+        "cursor-pointer rounded-md bg-gradient-to-br from-emerald-300 to-emerald-600 py-2 px-3 text-center font-medium text-white shadow-sm shadow-emerald-800 transition-colors hover:bg-gradient-to-bl focus:outline-none focus:ring-4 focus:ring-blue-300",
         block ? "w-full" : "w-fit",
         className
       )}
     >
-      <span className="whitespace-nowrap text-md flex items-center justify-center gap-1">
+      <span className="text-md flex items-center justify-center gap-1 whitespace-nowrap">
         {icon}
         {title}
       </span>

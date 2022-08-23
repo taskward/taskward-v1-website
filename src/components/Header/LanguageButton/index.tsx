@@ -38,7 +38,7 @@ export default function LanguageIcon() {
 
   return (
     <div
-      className="relative flex justify-center items-center"
+      className="relative flex items-center justify-center"
       onMouseEnter={() => {
         setShowDropdown(true);
       }}
@@ -49,7 +49,7 @@ export default function LanguageIcon() {
       <div
         className={clsx(
           styles.btnWrapper,
-          "w-28 py-1 pl-1.5 rounded-md hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600 flex justify-center items-center cursor-pointer"
+          "flex w-28 cursor-pointer items-center justify-center rounded-md py-1 pl-1.5 hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
         )}
       >
         <Icon.Language
@@ -57,7 +57,7 @@ export default function LanguageIcon() {
           width="22"
           height="22"
         />
-        <span className="text-sm ml-1.5">{t("CURRENT.LANGUAGE")}</span>
+        <span className="ml-1.5 text-sm">{t("CURRENT.LANGUAGE")}</span>
         <Icon.ArrowDropDown
           className="fill-black dark:fill-white"
           width="22"
@@ -67,20 +67,20 @@ export default function LanguageIcon() {
       <div
         className={clsx(
           showDropdown
-            ? "visible opacity-100  translate-y-1"
+            ? "visible translate-y-1  opacity-100"
             : "invisible opacity-0",
           styles.dropdownWrapper,
-          "absolute top-7 z-10 w-28 bg-white rounded-md divide-y shadow-[rgb(0,0,0,0.2)_0_0_10px] divide-gray-100 dark:bg-gray-700 dark:divide-gray-600"
+          "absolute top-7 z-10 w-28 divide-y divide-gray-100 rounded-md bg-white shadow-[rgb(0,0,0,0.2)_0_0_10px] dark:divide-gray-600 dark:bg-gray-700"
         )}
       >
-        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200 text-center">
+        <ul className="py-1 text-center text-sm text-gray-700 dark:text-gray-200">
           <li className="px-1.5 py-0.5">
             <span
               className={clsx(
                 i18n.language === LanguageType.ZH_CN
-                  ? "bg-gray-200 dark:bg-gray-500 text-emerald-600"
-                  : "hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600",
-                "block py-1 px-2 rounded-md  cursor-pointer transition-colors"
+                  ? "bg-gray-200 text-emerald-600 dark:bg-gray-500"
+                  : "hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                "block cursor-pointer rounded-md py-1  px-2 transition-colors"
               )}
               onClick={() => {
                 changeLanguage(LanguageType.ZH_CN);
@@ -93,9 +93,9 @@ export default function LanguageIcon() {
             <span
               className={clsx(
                 i18n.language === LanguageType.EN
-                  ? "bg-gray-200 dark:bg-gray-500 text-emerald-600"
-                  : "hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600",
-                "block py-1 px-2 rounded-md  cursor-pointer transition-colors"
+                  ? "bg-gray-200 text-emerald-600 dark:bg-gray-500"
+                  : "hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                "block cursor-pointer rounded-md py-1  px-2 transition-colors"
               )}
               onClick={() => {
                 changeLanguage(LanguageType.EN);
@@ -108,9 +108,9 @@ export default function LanguageIcon() {
             <span
               className={clsx(
                 i18n.language === LanguageType.JA
-                  ? "bg-gray-200 dark:bg-gray-500 text-emerald-600"
-                  : "hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600",
-                "block py-1 px-2 rounded-md  cursor-pointer transition-colors"
+                  ? "bg-gray-200 text-emerald-600 dark:bg-gray-500"
+                  : "hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                "block cursor-pointer rounded-md py-1  px-2 transition-colors"
               )}
               onClick={() => {
                 changeLanguage(LanguageType.JA);
@@ -123,9 +123,9 @@ export default function LanguageIcon() {
             <span
               className={clsx(
                 i18n.language === LanguageType.FR
-                  ? "bg-gray-200 dark:bg-gray-500 text-emerald-600"
-                  : "hover:bg-gray-200 dark:hover:bg-gray-500 active:bg-gray-100 dark:active:bg-gray-600",
-                "block py-1 px-2 rounded-md  cursor-pointer transition-colors"
+                  ? "bg-gray-200 text-emerald-600 dark:bg-gray-500"
+                  : "hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                "block cursor-pointer rounded-md py-1  px-2 transition-colors"
               )}
               onClick={() => {
                 changeLanguage(LanguageType.FR);

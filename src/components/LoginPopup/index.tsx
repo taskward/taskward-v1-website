@@ -49,12 +49,12 @@ export default function LoginPopup(): JSX.Element {
   }
 
   return (
-    <div className="flex flex-col min-w-[360px] min-h-fit p-6 gap-2 mb-20 shadow-md shadow-gray-600 bg-white dark:bg-[#36393f] text-gray-900 dark:text-gray-300 rounded-lg">
-      <div className="text-center font-semibold text-xl flex justify-center items-center gap-2">
+    <div className="mb-20 flex min-h-fit min-w-[360px] flex-col gap-2 rounded-lg bg-white p-6 text-gray-900 shadow-md shadow-gray-600 dark:bg-[#36393f] dark:text-gray-300">
+      <div className="flex items-center justify-center gap-2 text-center text-xl font-semibold">
         <img src={taskward} width="28" height="28" loading="eager" />
         {t("request:LOGIN.TITLE")}
       </div>
-      <div className="flex flex-col text-sm mt-2">
+      <div className="mt-2 flex flex-col text-sm">
         <span className="text-center">
           👏 {t("request:LOGIN.WELCOME.FIRST.LINE")}
         </span>
@@ -83,14 +83,14 @@ export default function LoginPopup(): JSX.Element {
           <Icon.Login
             width="16"
             height="16"
-            className="fill-white flex-shrink-0"
+            className="flex-shrink-0 fill-white"
           />
         }
       />
-      <div className="border mt-1 dark:border-gray-600 mx-1" />
+      <div className="mx-1 mt-1 border dark:border-gray-600" />
       <GitHubButton className="mt-1" />
       {state?.message && (
-        <span className="text-sm text-red-600 mt-2 font-bold select-none text-center">
+        <span className="mt-2 select-none text-center text-sm font-bold text-red-600">
           {state.message}
         </span>
       )}

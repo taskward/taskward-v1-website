@@ -11,10 +11,10 @@ export default function Login(): JSX.Element {
 
   return (
     <div
-      className="w-screen h-screen relative bg-cover bg-center"
+      className="relative h-screen w-screen bg-cover bg-center"
       style={{ backgroundImage: `url(${loginBackground})` }}
     >
-      <div className="inset-0 m-auto w-fit h-fit absolute">
+      <div className="absolute inset-0 m-auto h-fit w-fit">
         <LoginPopup />
       </div>
     </div>

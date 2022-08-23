@@ -13,13 +13,13 @@ export default function MenuIcon() {
 
   return (
     <div
-      className="hover:bg-gray-200 dark:hover:bg-gray-500 transition-colors w-12 h-12 rounded-full cursor-pointer relative select-none"
+      className="relative h-12 w-12 cursor-pointer select-none rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-500"
       onClick={() => {
         handleClickMenuIcon();
       }}
     >
       <div
-        className="absolute inset-0 w-fit h-fit m-auto"
+        className="absolute inset-0 m-auto h-fit w-fit"
         title={t("layout:HEADER.TITLE.MENU")}
       >
         <Icon.Menu className="fill-black dark:fill-white" />

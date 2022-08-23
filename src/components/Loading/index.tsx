@@ -7,15 +7,15 @@ export default function Loading({
 }): JSX.Element {
   if (fullScreen) {
     return (
-      <div className="w-screen h-screen">
-        <div className="w-full h-full flex justify-center items-center">
+      <div className="h-screen w-screen">
+        <div className="flex h-full w-full items-center justify-center">
           <Icon.Loading width="36" height="36" />
         </div>
       </div>
     );
   }
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="flex h-full w-full items-center justify-center">
       <Icon.Loading width="36" height="36" />
     </div>
   );

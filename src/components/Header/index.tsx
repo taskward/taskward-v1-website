@@ -30,15 +30,15 @@ export default function Header(): JSX.Element {
   return (
     <header
       className={clsx(
-        "w-full h-16 border-b dark:border-black p-3 gap-4 transition-all flex justify-between select-none",
+        "flex h-16 w-full select-none justify-between gap-4 border-b p-3 transition-all dark:border-black",
         styles.header
       )}
     >
-      <div className="flex justify-start items-center gap-1">
+      <div className="flex items-center justify-start gap-1">
         <MenuIcon />
         <div className="ml-2">{getActiveSidebarItemTitle()}</div>
       </div>
-      <div className="flex justify-end items-center gap-2 mr-2">
+      <div className="mr-2 flex items-center justify-end gap-2">
         <LanguageIcon />
         <ThemeModeButton />
         <UserAvatar />
