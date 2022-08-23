@@ -11,6 +11,7 @@
     },
     "WITH": { "GITHUB": "使用 GitHub 登录" },
     "FAILED": "登录失败，请重试...",
+    "SESSION.EXPIRE": "登录状态已过期，请重新登录...",
     "INVALID": {
       "USERNAME": "用户名格式错误",
       "PASSWORD": "密码格式错误"

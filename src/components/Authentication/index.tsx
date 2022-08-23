@@ -31,7 +31,7 @@ export default function Authentication({
     if (userInfo) {
       userDispatch(userAction.updateUserInfo(userInfo));
     } else {
-      clearLoginStatus();
+      //clearLoginStatus();
     }
   };
 

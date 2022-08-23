@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { i18n } from "@i18n";
 import { LOCAL_STORAGE_TOKEN } from "@utils";
 
@@ -21,6 +22,11 @@ axiosService.interceptors.response.use(
     if (error.message === "timeout of 10000ms exceeded") {
       console.error(i18n.t("request:RESPONSE.ERROR.TIMEOUT"));
     } else if (error.response?.status === 401) {
+      history.replaceState(
+        { message: i18n.t("request:LOGIN.FAILED") },
+        "",
+        "/login"
+      );
       console.error("401: " + error.message);
     } else if (error.response?.status === 404) {
       console.error("404: " + error.message);

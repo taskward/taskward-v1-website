@@ -10,7 +10,8 @@
       "SECOND.LINE": "Nice to see you again!"
     },
     "WITH": { "GITHUB": "Sign In With GitHub" },
-    "FAILED": "Login failed, please try again..."
+    "FAILED": "Login failed, please try again...",
+    "SESSION.EXPIRE": "Login status has expired, please login again..."
   },
   "USER": {
     "EMAIL": "Email Address"

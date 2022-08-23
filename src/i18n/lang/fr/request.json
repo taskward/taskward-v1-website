@@ -10,7 +10,8 @@
       "SECOND.LINE": "C'est un plaisir de vous revoir!"
     },
     "WITH": { "GITHUB": "Se Connecter Avec GitHub" },
-    "FAILED": "La connexion a échoué, veuillez réessayer..."
+    "FAILED": "La connexion a échoué, veuillez réessayer...",
+    "SESSION.EXPIRE": "Le statut de connexion a expiré, veuillez vous reconnecter..."
   },
   "USER": {
     "EMAIL": "Adresse Email"
