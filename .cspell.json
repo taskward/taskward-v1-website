@@ -10,7 +10,8 @@
     "vite",
     "wechat",
     "arrowParens",
-    "stylelint"
+    "stylelint",
+    "hookform"
   ],
   "flagWords": []
 }

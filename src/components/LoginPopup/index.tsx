@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import { loginByGitHubCode } from "@requests";
 import { useQueryString } from "@hooks";
 import { LOCAL_STORAGE_TOKEN, getDocumentTitle } from "@utils";
-import { LoginFormData } from "@interfaces";
+import { LoginFormData, loginFormSchema } from "@interfaces";
 
 import { Loading, Button, Icon, Input } from "@components";
 import GitHubButton from "./GitHubButton/index";
@@ -30,7 +32,7 @@ export default function LoginPopup(): JSX.Element {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<LoginFormData>();
+  } = useForm<LoginFormData>({ resolver: yupResolver(loginFormSchema) });
 
   useEffect(() => {
     const controller: AbortController = new AbortController();
@@ -57,7 +59,11 @@ export default function LoginPopup(): JSX.Element {
     }
   };
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => {
+    console.log(data);
+    console.log(watch("password"), watch("username"));
+    console.log(errors);
+  };
 
   if (loginLoading) {
     return <Loading />;

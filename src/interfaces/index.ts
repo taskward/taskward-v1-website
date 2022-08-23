@@ -5,6 +5,7 @@ export type {
 } from "./components";
 
 export type { LoginFormData } from "./forms";
+export { loginFormSchema } from "./forms";
 
 export type { User } from "./user";
 
