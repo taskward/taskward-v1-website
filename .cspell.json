@@ -8,7 +8,8 @@
     "Taskward",
     "lottiefiles",
     "vite",
-    "wechat"
+    "wechat",
+    "arrowParens"
   ],
   "flagWords": []
 }
