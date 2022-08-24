@@ -11,7 +11,8 @@
     "wechat",
     "arrowParens",
     "stylelint",
-    "hookform"
+    "hookform",
+    "signup"
   ],
   "flagWords": []
 }
