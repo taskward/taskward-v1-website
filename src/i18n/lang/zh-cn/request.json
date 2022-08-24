@@ -19,7 +19,7 @@
     }
   },
   "SIGNUP": {
-    "TITLE": "注册 Taskward 账号",
+    "TITLE": "创建 Taskward 账号",
     "CONFIRM.PASSWORD": "确认密码",
     "PLACEHOLDER": {
       "CONFIRM.PASSWORD": "请输入确认密码"
