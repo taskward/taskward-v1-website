@@ -18,6 +18,18 @@
       "PASSWORD": "Password format error"
     }
   },
+  "SIGNUP": {
+    "TITLE": "Create a Taskward account",
+    "CONFIRM.PASSWORD": "Confirm Password",
+    "PLACEHOLDER": {
+      "CONFIRM.PASSWORD": "Enter the confirm password"
+    },
+    "WITH": { "GITHUB": "Sign up with GitHub" },
+    "FAILED": "Sign up failed, please try again...",
+    "INVALID": {
+      "CONFIRM.PASSWORD": "The two entered passwords do not match"
+    }
+  },
   "USER": {
     "EMAIL": "Email Address",
     "USERNAME": "Username"

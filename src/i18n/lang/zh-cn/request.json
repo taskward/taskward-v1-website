@@ -18,6 +18,18 @@
       "PASSWORD": "密码格式错误"
     }
   },
+  "SIGNUP": {
+    "TITLE": "注册 Taskward 账号",
+    "CONFIRM.PASSWORD": "确认密码",
+    "PLACEHOLDER": {
+      "CONFIRM.PASSWORD": "请输入确认密码"
+    },
+    "WITH": { "GITHUB": "使用 GitHub 注册" },
+    "FAILED": "注册失败，请重试...",
+    "INVALID": {
+      "CONFIRM.PASSWORD": "两次输入的密码不一致"
+    }
+  },
   "USER": {
     "EMAIL": "邮箱",
     "USERNAME": "用户名"

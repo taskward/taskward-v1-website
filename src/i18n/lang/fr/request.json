@@ -18,6 +18,18 @@
       "PASSWORD": "Mauvais format de mot de passe"
     }
   },
+  "SIGNUP": {
+    "TITLE": "Créer un compte Taskward",
+    "CONFIRM.PASSWORD": "Confirmez le mot de passe",
+    "PLACEHOLDER": {
+      "CONFIRM.PASSWORD": "Veuillez saisir le mot de passe de confirmation"
+    },
+    "WITH": { "GITHUB": "Inscrivez-vous avec GitHub" },
+    "FAILED": "L'inscription a échoué, veuillez réessayer...",
+    "INVALID": {
+      "CONFIRM.PASSWORD": "Les deux mots de passe saisis ne correspondent pas"
+    }
+  },
   "USER": {
     "EMAIL": "Adresse Email",
     "USERNAME": "Nom d'utilisateur"

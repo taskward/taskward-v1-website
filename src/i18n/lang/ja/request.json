@@ -18,6 +18,18 @@
       "PASSWORD": "間違ったパスワード形式"
     }
   },
+  "SIGNUP": {
+    "TITLE": "タスクワード アカウントを作成する",
+    "CONFIRM.PASSWORD": "パスワードを認証する",
+    "PLACEHOLDER": {
+      "CONFIRM.PASSWORD": "確認用パスワードを入力してください"
+    },
+    "WITH": { "GITHUB": "GitHub にサインアップする" },
+    "FAILED": "登録に失敗しました。もう一度お試しください...",
+    "INVALID": {
+      "CONFIRM.PASSWORD": "入力した 2 つのパスワードが一致しません"
+    }
+  },
   "USER": {
     "EMAIL": "電子メールアドレス",
     "USERNAME": "ユーザー名"
