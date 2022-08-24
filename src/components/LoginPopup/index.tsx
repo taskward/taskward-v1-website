@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { loginByGitHubCode } from "@requests";
+import { loginByGitHubCode, loginByUsername } from "@requests";
 import { useQueryString } from "@hooks";
 import { LOCAL_STORAGE_TOKEN, getDocumentTitle } from "@utils";
 import { LoginFormData, loginFormSchema } from "@interfaces";
@@ -72,9 +72,11 @@ export default function LoginPopup(): JSX.Element {
     }
   };
 
-  const onSubmit = (formData: LoginFormData) => {
-    console.log(formData);
-    console.log(watch("password"), watch("username"));
+  const handleUsernameLogin = async (formData: LoginFormData) => {
+    setLoginLoading(true);
+    const loginResult: boolean = await loginByUsername(formData);
+    setLoginLoading(false);
+    loginResult && navigate("/note", { replace: true });
   };
 
   if (loginLoading) {
@@ -83,7 +85,7 @@ export default function LoginPopup(): JSX.Element {
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(handleUsernameLogin)}
       className="mb-20 flex min-h-fit min-w-[360px] flex-col gap-2 rounded-lg bg-white p-6 text-gray-900 shadow-md shadow-gray-600 dark:bg-[#36393f] dark:text-gray-300"
     >
       <div className="flex items-center justify-center gap-2 text-center text-xl font-semibold">

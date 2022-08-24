@@ -10,7 +10,7 @@ async function loginByGitHubCode(
   try {
     const response = await axiosService({
       method: "POST",
-      url: `auth/github?code=${code}`,
+      url: `auth/github/login?code=${code}`,
       signal: abortSignal,
     });
     if (response?.status === 200 && response?.data) {
