@@ -107,8 +107,8 @@ export default function LoginPopup(): JSX.Element {
         rightIcon={
           showPassword ? (
             <Icon.VisibilityOff
-              width="20"
-              height="20"
+              width="18"
+              height="18"
               className="absolute inset-y-0 right-2 z-10 m-auto cursor-pointer fill-black dark:fill-white"
               onClick={() => {
                 setShowPassword(false);
@@ -116,8 +116,8 @@ export default function LoginPopup(): JSX.Element {
             />
           ) : (
             <Icon.Visibility
-              width="20"
-              height="20"
+              width="18"
+              height="18"
               className="absolute inset-y-0 right-2 z-10 m-auto cursor-pointer fill-black dark:fill-white"
               onClick={() => {
                 setShowPassword(true);
