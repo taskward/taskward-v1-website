@@ -142,7 +142,7 @@ export default function LoginPopup(): JSX.Element {
       <div className="mx-1 mt-1 border dark:border-gray-600" />
       <GitHubButton className="mt-1" />
       {state?.message && (
-        <span className="mt-2 select-none text-center text-sm font-bold text-red-600">
+        <span className="mt-2 select-none text-center text-sm font-medium text-red-600">
           {state.message}
         </span>
       )}
