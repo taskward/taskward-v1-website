@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import { Authentication, Layout, Loading } from "@components";
-import { Home, Note, Archive, Trash, NotFound, Login } from "@pages";
+import { Home, Note, Archive, Trash, NotFound, Login, Signup } from "@pages";
 
 export default function App(): JSX.Element {
   const { i18n } = useTranslation();
@@ -15,6 +15,7 @@ export default function App(): JSX.Element {
           <Routes>
             <Route index element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route
               path="/"
               element={

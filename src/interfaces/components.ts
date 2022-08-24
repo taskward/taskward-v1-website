@@ -35,4 +35,15 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 type ButtonProps = Partial<ButtonProperties> & CustomComponentProps;
 
-export type { CustomComponentProps, InputProps, ButtonProps };
+type GitHubButtonProperties = {
+  title: string;
+};
+
+type GitHubButtonProps = Partial<GitHubButtonProperties> & CustomComponentProps;
+
+export type {
+  CustomComponentProps,
+  InputProps,
+  ButtonProps,
+  GitHubButtonProps,
+};

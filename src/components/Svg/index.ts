@@ -20,6 +20,7 @@ import Loading from "./Loading";
 import ArrowDropDown from "./ArrowDropDown";
 import Visibility from "./Visibility";
 import VisibilityOff from "./VisibilityOff";
+import Key from "./Key";
 
 export const Icon = {
   Archive,
@@ -37,4 +38,5 @@ export const Icon = {
   ArrowDropDown,
   Visibility,
   VisibilityOff,
+  Key,
 };

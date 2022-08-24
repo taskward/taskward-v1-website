@@ -21,7 +21,7 @@ export default function UserAvatar(): JSX.Element | null {
     navigate("/", { replace: true });
   }
 
-  if (user) {
+  if (user && user.avatarUrl) {
     return (
       <div
         className="flex cursor-pointer items-center justify-center rounded-full p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-600"

@@ -1,6 +1,7 @@
 import { LoginPopup, Loading } from "@components";
-import loginBackground from "@assets/background/login.png";
 import { useImageLoaded } from "@hooks";
+
+import loginBackground from "@assets/background/login.png";
 
 export default function Login(): JSX.Element {
   const loginBackgroundLoaded = useImageLoaded(loginBackground);

@@ -2,10 +2,11 @@ export type {
   CustomComponentProps,
   InputProps,
   ButtonProps,
+  GitHubButtonProps,
 } from "./components";
 
-export type { LoginFormData } from "./forms";
-export { loginFormSchema } from "./forms";
+export type { LoginFormData, SignupFormData } from "./forms";
+export { loginFormSchema, signupFormSchema } from "./forms";
 
 export type { User } from "./user";
 

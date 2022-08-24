@@ -3,14 +3,14 @@
 ## Target
 
 - [ ] i18n Support
-  - [ ] Detect user default language
+  - [ ] Detect user default language (Pending)
   - [x] Remember language user chose
   - [x] Change language button
   - [x] Simplify Chinese
   - [x] English
   - [x] France
   - [x] Japanese
-  - [ ] Korean
+  - [ ] Korean (Pending)
 - [x] Dark Theme
   - [x] Detect user default theme
   - [x] Remember theme user chose
@@ -18,42 +18,43 @@
   - [x] PC
   - [ ] Mobile (Pending)
 - [ ] Authentication
-  - [ ] Username
-  - [ ] Email
-  - [ ] Google OAuth2 (Pending)
+  - [x] Username
+  - [ ] Email (Pending)
   - [x] GitHub OAuth2
+  - [ ] Google OAuth2 (Pending)
   - [ ] Wechat OAuth2 (Pending)
 - [ ] Note
   - [ ] List view
-  - [ ] Card view
-  - [ ] Pin
-  - [ ] Todo checkbox list
+  - [ ] Card view (🚀 In Development)
+  - [ ] Pin (Pending)
+  - [ ] Todo checkbox list (🚀 In Development)
     - [ ] Add to top
     - [ ] Finish to bottom
-  - [ ] External link
+  - [ ] External link (🚀 In Development)
     - [ ] Copy external link
     - [ ] Open external link
   - [ ] Copy content
   - [ ] Create time/Update time
-  - [ ] Custom background
-  - [ ] Mind me
+  - [ ] Custom background (Pending)
+  - [ ] Mind me (Pending)
 - [ ] Archive
-  - [ ] Pin
+  - [ ] Pin (Pending)
 - [ ] Trash
   - [ ] Keep 7 days
   - [ ] Force to delete
   - [ ] Delete time
 - [ ] Tags
-  - [ ] Display in sidebar
+  - [ ] Display in sidebar (Pending)
 - [ ] Search
-  - [ ] By category, like pined, tags, archived
+  - [ ] By category, like pined, tags, archived (Pending)
 - [ ] Profile
-  - [ ] Avatar
+  - [x] Avatar
+  - [ ] Change avatar
   - [ ] User Info
-  - [ ] Logout
+  - [ ] Logout (🚀 In Development)
 - [ ] Settings
   - [ ] Send feedback (Pending)
-  - [ ] Theme preference
-  - [ ] Language preference
-- [ ] Auto sync/refresh
+  - [ ] Theme preference (Pending)
+  - [ ] Language preference (Pending)
+- [ ] Auto sync/refresh (Pending)
 - [ ] More App (Pending)
