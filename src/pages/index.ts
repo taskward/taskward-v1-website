@@ -5,7 +5,10 @@ const Note = lazy(() => import("./Note"));
 const Archive = lazy(() => import("./Archive"));
 const Trash = lazy(() => import("./Trash"));
 const NotFound = lazy(() => import("./NotFound"));
-const Login = lazy(() => import("./Login"));
-const Signup = lazy(() => import("./Signup"));
+// const Login = lazy(() => import("./Login"));
+// const Signup = lazy(() => import("./Signup"));
+
+import Login from "./Login";
+import Signup from "./Signup";
 
 export { Home, Note, Archive, Trash, NotFound, Login, Signup };

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import clsx from "clsx";
+import styles from "./styles.module.css";
 
 import { loginByGitHubCode, signupByUsername } from "@requests";
 import { useQueryString } from "@hooks";
@@ -98,10 +100,22 @@ export default function SignupPopup(): JSX.Element {
   return (
     <form
       onSubmit={handleSubmit(handleUsernameSignup)}
-      className="mb-20 flex min-h-fit min-w-[360px] flex-col gap-2 rounded-lg bg-white p-6 text-gray-900 shadow-md shadow-gray-600 dark:bg-[#36393f] dark:text-gray-300 dark:shadow-gray-800"
+      className={clsx(
+        styles.formWrapper,
+        "mb-20 flex min-h-fit min-w-[360px] flex-col gap-2 rounded-lg bg-white p-6 text-gray-900 shadow-md shadow-gray-600 dark:bg-[#36393f] dark:text-gray-300 dark:shadow-gray-800"
+      )}
     >
       <div className="flex items-center justify-center gap-2 text-center text-xl font-semibold">
-        <img src={taskward} width="28" height="28" loading="eager" />
+        <img
+          src={taskward}
+          width="28"
+          height="28"
+          loading="eager"
+          className="cursor-pointer"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
         {t("request:SIGNUP.TITLE")}
       </div>
       <Input
@@ -184,20 +198,28 @@ export default function SignupPopup(): JSX.Element {
           ) : null
         }
       />
-      <Button
-        type="submit"
-        title={t("common:SIGNUP")}
-        block
-        className="mt-3"
-        icon={
-          <Icon.Key
-            width="16"
-            height="16"
-            className="flex-shrink-0 rotate-90 fill-white"
-          />
-        }
-      />
-      <div className="mx-1 mt-1 border dark:border-gray-600" />
+      <div>
+        <Button
+          type="submit"
+          title={t("common:SIGNUP")}
+          block
+          className="mt-3"
+          icon={
+            <Icon.Key
+              width="16"
+              height="16"
+              className="flex-shrink-0 rotate-90 fill-white"
+            />
+          }
+        />
+        <div className="my-2 flex items-center px-0.5 text-xs font-medium">
+          已有账号？
+          <Link to="/login" className="text-emerald-600">
+            {t("common:LOGIN")}
+          </Link>
+        </div>
+        <div className="mx-1 mt-1 border dark:border-gray-600" />
+      </div>
       <GitHubButton className="mt-1" title={t("request:SIGNUP.WITH.GITHUB")} />
       {state?.message && (
         <span className="mt-2 select-none text-center text-sm font-medium text-red-600">
