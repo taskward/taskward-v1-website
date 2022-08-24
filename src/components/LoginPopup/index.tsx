@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
 import { loginByGitHubCode } from "@requests";
 import { useQueryString } from "@hooks";
@@ -59,10 +58,9 @@ export default function LoginPopup(): JSX.Element {
     }
   };
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = (formData: LoginFormData) => {
+    console.log(formData);
     console.log(watch("password"), watch("username"));
-    console.log(errors);
   };
 
   if (loginLoading) {
@@ -90,22 +88,28 @@ export default function LoginPopup(): JSX.Element {
         className="mt-2"
         inputTitle={t("request:USER.USERNAME")}
         placeholder={t("request:LOGIN.PLACEHOLDER.USERNAME")}
+        maxLength={30}
         required
         register={{ ...register("username") }}
+        error={errors.username}
+        errorMessage={t("request:LOGIN.INVALID.USERNAME")}
       />
       <Input
         inputWrapperClassName="relative"
         inputTitle={t("common:PASSWORD")}
         type={showPassword ? undefined : "password"}
         placeholder={t("request:LOGIN.PLACEHOLDER.PASSWORD")}
+        maxLength={30}
         required
         register={{ ...register("password") }}
+        error={errors.password}
+        errorMessage={t("request:LOGIN.INVALID.PASSWORD")}
         rightIcon={
           showPassword ? (
             <Icon.VisibilityOff
               width="20"
               height="20"
-              className="absolute inset-y-0 right-2 m-auto cursor-pointer fill-black dark:fill-white"
+              className="absolute inset-y-0 right-2 z-10 m-auto cursor-pointer fill-black dark:fill-white"
               onClick={() => {
                 setShowPassword(false);
               }}
@@ -114,7 +118,7 @@ export default function LoginPopup(): JSX.Element {
             <Icon.Visibility
               width="20"
               height="20"
-              className="absolute inset-y-0 right-2 m-auto cursor-pointer fill-black dark:fill-white"
+              className="absolute inset-y-0 right-2 z-10 m-auto cursor-pointer fill-black dark:fill-white"
               onClick={() => {
                 setShowPassword(true);
               }}

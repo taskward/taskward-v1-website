@@ -7,8 +7,8 @@ interface LoginFormData {
 
 const loginFormSchema = yup
   .object({
-    username: yup.string().required(),
-    password: yup.number().positive().integer().required(),
+    username: yup.string().max(16).required(),
+    password: yup.string().max(16).required(),
   })
   .required();
 

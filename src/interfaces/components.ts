@@ -1,9 +1,9 @@
 import type {
   CSSProperties,
-  HTMLInputTypeAttribute,
-  HTMLAttributes,
   ButtonHTMLAttributes,
+  InputHTMLAttributes,
 } from "react";
+import type { FieldError } from "react-hook-form";
 
 interface ComponentCommonProps {
   className: string;
@@ -12,14 +12,15 @@ interface ComponentCommonProps {
 
 type CustomComponentProps = Partial<ComponentCommonProps>;
 
-interface InputProperties extends HTMLAttributes<HTMLInputElement> {
+interface InputProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputWrapperClassName: string;
   inputClassName: string;
-  type: HTMLInputTypeAttribute;
   inputTitle: string;
   required: boolean;
   register: object;
   rightIcon: JSX.Element;
+  error: FieldError;
+  errorMessage: string;
 }
 
 type InputProps = Partial<InputProperties> & CustomComponentProps;
