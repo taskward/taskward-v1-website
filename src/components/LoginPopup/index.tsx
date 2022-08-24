@@ -28,6 +28,7 @@ export default function LoginPopup(): JSX.Element {
 
   const {
     register,
+    getValues,
     handleSubmit,
     watch,
     formState: { errors },
@@ -48,6 +49,19 @@ export default function LoginPopup(): JSX.Element {
   useEffect(() => {
     document.title = getDocumentTitle(t("request:LOGIN.TITLE"));
   }, [i18n.language]);
+
+  useEffect(() => {
+    const subscription = watch((value) => {
+      if (value.password?.length === 0) {
+        setShowPassword(false);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  const changeShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleGitHubLogin = async (abortSignal: AbortSignal) => {
     if (code) {
@@ -105,25 +119,28 @@ export default function LoginPopup(): JSX.Element {
         error={errors.password}
         errorMessage={t("request:LOGIN.INVALID.PASSWORD")}
         rightIcon={
-          showPassword ? (
-            <Icon.VisibilityOff
-              width="18"
-              height="18"
-              className="absolute inset-y-0 right-2 z-10 m-auto cursor-pointer fill-black dark:fill-white"
+          getValues("password")?.length > 0 ? (
+            <div
+              className="absolute inset-y-0 right-1.5 z-10 m-auto flex h-fit w-fit cursor-pointer items-center justify-center rounded-full p-1.5 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
               onClick={() => {
-                setShowPassword(false);
+                changeShowPassword();
               }}
-            />
-          ) : (
-            <Icon.Visibility
-              width="18"
-              height="18"
-              className="absolute inset-y-0 right-2 z-10 m-auto cursor-pointer fill-black dark:fill-white"
-              onClick={() => {
-                setShowPassword(true);
-              }}
-            />
-          )
+            >
+              {showPassword ? (
+                <Icon.VisibilityOff
+                  width="18"
+                  height="18"
+                  className="fill-black dark:fill-white"
+                />
+              ) : (
+                <Icon.Visibility
+                  width="18"
+                  height="18"
+                  className="fill-black dark:fill-white"
+                />
+              )}
+            </div>
+          ) : null
         }
       />
       <Button

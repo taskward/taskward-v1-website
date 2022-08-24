@@ -9,7 +9,7 @@ export default function ThemeModeButton() {
 
   const darkMode = useAppSelector<ThemeMode>((state) => state.style.themeMode);
 
-  function changeThemeMode() {
+  const changeThemeMode = () => {
     if (darkMode === "dark") {
       styleDispatch(styleAction.updateUserInfo("light"));
       document.documentElement.classList.remove("dark");
@@ -19,7 +19,7 @@ export default function ThemeModeButton() {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     }
-  }
+  };
 
   return (
     <div

@@ -2,6 +2,7 @@ import type {
   CSSProperties,
   ButtonHTMLAttributes,
   InputHTMLAttributes,
+  ReactNode,
 } from "react";
 import type { FieldError } from "react-hook-form";
 
@@ -18,7 +19,7 @@ interface InputProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputTitle: string;
   required: boolean;
   register: object;
-  rightIcon: JSX.Element;
+  rightIcon: ReactNode;
   error: FieldError;
   errorMessage: string;
 }
