@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
-import { shallowEqual } from "react-redux";
 import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
-import { useImageLoaded, useAppSelector } from "@hooks";
+import { useImageLoaded } from "@hooks";
 import { APPLICATION_NAME } from "@constants";
 
 import { Icon, Loading, Button } from "@components";
@@ -14,30 +13,25 @@ import GitHubIcon from "./GitHubIcon";
 
 import taskward from "@assets/img/taskward.png";
 import homeBackground from "@assets/background/home.jpg";
-
-type HomeState = {
-  isBackHome: boolean;
-};
+import { validateTokenExpireTime } from "@utils";
 
 export default function Home(): JSX.Element {
   const { t } = useTranslation(["common", "app"]);
   const navigate = useNavigate();
   const backgroundImageLoaded = useImageLoaded(homeBackground);
 
-  const { isBackHome } = useLocation().state
-    ? (useLocation().state as HomeState)
-    : { isBackHome: false };
-
-  const user = useAppSelector((state) => state.user.user, shallowEqual);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
   useEffect(() => {
-    if (user && !isBackHome) {
-      navigate("/note", { replace: true });
+    const validateTokenResult: boolean = validateTokenExpireTime();
+    if (validateTokenResult) {
+      //navigate("/note");
+      setIsLogin(true);
     }
-  }, []);
+  }, [isLogin]);
 
   function handleClickStartBtn() {
-    if (user) {
+    if (validateTokenExpireTime()) {
       navigate("/note");
     } else {
       navigate("/login");
@@ -80,7 +74,7 @@ export default function Home(): JSX.Element {
             {t("app:TASKWARD.APP.DESCRIPTION.SECOND.LINE")}
           </span>
           <div className="mt-2 flex items-center justify-center gap-4">
-            {!user && (
+            {!isLogin && (
               <Button
                 title={t("common:LOGIN")}
                 onClick={() => {
