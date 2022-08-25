@@ -32,9 +32,9 @@ export default function SignupPopup(): JSX.Element {
 
   const {
     register,
-    getValues,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<SignupFormData>({ resolver: yupResolver(signupFormSchema) });
 
@@ -54,18 +54,6 @@ export default function SignupPopup(): JSX.Element {
     document.title = getDocumentTitle(t("request:SIGNUP.TITLE"));
   }, [i18n.language]);
 
-  useEffect(() => {
-    const subscription = watch((value) => {
-      if (value.password?.length === 0) {
-        setShowPassword(false);
-      }
-      if (value.confirmPassword?.length === 0) {
-        setShowConfirmPassword(false);
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [watch]);
-
   const changeShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -79,6 +67,7 @@ export default function SignupPopup(): JSX.Element {
       setSignupLoading(true);
       const signupResult: boolean = await loginByGitHubCode(code, abortSignal);
       setSignupLoading(false);
+
       if (signupResult) {
         navigate("/note", { replace: true });
       }
@@ -89,6 +78,8 @@ export default function SignupPopup(): JSX.Element {
     setSignupLoading(true);
     const signupResult: boolean = await signupByUsername(formData);
     setSignupLoading(false);
+    setValue("password", "");
+    setValue("confirmPassword", "");
     if (signupResult) {
       navigate("/note", { replace: true });
     }
@@ -140,7 +131,7 @@ export default function SignupPopup(): JSX.Element {
         error={errors.password}
         errorMessage={t("request:LOGIN.INVALID.PASSWORD")}
         rightIcon={
-          getValues("password")?.length > 0 ? (
+          watch("password")?.length > 0 ? (
             <div
               className="absolute inset-y-0 right-1.5 z-10 m-auto flex h-fit w-fit cursor-pointer items-center justify-center rounded-full p-1.5 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
               onClick={() => {
@@ -175,7 +166,7 @@ export default function SignupPopup(): JSX.Element {
         error={errors.confirmPassword}
         errorMessage={t("request:SIGNUP.INVALID.CONFIRM.PASSWORD")}
         rightIcon={
-          getValues("confirmPassword")?.length > 0 ? (
+          watch("confirmPassword")?.length > 0 ? (
             <div
               className="absolute inset-y-0 right-1.5 z-10 m-auto flex h-fit w-fit cursor-pointer items-center justify-center rounded-full p-1.5 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
               onClick={() => {

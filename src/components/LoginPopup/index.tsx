@@ -30,9 +30,10 @@ export default function LoginPopup(): JSX.Element {
 
   const {
     register,
-    getValues,
+
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<LoginFormData>({ resolver: yupResolver(loginFormSchema) });
 
@@ -51,15 +52,6 @@ export default function LoginPopup(): JSX.Element {
   useEffect(() => {
     document.title = getDocumentTitle(t("request:LOGIN.TITLE"));
   }, [i18n.language]);
-
-  useEffect(() => {
-    const subscription = watch((value) => {
-      if (value.password?.length === 0) {
-        setShowPassword(false);
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [watch]);
 
   const changeShowPassword = () => {
     setShowPassword(!showPassword);
@@ -80,6 +72,7 @@ export default function LoginPopup(): JSX.Element {
     setLoginLoading(true);
     const loginResult: boolean = await loginByUsername(formData);
     setLoginLoading(false);
+    setValue("password", "");
     if (loginResult) {
       navigate("/note", { replace: true });
     }
@@ -139,7 +132,7 @@ export default function LoginPopup(): JSX.Element {
         error={errors.password}
         errorMessage={t("request:LOGIN.INVALID.PASSWORD")}
         rightIcon={
-          getValues("password")?.length > 0 ? (
+          watch("password")?.length > 0 ? (
             <div
               className="absolute inset-y-0 right-1.5 z-10 m-auto flex h-fit w-fit cursor-pointer items-center justify-center rounded-full p-1.5 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
               onClick={() => {
