@@ -16,7 +16,8 @@
     "INVALID": {
       "USERNAME": "用户名格式错误",
       "PASSWORD": "密码格式错误"
-    }
+    },
+    "NEED.NEW.ACCOUNT": "需要新的账号？"
   },
   "SIGNUP": {
     "TITLE": "创建 Taskward 账号",
@@ -28,7 +29,8 @@
     "FAILED": "注册失败，请重试...",
     "INVALID": {
       "CONFIRM.PASSWORD": "两次输入的密码不一致"
-    }
+    },
+    "ALREADY.HAVE.ACCOUNT": "已经拥有账号？"
   },
   "USER": {
     "EMAIL": "邮箱",

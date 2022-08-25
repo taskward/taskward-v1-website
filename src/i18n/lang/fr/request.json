@@ -16,7 +16,8 @@
     "INVALID": {
       "USERNAME": "Erreur de format du nom d'utilisateur",
       "PASSWORD": "Mauvais format de mot de passe"
-    }
+    },
+    "NEED.NEW.ACCOUNT": "Besoin d'un nouveau compte ?"
   },
   "SIGNUP": {
     "TITLE": "Créer un compte Taskward",
@@ -28,7 +29,8 @@
     "FAILED": "L'inscription a échoué, veuillez réessayer...",
     "INVALID": {
       "CONFIRM.PASSWORD": "Les deux mots de passe saisis ne correspondent pas"
-    }
+    },
+    "ALREADY.HAVE.ACCOUNT": "Vous avez déjà un compte ?"
   },
   "USER": {
     "EMAIL": "Adresse Email",

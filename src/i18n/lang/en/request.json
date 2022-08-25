@@ -16,7 +16,8 @@
     "INVALID": {
       "USERNAME": "Username format error",
       "PASSWORD": "Password format error"
-    }
+    },
+    "NEED.NEW.ACCOUNT": "Need an account?"
   },
   "SIGNUP": {
     "TITLE": "Create a Taskward account",
@@ -28,7 +29,8 @@
     "FAILED": "Sign up failed, please try again...",
     "INVALID": {
       "CONFIRM.PASSWORD": "The two entered passwords do not match"
-    }
+    },
+    "ALREADY.HAVE.ACCOUNT": "Already have an account?"
   },
   "USER": {
     "EMAIL": "Email Address",

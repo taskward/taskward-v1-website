@@ -103,7 +103,7 @@ export default function SignupPopup(): JSX.Element {
       onSubmit={handleSubmit(handleUsernameSignup)}
       className={clsx(
         styles.formWrapper,
-        "mb-20 flex min-h-fit min-w-[360px] flex-col gap-2 rounded-lg bg-white p-6 text-gray-900 shadow-md shadow-gray-600 dark:bg-[#36393f] dark:text-gray-300 dark:shadow-gray-800"
+        "mb-10 flex min-h-fit min-w-[360px] flex-col gap-2 rounded-lg bg-white p-6 text-gray-900 shadow-md shadow-gray-600 dark:bg-[#36393f] dark:text-gray-300 dark:shadow-gray-800"
       )}
     >
       <div className="flex items-center justify-center gap-2 text-center text-xl font-semibold">
@@ -213,9 +213,12 @@ export default function SignupPopup(): JSX.Element {
             />
           }
         />
-        <div className="my-2 flex items-center px-0.5 text-xs font-medium">
-          已有账号？
-          <Link to="/login" className="text-emerald-600">
+        <div className="my-2 flex items-center gap-1 px-0.5 text-xs font-medium">
+          {t("request:SIGNUP.ALREADY.HAVE.ACCOUNT")}
+          <Link
+            to="/login"
+            className="font-semibold text-emerald-600 underline-offset-2 hover:underline"
+          >
             {t("common:LOGIN")}
           </Link>
         </div>

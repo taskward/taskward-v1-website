@@ -16,7 +16,8 @@
     "INVALID": {
       "USERNAME": "ユーザー名の形式エラー",
       "PASSWORD": "間違ったパスワード形式"
-    }
+    },
+    "NEED.NEW.ACCOUNT": "新しいアカウントが必要ですか？"
   },
   "SIGNUP": {
     "TITLE": "タスクワード アカウントを作成する",
@@ -28,7 +29,8 @@
     "FAILED": "登録に失敗しました。もう一度お試しください...",
     "INVALID": {
       "CONFIRM.PASSWORD": "入力した 2 つのパスワードが一致しません"
-    }
+    },
+    "ALREADY.HAVE.ACCOUNT": "すでにアカウントをお持ちですか？"
   },
   "USER": {
     "EMAIL": "電子メールアドレス",
