@@ -6,7 +6,7 @@ import { LOCAL_STORAGE_TOKEN } from "@utils";
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
-  timeout: 15000,
+  timeout: 1000,
 });
 
 if (localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
@@ -31,7 +31,7 @@ axiosService.interceptors.response.use(
     } else if (error.response?.status === 404) {
       console.error("404: " + error.message);
     } else {
-      console.error(error.message);
+      console.error(error.response?.status + ": " + error.message);
     }
     return Promise.reject(error);
   }

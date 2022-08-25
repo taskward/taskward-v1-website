@@ -22,7 +22,6 @@ async function loginByGitHubCode(
     }
     return false;
   } catch (error) {
-    console.error(error);
     history.replaceState(
       { message: i18n.t("request:LOGIN.FAILED") },
       "",

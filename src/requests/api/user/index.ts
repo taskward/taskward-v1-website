@@ -12,7 +12,6 @@ async function getUserInfo(): Promise<any> {
     }
     return null;
   } catch (error) {
-    console.error(error);
     return null;
   }
 }

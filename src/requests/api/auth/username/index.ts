@@ -50,7 +50,6 @@ async function signupByUsername(signupFormData: SignupFormData) {
     }
     return false;
   } catch (error) {
-    console.error(error);
     history.replaceState(
       { message: i18n.t("request:SIGNUP.FAILED") },
       "",
