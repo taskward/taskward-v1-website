@@ -1,6 +1,6 @@
 import { store, userAction } from "@store";
 import { axiosService } from "@requests";
-import { LOCAL_STORAGE_TOKEN } from "@utils";
+import { LOCAL_STORAGE_TOKEN } from "@constants";
 import { i18n } from "@i18n";
 import { LoginFormData, SignupFormData } from "@interfaces";
 
@@ -22,7 +22,6 @@ async function loginByUsername(loginFormData: LoginFormData) {
     }
     return false;
   } catch (error) {
-    console.error(error);
     history.replaceState(
       { message: i18n.t("request:LOGIN.FAILED") },
       "",

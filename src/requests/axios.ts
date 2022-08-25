@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { i18n } from "@i18n";
-import { LOCAL_STORAGE_TOKEN } from "@utils";
+import { LOCAL_STORAGE_TOKEN } from "@constants";
 
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
@@ -28,10 +28,12 @@ axiosService.interceptors.response.use(
         "/login"
       );
       console.error("401: " + error.message);
+    } else if (error.response?.status === 400) {
+      console.error("400: " + error.message);
     } else if (error.response?.status === 404) {
       console.error("404: " + error.message);
     } else {
-      console.error(error.response?.status + ": " + error.message);
+      console.error(error.message);
     }
     return Promise.reject(error);
   }

@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+
 import { getDocumentTitle } from "@utils";
 import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
-import { APPLICATION_NAME } from "@utils";
+import { APPLICATION_NAME } from "@constants";
+
 import taskward from "@assets/img/taskward.png";
 
 export default function NotFound(): JSX.Element {

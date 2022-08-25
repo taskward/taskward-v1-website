@@ -4,7 +4,7 @@ import { shallowEqual } from "react-redux";
 import { userAction } from "@store";
 import { User } from "@interfaces";
 import { useAppSelector, useAppDispatch } from "@hooks";
-import { LOCAL_STORAGE_TOKEN } from "@utils";
+import { LOCAL_STORAGE_TOKEN } from "@constants";
 
 export default function UserAvatar(): JSX.Element | null {
   const navigate = useNavigate();

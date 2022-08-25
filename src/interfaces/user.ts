@@ -16,5 +16,14 @@ interface User {
   role?: Role;
 }
 
-export type { User };
+type UserTokenModel = {
+  userId: number;
+  username: string;
+  role: Role;
+  exp: number;
+  iat: number;
+};
+
+export type { User, UserTokenModel };
+
 export { Role };

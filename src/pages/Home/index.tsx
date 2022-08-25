@@ -7,7 +7,7 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 
 import { useImageLoaded, useAppSelector } from "@hooks";
-import { APPLICATION_NAME } from "@utils";
+import { APPLICATION_NAME } from "@constants";
 
 import { Icon, Loading, Button } from "@components";
 import GitHubIcon from "./GitHubIcon";

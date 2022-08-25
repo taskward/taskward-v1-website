@@ -1,4 +1,4 @@
-import { APPLICATION_NAME } from "@utils";
+import { APPLICATION_NAME } from "@constants";
 
 function getDocumentTitle(prefix: string): string {
   if (!prefix) {

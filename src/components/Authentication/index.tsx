@@ -4,7 +4,8 @@ import { shallowEqual } from "react-redux";
 
 import { useAppSelector, useAppDispatch } from "@hooks";
 import { getUserInfo } from "@requests";
-import { LOCAL_STORAGE_TOKEN } from "@utils";
+import { validateTokenExpireTime } from "@utils";
+import { LOCAL_STORAGE_TOKEN } from "@constants";
 import { userAction } from "@store";
 
 export default function Authentication({
@@ -18,7 +19,8 @@ export default function Authentication({
   const user = useAppSelector((state) => state.user.user, shallowEqual);
 
   useEffect(() => {
-    if (!localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
+    const validateTokenResult: boolean = validateTokenExpireTime();
+    if (!validateTokenResult) {
       clearLoginStatus();
     }
     if (!user) {
@@ -30,8 +32,6 @@ export default function Authentication({
     const userInfo = await getUserInfo();
     if (userInfo) {
       userDispatch(userAction.updateUserInfo(userInfo));
-    } else {
-      //clearLoginStatus();
     }
   };
 

@@ -8,6 +8,6 @@ export type {
 export type { LoginFormData, SignupFormData } from "./forms";
 export { loginFormSchema, signupFormSchema } from "./forms";
 
-export type { User } from "./user";
+export type { User, UserTokenModel } from "./user";
 
 export { Role } from "./user";

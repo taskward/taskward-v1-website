@@ -1,5 +1,6 @@
+import { TASKWARD_GITHUB_REPO_URL } from "@constants";
+
 import github from "@assets/icon/github.png";
-import { TASKWARD_GITHUB_REPO_URL } from "@utils";
 
 export default function GitHubIcon(): JSX.Element {
   return (

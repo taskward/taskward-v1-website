@@ -8,7 +8,8 @@ import styles from "./styles.module.css";
 
 import { loginByGitHubCode, signupByUsername } from "@requests";
 import { useQueryString } from "@hooks";
-import { LOCAL_STORAGE_TOKEN, getDocumentTitle } from "@utils";
+import { getDocumentTitle } from "@utils";
+import { LOCAL_STORAGE_TOKEN } from "@constants";
 import { SignupFormData, signupFormSchema } from "@interfaces";
 
 import { Loading, Button, Icon, Input, GitHubButton } from "..";

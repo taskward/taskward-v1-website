@@ -1,6 +1,6 @@
 import { store, userAction } from "@store";
 import { axiosService } from "@requests";
-import { LOCAL_STORAGE_TOKEN } from "@utils";
+import { LOCAL_STORAGE_TOKEN } from "@constants";
 import { i18n } from "@i18n";
 
 async function loginByGitHubCode(
@@ -14,10 +14,12 @@ async function loginByGitHubCode(
       signal: abortSignal,
     });
     if (response?.status === 200 && response?.data) {
-      response.data.accessToken &&
+      if (response.data.accessToken) {
         localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.accessToken);
-      response.data.user &&
+      }
+      if (response.data.user) {
         store.dispatch(userAction.updateUserInfo(response.data.user));
+      }
       return true;
     }
     return false;
