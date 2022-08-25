@@ -31,7 +31,7 @@ export default function Sidebar(): JSX.Element {
   return (
     <div
       className={clsx(
-        "relative flex select-none flex-col gap-3 overflow-hidden border-r p-3 transition-all dark:border-black",
+        "relative flex shrink-0 select-none flex-col gap-3 overflow-hidden border-r p-3 transition-all dark:border-black",
         styles.sidebarWrapper,
         sidebarMode === "collapse" && !shouldExpand
           ? styles.collapse

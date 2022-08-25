@@ -9,4 +9,5 @@ export { default as GitHubButton } from "./GitHubButton";
 export { default as Loading } from "./Loading";
 export { default as Button } from "./Button";
 export { default as Input } from "./Input";
+export { default as NoteCard } from "./NoteCard";
 export { Icon } from "./Svg";
