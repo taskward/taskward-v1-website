@@ -84,7 +84,7 @@ export default function Note(): JSX.Element {
             return (
               <div
                 key={index}
-                className="mx-auto mb-4 flex h-fit w-[900px] flex-col gap-1 rounded-md bg-slate-100 p-4 dark:bg-slate-800"
+                className="mx-auto mb-4 flex h-fit w-[900px] flex-col gap-1 rounded-md  border border-gray-200 bg-slate-100 p-4 drop-shadow-sm dark:bg-slate-800"
               >
                 <div className="block truncate text-lg font-medium">
                   {note.name}
