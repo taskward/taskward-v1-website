@@ -56,7 +56,7 @@ export default function Note(): JSX.Element {
     },
     {
       name: "TODO",
-      description: `1. What is state hoisting\n2. What are falsy values in js\n3. Synchronous vs Asynchronous code\n4. What is a purpose of a Function as a child\n5. Presentational component vs container component\n6. Why do we need keys for React lists\n7. How to recognize closures in js\n8. Difference between using fetch() and axios\n9. Purpose of fragments\n10. How to create a custom hook\n11. 闭包\n12. 继承\n13. 作用域和原型链\n14. this指向\n15. DOM操作\n16. 设计模式：工厂、单例、装饰器、发布订阅者`,
+      description: `1. What is state hoisting\n2. What are falsy values in js\n3. Synchronous vs Asynchronous code\n4. What is a purpose of a Function as a child\n5. Presentational component vs container component\n6. Why do we need keys for React lists\n7. How to recognize closures in js\n8. Difference between using fetch() and axios\n9. Purpose of fragments\n10. How to create a custom hook\n`,
     },
   ]);
 
