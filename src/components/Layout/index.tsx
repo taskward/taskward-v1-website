@@ -8,11 +8,11 @@ export default function Layout(): JSX.Element {
   return (
     <>
       <Header />
-      <div className={clsx("flex flex-row", styles.mainContentWrapper)}>
+      <div className={clsx("flex w-full flex-row", styles.mainContentWrapper)}>
         <Sidebar />
         <div
           className={clsx(
-            "flex-auto transition-[background-color]",
+            "w-full overflow-hidden transition-[background-color]",
             styles.routerContentWrapper
           )}
         >

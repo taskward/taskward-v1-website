@@ -1,3 +1,7 @@
 .scrollbar {
   overflow: overlay;
 }
+
+.contentWrapper {
+  @apply w-full sm:w-[396px] md:w-[475px] lg:w-[633px];
+}

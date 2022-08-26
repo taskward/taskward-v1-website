@@ -71,32 +71,40 @@ export default function Note(): JSX.Element {
   }, [i18n.language]);
 
   return (
-    <div className="flex h-full flex-col">
-      <div className="mx-auto my-4 h-[60px] w-[800px] shrink-0 rounded-lg bg-white drop-shadow-lg"></div>
-      <div
-        className={clsx(
-          "flex w-full flex-wrap overflow-y-scroll p-4",
-          styles.scrollbar
-        )}
-      >
-        <div className="mx-auto mb-80 w-[1000px]">
-          {noteList.map((note, index) => {
-            return (
-              <div
-                key={index}
-                className="mx-auto mb-4 flex h-fit w-[900px] flex-col gap-1 rounded-md  border border-gray-200 bg-slate-100 p-4 drop-shadow-sm dark:bg-slate-800"
-              >
-                <div className="block truncate text-lg font-medium">
-                  {note.name}
-                </div>
-                <p
-                  className="block whitespace-pre-line text-sm font-normal"
-                  dangerouslySetInnerHTML={{ __html: note.description }}
-                />
+    <div
+      className={clsx(
+        "flex h-full w-auto flex-col overflow-y-scroll",
+        styles.scrollbar
+      )}
+    >
+      <div className="mx-auto w-full p-4">
+        <div
+          className={clsx(
+            "mx-auto h-[60px] shrink-0 rounded-lg border bg-white drop-shadow-lg",
+            styles.contentWrapper
+          )}
+        ></div>
+      </div>
+      <div className="mx-auto mb-80 w-full p-4">
+        {noteList.map((note, index) => {
+          return (
+            <div
+              key={index}
+              className={clsx(
+                "mx-auto mb-4 flex h-fit flex-col gap-1 rounded-md border border-gray-200 bg-slate-100 p-4 drop-shadow-sm dark:bg-slate-800",
+                styles.contentWrapper
+              )}
+            >
+              <div className="block truncate text-lg font-medium">
+                {note.name}
               </div>
-            );
-          })}
-        </div>
+              <p
+                className="block whitespace-pre-wrap break-words text-sm font-normal"
+                dangerouslySetInnerHTML={{ __html: note.description }}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
