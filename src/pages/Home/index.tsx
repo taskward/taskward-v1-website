@@ -55,7 +55,7 @@ export default function Home(): JSX.Element {
       style={{ backgroundImage: `url(${homeBackground})` }}
     >
       <div className="absolute inset-0 m-auto h-fit w-fit">
-        <div className="mb-36 flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <div className="flex flex-col items-center gap-2">
             <span className="mb-2 animate-[pulse_2s_linear_infinite] select-none bg-gradient-to-r from-emerald-600 to-violet-300 bg-clip-text text-7xl text-transparent">
               {APPLICATION_NAME}
