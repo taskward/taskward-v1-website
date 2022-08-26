@@ -6,7 +6,7 @@ import { LOCAL_STORAGE_TOKEN } from "@constants";
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
-  timeout: 1000,
+  timeout: 10000,
 });
 
 if (localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
