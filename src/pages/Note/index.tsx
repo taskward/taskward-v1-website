@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-import { NoteCard } from "@components";
+import { NoteCard, NoteCreator } from "@components";
 import { getDocumentTitle } from "@utils";
 import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
@@ -77,13 +77,8 @@ export default function Note(): JSX.Element {
         styles.scrollbar
       )}
     >
-      <div className="mx-auto w-full p-4">
-        <div
-          className={clsx(
-            "mx-auto h-[60px] shrink-0 rounded-lg border bg-white drop-shadow-lg",
-            styles.contentWrapper
-          )}
-        ></div>
+      <div className="mx-auto mt-4 w-full p-4">
+        <NoteCreator className={styles.contentWrapper} />
       </div>
       <div className="mx-auto mb-80 w-full p-4">
         {noteList.map((note, index) => {

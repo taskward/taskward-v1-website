@@ -36,12 +36,7 @@ export default function Input({
         <input
           type={type}
           className={clsx(
-            "block",
-            "w-full p-2.5",
-            "placeholder-slate-400 dark:placeholder-gray-400",
-            "bg-gray-50 dark:bg-gray-700",
-            "rounded-md border focus:outline-none focus:ring-1",
-            "text-sm text-gray-900 dark:text-gray-300",
+            "block w-full rounded-md border bg-gray-50 p-2.5 text-sm text-gray-900 placeholder-slate-400 focus:outline-none focus:ring-1 dark:bg-gray-700 dark:text-gray-300 dark:placeholder-gray-400",
             error
               ? "border-red-500 focus:border-red-500 focus:ring-red-500 dark:border-red-500"
               : "border-gray-200 focus:border-sky-500 focus:ring-sky-500 dark:border-gray-600",
