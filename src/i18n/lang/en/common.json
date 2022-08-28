@@ -3,5 +3,6 @@
   "START": "Start",
   "LOGIN": "Login",
   "SIGNUP": "Sign Up",
-  "PASSWORD": "Password"
+  "PASSWORD": "Password",
+  "TITLE": "Title"
 }

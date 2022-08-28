@@ -3,5 +3,6 @@
   "START": "开始",
   "LOGIN": "登录",
   "SIGNUP": "注册",
-  "PASSWORD": "密码"
+  "PASSWORD": "密码",
+  "TITLE": "标题"
 }

@@ -3,5 +3,6 @@
   "START": "début",
   "LOGIN": "Connexion",
   "SIGNUP": "S'inscrire",
-  "PASSWORD": "Le mot de passe"
+  "PASSWORD": "Le mot de passe",
+  "TITLE": "Titre"
 }
