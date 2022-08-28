@@ -12,7 +12,8 @@
     "arrowParens",
     "stylelint",
     "hookform",
-    "signup"
+    "signup",
+    "tanstack"
   ],
   "flagWords": []
 }
