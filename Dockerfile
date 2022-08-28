@@ -1,7 +1,9 @@
-FROM node
-RUN mkdir -p /taskward-docker
-WORKDIR /taskward-docker
+FROM node:16.17.0-alpine3.15
+RUN mkdir -p /taskward
+WORKDIR /taskward
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install
 COPY . .
-RUN yarn
-CMD yarn dev
 EXPOSE 5173
+CMD ["yarn","dev","--host","0.0.0.0"]
