@@ -8,7 +8,12 @@ export default function Layout(): JSX.Element {
   return (
     <>
       <Header />
-      <div className={clsx("flex w-full flex-row", styles.mainContentWrapper)}>
+      <div
+        className={clsx(
+          "flex w-full flex-row overflow-hidden",
+          styles.mainContentWrapper
+        )}
+      >
         <Sidebar />
         <div
           className={clsx(

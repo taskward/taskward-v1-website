@@ -34,6 +34,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@hookform/devtools": "^4.2.2",
     "@types/node": "^18.7.11",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
