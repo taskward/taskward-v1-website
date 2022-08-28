@@ -1,24 +1,57 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-import { CustomComponentProps } from "@interfaces";
+import {
+  CustomComponentProps,
+  type NoteFormData,
+  NoteFromSchema,
+} from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
+import { useCreateNoteRequest } from "@requests";
 
 export default function NoteCreator({
   style,
   className,
 }: CustomComponentProps): JSX.Element {
-  const [editable, setEditable] = useState<boolean>(false);
+  const { t } = useTranslation(["common", "note"]);
+
+  const {
+    mutate: createNote,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useCreateNoteRequest();
 
   const outsideClickRef = useDetectOutsideClick(
     () => {
-      setEditable(false);
+      onCloseEditable();
     },
     () => {
       setEditable(true);
     }
   );
+
+  const [editable, setEditable] = useState<boolean>(false);
+
+  const { register, handleSubmit, setValue, reset } = useForm<NoteFormData>({
+    resolver: yupResolver(NoteFromSchema),
+  });
+
+  const handleCreateNote = (formData: NoteFormData) => {
+    console.log(formData);
+    createNote(formData);
+  };
+
+  const onCloseEditable = () => {
+    setEditable(false);
+    handleSubmit(handleCreateNote)();
+    reset();
+  };
 
   return (
     <div
@@ -29,29 +62,41 @@ export default function NoteCreator({
       style={style}
       ref={outsideClickRef}
     >
-      <div className="flex flex-col gap-2 transition-[height] duration-1000">
+      <form
+        className="flex flex-col gap-4"
+        onSubmit={handleSubmit(handleCreateNote)}
+      >
         {editable ? (
           <>
             <input
-              className="w-full font-medium placeholder:text-black focus:outline-none dark:placeholder-gray-400"
-              placeholder="标题"
+              className="w-full transform font-medium placeholder:text-gray-500 focus:outline-none dark:placeholder-gray-400"
+              placeholder={t("common:TITLE")}
+              required
+              autoComplete="off"
+              {...register("name")}
             />
             <div
               className={clsx(
-                "min-h-[1.25rem] w-full select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-sm font-medium outline-none placeholder:text-black empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
+                "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-sm font-medium outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
                 styles.textarea
               )}
-              placeholder="添加记事..."
+              placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}
               contentEditable
+              onInput={(e) => {
+                setValue("description", e.currentTarget.textContent as string, {
+                  shouldValidate: true,
+                });
+              }}
             />
+            <button type="submit">提交</button>
           </>
         ) : (
           <input
-            className="w-full font-medium placeholder:text-black focus:outline-none dark:placeholder-gray-400"
-            placeholder="添加记事..."
+            className="w-full font-medium placeholder:text-gray-500 focus:outline-none dark:placeholder-gray-400"
+            placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}
           />
         )}
-      </div>
+      </form>
     </div>
   );
 }

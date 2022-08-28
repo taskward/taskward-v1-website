@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function useImageLoaded(src: any): boolean {
+const useImageLoaded = (src: any): boolean => {
   const [Loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
@@ -11,4 +11,6 @@ export default function useImageLoaded(src: any): boolean {
   }, [src]);
 
   return Loaded;
-}
+};
+
+export default useImageLoaded;

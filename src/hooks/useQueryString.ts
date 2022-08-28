@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-export default function useQueryString(para: string): string | null {
+const useQueryString = (para: string): string | null => {
   const location = useLocation();
   const reg = new RegExp("(^|&)" + para + "=([^&]*)(&|$)", "i");
   const matchArray = location.search.substring(1).match(reg);
@@ -8,4 +8,6 @@ export default function useQueryString(para: string): string | null {
     return decodeURIComponent(matchArray[2]);
   }
   return null;
-}
+};
+
+export default useQueryString;

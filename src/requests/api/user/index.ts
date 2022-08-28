@@ -7,7 +7,7 @@ async function getUserInfo(): Promise<any> {
       method: "GET",
       url: "user",
     });
-    if (response?.status === 200 && response?.data) {
+    if (response.status === 200 && response.data) {
       return response.data;
     }
     return null;

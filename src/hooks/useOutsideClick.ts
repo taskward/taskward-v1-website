@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 
-export default function useOutsideClick(
+const useOutsideClick = (
   outsideClickCallback?: () => void,
   insideClickCallback?: () => void
-) {
+) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef<any>();
 
@@ -26,4 +26,6 @@ export default function useOutsideClick(
   }, [ref]);
 
   return ref;
-}
+};
+
+export default useOutsideClick;

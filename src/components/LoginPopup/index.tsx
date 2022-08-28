@@ -30,7 +30,6 @@ export default function LoginPopup(): JSX.Element {
 
   const {
     register,
-
     handleSubmit,
     watch,
     setValue,

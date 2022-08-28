@@ -44,6 +44,7 @@ export default function Input({
           )}
           placeholder={placeholder}
           autoComplete={autoComplete}
+          required={required}
           maxLength={maxLength}
           defaultValue={defaultValue}
           {...register}

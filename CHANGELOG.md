@@ -16,7 +16,7 @@
   - [x] Remember theme user chose
 - [ ] Responsive Design
   - [x] PC
-  - [ ] Mobile (Pending)
+  - [ ] Mobile Enhanced (Pending)
 - [ ] Authentication
   - [x] Username
   - [ ] Email (Pending)
@@ -24,7 +24,7 @@
   - [ ] Google OAuth2 (Pending)
   - [ ] Wechat OAuth2 (Pending)
 - [ ] Note
-  - [ ] List view
+  - [x] List view
   - [ ] Card view (🚀 In Development)
   - [ ] Pin (Pending)
   - [ ] Todo checkbox list (🚀 In Development)

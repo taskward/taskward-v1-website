@@ -30,6 +30,15 @@ const signupFormSchema = yup
   })
   .required();
 
-export type { LoginFormData, SignupFormData };
+interface NoteFormData {
+  name: string;
+  description: string;
+}
 
-export { loginFormSchema, signupFormSchema };
+const NoteFromSchema = yup.object({
+  name: yup.string().required(),
+  description: yup.string(),
+});
+export type { LoginFormData, SignupFormData, NoteFormData };
+
+export { loginFormSchema, signupFormSchema, NoteFromSchema };
