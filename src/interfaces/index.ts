@@ -5,8 +5,8 @@ export type {
   GitHubButtonProps,
 } from "./components";
 
-export type { LoginFormData, SignupFormData } from "./forms";
-export { loginFormSchema, signupFormSchema } from "./forms";
+export type { LoginFormData, SignupFormData, NoteFormData } from "./forms";
+export { loginFormSchema, signupFormSchema, NoteFromSchema } from "./forms";
 
 export type { User, UserTokenModel } from "./user";
 
