@@ -52,7 +52,7 @@ export default function Note(): JSX.Element {
                   {note.name}
                 </div>
                 <p
-                  className="block whitespace-pre-wrap break-words text-sm font-normal"
+                  className="block whitespace-pre-wrap break-words text-sm font-normal tracking-wider"
                   dangerouslySetInnerHTML={{ __html: note.description }}
                 />
                 <div>{convertUtcToLocalTime(note.updatedAt)}</div>

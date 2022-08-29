@@ -34,7 +34,12 @@ export default function NoteCreator({
 
   const [editable, setEditable] = useState<boolean>(false);
 
-  const { register, handleSubmit, setValue, reset } = useForm<NoteFormData>({
+  const {
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm<NoteFormData>({
     resolver: yupResolver(NoteFromSchema),
   });
 
@@ -68,16 +73,22 @@ export default function NoteCreator({
       >
         {editable ? (
           <>
-            <input
-              className="w-full transform font-medium placeholder:text-gray-500 focus:outline-none dark:placeholder-gray-400"
+            <div
+              className={clsx(
+                "w-full cursor-text select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-lg font-medium outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
+                styles.textarea
+              )}
               placeholder={t("common:TITLE")}
-              required
-              autoComplete="off"
-              {...register("name")}
+              contentEditable
+              onInput={(e) => {
+                setValue("name", e.currentTarget.textContent as string, {
+                  shouldValidate: true,
+                });
+              }}
             />
             <div
               className={clsx(
-                "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-sm font-medium outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
+                "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-sm font-normal tracking-wider outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
                 styles.textarea
               )}
               placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}
@@ -88,18 +99,46 @@ export default function NoteCreator({
                 });
               }}
             />
-            <Button
-              type="submit"
-              size="sm"
-              title="创建"
-              icon={
-                <Icon.Add
-                  width="12"
-                  height="12"
-                  className="flex-shrink-0 fill-white"
+            <div className="flex items-center justify-between">
+              <div
+                className={clsx(
+                  "block select-none text-xs font-medium text-red-500 transition-opacity duration-700",
+                  errors.name ? "visible opacity-100" : "visible h-0 opacity-0"
+                )}
+              >
+                {"请输入标题"}
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  type="submit"
+                  size="sm"
+                  title="创建"
+                  icon={
+                    <Icon.Add
+                      width="12"
+                      height="12"
+                      className="flex-shrink-0 fill-white"
+                    />
+                  }
                 />
-              }
-            />
+                <Button
+                  type="submit"
+                  size="sm"
+                  title="取消"
+                  color="danger"
+                  onClick={() => {
+                    onCloseEditable();
+                  }}
+                  icon={
+                    <Icon.Add
+                      width="12"
+                      height="12"
+                      className="flex-shrink-0 fill-white"
+                    />
+                  }
+                />
+              </div>
+            </div>
           </>
         ) : (
           <input
