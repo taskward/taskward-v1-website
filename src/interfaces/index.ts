@@ -4,6 +4,7 @@ export type {
   ButtonProps,
   GitHubButtonProps,
   NotificationProps,
+  LoadingProps,
 } from "./components";
 
 export type { LoginFormData, SignupFormData, NoteFormData } from "./forms";

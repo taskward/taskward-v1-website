@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-import { Button, Icon } from "@components";
+import { Button, Icon, Loading } from "@components";
 import {
   CustomComponentProps,
   type NoteFormData,
@@ -21,7 +21,7 @@ export default function NoteCreator({
 }: CustomComponentProps): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
 
-  const { mutate: createNote } = useCreateNoteRequest();
+  const { mutate: createNote, isLoading } = useCreateNoteRequest();
 
   const outsideClickRef = useDetectOutsideClick(
     () => {
@@ -45,16 +45,14 @@ export default function NoteCreator({
 
   const handleCreateNote = async (formData: NoteFormData) => {
     createNote(formData, {
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onSuccess: () => {},
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onError: () => {},
+      onSuccess: () => {
+        onCloseEditable();
+      },
     });
   };
 
   const onCloseEditable = () => {
     setEditable(false);
-    //handleSubmit(handleCreateNote)();
     reset();
   };
 
@@ -113,12 +111,18 @@ export default function NoteCreator({
                   type="submit"
                   size="sm"
                   title={t("common:CREATE")}
+                  disabled={isLoading}
+                  className={clsx(isLoading && "cursor-not-allowed")}
                   icon={
-                    <Icon.Add
-                      width="12"
-                      height="12"
-                      className="flex-shrink-0 fill-white"
-                    />
+                    isLoading ? (
+                      <Icon.Loading width="12" height="12" />
+                    ) : (
+                      <Icon.Add
+                        width="12"
+                        height="12"
+                        className="flex-shrink-0 fill-white"
+                      />
+                    )
                   }
                 />
                 <Button

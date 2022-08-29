@@ -7,5 +7,11 @@
   "TITLE": "标题",
   "TITLE.INVALID": "请输入标题",
   "CREATE": "创建",
-  "CANCEL": "取消"
+  "CANCEL": "取消",
+  "COPY": "复制",
+  "COPY.SUCCESS": "复制成功",
+  "DELETE": "删除",
+  "DELETE.SUCCESS": "删除成功",
+  "DELETE.FAILED": "删除失败",
+  "REVOKE": "撤销"
 }

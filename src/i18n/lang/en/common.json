@@ -7,5 +7,11 @@
   "TITLE": "Title",
   "TITLE.INVALID": "Enter the title",
   "CREATE": "Create",
-  "CANCEL": "Cancel"
+  "CANCEL": "Cancel",
+  "COPY": "Copy",
+  "COPY.SUCCESS": "Copy successfully",
+  "DELETE": "Delete",
+  "DELETE.SUCCESS": "Delete successfully",
+  "DELETE.FAILED": "Delete failed",
+  "REVOKE": "Revoke"
 }

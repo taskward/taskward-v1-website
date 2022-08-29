@@ -36,7 +36,7 @@ export default function Button({
       <span
         className={clsx(
           "flex items-center justify-center gap-1 whitespace-nowrap",
-          size === "sm" && "gap-[1px]",
+          size === "sm" && "gap-0.5",
           size === "md" && "gap-0.5",
           size === "lg" && "gap-1"
         )}

@@ -43,10 +43,20 @@ type GitHubButtonProperties = {
 
 type GitHubButtonProps = Partial<GitHubButtonProperties> & CustomComponentProps;
 
-type NotificationProps = {
+interface NotificationProperties {
   show: boolean;
   children: ReactNode;
-} & CustomComponentProps;
+}
+
+type NotificationProps = Partial<NotificationProperties> & CustomComponentProps;
+
+interface LoadingProperties {
+  fullScreen: boolean;
+  width: string;
+  height: string;
+}
+
+type LoadingProps = Partial<LoadingProperties> & CustomComponentProps;
 
 export type {
   CustomComponentProps,
@@ -54,4 +64,5 @@ export type {
   ButtonProps,
   GitHubButtonProps,
   NotificationProps,
+  LoadingProps,
 };
