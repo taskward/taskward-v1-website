@@ -11,4 +11,5 @@ export { default as Button } from "./Button";
 export { default as Input } from "./Input";
 export { default as NoteCard } from "./NoteCard";
 export { default as NoteCreator } from "./NoteCreator";
+export { default as Notification } from "./Notification";
 export { Icon } from "./Svg";

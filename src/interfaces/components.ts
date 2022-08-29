@@ -43,9 +43,15 @@ type GitHubButtonProperties = {
 
 type GitHubButtonProps = Partial<GitHubButtonProperties> & CustomComponentProps;
 
+type NotificationProps = {
+  show: boolean;
+  children: ReactNode;
+} & CustomComponentProps;
+
 export type {
   CustomComponentProps,
   InputProps,
   ButtonProps,
   GitHubButtonProps,
+  NotificationProps,
 };

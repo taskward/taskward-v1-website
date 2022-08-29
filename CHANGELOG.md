@@ -33,7 +33,7 @@
   - [ ] External link (🚀 In Development)
     - [ ] Copy external link
     - [ ] Open external link
-  - [ ] Copy content
+  - [x] Copy content
   - [ ] Create time/Update time
   - [ ] Custom background (Pending)
   - [ ] Mind me (Pending)

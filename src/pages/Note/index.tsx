@@ -1,9 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-import { NoteCard, NoteCreator, Loading, Icon } from "@components";
+import {
+  NoteCard,
+  NoteCreator,
+  Loading,
+  Icon,
+  Notification,
+} from "@components";
 import { useGetNotesRequest } from "@requests";
 import {
   getDocumentTitle,
@@ -20,6 +26,8 @@ export default function Note(): JSX.Element {
 
   const { data: notesData, isLoading, isRefetching } = useGetNotesRequest();
 
+  const [showNotification, setShowNotification] = useState<boolean>(false);
+
   useEffect(() => {
     document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.NOTE"));
   }, [i18n.language]);
@@ -30,10 +38,20 @@ export default function Note(): JSX.Element {
     );
   }, []);
 
+  const copyDescription = (text: string | undefined | null) => {
+    const copyResult = setClipBoardText(text);
+    if (copyResult) {
+      setShowNotification(true);
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 3000);
+    }
+  };
+
   return (
     <div
       className={clsx(
-        "flex h-full w-auto flex-col overflow-y-scroll",
+        "relative flex h-full w-auto flex-col overflow-y-scroll",
         styles.scrollbar
       )}
     >
@@ -60,25 +78,32 @@ export default function Note(): JSX.Element {
                   className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide"
                   dangerouslySetInnerHTML={{ __html: note.description }}
                 />
-
-                <div
-                  className="flex items-center justify-end px-4 text-xs font-medium"
-                  title={convertUtcToFullLocalTime(note.createdAt)}
-                >
-                  {convertUtcToLocalTime(note.createdAt)}
-                </div>
-                <div className="flex items-center gap-1 px-2 pb-2">
+                <div className="flex flex-col px-2 pb-2">
                   <div
-                    onClick={() => {
-                      setClipBoardText(note.description);
-                    }}
-                    className="flex h-fit w-fit cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
+                    className="flex items-center justify-end px-2 text-xs font-medium"
+                    title={convertUtcToFullLocalTime(note.createdAt)}
                   >
-                    <Icon.Copy
-                      width="18"
-                      height="18"
-                      className="fill-black dark:fill-white"
-                    />
+                    {convertUtcToLocalTime(note.createdAt)}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div
+                      title="复制"
+                      onClick={() => {
+                        copyDescription(note.description);
+                      }}
+                      className={clsx(
+                        "flex h-fit w-fit select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                        note.description
+                          ? "cursor-pointer"
+                          : "cursor-not-allowed"
+                      )}
+                    >
+                      <Icon.Copy
+                        width="18"
+                        height="18"
+                        className="fill-black dark:fill-white"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -86,6 +111,12 @@ export default function Note(): JSX.Element {
           })
         )}
       </div>
+      <Notification
+        show={showNotification}
+        className="sticky inset-x-0 bottom-10 m-auto"
+      >
+        复制成功
+      </Notification>
     </div>
   );
 }
