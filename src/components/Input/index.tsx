@@ -53,7 +53,7 @@ export default function Input({
       </div>
       <div
         className={clsx(
-          "block select-none text-xs font-medium text-red-500 transition-opacity duration-700",
+          "block select-none text-xs font-medium text-red-500 transition-opacity duration-500",
           error ? "visible mt-1 opacity-100" : "invisible h-0 opacity-0"
         )}
       >

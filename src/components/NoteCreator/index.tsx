@@ -102,7 +102,7 @@ export default function NoteCreator({
             <div className="flex items-center justify-between">
               <div
                 className={clsx(
-                  "block select-none text-xs font-medium text-red-500 transition-opacity duration-700",
+                  "block select-none text-xs font-medium text-red-500 transition-opacity duration-500",
                   errors.name ? "visible opacity-100" : "visible opacity-0"
                 )}
               >
@@ -112,7 +112,7 @@ export default function NoteCreator({
                 <Button
                   type="submit"
                   size="sm"
-                  title={t("common:TITLE")}
+                  title={t("common:CREATE")}
                   icon={
                     <Icon.Add
                       width="12"
@@ -130,7 +130,7 @@ export default function NoteCreator({
                     onCloseEditable();
                   }}
                   icon={
-                    <Icon.Add
+                    <Icon.Close
                       width="12"
                       height="12"
                       className="flex-shrink-0 fill-white"

@@ -4,7 +4,7 @@ import { axiosService } from "@requests";
 import { NotesResult } from "./_interfaces";
 
 const useGetNotesRequest = () => {
-  const { data, refetch, isLoading } = useQuery(
+  const { data, refetch, isLoading, isRefetching } = useQuery(
     ["notes"],
     async (): Promise<NotesResult> => {
       const response = await axiosService({
@@ -15,7 +15,7 @@ const useGetNotesRequest = () => {
     }
   );
 
-  return { data, refetch, isLoading };
+  return { data, refetch, isLoading, isRefetching };
 };
 
 export default useGetNotesRequest;

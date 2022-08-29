@@ -23,6 +23,8 @@ import VisibilityOff from "./VisibilityOff";
 import Key from "./Key";
 import Add from "./Add";
 import Face from "./Face";
+import Cancel from "./Cancel";
+import Close from "./Close";
 
 export const Icon = {
   Archive,
@@ -43,4 +45,6 @@ export const Icon = {
   Key,
   Add,
   Face,
+  Cancel,
+  Close,
 };

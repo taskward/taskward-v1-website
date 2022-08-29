@@ -13,7 +13,7 @@ export default function Note(): JSX.Element {
   const { t, i18n } = useTranslation(["layout"]);
   const sidebarDispatch = useAppDispatch();
 
-  const { data: notesData, isLoading } = useGetNotesRequest();
+  const { data: notesData, isLoading, isRefetching } = useGetNotesRequest();
 
   useEffect(() => {
     document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.NOTE"));
@@ -36,7 +36,7 @@ export default function Note(): JSX.Element {
         <NoteCreator className={styles.contentWrapper} />
       </div>
       <div className="mx-auto mb-80 w-full p-4">
-        {isLoading ? (
+        {isLoading || isRefetching ? (
           <Loading />
         ) : (
           notesData?.notes.map((note, index) => {
