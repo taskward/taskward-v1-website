@@ -4,5 +4,8 @@
   "LOGIN": "Login",
   "SIGNUP": "Sign Up",
   "PASSWORD": "Password",
-  "TITLE": "Title"
+  "TITLE": "Title",
+  "TITLE.INVALID": "Enter the title",
+  "CREATE": "Create",
+  "CANCEL": "Cancel"
 }

@@ -103,16 +103,16 @@ export default function NoteCreator({
               <div
                 className={clsx(
                   "block select-none text-xs font-medium text-red-500 transition-opacity duration-700",
-                  errors.name ? "visible opacity-100" : "visible h-0 opacity-0"
+                  errors.name ? "visible opacity-100" : "visible opacity-0"
                 )}
               >
-                {"请输入标题"}
+                {t("common:TITLE.INVALID")}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <Button
                   type="submit"
                   size="sm"
-                  title="创建"
+                  title={t("common:TITLE")}
                   icon={
                     <Icon.Add
                       width="12"
@@ -124,7 +124,7 @@ export default function NoteCreator({
                 <Button
                   type="submit"
                   size="sm"
-                  title="取消"
+                  title={t("common:CANCEL")}
                   color="danger"
                   onClick={() => {
                     onCloseEditable();

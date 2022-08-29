@@ -4,5 +4,8 @@
   "LOGIN": "ログイン",
   "SIGNUP": "サインアップ",
   "PASSWORD": "パスワード",
-  "TITLE": "題名"
+  "TITLE": "題名",
+  "TITLE.INVALID": "題名を入力してください",
+  "CREATE": "作成",
+  "CANCEL": "キャンセル"
 }

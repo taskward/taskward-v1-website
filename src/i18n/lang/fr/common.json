@@ -4,5 +4,8 @@
   "LOGIN": "Connexion",
   "SIGNUP": "S'inscrire",
   "PASSWORD": "Le mot de passe",
-  "TITLE": "Titre"
+  "TITLE": "Titre",
+  "TITLE.INVALID": "Veuillez entrer un titre",
+  "CREATE": "Créer",
+  "CANCEL": "Annuler"
 }

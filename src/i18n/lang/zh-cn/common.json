@@ -4,5 +4,8 @@
   "LOGIN": "登录",
   "SIGNUP": "注册",
   "PASSWORD": "密码",
-  "TITLE": "标题"
+  "TITLE": "标题",
+  "TITLE.INVALID": "请输入标题",
+  "CREATE": "创建",
+  "CANCEL": "取消"
 }
