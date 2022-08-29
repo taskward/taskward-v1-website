@@ -13,7 +13,7 @@ export default function MenuIcon() {
 
   return (
     <div
-      className="relative h-12 w-12 cursor-pointer select-none rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-500"
+      className="relative h-12 w-12 cursor-pointer select-none rounded-full transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
       onClick={() => {
         handleClickMenuIcon();
       }}

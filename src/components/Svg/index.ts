@@ -25,6 +25,9 @@ import Add from "./Add";
 import Face from "./Face";
 import Cancel from "./Cancel";
 import Close from "./Close";
+import Copy from "./Copy";
+import Edit from "./Edit";
+import Delete from "./Delete";
 
 export const Icon = {
   Archive,
@@ -47,4 +50,7 @@ export const Icon = {
   Face,
   Cancel,
   Close,
+  Copy,
+  Edit,
+  Delete,
 };

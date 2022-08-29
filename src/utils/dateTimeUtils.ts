@@ -11,4 +11,8 @@ function convertUtcToLocalTime(date: Date): string {
   return dayjs(_date).format("YYYY/MM/DD HH:mm:ss");
 }
 
-export { convertUtcToLocalTime };
+function convertUtcToFullLocalTime(date: Date): string {
+  return dayjs(new Date(date)).format("YYYY/MM/DD dddd HH:mm:ss A");
+}
+
+export { convertUtcToLocalTime, convertUtcToFullLocalTime };

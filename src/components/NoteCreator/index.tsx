@@ -88,7 +88,7 @@ export default function NoteCreator({
             />
             <div
               className={clsx(
-                "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-sm font-normal tracking-wider outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
+                "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
                 styles.textarea
               )}
               placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}
@@ -103,7 +103,7 @@ export default function NoteCreator({
               <div
                 className={clsx(
                   "block select-none text-xs font-medium text-red-500 transition-opacity duration-500",
-                  errors.name ? "visible opacity-100" : "visible opacity-0"
+                  errors.name ? "visible opacity-100" : "invisible opacity-0"
                 )}
               >
                 {t("common:TITLE.INVALID")}

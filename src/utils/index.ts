@@ -1,4 +1,9 @@
-export { convertUtcToLocalTime } from "./dateTimeUtils";
+export {
+  convertUtcToLocalTime,
+  convertUtcToFullLocalTime,
+} from "./dateTimeUtils";
+
+export { setClipBoardText } from "./funcUtils";
 
 export { validateTokenExpireTime } from "./jwtUtils";
 
