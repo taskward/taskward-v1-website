@@ -1,6 +1,6 @@
 # Taskward
 
-Taskward is a Todo&Task application.
+Taskward is a Todo&Task application still in development.
 
 ## Stack
 
@@ -8,7 +8,12 @@ Taskward is a Todo&Task application.
 - TypeScript
 - Vite
 - TailwindCSS
+
+## Library
+
 - React-Redux
+- React-Query
+- React-Hook-Form & yup
 - React-i18n-next
 
 ## Others

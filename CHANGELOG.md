@@ -25,7 +25,7 @@
   - [ ] Wechat OAuth2 (Pending)
 - [ ] Note
   - [x] List view
-  - [ ] Card view (🚀 In Development)
+  - [ ] Card view
   - [ ] Pin (Pending)
   - [ ] Todo checkbox list (🚀 In Development)
     - [ ] Add to top
