@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-import { Button } from "@components";
+import { Button, Icon } from "@components";
 import {
   CustomComponentProps,
   type NoteFormData,
@@ -88,7 +88,18 @@ export default function NoteCreator({
                 });
               }}
             />
-            <Button type="submit" size="md" title="创建" />
+            <Button
+              type="submit"
+              size="sm"
+              title="创建"
+              icon={
+                <Icon.Add
+                  width="12"
+                  height="12"
+                  className="flex-shrink-0 fill-white"
+                />
+              }
+            />
           </>
         ) : (
           <input

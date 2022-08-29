@@ -21,6 +21,8 @@ import ArrowDropDown from "./ArrowDropDown";
 import Visibility from "./Visibility";
 import VisibilityOff from "./VisibilityOff";
 import Key from "./Key";
+import Add from "./Add";
+import Face from "./Face";
 
 export const Icon = {
   Archive,
@@ -39,4 +41,6 @@ export const Icon = {
   Visibility,
   VisibilityOff,
   Key,
+  Add,
+  Face,
 };

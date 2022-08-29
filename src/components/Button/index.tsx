@@ -23,12 +23,19 @@ export default function Button({
         block ? "w-full" : "w-fit",
         size === "sm" && "py-1 px-1.5 text-xs",
         size === "md" && "py-1.5 px-2.5 text-sm",
-        size === "lg" && "py-2 px-3.5",
+        size === "lg" && "text-md py-2 px-3.5",
         className
       )}
       type={type}
     >
-      <span className="text-md flex items-center justify-center gap-1 whitespace-nowrap">
+      <span
+        className={clsx(
+          "flex items-center justify-center gap-1 whitespace-nowrap",
+          size === "sm" && "gap-[1px]",
+          size === "md" && "gap-0.5",
+          size === "lg" && "gap-1"
+        )}
+      >
         {icon}
         {title}
       </span>
