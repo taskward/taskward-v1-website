@@ -192,6 +192,7 @@ export default function SignupPopup(): JSX.Element {
       />
       <div>
         <Button
+          size="lg"
           type="submit"
           title={t("common:SIGNUP")}
           block

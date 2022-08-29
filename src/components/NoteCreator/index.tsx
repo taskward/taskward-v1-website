@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
+import { Button } from "@components";
 import {
   CustomComponentProps,
   type NoteFormData,
@@ -87,7 +88,7 @@ export default function NoteCreator({
                 });
               }}
             />
-            <button type="submit">提交</button>
+            <Button type="submit" size="md" title="创建" />
           </>
         ) : (
           <input

@@ -76,6 +76,7 @@ export default function Home(): JSX.Element {
           <div className="mt-2 flex items-center justify-center gap-4">
             {!isLogin && (
               <Button
+                size="lg"
                 title={t("common:LOGIN")}
                 onClick={() => {
                   handleClickLoginBtn();
@@ -90,6 +91,7 @@ export default function Home(): JSX.Element {
               />
             )}
             <Button
+              size="lg"
               title={t("common:START")}
               onClick={() => {
                 handleClickStartBtn();

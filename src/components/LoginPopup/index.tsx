@@ -157,6 +157,7 @@ export default function LoginPopup(): JSX.Element {
       />
       <div>
         <Button
+          size="lg"
           type="submit"
           title={t("common:LOGIN")}
           block

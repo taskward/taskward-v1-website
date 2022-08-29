@@ -31,6 +31,7 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
   onClick: () => void;
   block: boolean;
+  size: "sm" | "md" | "lg";
 }
 
 type ButtonProps = Partial<ButtonProperties> & CustomComponentProps;
