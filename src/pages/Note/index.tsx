@@ -36,8 +36,9 @@ export default function Note(): JSX.Element {
         <NoteCreator className={styles.contentWrapper} />
       </div>
       <div className="mx-auto mb-80 w-full p-4">
-        {isLoading && <Loading />}
-        {!isLoading &&
+        {isLoading ? (
+          <Loading />
+        ) : (
           notesData?.notes.map((note, index) => {
             return (
               <div
@@ -57,7 +58,8 @@ export default function Note(): JSX.Element {
                 <div>{convertUtcToLocalTime(note.updatedAt)}</div>
               </div>
             );
-          })}
+          })
+        )}
       </div>
     </div>
   );
