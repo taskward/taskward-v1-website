@@ -4,8 +4,8 @@ import { axiosService } from "@requests";
 import { NoteFormData } from "@interfaces";
 
 const useGetNotesRequest = () => {
-  const { mutate, isLoading, isSuccess, isError } = useMutation(
-    (formData: NoteFormData) => {
+  const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
+    async (formData: NoteFormData) => {
       return axiosService({
         method: "POST",
         url: "notes",
@@ -14,7 +14,7 @@ const useGetNotesRequest = () => {
     }
   );
 
-  return { mutate, isLoading, isSuccess, isError };
+  return { mutate, mutateAsync, isLoading, isSuccess, isError };
 };
 
 export default useGetNotesRequest;

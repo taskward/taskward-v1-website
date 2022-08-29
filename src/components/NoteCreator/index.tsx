@@ -12,7 +12,7 @@ import {
   NoteFromSchema,
 } from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
-import { useCreateNoteRequest } from "@requests";
+import { axiosService, useCreateNoteRequest } from "@requests";
 
 export default function NoteCreator({
   style,
@@ -42,9 +42,24 @@ export default function NoteCreator({
     resolver: yupResolver(NoteFromSchema),
   });
 
-  const handleCreateNote = (formData: NoteFormData) => {
+  const handleCreateNote = async (formData: NoteFormData) => {
     console.log(formData);
-    createNote(formData);
+    // await axiosService({
+    //   method: "POST",
+    //   url: "notes",
+    //   data: formData,
+    // });
+    createNote(formData, {
+      onSuccess: () => {
+        console.log(1);
+      },
+      onError: () => {
+        console.log(2);
+      },
+      onSettled: () => {
+        console.log(3);
+      },
+    });
   };
 
   const onCloseEditable = () => {
