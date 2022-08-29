@@ -5,12 +5,13 @@ import { NoteFormData } from "@interfaces";
 
 const useGetNotesRequest = () => {
   const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
-    async (formData: NoteFormData) => {
-      return axiosService({
+    async (formData: NoteFormData): Promise<any> => {
+      const response = await axiosService({
         method: "POST",
         url: "notes",
         data: formData,
       });
+      return response.data;
     }
   );
 

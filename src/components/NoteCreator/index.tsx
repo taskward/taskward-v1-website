@@ -12,7 +12,7 @@ import {
   NoteFromSchema,
 } from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
-import { axiosService, useCreateNoteRequest } from "@requests";
+import { useCreateNoteRequest } from "@requests";
 
 export default function NoteCreator({
   style,
@@ -20,12 +20,7 @@ export default function NoteCreator({
 }: CustomComponentProps): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
 
-  const {
-    mutate: createNote,
-    isLoading,
-    isSuccess,
-    isError,
-  } = useCreateNoteRequest();
+  const { mutate: createNote } = useCreateNoteRequest();
 
   const outsideClickRef = useDetectOutsideClick(
     () => {
@@ -43,28 +38,17 @@ export default function NoteCreator({
   });
 
   const handleCreateNote = async (formData: NoteFormData) => {
-    console.log(formData);
-    // await axiosService({
-    //   method: "POST",
-    //   url: "notes",
-    //   data: formData,
-    // });
     createNote(formData, {
-      onSuccess: () => {
-        console.log(1);
-      },
-      onError: () => {
-        console.log(2);
-      },
-      onSettled: () => {
-        console.log(3);
-      },
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      onSuccess: () => {},
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      onError: () => {},
     });
   };
 
   const onCloseEditable = () => {
     setEditable(false);
-    handleSubmit(handleCreateNote)();
+    //handleSubmit(handleCreateNote)();
     reset();
   };
 
