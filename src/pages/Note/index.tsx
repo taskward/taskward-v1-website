@@ -26,6 +26,7 @@ export default function Note(): JSX.Element {
 
   const { data: notesData, isLoading, isRefetching } = useGetNotesRequest();
 
+  const [focusNoteId, setFocusNoteId] = useState<null | number>(null);
   const [showNotification, setShowNotification] = useState<boolean>(false);
 
   useEffect(() => {
@@ -62,14 +63,21 @@ export default function Note(): JSX.Element {
         {isLoading || isRefetching ? (
           <Loading />
         ) : (
-          notesData?.notes.map((note, index) => {
+          notesData?.notes.map((note) => {
             return (
               <div
-                key={index}
+                key={note.id}
                 className={clsx(
-                  "mx-auto mb-4 flex h-fit flex-col gap-4 rounded-md border border-gray-200 bg-white drop-shadow-sm dark:border-neutral-800 dark:bg-noteDark",
-                  styles.contentWrapper
+                  "mx-auto mb-4 flex h-fit flex-col gap-4 rounded-md border border-gray-200 bg-white dark:border-neutral-800 dark:bg-noteDark",
+                  styles.contentWrapper,
+                  note.id === focusNoteId ? "drop-shadow-lg" : "drop-shadow-sm"
                 )}
+                onMouseEnter={() => {
+                  setFocusNoteId(note.id);
+                }}
+                onMouseLeave={() => {
+                  setFocusNoteId(null);
+                }}
               >
                 <div className="block truncate px-4 pt-4 text-lg font-medium">
                   {note.name}
@@ -92,10 +100,13 @@ export default function Note(): JSX.Element {
                         copyDescription(note.description);
                       }}
                       className={clsx(
-                        "flex h-fit w-fit select-none items-center justify-center rounded-full p-2 transition-[colors,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                        "flex h-fit w-fit select-none items-center justify-center rounded-full p-2 transition-[colors,transform,opacity] duration-500 hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
                         note.description
                           ? "cursor-pointer"
-                          : "cursor-not-allowed"
+                          : "cursor-not-allowed",
+                        note.id === focusNoteId
+                          ? "visible scale-100 opacity-100"
+                          : "invisible scale-0 opacity-0"
                       )}
                     >
                       <Icon.Copy
