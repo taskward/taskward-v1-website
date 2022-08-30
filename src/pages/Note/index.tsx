@@ -21,7 +21,7 @@ import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
 
 export default function Note(): JSX.Element {
-  const { t, i18n } = useTranslation(["layout"]);
+  const { t, i18n } = useTranslation(["layout", "common"]);
   const sidebarDispatch = useAppDispatch();
 
   const { data: notesData, isLoading, isRefetching } = useGetNotesRequest();
@@ -44,7 +44,7 @@ export default function Note(): JSX.Element {
       setShowNotification(true);
       setTimeout(() => {
         setShowNotification(false);
-      }, 3000);
+      }, 5000);
     }
   };
 
@@ -67,7 +67,7 @@ export default function Note(): JSX.Element {
               <div
                 key={index}
                 className={clsx(
-                  "mx-auto mb-4 flex h-fit flex-col gap-4 rounded-md border border-gray-200 bg-slate-100 drop-shadow-sm dark:bg-slate-800",
+                  "mx-auto mb-4 flex h-fit flex-col gap-4 rounded-md border border-gray-200 bg-white drop-shadow-sm dark:border-neutral-800 dark:bg-noteDark",
                   styles.contentWrapper
                 )}
               >
@@ -75,24 +75,24 @@ export default function Note(): JSX.Element {
                   {note.name}
                 </div>
                 <p
-                  className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide"
+                  className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide dark:text-noteSecondTextDark"
                   dangerouslySetInnerHTML={{ __html: note.description }}
                 />
                 <div className="flex flex-col px-2 pb-2">
                   <div
-                    className="flex items-center justify-end px-2 text-xs font-medium"
+                    className="flex items-center justify-end px-2 text-xs font-medium dark:text-noteSecondTextDark"
                     title={convertUtcToFullLocalTime(note.createdAt)}
                   >
                     {convertUtcToLocalTime(note.createdAt)}
                   </div>
                   <div className="flex items-center gap-1">
                     <div
-                      title="复制"
+                      title={t("common:COPY")}
                       onClick={() => {
                         copyDescription(note.description);
                       }}
                       className={clsx(
-                        "flex h-fit w-fit select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                        "flex h-fit w-fit select-none items-center justify-center rounded-full p-2 transition-[colors,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
                         note.description
                           ? "cursor-pointer"
                           : "cursor-not-allowed"
@@ -115,7 +115,7 @@ export default function Note(): JSX.Element {
         show={showNotification}
         className="sticky inset-x-0 bottom-10 m-auto"
       >
-        复制成功
+        {t("common:COPY.SUCCESS")}
       </Notification>
     </div>
   );

@@ -17,6 +17,12 @@ module.exports = {
           800: "#39814f",
           900: "#2e5f3c",
         },
+        noteDark: {
+          DEFAULT: "#36393f",
+        },
+        noteSecondTextDark: {
+          DEFAULT: "#dcddde",
+        },
       },
     },
   },

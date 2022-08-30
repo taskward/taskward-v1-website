@@ -10,8 +10,8 @@ export default function Notification({
   return (
     <div
       className={clsx(
-        "absolute z-20 h-fit w-fit rounded-md bg-emerald-600 p-2 text-sm font-medium text-white transition-opacity duration-700",
-        show ? "visible opacity-100" : "invisible opacity-0",
+        "absolute z-20 h-fit w-fit rounded-md bg-emerald-600 p-2 text-sm font-medium text-white transition-[opacity,transform] duration-700",
+        show ? "visible scale-100 opacity-100" : "invisible scale-0 opacity-0",
         className
       )}
       style={style}

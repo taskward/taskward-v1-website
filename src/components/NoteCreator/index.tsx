@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-import { Button, Icon, Loading } from "@components";
+import { Button, Icon } from "@components";
 import {
   CustomComponentProps,
   type NoteFormData,
@@ -59,7 +59,7 @@ export default function NoteCreator({
   return (
     <div
       className={clsx(
-        "mx-auto shrink-0 rounded-lg border bg-white p-4 ring-0 drop-shadow-lg",
+        "mx-auto shrink-0 rounded-lg border border-gray-200 bg-white p-4 ring-0 drop-shadow-lg dark:border-neutral-800 dark:bg-noteDark",
         className
       )}
       style={style}
@@ -73,7 +73,7 @@ export default function NoteCreator({
           <>
             <div
               className={clsx(
-                "w-full cursor-text select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-lg font-medium outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
+                "w-full cursor-text select-text resize-none whitespace-pre-wrap break-words px-0 text-lg font-medium outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:placeholder-gray-400",
                 styles.textarea
               )}
               placeholder={t("common:TITLE")}
@@ -86,7 +86,7 @@ export default function NoteCreator({
             />
             <div
               className={clsx(
-                "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words bg-white px-0 text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:bg-gray-800 dark:placeholder-gray-400",
+                "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words px-0 text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:text-noteSecondTextDark dark:placeholder-gray-400",
                 styles.textarea
               )}
               placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}
@@ -146,7 +146,7 @@ export default function NoteCreator({
           </>
         ) : (
           <input
-            className="w-full font-medium placeholder:text-gray-500 focus:outline-none dark:placeholder-gray-400"
+            className="w-full font-medium placeholder:text-gray-500 focus:outline-none dark:bg-noteDark dark:placeholder-gray-400"
             placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}
           />
         )}
