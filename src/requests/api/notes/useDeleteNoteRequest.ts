@@ -1,17 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { axiosService } from "@requests";
 
-import { NoteFormData } from "@interfaces";
-
-const useCreateNoteRequest = () => {
+const useDeleteNoteRequest = () => {
   const queryClient = useQueryClient();
   const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    async (formData: NoteFormData): Promise<any> => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async (id: number): Promise<any> => {
       const response = await axiosService({
-        method: "POST",
-        url: "notes",
-        data: formData,
+        method: "DELETE",
+        url: `notes/${id}`,
       });
       return response.data;
     },
@@ -25,4 +22,4 @@ const useCreateNoteRequest = () => {
   return { mutate, mutateAsync, isLoading, isSuccess, isError };
 };
 
-export default useCreateNoteRequest;
+export default useDeleteNoteRequest;

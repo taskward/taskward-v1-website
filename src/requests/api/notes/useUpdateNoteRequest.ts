@@ -3,14 +3,14 @@ import { axiosService } from "@requests";
 
 import { NoteFormData } from "@interfaces";
 
-const useCreateNoteRequest = () => {
+const useUpdateNoteRequest = () => {
   const queryClient = useQueryClient();
   const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    async (formData: NoteFormData): Promise<any> => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async (formData: NoteFormData & { id: number }): Promise<any> => {
       const response = await axiosService({
-        method: "POST",
-        url: "notes",
+        method: "PUT",
+        url: `notes/${formData.id}`,
         data: formData,
       });
       return response.data;
@@ -25,4 +25,4 @@ const useCreateNoteRequest = () => {
   return { mutate, mutateAsync, isLoading, isSuccess, isError };
 };
 
-export default useCreateNoteRequest;
+export default useUpdateNoteRequest;

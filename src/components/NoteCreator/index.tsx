@@ -34,12 +34,7 @@ export default function NoteCreator({
 
   const [editable, setEditable] = useState<boolean>(false);
 
-  const {
-    handleSubmit,
-    setValue,
-    reset,
-    formState: { errors },
-  } = useForm<NoteFormData>({
+  const { handleSubmit, setValue, reset } = useForm<NoteFormData>({
     resolver: yupResolver(NoteFromSchema),
   });
 
@@ -97,51 +92,41 @@ export default function NoteCreator({
                 });
               }}
             />
-            <div className="flex items-center justify-between">
-              <div
-                className={clsx(
-                  "block select-none text-xs font-medium text-red-500 transition-opacity duration-500",
-                  errors.name ? "visible opacity-100" : "invisible opacity-0"
-                )}
-              >
-                {t("common:TITLE.INVALID")}
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Button
-                  type="submit"
-                  size="sm"
-                  title={t("common:CREATE")}
-                  disabled={isLoading}
-                  className={clsx(isLoading && "cursor-not-allowed")}
-                  icon={
-                    isLoading ? (
-                      <Icon.Loading width="12" height="12" />
-                    ) : (
-                      <Icon.Add
-                        width="12"
-                        height="12"
-                        className="flex-shrink-0 fill-white"
-                      />
-                    )
-                  }
-                />
-                <Button
-                  type="submit"
-                  size="sm"
-                  title={t("common:CANCEL")}
-                  color="danger"
-                  onClick={() => {
-                    onCloseEditable();
-                  }}
-                  icon={
-                    <Icon.Close
+            <div className="flex items-center justify-end gap-2.5">
+              <Button
+                type="submit"
+                size="sm"
+                title={t("common:CREATE")}
+                disabled={isLoading}
+                className={clsx(isLoading && "cursor-not-allowed")}
+                icon={
+                  isLoading ? (
+                    <Icon.Loading width="12" height="12" />
+                  ) : (
+                    <Icon.Add
                       width="12"
                       height="12"
                       className="flex-shrink-0 fill-white"
                     />
-                  }
-                />
-              </div>
+                  )
+                }
+              />
+              <Button
+                type="submit"
+                size="sm"
+                title={t("common:CANCEL")}
+                color="danger"
+                onClick={() => {
+                  onCloseEditable();
+                }}
+                icon={
+                  <Icon.Close
+                    width="12"
+                    height="12"
+                    className="flex-shrink-0 fill-white"
+                  />
+                }
+              />
             </div>
           </>
         ) : (

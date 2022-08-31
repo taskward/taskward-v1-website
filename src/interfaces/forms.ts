@@ -36,7 +36,7 @@ interface NoteFormData {
 }
 
 const NoteFromSchema = yup.object({
-  name: yup.string().required(),
+  name: yup.string(),
   description: yup.string(),
 });
 export type { LoginFormData, SignupFormData, NoteFormData };

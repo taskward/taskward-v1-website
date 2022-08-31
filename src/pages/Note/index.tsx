@@ -10,7 +10,11 @@ import {
   Icon,
   Notification,
 } from "@components";
-import { useGetNotesRequest } from "@requests";
+import {
+  useDeleteNoteRequest,
+  useGetNotesRequest,
+  useUpdateNoteRequest,
+} from "@requests";
 import {
   getDocumentTitle,
   convertUtcToLocalTime,
@@ -24,7 +28,15 @@ export default function Note(): JSX.Element {
   const { t, i18n } = useTranslation(["layout", "common"]);
   const sidebarDispatch = useAppDispatch();
 
-  const { data: notesData, isLoading, isRefetching } = useGetNotesRequest();
+  const {
+    data: notesData,
+    isLoading: isGetNotesLoading,
+    isRefetching: isGetNotesRefetching,
+  } = useGetNotesRequest();
+  const { mutate: updateNote, isLoading: isUpdateNoteLoading } =
+    useUpdateNoteRequest();
+  const { mutate: deleteNote, isLoading: isDeleteNoteLoading } =
+    useDeleteNoteRequest();
 
   const [focusNoteId, setFocusNoteId] = useState<null | number>(null);
   const [showNotification, setShowNotification] = useState<boolean>(false);
@@ -60,7 +72,7 @@ export default function Note(): JSX.Element {
         <NoteCreator className={styles.contentWrapper} />
       </div>
       <div className="mx-auto mb-80 w-full p-4">
-        {isLoading || isRefetching ? (
+        {isGetNotesLoading || isGetNotesRefetching || isDeleteNoteLoading ? (
           <Loading />
         ) : (
           notesData?.notes.map((note) => {
@@ -68,7 +80,7 @@ export default function Note(): JSX.Element {
               <div
                 key={note.id}
                 className={clsx(
-                  "mx-auto mb-4 flex h-fit flex-col gap-4 rounded-md border border-gray-200 bg-white dark:border-neutral-800 dark:bg-noteDark",
+                  "mx-auto mb-4 flex h-fit flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 dark:border-neutral-800 dark:bg-noteDark",
                   styles.contentWrapper,
                   note.id === focusNoteId ? "drop-shadow-lg" : "drop-shadow-sm"
                 )}
@@ -79,9 +91,11 @@ export default function Note(): JSX.Element {
                   setFocusNoteId(null);
                 }}
               >
-                <div className="block truncate px-4 pt-4 text-lg font-medium">
-                  {note.name}
-                </div>
+                {note.name && (
+                  <div className="block truncate px-4 text-lg font-medium">
+                    {note.name}
+                  </div>
+                )}
                 <p
                   className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide dark:text-noteSecondTextDark"
                   dangerouslySetInnerHTML={{ __html: note.description }}
@@ -93,25 +107,45 @@ export default function Note(): JSX.Element {
                   >
                     {convertUtcToLocalTime(note.createdAt)}
                   </div>
-                  <div className="flex items-center gap-1">
+                  <div
+                    className={clsx(
+                      "flex items-center gap-1",
+                      note.id === focusNoteId
+                        ? "visible opacity-100"
+                        : "invisible opacity-0"
+                    )}
+                  >
                     <div
                       title={t("common:COPY")}
                       onClick={() => {
                         copyDescription(note.description);
                       }}
                       className={clsx(
-                        "flex h-fit w-fit select-none items-center justify-center rounded-full p-2 transition-[colors,transform,opacity] duration-500 hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                        "flex h-10 w-10 select-none items-center justify-center rounded-full p-2 transition-[colors,transform,opacity] duration-500 hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
                         note.description
                           ? "cursor-pointer"
-                          : "cursor-not-allowed",
-                        note.id === focusNoteId
-                          ? "visible scale-100 opacity-100"
-                          : "invisible scale-0 opacity-0"
+                          : "cursor-not-allowed"
                       )}
                     >
                       <Icon.Copy
                         width="18"
                         height="18"
+                        className="fill-black dark:fill-white"
+                      />
+                    </div>
+                    <div
+                      onClick={() => {
+                        if (focusNoteId && focusNoteId > 0) {
+                          deleteNote(focusNoteId);
+                        }
+                      }}
+                      className={clsx(
+                        "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-[colors,transform,opacity] duration-500 hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
+                      )}
+                    >
+                      <Icon.Delete
+                        width="26"
+                        height="26"
                         className="fill-black dark:fill-white"
                       />
                     </div>
