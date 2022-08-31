@@ -39,19 +39,20 @@ export default function Note(): JSX.Element {
       <div className="mx-auto mt-4 w-full p-4">
         <NoteCreator className={styles.contentWrapper} />
       </div>
-      <div className="mx-auto mb-80 flex w-full flex-col gap-4 p-4">
+      <div className="mx-auto mb-80 w-full p-4">
         {isGetNotesLoading || isGetNotesRefetching ? (
           <Loading />
         ) : (
-          notesData?.notes.map((note) => {
-            return (
-              <NoteListCard
-                key={note.id}
-                note={note}
-                className={styles.contentWrapper}
-              />
-            );
-          })
+          <div
+            className={clsx(
+              "mx-auto flex flex-col items-center justify-center gap-4",
+              styles.contentWrapper
+            )}
+          >
+            {notesData?.notes.map((note) => {
+              return <NoteListCard key={note.id} note={note} />;
+            })}
+          </div>
         )}
       </div>
       {/* <Notification

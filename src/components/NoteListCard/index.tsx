@@ -44,7 +44,7 @@ export default function NoteListCard({
     <div
       key={note.id}
       className={clsx(
-        "mx-auto flex h-fit flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 dark:border-neutral-800 dark:bg-noteDark",
+        "mx-auto flex h-fit w-full flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 dark:border-neutral-800 dark:bg-noteDark",
         className,
         focused ? "drop-shadow-lg" : "drop-shadow-sm"
       )}
