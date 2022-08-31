@@ -11,6 +11,7 @@
   "COPY": "コピー",
   "COPY.SUCCESS": "正常にコピー",
   "DELETE": "削除",
+  "DELETE.FOREVER": "完全に削除",
   "DELETE.SUCCESS": "正常に削除",
   "DELETE.FAILED": "削除に失敗しました",
   "REVOKE": "取り消す"

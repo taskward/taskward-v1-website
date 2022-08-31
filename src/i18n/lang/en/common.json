@@ -11,6 +11,7 @@
   "COPY": "Copy",
   "COPY.SUCCESS": "Copy successfully",
   "DELETE": "Delete",
+  "DELETE.FOREVER": "Delete forever",
   "DELETE.SUCCESS": "Delete successfully",
   "DELETE.FAILED": "Delete failed",
   "REVOKE": "Revoke"
