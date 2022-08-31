@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
@@ -18,6 +19,7 @@ import taskward from "@assets/img/taskward.png";
 
 export default function SignupPopup(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "request"]);
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -67,8 +69,8 @@ export default function SignupPopup(): JSX.Element {
       setSignupLoading(true);
       const signupResult: boolean = await loginByGitHubCode(code, abortSignal);
       setSignupLoading(false);
-
       if (signupResult) {
+        queryClient.invalidateQueries();
         navigate("/note", { replace: true });
       }
     }
@@ -81,6 +83,7 @@ export default function SignupPopup(): JSX.Element {
     setValue("password", "");
     setValue("confirmPassword", "");
     if (signupResult) {
+      queryClient.invalidateQueries();
       navigate("/note", { replace: true });
     }
   };
