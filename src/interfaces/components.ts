@@ -6,6 +6,7 @@ import type {
 } from "react";
 import type { FieldError } from "react-hook-form";
 
+// Common
 interface ComponentCommonProps {
   className: string;
   style: CSSProperties;
@@ -13,6 +14,7 @@ interface ComponentCommonProps {
 
 type CustomComponentProps = Partial<ComponentCommonProps>;
 
+// Inputs
 interface InputProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputWrapperClassName: string;
   inputClassName: string;
@@ -26,6 +28,7 @@ interface InputProperties extends InputHTMLAttributes<HTMLInputElement> {
 
 type InputProps = Partial<InputProperties> & CustomComponentProps;
 
+// Buttons
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: JSX.Element;
   title: string;
@@ -43,6 +46,7 @@ type GitHubButtonProperties = {
 
 type GitHubButtonProps = Partial<GitHubButtonProperties> & CustomComponentProps;
 
+// Notification
 interface NotificationProperties {
   show: boolean;
   children: ReactNode;
@@ -50,6 +54,7 @@ interface NotificationProperties {
 
 type NotificationProps = Partial<NotificationProperties> & CustomComponentProps;
 
+// Loading
 interface LoadingProperties {
   fullScreen: boolean;
   width: string;
@@ -58,6 +63,29 @@ interface LoadingProperties {
 
 type LoadingProps = Partial<LoadingProperties> & CustomComponentProps;
 
+// Note
+interface NoteListCardProperties {
+  note: Note;
+}
+
+type Note = {
+  id: number;
+  name: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+  priority: number;
+  index: number;
+  toped: boolean;
+};
+
+type NotesResult = {
+  notes: Note[];
+  count: number;
+};
+
+type NoteListCardProps = Partial<NoteListCardProperties> & CustomComponentProps;
+
 export type {
   CustomComponentProps,
   InputProps,
@@ -65,4 +93,7 @@ export type {
   GitHubButtonProps,
   NotificationProps,
   LoadingProps,
+  NoteListCardProps,
+  Note,
+  NotesResult,
 };

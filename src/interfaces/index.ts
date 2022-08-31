@@ -5,6 +5,9 @@ export type {
   GitHubButtonProps,
   NotificationProps,
   LoadingProps,
+  NoteListCardProps,
+  NotesResult,
+  Note,
 } from "./components";
 
 export type { LoginFormData, SignupFormData, NoteFormData } from "./forms";

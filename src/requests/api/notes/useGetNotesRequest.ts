@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosService } from "@requests";
 
-import { NotesResult } from "./_interfaces";
+import { NotesResult } from "@interfaces";
 
 const useGetNotesRequest = () => {
   const { data, refetch, isLoading, isRefetching } = useQuery(
