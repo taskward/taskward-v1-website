@@ -6,8 +6,11 @@ export type {
   NotificationProps,
   LoadingProps,
   NoteListCardProps,
-  NotesResult,
   Note,
+  NotesResult,
+  TrashNoteListCardProps,
+  TrashNote,
+  TrashNotesResult,
 } from "./components";
 
 export type { LoginFormData, SignupFormData, NoteFormData } from "./forms";

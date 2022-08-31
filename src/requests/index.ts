@@ -10,3 +10,9 @@ export {
   useUpdateNoteRequest,
   useDeleteNoteRequest,
 } from "./api/notes";
+
+export {
+  useGetTrashNotesRequest,
+  useRestoreTrashNoteRequest,
+  useDeleteTrashNoteRequest,
+} from "./api/trash";

@@ -86,6 +86,29 @@ type NotesResult = {
 
 type NoteListCardProps = Partial<NoteListCardProperties> & CustomComponentProps;
 
+// Trash
+interface TrashNoteListCardProperties {
+  note: TrashNote;
+}
+
+type TrashNote = {
+  id: number;
+  name: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
+  archived: boolean;
+};
+
+type TrashNotesResult = {
+  notes: TrashNote[];
+  count: number;
+};
+
+type TrashNoteListCardProps = Partial<TrashNoteListCardProperties> &
+  CustomComponentProps;
+
 export type {
   CustomComponentProps,
   InputProps,
@@ -96,4 +119,7 @@ export type {
   NoteListCardProps,
   Note,
   NotesResult,
+  TrashNoteListCardProps,
+  TrashNote,
+  TrashNotesResult,
 };

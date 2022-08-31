@@ -23,6 +23,12 @@ export default function Layout(): JSX.Element {
         >
           <Suspense fallback={<Loading />}>
             <Outlet />
+            {/* <Notification
+        show={showNotification}
+        className="sticky inset-x-0 bottom-10 m-auto"
+      >
+        {t("common:COPY.SUCCESS")}
+      </Notification> */}
           </Suspense>
         </div>
       </div>

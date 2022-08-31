@@ -10,7 +10,7 @@ import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
 
 export default function Note(): JSX.Element {
-  const { t, i18n } = useTranslation(["layout", "common"]);
+  const { t, i18n } = useTranslation(["common", "layout"]);
   const sidebarDispatch = useAppDispatch();
 
   const {
@@ -55,12 +55,6 @@ export default function Note(): JSX.Element {
           </div>
         )}
       </div>
-      {/* <Notification
-        show={showNotification}
-        className="sticky inset-x-0 bottom-10 m-auto"
-      >
-        {t("common:COPY.SUCCESS")}
-      </Notification> */}
     </div>
   );
 }

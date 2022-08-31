@@ -3,7 +3,10 @@ import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 
 import { Icon } from "@components";
-import { useDeleteNoteRequest, useUpdateNoteRequest } from "@requests";
+import {
+  useDeleteTrashNoteRequest,
+  useRestoreTrashNoteRequest,
+} from "@requests";
 import {
   convertUtcToLocalTime,
   convertUtcToFullLocalTime,
@@ -11,21 +14,21 @@ import {
 } from "@utils";
 import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
-import { NoteListCardProps } from "@interfaces";
+import { TrashNoteListCardProps } from "@interfaces";
 
-export default function NoteListCard({
+export default function TrashNoteListCard({
   note,
   className,
   style,
-}: NoteListCardProps): JSX.Element | null {
+}: TrashNoteListCardProps): JSX.Element | null {
   const { t } = useTranslation(["common"]);
 
   const [focused, setFocused] = useState<boolean>(false);
 
-  const { mutate: updateNote, isLoading: isUpdateNoteLoading } =
-    useUpdateNoteRequest();
-  const { mutate: deleteNote, isLoading: isDeleteNoteLoading } =
-    useDeleteNoteRequest();
+  const { mutate: restoreTrashNote, isLoading: isRestoreTrashNoteLoading } =
+    useRestoreTrashNoteRequest();
+  const { mutate: deleteTrashNote, isLoading: isDeleteTrashNoteLoading } =
+    useDeleteTrashNoteRequest();
 
   const copyDescription = (text: string | undefined | null) => {
     const copyResult = setClipBoardText(text);
@@ -71,9 +74,9 @@ export default function NoteListCard({
       <div className="flex flex-col px-2 pb-2">
         <div
           className="flex items-center justify-end px-2 text-xs font-medium dark:text-noteSecondTextDark"
-          title={convertUtcToFullLocalTime(note.createdAt)}
+          title={convertUtcToFullLocalTime(note.deletedAt)}
         >
-          {convertUtcToLocalTime(note.createdAt)}
+          {convertUtcToLocalTime(note.deletedAt)}
         </div>
         <div
           className={clsx(
@@ -100,15 +103,15 @@ export default function NoteListCard({
             />
           </div>
           <div
-            title={t("common:DELETE")}
+            title={t("common:DELETE.FOREVER")}
             onClick={() => {
-              deleteNote(note.id);
+              deleteTrashNote(note.id);
             }}
             className={clsx(
               "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
             )}
           >
-            <Icon.Delete
+            <Icon.DeleteForever
               width="26"
               height="26"
               className="fill-black dark:fill-white"

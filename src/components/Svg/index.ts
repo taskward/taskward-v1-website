@@ -28,6 +28,7 @@ import Close from "./Close";
 import Copy from "./Copy";
 import Edit from "./Edit";
 import Delete from "./Delete";
+import DeleteForever from "./DeleteForever";
 
 export const Icon = {
   Archive,
@@ -53,4 +54,5 @@ export const Icon = {
   Copy,
   Edit,
   Delete,
+  DeleteForever,
 };
