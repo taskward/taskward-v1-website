@@ -41,8 +41,8 @@
   - [ ] Pin (Pending)
 - [ ] Trash
   - [ ] Keep 7 days
-  - [ ] Force to delete
-  - [ ] Delete time
+  - [x] Force to delete
+  - [x] Delete time
 - [ ] Tags
   - [ ] Display in sidebar (Pending)
 - [ ] Search
