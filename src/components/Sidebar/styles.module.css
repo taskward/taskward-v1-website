@@ -1,11 +1,3 @@
 html[class*="dark"] .sidebarWrapper {
   background-color: var(--taskward-theme-color-darkest);
 }
-
-.collapse {
-  width: 4.5rem;
-}
-
-.expand {
-  width: 14rem;
-}

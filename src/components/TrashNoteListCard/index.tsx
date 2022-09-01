@@ -80,7 +80,7 @@ export default function TrashNoteListCard({
         </div>
         <div
           className={clsx(
-            "flex items-center gap-1 transition-[colors,transform,opacity] duration-500",
+            "flex items-center gap-1 transition-[colors,transform,opacity,visibility] duration-500",
             focused
               ? "visible scale-100 opacity-100"
               : "invisible scale-0 opacity-0"

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation, Trans } from "react-i18next";
 import clsx from "clsx";
 
-import styles from "./styles.module.css";
-
 import { useImageLoaded } from "@hooks";
 import { APPLICATION_NAME } from "@constants";
 
@@ -49,8 +47,7 @@ export default function Home(): JSX.Element {
   return (
     <div
       className={clsx(
-        "relative h-screen w-screen select-none bg-cover bg-center",
-        styles.background
+        "relative h-screen w-screen select-none bg-cover bg-center"
       )}
       style={{ backgroundImage: `url(${homeBackground})` }}
     >

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
-import styles from "./styles.module.css";
 
 import { Icon } from "@components";
 import { LanguageType } from "@i18n";
@@ -48,8 +47,7 @@ export default function LanguageIcon() {
     >
       <div
         className={clsx(
-          styles.btnWrapper,
-          "flex w-28 cursor-pointer items-center justify-center rounded-md py-1 pl-1.5 hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
+          "flex w-28 cursor-pointer items-center justify-center rounded-md py-1 pl-1.5 transition-[background-color,fill,width] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
         )}
       >
         <Icon.Language
@@ -67,10 +65,9 @@ export default function LanguageIcon() {
       <div
         className={clsx(
           showDropdown
-            ? "visible translate-y-1  opacity-100"
+            ? "visible translate-y-1 opacity-100"
             : "invisible opacity-0",
-          styles.dropdownWrapper,
-          "absolute top-7 z-10 w-28 divide-y divide-gray-100 rounded-md bg-white shadow-[rgb(0,0,0,0.2)_0_0_10px] dark:divide-gray-600 dark:bg-gray-700"
+          "absolute top-7 z-10 w-28 divide-y divide-gray-100 rounded-md bg-white shadow-[rgb(0,0,0,0.2)_0_0_10px] transition-[opacity,visibility,transform] dark:divide-gray-600 dark:bg-gray-700"
         )}
       >
         <ul className="py-1 text-center text-sm text-gray-700 dark:text-gray-200">

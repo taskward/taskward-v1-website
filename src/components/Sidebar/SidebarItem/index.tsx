@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
-import styles from "./styles.module.css";
 
 type SidebarItemProps = {
   shouldExpand: boolean;
@@ -20,8 +19,7 @@ export default function SidebarItem({
   return (
     <div
       className={clsx(
-        "flex cursor-pointer items-center",
-        styles.sidebarItemWrapper,
+        "flex cursor-pointer items-center transition-[background-color,fill,width,border-radius]",
         active
           ? shouldExpand && "rounded-md bg-emerald-300 dark:bg-emerald-700"
           : shouldExpand &&
@@ -31,8 +29,7 @@ export default function SidebarItem({
     >
       <div
         className={clsx(
-          "relative h-12 w-12 shrink-0 rounded-full",
-          styles.iconWrapper,
+          "relative h-12 w-12 shrink-0 rounded-full transition-[background-color,fill]",
           active && !shouldExpand && "bg-emerald-300 dark:bg-emerald-700"
         )}
         title={title}

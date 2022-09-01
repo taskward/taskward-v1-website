@@ -33,9 +33,7 @@ export default function Sidebar(): JSX.Element {
       className={clsx(
         "relative flex shrink-0 select-none flex-col gap-3 overflow-hidden border-r p-3 transition-all dark:border-black",
         styles.sidebarWrapper,
-        sidebarMode === "collapse" && !shouldExpand
-          ? styles.collapse
-          : styles.expand
+        sidebarMode === "collapse" && !shouldExpand ? "w-[72px]" : "w-[224px]"
       )}
       onMouseEnter={() => {
         sidebarMode === "collapse" && setShouldExpand(true);
