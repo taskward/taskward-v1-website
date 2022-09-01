@@ -29,6 +29,19 @@ import Copy from "./Copy";
 import Edit from "./Edit";
 import Delete from "./Delete";
 import DeleteForever from "./DeleteForever";
+import RestoreFromTrash from "./RestoreFromTrash";
+import More from "./More";
+import OpenLink from "./OpenLink";
+import Pin from "./Pin";
+import Settings from "./Settings";
+import Label from "./Label";
+import Check from "./Check";
+import CheckCircle from "./CheckCircle";
+import Info from "./Info";
+import ExpandCircle from "./ExpandCircle";
+import Remove from "./Remove";
+import Lock from "./Lock";
+import Unlock from "./Unlock";
 
 export const Icon = {
   Archive,
@@ -55,4 +68,17 @@ export const Icon = {
   Edit,
   Delete,
   DeleteForever,
+  RestoreFromTrash,
+  More,
+  OpenLink,
+  Pin,
+  Settings,
+  Label,
+  Check,
+  CheckCircle,
+  Info,
+  ExpandCircle,
+  Remove,
+  Lock,
+  Unlock,
 };
