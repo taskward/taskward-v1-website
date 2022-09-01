@@ -14,5 +14,6 @@
   "DELETE.FOREVER": "Delete forever",
   "DELETE.SUCCESS": "Delete successfully",
   "DELETE.FAILED": "Delete failed",
+  "RESTORE": "Restore",
   "REVOKE": "Revoke"
 }

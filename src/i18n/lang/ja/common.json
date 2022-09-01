@@ -14,5 +14,6 @@
   "DELETE.FOREVER": "完全に削除",
   "DELETE.SUCCESS": "正常に削除",
   "DELETE.FAILED": "削除に失敗しました",
+  "RESTORE": "戻す",
   "REVOKE": "取り消す"
 }
