@@ -103,6 +103,21 @@ export default function TrashNoteListCard({
             />
           </div>
           <div
+            title={t("common:RESTORE")}
+            onClick={() => {
+              restoreTrashNote(note.id);
+            }}
+            className={clsx(
+              "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
+            )}
+          >
+            <Icon.RestoreFromTrash
+              width="26"
+              height="26"
+              className="fill-black dark:fill-white"
+            />
+          </div>
+          <div
             title={t("common:DELETE.FOREVER")}
             onClick={() => {
               deleteTrashNote(note.id);
