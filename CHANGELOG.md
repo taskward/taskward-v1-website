@@ -11,6 +11,7 @@
   - [x] France
   - [x] Japanese
   - [ ] Korean (Pending)
+  - [ ] Spanish (Pending)
 - [x] Dark Theme
   - [x] Detect user default theme
   - [x] Remember theme user chose

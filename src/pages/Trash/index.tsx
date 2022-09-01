@@ -36,10 +36,12 @@ export default function Trash(): JSX.Element {
         styles.scrollbar
       )}
     >
-      <div className="mx-auto mt-4 mb-80 w-full p-4">
-        {isGetTrashNotesLoading || isGetTrashNotesRefetching ? (
+      {isGetTrashNotesLoading || isGetTrashNotesRefetching ? (
+        <div className="h-screen">
           <Loading />
-        ) : (
+        </div>
+      ) : (
+        <div className="mx-auto mt-4 mb-80 w-full p-4">
           <div
             className={clsx(
               "mx-auto flex flex-col items-center justify-center gap-4",
@@ -50,8 +52,8 @@ export default function Trash(): JSX.Element {
               return <TrashNoteListCard key={note.id} note={note} />;
             })}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
