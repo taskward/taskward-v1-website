@@ -10,16 +10,21 @@ const axiosService = axios.create({
   timeout: 10000,
 });
 
-if (localStorage.getItem(LOCAL_STORAGE_TOKEN)) {
-  axiosService.defaults.headers.common["Authorization"] =
-    "Bearer " + localStorage.getItem(LOCAL_STORAGE_TOKEN);
-}
+axiosService.interceptors.request.use(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (config: any) => {
+    const token = localStorage.getItem(LOCAL_STORAGE_TOKEN);
+    if (token) {
+      config.headers.common["Authorization"] = "Bearer " + token;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 axiosService.interceptors.response.use(
-  function (response) {
-    return response;
-  },
-  function (error) {
+  (response) => response,
+  (error) => {
     if (error.message === "timeout of 10000ms exceeded") {
       console.error(i18n.t("request:RESPONSE.ERROR.TIMEOUT"));
     } else if (error.response?.status === 401) {
