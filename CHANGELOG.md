@@ -38,6 +38,8 @@
   - [ ] Create time/Update time
   - [ ] Custom background (Pending)
   - [ ] Mind me (Pending)
+  - [ ] Countdown
+  - [ ] Delete many
 - [ ] Archive
   - [ ] Pin (Pending)
 - [ ] Trash
@@ -57,5 +59,6 @@
   - [ ] Send feedback (Pending)
   - [ ] Theme preference (Pending)
   - [ ] Language preference (Pending)
+  - [ ] Custom background image (Pending)
 - [ ] Auto sync/refresh (Pending)
 - [ ] More App (Pending)
