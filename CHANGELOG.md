@@ -20,6 +20,7 @@
   - [ ] Mobile Enhanced (Pending)
 - [ ] Authentication
   - [x] Username
+  - [ ] Detect username whether has been used
   - [ ] Email (Pending)
   - [x] GitHub OAuth2
   - [ ] Google OAuth2 (Pending)
