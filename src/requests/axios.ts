@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { i18n } from "@i18n";
 import { LOCAL_STORAGE_TOKEN } from "@constants";
+import { history } from "@utils";
 
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
@@ -22,11 +23,7 @@ axiosService.interceptors.response.use(
     if (error.message === "timeout of 10000ms exceeded") {
       console.error(i18n.t("request:RESPONSE.ERROR.TIMEOUT"));
     } else if (error.response?.status === 401) {
-      history.replaceState(
-        { message: i18n.t("request:LOGIN.FAILED") },
-        "",
-        "/login"
-      );
+      history.replace("/login", { message: i18n.t("request:LOGIN.FAILED") });
       console.error("401: " + error.message);
     } else if (error.response?.status === 400) {
       console.error("400: " + error.message);
