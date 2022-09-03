@@ -52,11 +52,16 @@ export default function Home(): JSX.Element {
       style={{ backgroundImage: `url(${homeBackground})` }}
     >
       <div className="absolute inset-0 m-auto h-fit w-fit">
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col items-center gap-2">
-            <span className="mb-2 animate-[pulse_2s_linear_infinite] select-none bg-gradient-to-r from-emerald-600 to-violet-300 bg-clip-text text-7xl text-transparent">
+        <div className="mb-20 flex flex-col gap-2">
+          <div className="flex flex-col items-center gap-1">
+            <span className="mb-1 animate-[pulse_2s_linear_infinite] select-none bg-gradient-to-r from-emerald-600 to-violet-300 bg-clip-text text-7xl text-transparent">
               {APPLICATION_NAME}
             </span>
+            {import.meta.env.VITE_VERSION && (
+              <div className="select-none bg-gradient-to-r from-emerald-600 to-violet-300 bg-clip-text text-lg font-medium text-transparent">
+                v-{import.meta.env.VITE_VERSION}
+              </div>
+            )}
           </div>
           <span className="text-center text-lg text-gray-600">
             <Trans i18nKey="TASKWARD.APP.DESCRIPTION.FIRST.LINE" ns="app">
@@ -103,7 +108,7 @@ export default function Home(): JSX.Element {
               }
             />
           </div>
-          <div className="mt-4">
+          <div className="mt-2">
             <GitHubIcon />
           </div>
         </div>
