@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import clsx from "clsx";
 
 import styles from "./styles.module.css";
@@ -24,22 +24,45 @@ export default function Modal({
     },
   });
 
+  useEffect(() => {
+    if (show) {
+      window.addEventListener("keydown", handleOnKeyDownEsc);
+      return () => {
+        window.removeEventListener("keydown", handleOnKeyDownEsc);
+      };
+    }
+  }, [show]);
+
+  const handleOnKeyDownEsc = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      closeModalCallback();
+      toggle();
+    }
+  };
+
   return (
     <div
       className={clsx(
-        "fixed inset-0 z-50 flex h-full w-full overflow-hidden bg-gray-900 bg-opacity-60 transition-[visibility]",
+        "hideScrollbar fixed inset-0 z-50 flex h-full w-full overflow-hidden overflow-y-auto bg-gray-900 bg-opacity-60 transition-[visibility]",
         show ? "visible" : "invisible"
       )}
+      onKeyDown={(e) => {
+        if (e.key === "Escape") {
+          console.log(1);
+          closeModalCallback();
+          toggle();
+        }
+      }}
     >
       <div
         ref={outsideClickRef}
         className={clsx(
-          "z-[55] m-auto h-fit transition-[transform,visibility,opacity]",
+          "z-[55] my-28 mx-auto h-fit transition-[transform,visibility,opacity]",
           styles.modalWrapper,
           show ? "visible scale-100 opacity-100" : "invisible scale-0 opacity-0"
         )}
       >
-        <div className="mb-52 w-auto rounded-md bg-white p-4 shadow-lg dark:bg-gray-700">
+        <div className="w-auto rounded-md bg-white p-4 shadow-lg dark:bg-gray-700">
           {children}
         </div>
       </div>

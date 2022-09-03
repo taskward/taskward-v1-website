@@ -35,3 +35,14 @@
 .fr {
   font-family: Montserrat, sans-serif;
 }
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.hideScrollbar {
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
