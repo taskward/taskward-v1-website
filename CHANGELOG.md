@@ -41,6 +41,7 @@
   - [ ] Mind me (Pending)
   - [ ] Countdown
   - [ ] Delete many
+  - [ ] Revoke
 - [ ] Archive
   - [ ] Pin (Pending)
 - [ ] Trash
