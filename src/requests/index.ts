@@ -9,10 +9,15 @@ export {
   useCreateNoteRequest,
   useUpdateNoteRequest,
   useDeleteNoteRequest,
+  useArchiveNoteRequest,
 } from "./api/notes";
+
+export { useGetArchiveNotesRequest } from "./api/archive";
 
 export {
   useGetTrashNotesRequest,
   useRestoreTrashNoteRequest,
   useDeleteTrashNoteRequest,
 } from "./api/trash";
+
+export { NOTES_KEY, ARCHIVE_KEY, TRASH_KEY } from "./keys";

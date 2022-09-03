@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 
 import { Icon } from "@components";
-import { useDeleteNoteRequest } from "@requests";
+import { useArchiveNoteRequest, useDeleteNoteRequest } from "@requests";
 import {
   convertUtcToLocalTime,
   convertUtcToFullLocalTime,
@@ -20,8 +20,10 @@ export default function NoteListCard({
   className,
   style,
 }: NoteListCardProps): JSX.Element | null {
-  const { t } = useTranslation(["common"]);
+  const { t } = useTranslation(["common", "layout"]);
 
+  const { mutate: archiveNote, isLoading: isArchiveNoteLoading } =
+    useArchiveNoteRequest();
   const { mutate: deleteNote, isLoading: isDeleteNoteLoading } =
     useDeleteNoteRequest();
   const [isEdit, toggleEdit] = useToggle(false);
@@ -104,6 +106,22 @@ export default function NoteListCard({
               <Icon.Copy
                 width="18"
                 height="18"
+                className="fill-black dark:fill-white"
+              />
+            </div>
+            <div
+              title={t("layout:SIDEBAR.TITLE.ARCHIVE")}
+              onClick={(e) => {
+                e.stopPropagation();
+                archiveNote(note.id);
+              }}
+              className={clsx(
+                "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
+              )}
+            >
+              <Icon.Archive
+                width="22"
+                height="22"
                 className="fill-black dark:fill-white"
               />
             </div>

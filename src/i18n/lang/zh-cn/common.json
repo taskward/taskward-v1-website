@@ -17,5 +17,8 @@
   "RESTORE": "恢复",
   "REVOKE": "撤销",
   "SAVE": "保存",
-  "SAVING": "保存中"
+  "SAVING": "保存中",
+  "CREATED.TIME": "创建时间",
+  "UPDATED.TIME": "修改时间",
+  "DELETED.TIME": "删除时间"
 }

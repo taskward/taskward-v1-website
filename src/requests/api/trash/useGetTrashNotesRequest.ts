@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { axiosService } from "@requests";
+import { axiosService, TRASH_KEY } from "@requests";
 
 import { TrashNotesResult } from "@interfaces";
 
 const useGetTrashNotesRequest = () => {
   const { data, refetch, isLoading, isRefetching } = useQuery(
-    ["trash.notes"],
+    [TRASH_KEY],
     async (): Promise<TrashNotesResult> => {
       const response = await axiosService({
         method: "GET",

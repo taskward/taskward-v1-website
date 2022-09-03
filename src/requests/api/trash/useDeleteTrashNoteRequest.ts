@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { axiosService } from "@requests";
+import { axiosService, TRASH_KEY } from "@requests";
 
 const useDeleteTrashNoteRequest = () => {
   const queryClient = useQueryClient();
@@ -14,7 +14,7 @@ const useDeleteTrashNoteRequest = () => {
     },
     {
       onSuccess: () => {
-        return queryClient.invalidateQueries(["trash.notes"]);
+        return queryClient.invalidateQueries([TRASH_KEY]);
       },
     }
   );

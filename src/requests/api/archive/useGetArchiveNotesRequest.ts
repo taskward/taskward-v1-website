@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { axiosService, NOTES_KEY } from "@requests";
+import { axiosService, ARCHIVE_KEY } from "@requests";
 
 import { NotesResult } from "@interfaces";
 
-const useGetNotesRequest = () => {
+const useGetArchiveNotesRequest = () => {
   const { data, refetch, isLoading, isRefetching } = useQuery(
-    [NOTES_KEY],
+    [ARCHIVE_KEY],
     async (): Promise<NotesResult> => {
       const response = await axiosService({
         method: "GET",
-        url: "notes",
+        url: "archive/notes",
       });
       return response.data;
     }
@@ -18,4 +18,4 @@ const useGetNotesRequest = () => {
   return { data, refetch, isLoading, isRefetching };
 };
 
-export default useGetNotesRequest;
+export default useGetArchiveNotesRequest;

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { axiosService } from "@requests";
+import { axiosService, NOTES_KEY } from "@requests";
 
 import { NoteFormData } from "@interfaces";
 
@@ -17,7 +17,7 @@ const useCreateNoteRequest = () => {
     },
     {
       onSuccess: () => {
-        return queryClient.invalidateQueries(["notes"]);
+        return queryClient.invalidateQueries([NOTES_KEY]);
       },
     }
   );

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { axiosService } from "@requests";
+import { axiosService, NOTES_KEY, TRASH_KEY } from "@requests";
 
 const useRestoreTrashNoteRequest = () => {
   const queryClient = useQueryClient();
@@ -15,8 +15,8 @@ const useRestoreTrashNoteRequest = () => {
     {
       onSuccess: () => {
         return Promise.all([
-          queryClient.invalidateQueries(["notes"]),
-          queryClient.invalidateQueries(["trash.notes"]),
+          queryClient.invalidateQueries([NOTES_KEY]),
+          queryClient.invalidateQueries([TRASH_KEY]),
         ]);
       },
     }
