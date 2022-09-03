@@ -1,6 +1,6 @@
 # Taskward
 
-Taskward is a Todo&Task application still in development.
+Taskward is a Todo&Task application.
 
 ## Stack
 
@@ -24,4 +24,4 @@ Taskward is a Todo&Task application still in development.
 
 ## Contributor
 
-- Feature Designer: DZY
+- Feature Designer&Helper: DZY
