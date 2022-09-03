@@ -64,7 +64,7 @@ export default function LoginPopup(): JSX.Element {
       const loginResult: boolean = await loginByGitHubCode(code, abortSignal);
       setLoginLoading(false);
       if (loginResult) {
-        queryClient.invalidateQueries();
+        queryClient.clear();
         navigate("/note", { replace: true });
       }
     }
@@ -76,7 +76,7 @@ export default function LoginPopup(): JSX.Element {
     setLoginLoading(false);
     setValue("password", "");
     if (loginResult) {
-      queryClient.invalidateQueries();
+      queryClient.clear();
       navigate("/note", { replace: true });
     }
   };

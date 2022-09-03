@@ -70,7 +70,7 @@ export default function SignupPopup(): JSX.Element {
       const signupResult: boolean = await loginByGitHubCode(code, abortSignal);
       setSignupLoading(false);
       if (signupResult) {
-        queryClient.invalidateQueries();
+        queryClient.clear();
         navigate("/note", { replace: true });
       }
     }
@@ -83,7 +83,7 @@ export default function SignupPopup(): JSX.Element {
     setValue("password", "");
     setValue("confirmPassword", "");
     if (signupResult) {
-      queryClient.invalidateQueries();
+      queryClient.clear();
       navigate("/note", { replace: true });
     }
   };

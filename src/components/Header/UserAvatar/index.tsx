@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { shallowEqual } from "react-redux";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { Icon } from "@components";
 import { userAction } from "@store";
@@ -10,6 +11,7 @@ import { LOCAL_STORAGE_TOKEN } from "@constants";
 export default function UserAvatar(): JSX.Element | null {
   const navigate = useNavigate();
   const userDispatch = useAppDispatch();
+  const queryClient = useQueryClient();
 
   const user = useAppSelector<User | null>(
     (state) => state.user.user,
@@ -19,6 +21,7 @@ export default function UserAvatar(): JSX.Element | null {
   function logout() {
     localStorage.removeItem(LOCAL_STORAGE_TOKEN);
     userDispatch(userAction.updateUserInfo(null));
+    queryClient.clear();
     navigate("/", { replace: true });
   }
 

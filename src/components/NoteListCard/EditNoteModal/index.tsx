@@ -8,7 +8,11 @@ import styles from "./styles.module.css";
 
 import { Note, type EditNoteFormData, EditNoteFormSchema } from "@interfaces";
 import { Icon, Modal } from "@components";
-import { convertUtcToLocalTime, isObjectHaveSameData } from "@utils";
+import {
+  convertUtcToLocalTime,
+  convertUtcToFullLocalTime,
+  isObjectHaveSameData,
+} from "@utils";
 import { useUpdateNoteRequest } from "@requests";
 
 export default function EditNoteModal({
@@ -22,7 +26,7 @@ export default function EditNoteModal({
 }): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
 
-  const { mutate: updateNote, isLoading: isUpdateNoteLoading } =
+  const { mutateAsync: updateNoteAsync, isLoading: isUpdateNoteLoading } =
     useUpdateNoteRequest();
 
   const { handleSubmit, setValue, reset } = useForm<EditNoteFormData>({
@@ -41,9 +45,8 @@ export default function EditNoteModal({
       description: note.description,
     };
     if (!isObjectHaveSameData(oldData, formData)) {
-      updateNote(formData);
+      await updateNoteAsync(formData);
     }
-    return;
   };
 
   useEffect(() => {
@@ -54,13 +57,13 @@ export default function EditNoteModal({
     <Modal
       show={isEdit}
       toggle={toggle}
-      closeModalCallback={() => {
-        handleSubmit(handleUpdateNote)();
+      closeModalCallback={async (): Promise<void> => {
+        await handleSubmit(handleUpdateNote)();
       }}
     >
       <div className="flex items-center justify-between dark:border-gray-600">
-        <div className="text-xs font-medium dark:text-noteSecondTextDark">
-          {convertUtcToLocalTime(note.updatedAt)}
+        <div className="flex items-center gap-1 text-xs font-medium dark:text-noteSecondTextDark">
+          {convertUtcToLocalTime(note.createdAt)}
         </div>
         <button
           type="button"
@@ -74,11 +77,7 @@ export default function EditNoteModal({
           />
         </button>
       </div>
-      <form
-        onSubmit={handleSubmit(handleUpdateNote)}
-        className="mt-4 flex flex-col gap-4"
-        key={`${isEdit}`}
-      >
+      <form className="mt-2 flex flex-col gap-4" key={`${isEdit}`}>
         <div
           className={clsx(
             "w-full cursor-text select-text resize-none whitespace-pre-wrap break-words px-0 text-lg font-medium outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:placeholder-gray-400",
@@ -107,6 +106,25 @@ export default function EditNoteModal({
             });
           }}
         />
+        <div className="flex justify-between text-xs font-medium dark:text-noteSecondTextDark">
+          <div
+            className={clsx(
+              "flex items-center transition-[visibility,transform,opacity]",
+              isUpdateNoteLoading
+                ? "visible scale-100 opacity-100"
+                : "invisible scale-0 opacity-0"
+            )}
+          >
+            <Icon.Sync width="16" height="16" className="mr-0.5" />
+            正在保存中...
+          </div>
+          <div
+            className="flex items-center"
+            title={convertUtcToFullLocalTime(note.updatedAt)}
+          >
+            {convertUtcToLocalTime(note.updatedAt)}
+          </div>
+        </div>
       </form>
     </Modal>
   );

@@ -14,8 +14,10 @@ const useRestoreTrashNoteRequest = () => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["notes"]);
-        queryClient.invalidateQueries(["trash.notes"]);
+        return Promise.all([
+          queryClient.invalidateQueries(["notes"]),
+          queryClient.invalidateQueries(["trash.notes"]),
+        ]);
       },
     }
   );

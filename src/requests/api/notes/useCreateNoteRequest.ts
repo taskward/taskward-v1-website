@@ -17,7 +17,7 @@ const useCreateNoteRequest = () => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["notes"]);
+        return queryClient.invalidateQueries(["notes"]);
       },
     }
   );

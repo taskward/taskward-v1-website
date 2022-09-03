@@ -40,7 +40,7 @@ export default function Note(): JSX.Element {
         <NoteCreator className={styles.contentWrapper} />
       </div>
       <div className="mx-auto mb-80 w-full p-4">
-        {isGetNotesLoading || isGetNotesRefetching ? (
+        {isGetNotesLoading ? (
           <Loading />
         ) : (
           <div

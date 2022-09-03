@@ -36,7 +36,7 @@ export default function Trash(): JSX.Element {
         styles.scrollbar
       )}
     >
-      {isGetTrashNotesLoading || isGetTrashNotesRefetching ? (
+      {isGetTrashNotesLoading ? (
         <div className="h-screen">
           <Loading />
         </div>

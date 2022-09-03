@@ -14,7 +14,7 @@ const useDeleteTrashNoteRequest = () => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["trash.notes"]);
+        return queryClient.invalidateQueries(["trash.notes"]);
       },
     }
   );

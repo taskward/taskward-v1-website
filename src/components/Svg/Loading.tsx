@@ -4,7 +4,7 @@ import clsx from "clsx";
 export default function Loading({
   width = "24",
   height = "24",
-  className = "fill-emerald-600",
+  className,
   onClick,
 }: SvgPropsType): JSX.Element {
   return (
@@ -15,8 +15,9 @@ export default function Loading({
       width={width}
       height={height}
       className={clsx(
-        className,
-        "animate-spin text-gray-200 dark:text-gray-600"
+        "fill-emerald-600",
+        "animate-spin text-gray-200 dark:text-gray-600",
+        className
       )}
       onClick={onClick}
     >

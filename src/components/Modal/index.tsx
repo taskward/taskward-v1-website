@@ -14,13 +14,12 @@ export default function Modal({
   children: ReactNode;
   show: boolean;
   toggle: () => void;
-  closeModalCallback: () => void;
+  closeModalCallback: (() => Promise<void>) | (() => void);
 }): JSX.Element | null {
   const outsideClickRef = useDetectOutsideClick({
     active: show,
     outsideClickCallback: () => {
-      closeModalCallback();
-      toggle();
+      handleCloseModal();
     },
   });
 
@@ -35,9 +34,13 @@ export default function Modal({
 
   const handleOnKeyDownEsc = (event: KeyboardEvent) => {
     if (event.key === "Escape") {
-      closeModalCallback();
-      toggle();
+      handleCloseModal();
     }
+  };
+
+  const handleCloseModal = async () => {
+    await closeModalCallback();
+    toggle();
   };
 
   return (
@@ -46,13 +49,6 @@ export default function Modal({
         "hideScrollbar fixed inset-0 z-50 flex h-full w-full overflow-hidden overflow-y-auto bg-gray-900 bg-opacity-60 transition-[visibility]",
         show ? "visible" : "invisible"
       )}
-      onKeyDown={(e) => {
-        if (e.key === "Escape") {
-          console.log(1);
-          closeModalCallback();
-          toggle();
-        }
-      }}
     >
       <div
         ref={outsideClickRef}

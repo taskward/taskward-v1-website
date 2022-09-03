@@ -17,7 +17,7 @@ const useUpdateNoteRequest = () => {
     },
     {
       onSuccess: () => {
-        queryClient.invalidateQueries(["notes"]);
+        return queryClient.refetchQueries(["notes"]);
       },
     }
   );

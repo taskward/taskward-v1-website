@@ -4,7 +4,7 @@ import clsx from "clsx";
 export default function Sync({
   width = "24",
   height = "24",
-  className = "fill-emerald-600",
+  className,
   onClick,
 }: SvgPropsType): JSX.Element {
   return (
@@ -13,7 +13,7 @@ export default function Sync({
       viewBox="0 0 24 24"
       width={width}
       height={height}
-      className={clsx(className, "animate-spin")}
+      className={clsx("fill-emerald-600", "animate-spin", className)}
       onClick={onClick}
     >
       <path d="M.01 0h24v24h-24V0z" fill="none" />
