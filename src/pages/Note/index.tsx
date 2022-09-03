@@ -10,7 +10,7 @@ import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
 
 export default function Note(): JSX.Element {
-  const { t, i18n } = useTranslation(["common", "layout"]);
+  const { t, i18n } = useTranslation(["common", "layout", "note"]);
   const sidebarDispatch = useAppDispatch();
 
   const {
@@ -36,10 +36,8 @@ export default function Note(): JSX.Element {
         styles.scrollbar
       )}
     >
-      <div className="mx-auto mt-4 w-full p-4">
+      <div className="mx-auto mb-80 flex w-full flex-col gap-4 p-4">
         <NoteCreator className={styles.contentWrapper} />
-      </div>
-      <div className="mx-auto mb-80 w-full p-4">
         {isGetNotesLoading ? (
           <Loading />
         ) : (
@@ -49,6 +47,14 @@ export default function Note(): JSX.Element {
               styles.contentWrapper
             )}
           >
+            <div className="text-[0.5rem] font-medium dark:text-noteSecondTextDark">
+              {notesData?.count && notesData.count > 0 ? (
+                <>{t("note:NOTE.COUNT", { count: notesData.count })} 🎉</>
+              ) : (
+                <>{t("note:NOTE.NONE")} 👆</>
+              )}
+            </div>
+
             {notesData?.notes.map((note) => {
               return <NoteListCard key={note.id} note={note} />;
             })}
