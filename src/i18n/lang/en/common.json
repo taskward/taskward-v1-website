@@ -15,5 +15,7 @@
   "DELETE.SUCCESS": "Delete successfully",
   "DELETE.FAILED": "Delete failed",
   "RESTORE": "Restore",
-  "REVOKE": "Revoke"
+  "REVOKE": "Revoke",
+  "SAVE": "Save",
+  "SAVING": "Saving"
 }

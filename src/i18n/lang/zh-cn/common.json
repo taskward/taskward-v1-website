@@ -15,5 +15,7 @@
   "DELETE.SUCCESS": "删除成功",
   "DELETE.FAILED": "删除失败",
   "RESTORE": "恢复",
-  "REVOKE": "撤销"
+  "REVOKE": "撤销",
+  "SAVE": "保存",
+  "SAVING": "保存中"
 }

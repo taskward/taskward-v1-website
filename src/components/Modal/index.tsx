@@ -46,8 +46,8 @@ export default function Modal({
   return (
     <div
       className={clsx(
-        "hideScrollbar fixed inset-0 z-50 flex h-full w-full overflow-hidden overflow-y-auto bg-gray-900 bg-opacity-60 px-4 transition-[visibility]",
-        show ? "visible" : "invisible"
+        "hideScrollbar fixed inset-0 z-50 flex h-full w-full overflow-hidden overflow-y-auto bg-black bg-opacity-60 px-4 transition-[visibility,opacity]",
+        show ? "visible opacity-100" : "invisible opacity-0"
       )}
     >
       <div

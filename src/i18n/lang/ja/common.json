@@ -15,5 +15,7 @@
   "DELETE.SUCCESS": "正常に削除",
   "DELETE.FAILED": "削除に失敗しました",
   "RESTORE": "戻す",
-  "REVOKE": "取り消す"
+  "REVOKE": "取り消す",
+  "SAVE": "保存",
+  "SAVING": "保存中"
 }

@@ -116,7 +116,7 @@ export default function EditNoteModal({
             )}
           >
             <Icon.Sync width="16" height="16" className="mr-0.5" />
-            正在保存中...
+            {t("common:SAVING")}...
           </div>
           <div
             className="flex items-center"
