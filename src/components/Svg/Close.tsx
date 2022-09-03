@@ -1,9 +1,10 @@
 import { type SvgPropsType } from ".";
+import clsx from "clsx";
 
 export default function Close({
   width = "24",
   height = "24",
-  className = "fill-black",
+  className,
   onClick,
 }: SvgPropsType): JSX.Element {
   return (
@@ -12,7 +13,7 @@ export default function Close({
       viewBox="0 0 24 24"
       width={width}
       height={height}
-      className={className}
+      className={clsx("fill-black", className)}
       onClick={onClick}
     >
       <path d="M0 0h24v24H0V0z" fill="none" />

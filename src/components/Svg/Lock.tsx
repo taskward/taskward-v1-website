@@ -1,9 +1,10 @@
 import { type SvgPropsType } from ".";
+import clsx from "clsx";
 
 export default function Lock({
   width = "24",
   height = "24",
-  className = "fill-black",
+  className,
   onClick,
 }: SvgPropsType): JSX.Element {
   return (
@@ -12,7 +13,7 @@ export default function Lock({
       viewBox="0 0 24 24"
       width={width}
       height={height}
-      className={className}
+      className={clsx("fill-black", className)}
       onClick={onClick}
     >
       <g fill="none">

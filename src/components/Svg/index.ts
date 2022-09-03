@@ -43,6 +43,7 @@ import Remove from "./Remove";
 import Lock from "./Lock";
 import Unlock from "./Unlock";
 import Sync from "./Sync";
+import Unarchive from "./Unarchive";
 
 export const Icon = {
   Archive,
@@ -83,4 +84,5 @@ export const Icon = {
   Lock,
   Unlock,
   Sync,
+  Unarchive,
 };
