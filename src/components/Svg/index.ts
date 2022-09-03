@@ -42,6 +42,7 @@ import ExpandCircle from "./ExpandCircle";
 import Remove from "./Remove";
 import Lock from "./Lock";
 import Unlock from "./Unlock";
+import Sync from "./Sync";
 
 export const Icon = {
   Archive,
@@ -81,4 +82,5 @@ export const Icon = {
   Remove,
   Lock,
   Unlock,
+  Sync,
 };
