@@ -1,0 +1,7 @@
+.textarea {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+.textarea p {
+  margin: 0;
+}

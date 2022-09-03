@@ -13,6 +13,8 @@ export type {
   TrashNotesResult,
 } from "./components";
 
+export type { OutsideClickType } from "./hooks";
+
 export type { LoginFormData, SignupFormData, NoteFormData } from "./forms";
 export { loginFormSchema, signupFormSchema, NoteFromSchema } from "./forms";
 

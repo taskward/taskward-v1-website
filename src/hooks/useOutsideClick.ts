@@ -1,30 +1,35 @@
 import { useEffect, useRef } from "react";
 
-const useOutsideClick = (
-  outsideClickCallback?: () => void,
-  insideClickCallback?: () => void
-) => {
+import { OutsideClickType } from "@interfaces";
+
+const useOutsideClick = ({
+  outsideClickCallback,
+  insideClickCallback,
+  active = true,
+}: OutsideClickType) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef<any>();
 
   useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      event.stopPropagation();
-      if (ref.current && !ref.current.contains(event.target)) {
-        if (outsideClickCallback) {
-          outsideClickCallback();
+    if (active) {
+      const handleClick = (event: MouseEvent) => {
+        event.stopPropagation();
+        if (ref.current && !ref.current.contains(event.target)) {
+          if (outsideClickCallback) {
+            outsideClickCallback();
+          }
+        } else {
+          if (insideClickCallback) {
+            insideClickCallback();
+          }
         }
-      } else {
-        if (insideClickCallback) {
-          insideClickCallback();
-        }
-      }
-    };
-    document.addEventListener("mousedown", handleClick, true);
-    return () => {
-      document.removeEventListener("mousedown", handleClick, true);
-    };
-  }, [ref]);
+      };
+      document.addEventListener("mousedown", handleClick, true);
+      return () => {
+        document.removeEventListener("mousedown", handleClick, true);
+      };
+    }
+  }, [ref, active]);
 
   return ref;
 };

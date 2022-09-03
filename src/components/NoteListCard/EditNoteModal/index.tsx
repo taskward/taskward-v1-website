@@ -1,5 +1,8 @@
+import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import { Icon, Modal } from "@components";
+
+import styles from "./styles.module.css";
 
 export default function EditNoteModal({
   isEdit,
@@ -7,7 +10,9 @@ export default function EditNoteModal({
 }: {
   isEdit: boolean;
   toggle: () => void;
-}): JSX.Element | null {
+}): JSX.Element {
+  const { t } = useTranslation(["note"]);
+
   return (
     <Modal show={isEdit} toggle={toggle}>
       <div className="flex items-center justify-end dark:border-gray-600">
@@ -24,9 +29,18 @@ export default function EditNoteModal({
         </button>
       </div>
       <div
-        className="block max-h-[600px] min-h-[200px] overflow-x-hidden overflow-y-scroll whitespace-pre-wrap break-words text-sm font-normal tracking-wide dark:text-noteSecondTextDark"
-        style={{ overflow: "overlay" }}
-      ></div>
+        className={clsx(
+          "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words px-0 text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:text-noteSecondTextDark dark:placeholder-gray-400",
+          styles.textarea
+        )}
+        placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}
+        contentEditable
+        onInput={(e) => {
+          // setValue("description", e.currentTarget.textContent as string, {
+          //   shouldValidate: true,
+          // });
+        }}
+      />
     </Modal>
   );
 }

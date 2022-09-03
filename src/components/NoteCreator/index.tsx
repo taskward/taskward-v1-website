@@ -23,16 +23,16 @@ export default function NoteCreator({
 
   const { mutate: createNote, isLoading } = useCreateNoteRequest();
 
-  const outsideClickRef = useDetectOutsideClick(
-    () => {
+  const [editable, setEditable] = useState<boolean>(false);
+
+  const outsideClickRef = useDetectOutsideClick({
+    outsideClickCallback: () => {
       onCloseEditable();
     },
-    () => {
+    insideClickCallback: () => {
       setEditable(true);
-    }
-  );
-
-  const [editable, setEditable] = useState<boolean>(false);
+    },
+  });
 
   const { handleSubmit, setValue, reset } = useForm<NoteFormData>({
     resolver: yupResolver(NoteFromSchema),
