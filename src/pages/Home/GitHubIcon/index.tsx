@@ -9,7 +9,7 @@ export default function GitHubIcon(): JSX.Element {
         href={TASKWARD_GITHUB_REPO_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full bg-gray-50 p-1 shadow-xl shadow-emerald-600 transition-colors hover:bg-gray-200"
+        className="rounded-full bg-gray-50 p-1 shadow-xl shadow-emerald-600 transition-colors hover:bg-gray-200 active:bg-gray-50"
         title="GitHub"
       >
         <img src={github} width="28" height="28" loading="eager" />
