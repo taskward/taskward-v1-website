@@ -46,14 +46,14 @@ export default function Modal({
   return (
     <div
       className={clsx(
-        "hideScrollbar fixed inset-0 z-50 flex h-full w-full overflow-hidden overflow-y-auto bg-gray-900 bg-opacity-60 transition-[visibility]",
+        "hideScrollbar fixed inset-0 z-50 flex h-full w-full overflow-hidden overflow-y-auto bg-gray-900 bg-opacity-60 px-4 transition-[visibility]",
         show ? "visible" : "invisible"
       )}
     >
       <div
         ref={outsideClickRef}
         className={clsx(
-          "z-[55] my-28 mx-auto h-fit transition-[transform,visibility,opacity]",
+          "z-[55] my-28 h-fit transition-[transform,visibility,opacity] sm:mx-auto",
           styles.modalWrapper,
           show ? "visible scale-100 opacity-100" : "invisible scale-0 opacity-0"
         )}
