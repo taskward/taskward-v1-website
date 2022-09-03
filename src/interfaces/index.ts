@@ -15,8 +15,18 @@ export type {
 
 export type { OutsideClickType } from "./hooks";
 
-export type { LoginFormData, SignupFormData, NoteFormData } from "./forms";
-export { loginFormSchema, signupFormSchema, NoteFromSchema } from "./forms";
+export type {
+  LoginFormData,
+  SignupFormData,
+  NoteFormData,
+  EditNoteFormData,
+} from "./forms";
+export {
+  loginFormSchema,
+  signupFormSchema,
+  NoteFormSchema,
+  EditNoteFormSchema,
+} from "./forms";
 
 export type { User, UserTokenModel } from "./user";
 

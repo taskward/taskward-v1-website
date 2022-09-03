@@ -10,7 +10,7 @@ import { Button, Icon } from "@components";
 import {
   CustomComponentProps,
   type NoteFormData,
-  NoteFromSchema,
+  NoteFormSchema,
 } from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
 import { useCreateNoteRequest } from "@requests";
@@ -35,7 +35,7 @@ export default function NoteCreator({
   });
 
   const { handleSubmit, setValue, reset } = useForm<NoteFormData>({
-    resolver: yupResolver(NoteFromSchema),
+    resolver: yupResolver(NoteFormSchema),
   });
 
   const handleCreateNote = async (formData: NoteFormData) => {

@@ -9,14 +9,17 @@ export default function Modal({
   children,
   show,
   toggle,
+  closeModalCallback,
 }: {
   children: ReactNode;
   show: boolean;
   toggle: () => void;
+  closeModalCallback: () => void;
 }): JSX.Element | null {
   const outsideClickRef = useDetectOutsideClick({
     active: show,
     outsideClickCallback: () => {
+      closeModalCallback();
       toggle();
     },
   });
@@ -36,7 +39,7 @@ export default function Modal({
           show ? "visible scale-100 opacity-100" : "invisible scale-0 opacity-0"
         )}
       >
-        <div className="mb-60 w-auto rounded-md bg-white p-4 shadow-lg dark:bg-gray-700">
+        <div className="mb-52 w-auto rounded-md bg-white p-4 shadow-lg dark:bg-gray-700">
           {children}
         </div>
       </div>

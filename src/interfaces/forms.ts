@@ -5,6 +5,7 @@ interface LoginFormData {
   password: string;
 }
 
+// /^\S*$/ means cannot have whitespace in username or password.
 const loginFormSchema = yup
   .object({
     username: yup.string().max(16).matches(/^\S*$/).required(),
@@ -35,10 +36,26 @@ interface NoteFormData {
   description: string;
 }
 
-const NoteFromSchema = yup.object({
+const NoteFormSchema = yup.object({
   name: yup.string(),
   description: yup.string(),
 });
-export type { LoginFormData, SignupFormData, NoteFormData };
 
-export { loginFormSchema, signupFormSchema, NoteFromSchema };
+interface EditNoteFormData extends NoteFormData {
+  id: number;
+}
+
+const EditNoteFormSchema = yup.object({
+  id: yup.number().moreThan(0).required(),
+  name: yup.string(),
+  description: yup.string(),
+});
+
+export type { LoginFormData, SignupFormData, NoteFormData, EditNoteFormData };
+
+export {
+  loginFormSchema,
+  signupFormSchema,
+  NoteFormSchema,
+  EditNoteFormSchema,
+};

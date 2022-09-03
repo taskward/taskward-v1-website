@@ -6,4 +6,8 @@ function setClipBoardText(text: string | undefined | null): boolean {
   return true;
 }
 
-export { setClipBoardText };
+function isObjectHaveSameData(a: object, b: object) {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+
+export { setClipBoardText, isObjectHaveSameData };

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 
 import { Icon } from "@components";
-import { useDeleteNoteRequest, useUpdateNoteRequest } from "@requests";
+import { useDeleteNoteRequest } from "@requests";
 import {
   convertUtcToLocalTime,
   convertUtcToFullLocalTime,
@@ -22,8 +22,6 @@ export default function NoteListCard({
 }: NoteListCardProps): JSX.Element | null {
   const { t } = useTranslation(["common"]);
 
-  const { mutate: updateNote, isLoading: isUpdateNoteLoading } =
-    useUpdateNoteRequest();
   const { mutate: deleteNote, isLoading: isDeleteNoteLoading } =
     useDeleteNoteRequest();
   const [isEdit, toggleEdit] = useToggle(false);
@@ -94,7 +92,8 @@ export default function NoteListCard({
           >
             <div
               title={t("common:COPY")}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 copyDescription(note.description);
               }}
               className={clsx(
@@ -110,7 +109,8 @@ export default function NoteListCard({
             </div>
             <div
               title={t("common:DELETE")}
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 deleteNote(note.id);
               }}
               className={clsx(
@@ -126,7 +126,7 @@ export default function NoteListCard({
           </div>
         </div>
       </div>
-      <EditNoteModal isEdit={isEdit} toggle={toggleEdit} />
+      <EditNoteModal isEdit={isEdit} toggle={toggleEdit} note={note} />
     </>
   );
 }
