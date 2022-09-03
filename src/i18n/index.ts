@@ -55,7 +55,7 @@ i18n.use(initReactI18next).init({
   defaultNS: defaultNs,
   ns: ["app", "common", "layout", "request", "note"],
   resources: resources,
-  lng: localStorage.getItem("lang") ?? LanguageType.EN,
+  lng: localStorage.getItem("lang") ?? LanguageType.ZH_CN,
   fallbackLng: LanguageType.EN,
   interpolation: {
     escapeValue: false,
