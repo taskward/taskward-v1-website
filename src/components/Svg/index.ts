@@ -44,6 +44,8 @@ import Lock from "./Lock";
 import Unlock from "./Unlock";
 import Sync from "./Sync";
 import Unarchive from "./Unarchive";
+import Update from "./Update";
+import DeleteTime from "./DeleteTime";
 
 export const Icon = {
   Archive,
@@ -85,4 +87,6 @@ export const Icon = {
   Unlock,
   Sync,
   Unarchive,
+  Update,
+  DeleteTime,
 };

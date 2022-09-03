@@ -73,10 +73,12 @@ export default function TrashNoteListCard({
       />
       <div className="flex flex-col px-2 pb-2">
         <div
-          className="flex items-center justify-end px-2 text-xs font-medium dark:text-noteSecondTextDark"
+          className="flex items-center justify-end gap-0.5 px-2 text-xs font-medium dark:text-noteSecondTextDark"
           title={convertUtcToFullLocalTime(note.deletedAt)}
         >
-          {convertUtcToLocalTime(note.deletedAt)}
+          <Icon.DeleteTime width="16" height="16" />
+          <div className="font-normal">{t("common:DELETED.TIME")}</div>
+          <div className="ml-0.5">{convertUtcToLocalTime(note.deletedAt)}</div>
         </div>
         <div
           className={clsx(

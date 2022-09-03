@@ -1,7 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { axiosService, NOTES_KEY, TRASH_KEY } from "@requests";
+import { axiosService, NOTES_KEY, ARCHIVE_KEY, TRASH_KEY } from "@requests";
 
-const useDeleteNoteRequest = () => {
+type NoteType = "note" | "archive";
+
+const useDeleteNoteRequest = (type: NoteType) => {
   const queryClient = useQueryClient();
   const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,10 +16,17 @@ const useDeleteNoteRequest = () => {
     },
     {
       onSuccess: () => {
-        return Promise.all([
-          queryClient.invalidateQueries([NOTES_KEY]),
+        const invalidateOperations: Promise<void>[] = [
           queryClient.invalidateQueries([TRASH_KEY]),
-        ]);
+        ];
+        if (type === "note") {
+          invalidateOperations.push(queryClient.invalidateQueries([NOTES_KEY]));
+        } else if (type === "archive") {
+          invalidateOperations.push(
+            queryClient.invalidateQueries([ARCHIVE_KEY])
+          );
+        }
+        return Promise.all(invalidateOperations);
       },
     }
   );

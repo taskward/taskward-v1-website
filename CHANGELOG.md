@@ -2,7 +2,7 @@
 
 ## Target
 
-- [ ] i18n Support
+- [x] i18n Support
   - [ ] Detect user default language (Pending)
   - [x] Remember language user chose
   - [x] Change language button
@@ -15,17 +15,17 @@
 - [x] Dark Theme
   - [x] Detect user default theme
   - [x] Remember theme user chose
-- [ ] Responsive Design
+- [x] Responsive Design
   - [x] PC
   - [ ] Mobile Enhanced (Pending)
-- [ ] Authentication
+- [x] Authentication
   - [x] Username
   - [ ] Detect username whether has been used
   - [ ] Email (Pending)
   - [x] GitHub OAuth2
   - [ ] Google OAuth2 (Pending)
   - [ ] Wechat OAuth2 (Pending)
-- [ ] Note
+- [x] Note
   - [x] List view
   - [ ] Card view
   - [ ] Pin (Pending)
@@ -42,9 +42,9 @@
   - [ ] Countdown
   - [ ] Delete many
   - [ ] Revoke
-- [ ] Archive
+- [x] Archive
   - [ ] Pin (Pending)
-- [ ] Trash
+- [x] Trash
   - [ ] Keep 7 days
   - [x] Force to delete
   - [x] Delete time

@@ -30,7 +30,7 @@ export default function NoteListCard({
   const { mutate: archiveNote, isLoading: isArchiveNoteLoading } =
     useArchiveNoteRequest();
   const { mutate: deleteNote, isLoading: isDeleteNoteLoading } =
-    useDeleteNoteRequest();
+    useDeleteNoteRequest(type);
   const { mutate: unarchiveNote, isLoading: isUnarchiveNoteLoading } =
     useUnarchiveNoteRequest();
   const [isEdit, toggleEdit] = useToggle(false);
