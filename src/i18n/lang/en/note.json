@@ -1,5 +1,6 @@
 {
   "NOTE": {
     "CREATE": { "PLACEHOLDER": "Create a note..." }
-  }
+  },
+  "UNARCHIVE": "Unarchive"
 }

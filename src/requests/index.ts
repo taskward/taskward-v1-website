@@ -12,7 +12,10 @@ export {
   useArchiveNoteRequest,
 } from "./api/notes";
 
-export { useGetArchiveNotesRequest } from "./api/archive";
+export {
+  useGetArchiveNotesRequest,
+  useUnarchiveNoteRequest,
+} from "./api/archive";
 
 export {
   useGetTrashNotesRequest,

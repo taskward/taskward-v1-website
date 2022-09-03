@@ -18,6 +18,6 @@ declare module "i18next" {
 declare module "react-i18next" {
   interface CustomTypeOptions {
     defaultNS: typeof defaultNs;
-    resources: typeof resources[LanguageType.EN];
+    resources: typeof resources[LanguageType.ZH_CN];
   }
 }

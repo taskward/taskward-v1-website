@@ -1,5 +1,6 @@
 {
   "NOTE": {
     "CREATE": { "PLACEHOLDER": "添加记事..." }
-  }
+  },
+  "UNARCHIVE": "取消归档"
 }

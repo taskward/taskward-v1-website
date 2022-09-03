@@ -3,7 +3,11 @@ import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 
 import { Icon } from "@components";
-import { useArchiveNoteRequest, useDeleteNoteRequest } from "@requests";
+import {
+  useArchiveNoteRequest,
+  useDeleteNoteRequest,
+  useUnarchiveNoteRequest,
+} from "@requests";
 import {
   convertUtcToLocalTime,
   convertUtcToFullLocalTime,
@@ -17,15 +21,18 @@ import EditNoteModal from "./EditNoteModal";
 
 export default function NoteListCard({
   note,
+  type = "note",
   className,
   style,
 }: NoteListCardProps): JSX.Element | null {
-  const { t } = useTranslation(["common", "layout"]);
+  const { t } = useTranslation(["common", "layout", "note"]);
 
   const { mutate: archiveNote, isLoading: isArchiveNoteLoading } =
     useArchiveNoteRequest();
   const { mutate: deleteNote, isLoading: isDeleteNoteLoading } =
     useDeleteNoteRequest();
+  const { mutate: unarchiveNote, isLoading: isUnarchiveNoteLoading } =
+    useUnarchiveNoteRequest();
   const [isEdit, toggleEdit] = useToggle(false);
 
   const [focused, setFocused] = useState<boolean>(false);
@@ -109,22 +116,41 @@ export default function NoteListCard({
                 className="fill-black dark:fill-white"
               />
             </div>
-            <div
-              title={t("layout:SIDEBAR.TITLE.ARCHIVE")}
-              onClick={(e) => {
-                e.stopPropagation();
-                archiveNote(note.id);
-              }}
-              className={clsx(
-                "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
-              )}
-            >
-              <Icon.Archive
-                width="22"
-                height="22"
-                className="fill-black dark:fill-white"
-              />
-            </div>
+            {type === "note" ? (
+              <div
+                title={t("layout:SIDEBAR.TITLE.ARCHIVE")}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  archiveNote(note.id);
+                }}
+                className={clsx(
+                  "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
+                )}
+              >
+                <Icon.Archive
+                  width="22"
+                  height="22"
+                  className="fill-black dark:fill-white"
+                />
+              </div>
+            ) : (
+              <div
+                title={t("note:UNARCHIVE")}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  unarchiveNote(note.id);
+                }}
+                className={clsx(
+                  "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
+                )}
+              >
+                <Icon.Unarchive
+                  width="22"
+                  height="22"
+                  className="fill-black dark:fill-white"
+                />
+              </div>
+            )}
             <div
               title={t("common:DELETE")}
               onClick={(e) => {

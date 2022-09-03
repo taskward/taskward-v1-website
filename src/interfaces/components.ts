@@ -66,6 +66,7 @@ type LoadingProps = Partial<LoadingProperties> & CustomComponentProps;
 // Note
 interface NoteListCardProperties {
   note: Note;
+  type: "note" | "archive";
 }
 
 type Note = {
