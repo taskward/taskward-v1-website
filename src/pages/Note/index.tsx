@@ -42,7 +42,7 @@ export default function Note(): JSX.Element {
               styles.contentWrapper
             )}
           >
-            <div className="text-[0.5rem] font-medium dark:text-noteSecondTextDark">
+            <div className="text-xs font-medium dark:text-noteSecondTextDark">
               {notesData?.count && notesData.count > 0 ? (
                 <>{t("note:NOTE.COUNT", { count: notesData.count })} 🎉</>
               ) : (
