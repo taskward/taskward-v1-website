@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
             </span>
             {import.meta.env.VITE_VERSION && (
               <div className="select-none bg-gradient-to-r from-emerald-600 to-violet-300 bg-clip-text text-lg font-medium text-transparent">
-                v-{import.meta.env.VITE_VERSION}
+                v{import.meta.env.VITE_VERSION}
               </div>
             )}
             {!import.meta.env.PROD && (
