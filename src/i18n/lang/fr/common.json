@@ -1,4 +1,5 @@
 {
+  "TEST.ENVIRONMENT": "Version D'essai",
   "CURRENT.LANGUAGE": "Français",
   "START": "début",
   "LOGIN": "Connexion",
@@ -17,5 +18,8 @@
   "RESTORE": "Restaurer",
   "REVOKE": "Révoquer",
   "SAVE": "Enregistrer",
-  "SAVING": "Économie"
+  "SAVING": "Économie",
+  "CREATED.TIME": "Temps créé",
+  "UPDATED.TIME": "Heure mise à jour",
+  "DELETED.TIME": "Heure supprimée"
 }

@@ -1,4 +1,6 @@
 {
+  "TEST.ENVIRONMENT": "テスト版",
+
   "CURRENT.LANGUAGE": "日本語",
   "START": "始める",
   "LOGIN": "ログイン",
@@ -17,5 +19,8 @@
   "RESTORE": "戻す",
   "REVOKE": "取り消す",
   "SAVE": "保存",
-  "SAVING": "保存中"
+  "SAVING": "保存中",
+  "CREATED.TIME": "作成の時間",
+  "UPDATED.TIME": "更新の時間",
+  "DELETED.TIME": "削除の時間"
 }

@@ -18,5 +18,8 @@
   "RESTORE": "Restore",
   "REVOKE": "Revoke",
   "SAVE": "Save",
-  "SAVING": "Saving"
+  "SAVING": "Saving",
+  "CREATED.TIME": "Creation Time",
+  "UPDATED.TIME": "Updated Time",
+  "DELETED.TIME": "Deletion Time"
 }

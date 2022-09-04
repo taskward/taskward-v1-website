@@ -1,5 +1,8 @@
 {
   "NOTE": {
-    "CREATE": { "PLACEHOLDER": "メモを作成する..." }
-  }
+    "CREATE": { "PLACEHOLDER": "メモを作成する..." },
+    "COUNT": "{{count}} 件のメモを書きました",
+    "NONE": "まだメモを書いていません。上をクリックして作成してください"
+  },
+  "UNARCHIVE": "アーカイブ解除"
 }
