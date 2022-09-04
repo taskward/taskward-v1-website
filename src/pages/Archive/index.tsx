@@ -13,11 +13,8 @@ export default function Archive(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout"]);
   const sidebarDispatch = useAppDispatch();
 
-  const {
-    data: notesData,
-    isLoading: isGetArchiveNotesLoading,
-    isRefetching: isGetArchiveNotesRefetching,
-  } = useGetArchiveNotesRequest();
+  const { data: notesData, isLoading: isGetArchiveNotesLoading } =
+    useGetArchiveNotesRequest();
 
   useEffect(() => {
     document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.ARCHIVE"));

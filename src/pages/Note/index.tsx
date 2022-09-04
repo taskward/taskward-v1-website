@@ -13,11 +13,8 @@ export default function Note(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout", "note"]);
   const sidebarDispatch = useAppDispatch();
 
-  const {
-    data: notesData,
-    isLoading: isGetNotesLoading,
-    isRefetching: isGetNotesRefetching,
-  } = useGetNotesRequest();
+  const { data: notesData, isLoading: isGetNotesLoading } =
+    useGetNotesRequest();
 
   useEffect(() => {
     document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.NOTE"));

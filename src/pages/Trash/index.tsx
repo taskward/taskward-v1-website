@@ -13,11 +13,8 @@ export default function Trash(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout"]);
   const sidebarDispatch = useAppDispatch();
 
-  const {
-    data: trashNotesData,
-    isLoading: isGetTrashNotesLoading,
-    isRefetching: isGetTrashNotesRefetching,
-  } = useGetTrashNotesRequest();
+  const { data: trashNotesData, isLoading: isGetTrashNotesLoading } =
+    useGetTrashNotesRequest();
 
   useEffect(() => {
     document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.TRASH"));
