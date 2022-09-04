@@ -60,8 +60,9 @@ export default function EditNoteModal({
       closeModalCallback={async (): Promise<void> => {
         await handleSubmit(handleUpdateNote)();
       }}
+      modalClassName="p-0"
     >
-      <div className="flex items-center justify-between dark:border-gray-600">
+      <div className="flex items-center justify-between px-4 pt-4 dark:border-gray-600">
         <div className="flex items-center gap-1 text-xs font-medium dark:text-noteSecondTextDark">
           {convertUtcToLocalTime(note.createdAt)}
         </div>
@@ -77,7 +78,13 @@ export default function EditNoteModal({
           />
         </button>
       </div>
-      <form className="mt-2 flex flex-col gap-4" key={`${isEdit}`}>
+      <form
+        className={clsx(
+          "flex max-h-[420px] flex-col gap-4 px-4",
+          styles.formScrollbar
+        )}
+        key={`${isEdit}`}
+      >
         <div
           className={clsx(
             "w-full cursor-text select-text resize-none whitespace-pre-wrap break-words px-0 text-lg font-medium outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:placeholder-gray-400",
@@ -106,30 +113,28 @@ export default function EditNoteModal({
             });
           }}
         />
-        <div className="flex justify-between text-xs font-medium dark:text-noteSecondTextDark">
-          <div
-            className={clsx(
-              "flex items-center transition-[visibility,transform,opacity]",
-              isUpdateNoteLoading
-                ? "visible scale-100 opacity-100"
-                : "invisible scale-0 opacity-0"
-            )}
-          >
-            <Icon.Sync width="16" height="16" className="mr-0.5" />
-            {t("common:SAVING")}...
-          </div>
-          <div
-            className="flex items-center gap-0.5"
-            title={convertUtcToFullLocalTime(note.updatedAt)}
-          >
-            <Icon.Update width="16" height="16" />
-            <div className="font-normal">{t("common:UPDATED.TIME")}</div>
-            <div className="ml-0.5">
-              {convertUtcToLocalTime(note.updatedAt)}
-            </div>
-          </div>
-        </div>
       </form>
+      <div className="mt-4 flex justify-between px-4 pb-4 text-xs font-medium dark:text-noteSecondTextDark">
+        <div
+          className={clsx(
+            "flex items-center transition-[visibility,transform,opacity]",
+            isUpdateNoteLoading
+              ? "visible scale-100 opacity-100"
+              : "invisible scale-0 opacity-0"
+          )}
+        >
+          <Icon.Sync width="16" height="16" className="mr-0.5" />
+          {t("common:SAVING")}...
+        </div>
+        <div
+          className="flex items-center gap-0.5"
+          title={convertUtcToFullLocalTime(note.updatedAt)}
+        >
+          <Icon.Update width="16" height="16" />
+          <div className="font-normal">{t("common:UPDATED.TIME")}</div>
+          <div className="ml-0.5">{convertUtcToLocalTime(note.updatedAt)}</div>
+        </div>
+      </div>
     </Modal>
   );
 }

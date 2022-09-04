@@ -10,11 +10,13 @@ export default function Modal({
   show,
   toggle,
   closeModalCallback,
+  modalClassName,
 }: {
   children: ReactNode;
   show: boolean;
   toggle: () => void;
   closeModalCallback: (() => Promise<void>) | (() => void);
+  modalClassName?: string;
 }): JSX.Element | null {
   const outsideClickRef = useDetectOutsideClick({
     active: show,
@@ -46,21 +48,22 @@ export default function Modal({
   return (
     <div
       className={clsx(
-        "hideScrollbar fixed inset-0 z-50 flex h-full w-full overflow-hidden overflow-y-auto bg-black bg-opacity-60 px-4 transition-[visibility,opacity]",
+        "fixed inset-0 z-50 flex h-full w-full bg-black bg-opacity-60 px-4 transition-[visibility,opacity]",
         show ? "visible opacity-100" : "invisible opacity-0"
       )}
     >
       <div
         ref={outsideClickRef}
         className={clsx(
-          "z-[55] my-28 h-fit transition-[transform,visibility,opacity] sm:mx-auto",
+          "z-[55] mt-20 mb-auto max-h-[520px] rounded-md bg-white p-4 shadow-lg transition-[transform,visibility,opacity] dark:bg-gray-700 sm:mx-auto",
           styles.modalWrapper,
-          show ? "visible scale-100 opacity-100" : "invisible scale-0 opacity-0"
+          show
+            ? "visible scale-100 opacity-100"
+            : "invisible scale-0 opacity-0",
+          modalClassName
         )}
       >
-        <div className="w-auto rounded-md bg-white p-4 shadow-lg dark:bg-gray-700">
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   );
