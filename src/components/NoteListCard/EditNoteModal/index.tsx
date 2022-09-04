@@ -132,7 +132,11 @@ export default function EditNoteModal({
           className="flex items-center gap-0.5"
           title={convertUtcToFullLocalTime(note.updatedAt)}
         >
-          <Icon.Update width="16" height="16" />
+          <Icon.Update
+            width="16"
+            height="16"
+            className="fill-black dark:fill-white"
+          />
           <div className="font-normal">{t("common:UPDATED.TIME")}</div>
           <div className="ml-0.5">{convertUtcToLocalTime(note.updatedAt)}</div>
         </div>
