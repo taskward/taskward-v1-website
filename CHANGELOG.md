@@ -4,7 +4,8 @@
 
 ### v1.0.1
 
-- Fix FireFox compatibility bug.
+- Fix: FireFox compatibility.
+- Fix: Edit archived note error.
 
 ## v1.0.0
 
