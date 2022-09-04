@@ -1,7 +1,8 @@
 {
   "NOTE": {
     "CREATE": { "PLACEHOLDER": "Create a note..." },
-    "COUNT": "You have written {{count}} notes",
+    "COUNT": "You have written {{count}} note",
+    "COUNT_other": "You have written {{count}} notes",
     "NONE": "You haven't written a note yet, please click above to create"
   },
   "UNARCHIVE": "Unarchive"

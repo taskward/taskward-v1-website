@@ -1,7 +1,7 @@
 {
   "NOTE": {
     "CREATE": { "PLACEHOLDER": "添加记事..." },
-    "COUNT": "您已经写了 {{count}} 条笔记了",
+    "COUNT": "您已经写了 {{count}} 条笔记啦",
     "NONE": "您还没有写过笔记，请点击上方创建哦"
   },
   "UNARCHIVE": "取消归档"
