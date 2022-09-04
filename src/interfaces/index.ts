@@ -11,6 +11,7 @@ export type {
   TrashNoteListCardProps,
   TrashNote,
   TrashNotesResult,
+  ModalProps,
 } from "./components";
 
 export type { OutsideClickType } from "./hooks";

@@ -110,6 +110,19 @@ type TrashNotesResult = {
 type TrashNoteListCardProps = Partial<TrashNoteListCardProperties> &
   CustomComponentProps;
 
+// Modal
+
+interface ModalProperties {
+  children: ReactNode;
+  show: boolean;
+  toggle: () => void;
+  closeModalCallback: (() => Promise<void>) | (() => void);
+  modalClassName: string;
+  backgroundClassName: string;
+}
+
+type ModalProps = Partial<ModalProperties>;
+
 export type {
   CustomComponentProps,
   InputProps,
@@ -123,4 +136,5 @@ export type {
   TrashNoteListCardProps,
   TrashNote,
   TrashNotesResult,
+  ModalProps,
 };

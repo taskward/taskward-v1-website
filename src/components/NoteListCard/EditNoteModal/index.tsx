@@ -15,15 +15,17 @@ import {
 } from "@utils";
 import { useUpdateNoteRequest } from "@requests";
 
+type EditNoteModalProps = {
+  isEdit: boolean;
+  toggle: () => void;
+  note: Note;
+};
+
 export default function EditNoteModal({
   isEdit,
   toggle,
   note,
-}: {
-  isEdit: boolean;
-  toggle: () => void;
-  note: Note;
-}): JSX.Element {
+}: EditNoteModalProps): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
 
   const { mutateAsync: updateNoteAsync, isLoading: isUpdateNoteLoading } =
@@ -58,7 +60,7 @@ export default function EditNoteModal({
       show={isEdit}
       toggle={toggle}
       closeModalCallback={async (): Promise<void> => {
-        await handleSubmit(handleUpdateNote)();
+        return handleSubmit(handleUpdateNote)();
       }}
       modalClassName="p-0"
     >

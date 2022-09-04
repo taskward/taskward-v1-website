@@ -1,8 +1,9 @@
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
+import { ModalProps } from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
 
 export default function Modal({
@@ -11,13 +12,8 @@ export default function Modal({
   toggle,
   closeModalCallback,
   modalClassName,
-}: {
-  children: ReactNode;
-  show: boolean;
-  toggle: () => void;
-  closeModalCallback: (() => Promise<void>) | (() => void);
-  modalClassName?: string;
-}): JSX.Element | null {
+  backgroundClassName,
+}: ModalProps): JSX.Element | null {
   const outsideClickRef = useDetectOutsideClick({
     active: show,
     outsideClickCallback: () => {
@@ -41,15 +37,20 @@ export default function Modal({
   };
 
   const handleCloseModal = async () => {
-    await closeModalCallback();
-    toggle();
+    if (closeModalCallback) {
+      await closeModalCallback();
+    }
+    if (toggle) {
+      toggle();
+    }
   };
 
   return (
     <div
       className={clsx(
         "fixed inset-0 z-50 flex h-full w-full bg-black bg-opacity-60 px-4 transition-[visibility,opacity]",
-        show ? "visible opacity-100" : "invisible opacity-0"
+        show ? "visible opacity-100" : "invisible opacity-0",
+        backgroundClassName
       )}
     >
       <div
