@@ -89,8 +89,7 @@ export default function EditNoteModal({
       </div>
       <form
         className={clsx(
-          "flex max-h-[420px] flex-col gap-4 px-4",
-          styles.formScrollbar
+          "flex max-h-[420px] flex-col gap-4 overflow-y-auto px-4"
         )}
         key={`${isEdit}`}
       >

@@ -56,7 +56,7 @@ export default function Modal({
       <div
         ref={outsideClickRef}
         className={clsx(
-          "z-[55] mt-20 mb-auto max-h-[520px] rounded-md bg-white p-4 shadow-lg transition-[transform,visibility,opacity] dark:bg-gray-700 sm:mx-auto",
+          "z-[55] mt-20 mb-auto max-h-[520px] overflow-y-auto rounded-md bg-white p-4 shadow-lg transition-[transform,visibility,opacity] dark:bg-gray-700 sm:mx-auto",
           styles.modalWrapper,
           show
             ? "visible scale-100 opacity-100"
