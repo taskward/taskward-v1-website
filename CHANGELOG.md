@@ -1,66 +1,8 @@
 # Changelog
 
-## Target
+## v-0.0.1
 
-- [x] i18n Support
-  - [ ] Detect user default language (Pending)
-  - [x] Remember language user chose
-  - [x] Change language button
-  - [x] Simplify Chinese
-  - [x] English
-  - [x] France
-  - [x] Japanese
-  - [ ] Korean (Pending)
-  - [ ] Spanish (Pending)
-- [x] Dark Theme
-  - [x] Detect user default theme
-  - [x] Remember theme user chose
-- [x] Responsive Design
-  - [x] PC
-  - [ ] Mobile Enhanced (Pending)
-- [x] Authentication
-  - [x] Username
-  - [ ] Detect username whether has been used
-  - [ ] Email (Pending)
-  - [x] GitHub OAuth2
-  - [ ] Google OAuth2 (Pending)
-  - [ ] Wechat OAuth2 (Pending)
-- [x] Note
-  - [x] List view
-  - [ ] Card view
-  - [ ] Pin (Pending)
-  - [ ] Todo checkbox list (🚀 In Development)
-    - [ ] Add to top
-    - [ ] Finish to bottom
-  - [ ] External link (🚀 In Development)
-    - [ ] Copy external link
-    - [ ] Open external link
-  - [x] Copy content
-  - [ ] Create time/Update time
-  - [ ] Custom background (Pending)
-  - [ ] Mind me (Pending)
-  - [ ] Countdown
-  - [ ] Delete many
-  - [ ] Revoke
-- [x] Archive
-  - [ ] Pin (Pending)
-- [x] Trash
-  - [ ] Keep 7 days
-  - [x] Force to delete
-  - [x] Delete time
-- [ ] Tags
-  - [ ] Display in sidebar (Pending)
-- [ ] Search
-  - [ ] By category, like pined, tags, archived (Pending)
-- [ ] Profile
-  - [x] Avatar
-  - [ ] Change avatar
-  - [ ] User Info
-  - [ ] Logout (🚀 In Development)
-- [ ] Settings
-  - [ ] Send feedback (Pending)
-  - [ ] Theme preference (Pending)
-  - [ ] Language preference (Pending)
-  - [ ] Custom background image (Pending)
-- [ ] Auto sync/refresh (Pending)
-- [ ] More App (Pending)
+- Note, Archive, Trash feature have been released.
+- GitHub and username login/signup.
+- Dark mode.
+- Simplify Chinese, English, French, Japanese languages support.

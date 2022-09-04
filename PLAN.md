@@ -1,0 +1,66 @@
+# Development Plan
+
+- [x] i18n Support
+  - [ ] Detect user default language
+  - [x] Remember language user chose
+  - [x] Change language button
+  - [x] Simplify Chinese
+  - [x] English
+  - [x] France
+  - [x] Japanese
+  - [ ] Korean
+  - [ ] Spanish
+- [x] Dark Theme
+  - [x] Detect user default theme
+  - [x] Remember theme user chose
+- [x] Responsive Design
+  - [x] PC
+  - [ ] Mobile Enhanced
+- [x] Authentication
+  - [x] Username
+  - [ ] Detect username whether has been used
+  - [ ] Email
+  - [x] GitHub OAuth2
+  - [ ] Google OAuth2
+  - [ ] Wechat OAuth2
+  - [ ] Forget password
+  - [ ] Reset password
+- [x] Note
+  - [x] List view
+  - [ ] Card view
+  - [ ] Pin
+  - [ ] Todo checkbox list (🚀 In Development)
+    - [ ] Add to top
+    - [ ] Finish to bottom
+  - [ ] External link (🚀 In Development)
+    - [ ] Copy external link
+    - [ ] Open external link
+  - [x] Copy content
+  - [ ] Create time/Update time
+  - [ ] Custom background
+  - [ ] Mind me
+  - [ ] Countdown
+  - [ ] Delete many
+  - [ ] Revoke
+- [x] Archive
+  - [ ] Pin
+- [x] Trash
+  - [ ] Keep 7 days
+  - [x] Force to delete
+  - [x] Delete time
+- [ ] Tags
+  - [ ] Display in sidebar
+- [ ] Search
+  - [ ] By category, like pined, tags, archived
+- [ ] Profile
+  - [x] Avatar
+  - [ ] Change avatar
+  - [ ] User Info
+  - [ ] Logout (🚀 In Development)
+- [ ] Settings
+  - [ ] Send feedback
+  - [ ] Theme preference
+  - [ ] Language preference
+  - [ ] Custom background image
+- [ ] Auto sync/refresh
+- [ ] More App
