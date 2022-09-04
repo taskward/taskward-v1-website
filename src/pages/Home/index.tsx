@@ -60,7 +60,11 @@ export default function Home(): JSX.Element {
             {import.meta.env.VITE_VERSION && (
               <div className="select-none bg-gradient-to-r from-emerald-600 to-violet-300 bg-clip-text text-lg font-medium text-transparent">
                 v-{import.meta.env.VITE_VERSION}
-                test
+              </div>
+            )}
+            {!import.meta.env.PROD && (
+              <div className="select-none bg-gradient-to-r from-emerald-600 to-violet-300 bg-clip-text text-sm font-medium text-transparent">
+                {"内部测试版"}
               </div>
             )}
             <span className="text-center text-lg text-gray-600">
