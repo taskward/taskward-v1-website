@@ -62,19 +62,19 @@ export default function Home(): JSX.Element {
                 v-{import.meta.env.VITE_VERSION}
               </div>
             )}
+            <span className="text-center text-lg text-gray-600">
+              <Trans i18nKey="TASKWARD.APP.DESCRIPTION.FIRST.LINE" ns="app">
+                {"Taskward means"}
+                <span className="cursor-pointer underline decoration-gray-500 decoration-dotted underline-offset-4 transition-colors hover:text-emerald-600 hover:decoration-emerald-600">
+                  {"task-oriented"}
+                </span>
+                {", is a Todo&Tasks App."}
+              </Trans>
+            </span>
+            <span className="text-center text-lg text-gray-600">
+              {t("app:TASKWARD.APP.DESCRIPTION.SECOND.LINE")}
+            </span>
           </div>
-          <span className="text-center text-lg text-gray-600">
-            <Trans i18nKey="TASKWARD.APP.DESCRIPTION.FIRST.LINE" ns="app">
-              {"Taskward means"}
-              <span className="cursor-pointer underline decoration-gray-500 decoration-dotted underline-offset-4 transition-colors hover:text-emerald-600 hover:decoration-emerald-600">
-                {"task-oriented"}
-              </span>
-              {", is a Todo&Tasks App."}
-            </Trans>
-          </span>
-          <span className="text-center text-lg text-gray-600">
-            {t("app:TASKWARD.APP.DESCRIPTION.SECOND.LINE")}
-          </span>
           <div className="mt-2 flex items-center justify-center gap-4">
             {!isLogin && (
               <Button
