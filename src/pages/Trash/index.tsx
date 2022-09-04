@@ -13,11 +13,8 @@ export default function Trash(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout"]);
   const sidebarDispatch = useAppDispatch();
 
-  const {
-    data: trashNotesData,
-    isLoading: isGetTrashNotesLoading,
-    isRefetching: isGetTrashNotesRefetching,
-  } = useGetTrashNotesRequest();
+  const { data: trashNotesData, isLoading: isGetTrashNotesLoading } =
+    useGetTrashNotesRequest();
 
   useEffect(() => {
     document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.TRASH"));
@@ -30,12 +27,7 @@ export default function Trash(): JSX.Element {
   }, []);
 
   return (
-    <div
-      className={clsx(
-        "relative flex h-full w-auto flex-col overflow-y-scroll",
-        styles.scrollbar
-      )}
-    >
+    <div className="relative flex h-full w-auto flex-col overflow-y-auto">
       {isGetTrashNotesLoading ? (
         <div className="h-screen">
           <Loading />

@@ -5,6 +5,7 @@ export type {
   GitHubButtonProps,
   NotificationProps,
   LoadingProps,
+  NoteType,
   NoteListCardProps,
   Note,
   NotesResult,

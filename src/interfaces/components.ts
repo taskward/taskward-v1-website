@@ -64,9 +64,11 @@ interface LoadingProperties {
 type LoadingProps = Partial<LoadingProperties> & CustomComponentProps;
 
 // Note
+type NoteType = "note" | "archive" | "trash";
+
 interface NoteListCardProperties {
   note: Note;
-  type: "note" | "archive";
+  type: NoteType;
 }
 
 type Note = {
@@ -130,6 +132,7 @@ export type {
   GitHubButtonProps,
   NotificationProps,
   LoadingProps,
+  NoteType,
   NoteListCardProps,
   Note,
   NotesResult,

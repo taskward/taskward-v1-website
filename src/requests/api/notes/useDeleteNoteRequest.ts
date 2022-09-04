@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { axiosService, NOTES_KEY, ARCHIVE_KEY, TRASH_KEY } from "@requests";
+import { NoteType } from "@interfaces";
 
-type NoteType = "note" | "archive";
-
-const useDeleteNoteRequest = (type: NoteType) => {
+const useDeleteNoteRequest = (type?: NoteType) => {
   const queryClient = useQueryClient();
   const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

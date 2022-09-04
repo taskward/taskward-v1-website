@@ -5,7 +5,3 @@
 .textarea p {
   margin: 0;
 }
-
-.formScrollbar {
-  overflow-y: overlay;
-}

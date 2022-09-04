@@ -13,11 +13,8 @@ export default function Note(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout", "note"]);
   const sidebarDispatch = useAppDispatch();
 
-  const {
-    data: notesData,
-    isLoading: isGetNotesLoading,
-    isRefetching: isGetNotesRefetching,
-  } = useGetNotesRequest();
+  const { data: notesData, isLoading: isGetNotesLoading } =
+    useGetNotesRequest();
 
   useEffect(() => {
     document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.NOTE"));
@@ -30,12 +27,7 @@ export default function Note(): JSX.Element {
   }, []);
 
   return (
-    <div
-      className={clsx(
-        "relative flex h-full w-auto flex-col overflow-y-scroll",
-        styles.scrollbar
-      )}
-    >
+    <div className="relative flex h-full w-auto flex-col overflow-y-auto">
       <div className="mx-auto mb-80 flex w-full flex-col gap-4 p-4">
         <NoteCreator className={styles.contentWrapper} />
         {isGetNotesLoading ? (
@@ -47,7 +39,7 @@ export default function Note(): JSX.Element {
               styles.contentWrapper
             )}
           >
-            <div className="text-[0.5rem] font-medium dark:text-noteSecondTextDark">
+            <div className="text-xs font-medium dark:text-noteSecondTextDark">
               {notesData?.count && notesData.count > 0 ? (
                 <>{t("note:NOTE.COUNT", { count: notesData.count })} 🎉</>
               ) : (
@@ -56,7 +48,7 @@ export default function Note(): JSX.Element {
             </div>
 
             {notesData?.notes.map((note) => {
-              return <NoteListCard key={note.id} note={note} />;
+              return <NoteListCard key={note.id} note={note} type="note" />;
             })}
           </div>
         )}

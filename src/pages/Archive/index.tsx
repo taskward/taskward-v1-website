@@ -13,11 +13,8 @@ export default function Archive(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout"]);
   const sidebarDispatch = useAppDispatch();
 
-  const {
-    data: notesData,
-    isLoading: isGetArchiveNotesLoading,
-    isRefetching: isGetArchiveNotesRefetching,
-  } = useGetArchiveNotesRequest();
+  const { data: notesData, isLoading: isGetArchiveNotesLoading } =
+    useGetArchiveNotesRequest();
 
   useEffect(() => {
     document.title = getDocumentTitle(t("layout:SIDEBAR.TITLE.ARCHIVE"));
@@ -30,12 +27,7 @@ export default function Archive(): JSX.Element {
   }, []);
 
   return (
-    <div
-      className={clsx(
-        "relative flex h-full w-auto flex-col overflow-y-scroll",
-        styles.scrollbar
-      )}
-    >
+    <div className="relative flex h-full w-auto flex-col overflow-y-auto">
       <div className="mx-auto mb-80 mt-4 w-full p-4">
         {isGetArchiveNotesLoading ? (
           <Loading />
