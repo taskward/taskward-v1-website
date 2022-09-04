@@ -6,7 +6,12 @@ import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
-import { Note, type EditNoteFormData, EditNoteFormSchema } from "@interfaces";
+import {
+  Note,
+  type EditNoteFormData,
+  EditNoteFormSchema,
+  NoteType,
+} from "@interfaces";
 import { Icon, Modal } from "@components";
 import {
   convertUtcToLocalTime,
@@ -19,17 +24,19 @@ type EditNoteModalProps = {
   isEdit: boolean;
   toggle: () => void;
   note: Note;
+  type?: NoteType;
 };
 
 export default function EditNoteModal({
   isEdit,
   toggle,
   note,
+  type,
 }: EditNoteModalProps): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
 
   const { mutateAsync: updateNoteAsync, isLoading: isUpdateNoteLoading } =
-    useUpdateNoteRequest();
+    useUpdateNoteRequest(type);
 
   const { handleSubmit, setValue, reset } = useForm<EditNoteFormData>({
     defaultValues: {

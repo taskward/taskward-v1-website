@@ -21,7 +21,7 @@ import EditNoteModal from "./EditNoteModal";
 
 export default function NoteListCard({
   note,
-  type = "note",
+  type,
   className,
   style,
 }: NoteListCardProps): JSX.Element | null {
@@ -170,7 +170,12 @@ export default function NoteListCard({
           </div>
         </div>
       </div>
-      <EditNoteModal isEdit={isEdit} toggle={toggleEdit} note={note} />
+      <EditNoteModal
+        isEdit={isEdit}
+        toggle={toggleEdit}
+        note={note}
+        type={type}
+      />
     </>
   );
 }

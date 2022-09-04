@@ -56,7 +56,7 @@ export default function Note(): JSX.Element {
             </div>
 
             {notesData?.notes.map((note) => {
-              return <NoteListCard key={note.id} note={note} />;
+              return <NoteListCard key={note.id} note={note} type="note" />;
             })}
           </div>
         )}
