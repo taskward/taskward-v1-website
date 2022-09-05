@@ -61,7 +61,12 @@ export default function NoteListCard({
           focused
             ? "drop-shadow-lg dark:drop-shadow-[0_10px_8px_#3a3d41]"
             : "drop-shadow-sm",
-          isEdit ? "invisible opacity-0" : "visible opacity-100"
+          isEdit ||
+            isArchiveNoteLoading ||
+            isDeleteNoteLoading ||
+            isUnarchiveNoteLoading
+            ? "invisible opacity-0"
+            : "visible opacity-100"
         )}
         style={style}
         onClick={() => {

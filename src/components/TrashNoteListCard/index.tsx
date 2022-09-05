@@ -12,8 +12,6 @@ import {
   convertUtcToFullLocalTime,
   setClipBoardText,
 } from "@utils";
-import { useAppDispatch } from "@hooks";
-import { sidebarAction, ActiveSidebarItem } from "@store";
 import { TrashNoteListCardProps } from "@interfaces";
 
 export default function TrashNoteListCard({
@@ -48,11 +46,14 @@ export default function TrashNoteListCard({
     <div
       key={note.id}
       className={clsx(
-        "mx-auto flex h-fit w-full flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 dark:border-neutral-800 dark:bg-noteDark",
+        "mx-auto flex h-fit w-full flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 transition-[visibility,opacity] dark:border-neutral-800 dark:bg-noteDark",
         className,
         focused
           ? "drop-shadow-lg dark:drop-shadow-[0_10px_8px_#3a3d41]"
-          : "drop-shadow-sm"
+          : "drop-shadow-sm",
+        isDeleteTrashNoteLoading || isRestoreTrashNoteLoading
+          ? "invisible opacity-0"
+          : "visible opacity-100"
       )}
       style={style}
       onMouseEnter={() => {
