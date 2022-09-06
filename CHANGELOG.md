@@ -6,6 +6,7 @@
 
 - Fix the display of whitespace error.
 - Add animation feedback after archive, unarchive or delete a note.
+- Add notification after after archive, unarchive or delete a note.
 
 ### v1.0.1
 
