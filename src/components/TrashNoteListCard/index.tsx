@@ -2,16 +2,12 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 
-import { Icon } from "@components";
+import { Icon, NoteListCardPanel } from "@components";
 import {
   useDeleteTrashNoteRequest,
   useRestoreTrashNoteRequest,
 } from "@requests";
-import {
-  convertUtcToLocalTime,
-  convertUtcToFullLocalTime,
-  setClipBoardText,
-} from "@utils";
+import { convertUtcToLocalTime, convertUtcToFullLocalTime } from "@utils";
 import { TrashNoteListCardProps } from "@interfaces";
 
 export default function TrashNoteListCard({
@@ -28,17 +24,11 @@ export default function TrashNoteListCard({
   const { mutate: deleteTrashNote, isLoading: isDeleteTrashNoteLoading } =
     useDeleteTrashNoteRequest();
 
-  const copyDescription = (text: string | undefined | null) => {
-    const copyResult = setClipBoardText(text);
-    if (copyResult) {
-      // setShowNotification(true);
-      setTimeout(() => {
-        // setShowNotification(false);
-      }, 5000);
-    }
-  };
-
   if (!note) {
+    return null;
+  }
+
+  if (isDeleteTrashNoteLoading || isRestoreTrashNoteLoading) {
     return null;
   }
 
@@ -50,10 +40,7 @@ export default function TrashNoteListCard({
         className,
         focused
           ? "drop-shadow-lg dark:drop-shadow-[0_10px_8px_#3a3d41]"
-          : "drop-shadow-sm",
-        isDeleteTrashNoteLoading || isRestoreTrashNoteLoading
-          ? "invisible opacity-0"
-          : "visible opacity-100"
+          : "drop-shadow-sm"
       )}
       style={style}
       onMouseEnter={() => {
@@ -93,52 +80,13 @@ export default function TrashNoteListCard({
               : "invisible scale-0 opacity-0"
           )}
         >
-          <div
-            title={t("common:COPY")}
-            onClick={() => {
-              copyDescription(note.description);
-            }}
-            className={clsx(
-              "flex h-10 w-10 select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-              note.description ? "cursor-pointer" : "cursor-not-allowed"
-            )}
-          >
-            <Icon.Copy
-              width="18"
-              height="18"
-              className="fill-black dark:fill-white"
-            />
-          </div>
-          <div
-            title={t("common:RESTORE")}
-            onClick={() => {
-              restoreTrashNote(note.id);
-            }}
-            className={clsx(
-              "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
-            )}
-          >
-            <Icon.RestoreFromTrash
-              width="26"
-              height="26"
-              className="fill-black dark:fill-white"
-            />
-          </div>
-          <div
-            title={t("common:DELETE.FOREVER")}
-            onClick={() => {
-              deleteTrashNote(note.id);
-            }}
-            className={clsx(
-              "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
-            )}
-          >
-            <Icon.DeleteForever
-              width="26"
-              height="26"
-              className="fill-black dark:fill-white"
-            />
-          </div>
+          <NoteListCardPanel
+            focused={focused}
+            note={note}
+            copy
+            restore={restoreTrashNote}
+            forceDelete={deleteTrashNote}
+          />
         </div>
       </div>
     </div>

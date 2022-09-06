@@ -28,7 +28,7 @@ export default function Archive(): JSX.Element {
 
   return (
     <div className="relative flex h-full w-auto flex-col overflow-y-auto">
-      <div className="mx-auto mb-80 mt-4 w-full p-4">
+      <div className="mx-auto mb-80 w-full p-4">
         {isGetArchiveNotesLoading ? (
           <Loading />
         ) : (

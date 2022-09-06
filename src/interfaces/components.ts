@@ -1,3 +1,4 @@
+import { UseMutateFunction } from "@tanstack/react-query";
 import type {
   CSSProperties,
   ButtonHTMLAttributes,
@@ -89,6 +90,20 @@ type NotesResult = {
 
 type NoteListCardProps = Partial<NoteListCardProperties> & CustomComponentProps;
 
+interface NoteListCardPanelProperties {
+  focused: boolean;
+  note: Note | TrashNote;
+  type: "note" | "archive";
+  copy: boolean;
+  archive: UseMutateFunction<any, unknown, number, unknown>;
+  softDelete: UseMutateFunction<any, unknown, number, unknown>;
+  unarchive: UseMutateFunction<any, unknown, number, unknown>;
+  restore: UseMutateFunction<any, unknown, number, unknown>;
+  forceDelete: UseMutateFunction<any, unknown, number, unknown>;
+}
+
+type NoteListCardPanelProps = Partial<NoteListCardPanelProperties>;
+
 // Trash
 interface TrashNoteListCardProperties {
   note: TrashNote;
@@ -136,6 +151,7 @@ export type {
   NoteListCardProps,
   Note,
   NotesResult,
+  NoteListCardPanelProps,
   TrashNoteListCardProps,
   TrashNote,
   TrashNotesResult,

@@ -1,20 +1,14 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 
-import { Icon } from "@components";
+import { NoteListCardPanel } from "@components";
 import {
   useArchiveNoteRequest,
   useDeleteNoteRequest,
   useUnarchiveNoteRequest,
 } from "@requests";
-import {
-  convertUtcToLocalTime,
-  convertUtcToFullLocalTime,
-  setClipBoardText,
-} from "@utils";
-import { useAppDispatch, useToggle } from "@hooks";
-import { sidebarAction, ActiveSidebarItem } from "@store";
+import { convertUtcToLocalTime, convertUtcToFullLocalTime } from "@utils";
+import { useToggle } from "@hooks";
 import { NoteListCardProps } from "@interfaces";
 
 import EditNoteModal from "./EditNoteModal";
@@ -25,8 +19,6 @@ export default function NoteListCard({
   className,
   style,
 }: NoteListCardProps): JSX.Element | null {
-  const { t } = useTranslation(["common", "layout", "note"]);
-
   const { mutate: archiveNote, isLoading: isArchiveNoteLoading } =
     useArchiveNoteRequest();
   const { mutate: deleteNote, isLoading: isDeleteNoteLoading } =
@@ -37,17 +29,11 @@ export default function NoteListCard({
 
   const [focused, setFocused] = useState<boolean>(false);
 
-  const copyDescription = (text: string | undefined | null) => {
-    const copyResult = setClipBoardText(text);
-    if (copyResult) {
-      // setShowNotification(true);
-      setTimeout(() => {
-        // setShowNotification(false);
-      }, 5000);
-    }
-  };
-
   if (!note) {
+    return null;
+  }
+
+  if (isArchiveNoteLoading || isDeleteNoteLoading || isUnarchiveNoteLoading) {
     return null;
   }
 
@@ -56,17 +42,14 @@ export default function NoteListCard({
       <div
         key={note.id}
         className={clsx(
-          "mx-auto flex h-fit w-full cursor-pointer flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 transition-[visibility,opacity] dark:border-neutral-800 dark:bg-noteDark",
+          "mx-auto flex h-fit w-full cursor-pointer flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 transition-[visibility,opacity,transform] dark:border-neutral-800 dark:bg-noteDark",
           className,
           focused
             ? "drop-shadow-lg dark:drop-shadow-[0_10px_8px_#3a3d41]"
             : "drop-shadow-sm",
-          isEdit ||
-            isArchiveNoteLoading ||
-            isDeleteNoteLoading ||
-            isUnarchiveNoteLoading
-            ? "invisible opacity-0"
-            : "visible opacity-100"
+          isEdit
+            ? "invisible scale-0 opacity-0"
+            : "visible scale-100 opacity-100"
         )}
         style={style}
         onClick={() => {
@@ -96,83 +79,24 @@ export default function NoteListCard({
           >
             {convertUtcToLocalTime(note.createdAt)}
           </div>
-          <div
-            className={clsx(
-              "flex items-center gap-1 transition-[colors,transform,opacity,visibility] duration-500",
-              focused
-                ? "visible scale-100 opacity-100"
-                : "invisible scale-0 opacity-0"
-            )}
-          >
-            <div
-              title={t("common:COPY")}
-              onClick={(e) => {
-                e.stopPropagation();
-                copyDescription(note.description);
-              }}
-              className={clsx(
-                "flex h-10 w-10 select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-                note.description ? "cursor-pointer" : "cursor-not-allowed"
-              )}
-            >
-              <Icon.Copy
-                width="18"
-                height="18"
-                className="fill-black dark:fill-white"
-              />
-            </div>
-            {type === "note" ? (
-              <div
-                title={t("layout:SIDEBAR.TITLE.ARCHIVE")}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  archiveNote(note.id);
-                }}
-                className={clsx(
-                  "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
-                )}
-              >
-                <Icon.Archive
-                  width="22"
-                  height="22"
-                  className="fill-black dark:fill-white"
-                />
-              </div>
-            ) : (
-              <div
-                title={t("note:UNARCHIVE")}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  unarchiveNote(note.id);
-                }}
-                className={clsx(
-                  "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
-                )}
-              >
-                <Icon.Unarchive
-                  width="22"
-                  height="22"
-                  className="fill-black dark:fill-white"
-                />
-              </div>
-            )}
-            <div
-              title={t("common:DELETE")}
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteNote(note.id);
-              }}
-              className={clsx(
-                "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
-              )}
-            >
-              <Icon.Delete
-                width="26"
-                height="26"
-                className="fill-black dark:fill-white"
-              />
-            </div>
-          </div>
+          {type === "note" && (
+            <NoteListCardPanel
+              focused={focused}
+              note={note}
+              copy
+              archive={archiveNote}
+              softDelete={deleteNote}
+            />
+          )}
+          {type === "archive" && (
+            <NoteListCardPanel
+              focused={focused}
+              note={note}
+              copy
+              unarchive={unarchiveNote}
+              softDelete={deleteNote}
+            />
+          )}
         </div>
       </div>
       <EditNoteModal

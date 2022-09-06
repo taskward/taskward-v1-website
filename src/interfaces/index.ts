@@ -9,6 +9,7 @@ export type {
   NoteListCardProps,
   Note,
   NotesResult,
+  NoteListCardPanelProps,
   TrashNoteListCardProps,
   TrashNote,
   TrashNotesResult,
