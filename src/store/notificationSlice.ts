@@ -1,24 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface notificationState {
-  tipText: string | null;
-  showTip: boolean;
+  text: string | null;
+  show: boolean;
 }
 
 const initialState = {
-  tipText: null,
-  showTip: false,
+  text: null,
+  show: false,
 } as notificationState;
 
 export const notificationSlice = createSlice({
   name: "notification",
   initialState,
   reducers: {
-    changeShowTip: (state) => {
-      state.showTip = !state.showTip;
+    changeShow: (state) => {
+      state.show = !state.show;
     },
-    changeTipText: (state, action: PayloadAction<string | null>) => {
-      state.tipText = action.payload;
+    changeText: (state, action: PayloadAction<string | null>) => {
+      state.text = action.payload;
     },
   },
 });
