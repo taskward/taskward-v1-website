@@ -2,6 +2,10 @@
 
 ## v1.1.0
 
+### v1.0.3
+
+- Click outside and note content will not be cleared when create a note.
+
 ### v1.0.2
 
 - Fix the display of the whitespace error.

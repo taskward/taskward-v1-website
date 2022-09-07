@@ -27,28 +27,24 @@ export default function NoteCreator({
 
   const outsideClickRef = useDetectOutsideClick({
     outsideClickCallback: () => {
-      onCloseEditable();
+      setEditable(false);
     },
     insideClickCallback: () => {
       setEditable(true);
     },
   });
 
-  const { handleSubmit, setValue, reset } = useForm<NoteFormData>({
+  const { handleSubmit, getValues, setValue, reset } = useForm<NoteFormData>({
     resolver: yupResolver(NoteFormSchema),
   });
 
   const handleCreateNote = async (formData: NoteFormData) => {
     createNote(formData, {
       onSuccess: () => {
-        onCloseEditable();
+        setEditable(false);
+        reset();
       },
     });
-  };
-
-  const onCloseEditable = () => {
-    setEditable(false);
-    reset();
   };
 
   return (
@@ -78,6 +74,7 @@ export default function NoteCreator({
                   shouldValidate: true,
                 });
               }}
+              dangerouslySetInnerHTML={{ __html: getValues("name") }}
             />
             <div
               className={clsx(
@@ -91,6 +88,7 @@ export default function NoteCreator({
                   shouldValidate: true,
                 });
               }}
+              dangerouslySetInnerHTML={{ __html: getValues("description") }}
             />
             <div className="flex items-center justify-end gap-2.5">
               <Button
@@ -117,7 +115,8 @@ export default function NoteCreator({
                 title={t("common:CANCEL")}
                 color="danger"
                 onClick={() => {
-                  onCloseEditable();
+                  setEditable(false);
+                  reset();
                 }}
                 icon={
                   <Icon.Close
