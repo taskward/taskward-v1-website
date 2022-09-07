@@ -4,9 +4,9 @@
 
 ### v1.0.2
 
-- Fix the display of whitespace error.
-- Add animation feedback after archive, unarchive or delete a note.
-- Add notification after after archive, unarchive or delete a note.
+- Fix the display of the whitespace error.
+- Add animation feedback after archiving, unarchiving or deleting a note.
+- Add notification after copy note description.
 
 ### v1.0.1
 
