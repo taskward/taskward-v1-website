@@ -85,7 +85,9 @@ export default function NoteListCard({
               note={note}
               copy
               archive={archiveNote}
+              archiveLoading={isArchiveNoteLoading}
               softDelete={deleteNote}
+              softDeleteLoading={isDeleteNoteLoading}
             />
           )}
           {type === "archive" && (
@@ -94,7 +96,9 @@ export default function NoteListCard({
               note={note}
               copy
               unarchive={unarchiveNote}
+              unarchiveLoading={isUnarchiveNoteLoading}
               softDelete={deleteNote}
+              softDeleteLoading={isDeleteNoteLoading}
             />
           )}
         </div>

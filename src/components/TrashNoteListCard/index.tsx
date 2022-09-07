@@ -85,7 +85,9 @@ export default function TrashNoteListCard({
             note={note}
             copy
             restore={restoreTrashNote}
+            restoreLoading={isRestoreTrashNoteLoading}
             forceDelete={deleteTrashNote}
+            forceDeleteLoading={isDeleteTrashNoteLoading}
           />
         </div>
       </div>

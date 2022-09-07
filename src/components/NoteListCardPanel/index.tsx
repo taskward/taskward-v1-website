@@ -10,10 +10,15 @@ export default function NoteListCardPanel({
   note,
   copy,
   archive,
+  archiveLoading,
   unarchive,
+  unarchiveLoading,
   softDelete,
+  softDeleteLoading,
   restore,
+  restoreLoading,
   forceDelete,
+  forceDeleteLoading,
 }: NoteListCardPanelProps): JSX.Element | null {
   const { t } = useTranslation(["common", "layout", "note"]);
 
@@ -63,6 +68,9 @@ export default function NoteListCardPanel({
         <div
           title={t("layout:SIDEBAR.TITLE.ARCHIVE")}
           onClick={(e) => {
+            if (archiveLoading) {
+              return;
+            }
             e.stopPropagation();
             archive(note.id);
           }}
@@ -81,6 +89,9 @@ export default function NoteListCardPanel({
         <div
           title={t("note:UNARCHIVE")}
           onClick={(e) => {
+            if (unarchiveLoading) {
+              return;
+            }
             e.stopPropagation();
             unarchive(note.id);
           }}
@@ -99,6 +110,9 @@ export default function NoteListCardPanel({
         <div
           title={t("common:DELETE")}
           onClick={(e) => {
+            if (softDeleteLoading) {
+              return;
+            }
             e.stopPropagation();
             softDelete(note.id);
           }}
@@ -116,7 +130,11 @@ export default function NoteListCardPanel({
       {restore && (
         <div
           title={t("common:RESTORE")}
-          onClick={() => {
+          onClick={(e) => {
+            if (restoreLoading) {
+              return;
+            }
+            e.stopPropagation();
             restore(note.id);
           }}
           className={clsx(
@@ -133,7 +151,11 @@ export default function NoteListCardPanel({
       {forceDelete && (
         <div
           title={t("common:DELETE.FOREVER")}
-          onClick={() => {
+          onClick={(e) => {
+            if (forceDeleteLoading) {
+              return;
+            }
+            e.stopPropagation();
             forceDelete(note.id);
           }}
           className={clsx(

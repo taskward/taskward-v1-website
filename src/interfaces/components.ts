@@ -96,10 +96,15 @@ interface NoteListCardPanelProperties {
   type: "note" | "archive";
   copy: boolean;
   archive: UseMutateFunction<any, unknown, number, unknown>;
+  archiveLoading: boolean;
   softDelete: UseMutateFunction<any, unknown, number, unknown>;
+  softDeleteLoading: boolean;
   unarchive: UseMutateFunction<any, unknown, number, unknown>;
+  unarchiveLoading: boolean;
   restore: UseMutateFunction<any, unknown, number, unknown>;
+  restoreLoading: boolean;
   forceDelete: UseMutateFunction<any, unknown, number, unknown>;
+  forceDeleteLoading: boolean;
 }
 
 type NoteListCardPanelProps = Partial<NoteListCardPanelProperties>;
