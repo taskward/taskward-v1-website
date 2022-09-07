@@ -47,14 +47,6 @@ type GitHubButtonProperties = {
 
 type GitHubButtonProps = Partial<GitHubButtonProperties> & CustomComponentProps;
 
-// Notification
-interface NotificationProperties {
-  show: boolean;
-  children: ReactNode;
-}
-
-type NotificationProps = Partial<NotificationProperties> & CustomComponentProps;
-
 // Loading
 interface LoadingProperties {
   fullScreen: boolean;
@@ -150,7 +142,6 @@ export type {
   InputProps,
   ButtonProps,
   GitHubButtonProps,
-  NotificationProps,
   LoadingProps,
   NoteType,
   NoteListCardProps,

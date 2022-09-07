@@ -1,22 +1,21 @@
 import clsx from "clsx";
-import { NotificationProps } from "@interfaces";
 
-export default function Notification({
-  show,
-  children,
-  className,
-  style,
-}: NotificationProps): JSX.Element {
+import { useAppSelector } from "@hooks";
+
+export default function Notification(): JSX.Element {
+  const show = useAppSelector((state) => state.notification.show);
+  const text = useAppSelector((state) => state.notification.text);
+
   return (
     <div
       className={clsx(
-        "absolute z-20 h-fit w-fit rounded-md bg-emerald-600 p-2 text-sm font-medium text-white transition-[opacity,transform,visibility] duration-700",
-        show ? "visible scale-100 opacity-100" : "invisible scale-0 opacity-0",
-        className
+        "fixed left-20 bottom-10 z-50 m-auto h-fit w-fit rounded-md bg-emerald-600 p-2 text-sm font-medium text-white shadow-lg transition-[opacity,transform,visibility] duration-300",
+        show && text
+          ? "visible scale-100 opacity-100"
+          : "invisible scale-0 opacity-0"
       )}
-      style={style}
     >
-      {children}
+      {text}
     </div>
   );
 }

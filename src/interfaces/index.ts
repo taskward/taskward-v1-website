@@ -3,7 +3,6 @@ export type {
   InputProps,
   ButtonProps,
   GitHubButtonProps,
-  NotificationProps,
   LoadingProps,
   NoteType,
   NoteListCardProps,
