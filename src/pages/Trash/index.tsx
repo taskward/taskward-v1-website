@@ -8,6 +8,7 @@ import { getDocumentTitle } from "@utils";
 import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
 import { useGetTrashNotesRequest } from "@requests";
+import { TrashNote } from "@interfaces";
 
 export default function Trash(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout"]);
@@ -40,7 +41,7 @@ export default function Trash(): JSX.Element {
               styles.contentWrapper
             )}
           >
-            {trashNotesData?.notes.map((note) => {
+            {trashNotesData?.notes.map((note: TrashNote) => {
               return <TrashNoteListCard key={note.id} note={note} />;
             })}
           </div>
