@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const useImageLoaded = (src: any): boolean => {
   const [Loaded, setLoaded] = useState<boolean>(false);
 

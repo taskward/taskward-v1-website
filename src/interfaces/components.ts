@@ -1,3 +1,4 @@
+import { UseMutateFunction } from "@tanstack/react-query";
 import type {
   CSSProperties,
   ButtonHTMLAttributes,
@@ -46,14 +47,6 @@ type GitHubButtonProperties = {
 
 type GitHubButtonProps = Partial<GitHubButtonProperties> & CustomComponentProps;
 
-// Notification
-interface NotificationProperties {
-  show: boolean;
-  children: ReactNode;
-}
-
-type NotificationProps = Partial<NotificationProperties> & CustomComponentProps;
-
 // Loading
 interface LoadingProperties {
   fullScreen: boolean;
@@ -88,6 +81,25 @@ type NotesResult = {
 };
 
 type NoteListCardProps = Partial<NoteListCardProperties> & CustomComponentProps;
+
+interface NoteListCardPanelProperties {
+  focused: boolean;
+  note: Note | TrashNote;
+  type: "note" | "archive";
+  copy: boolean;
+  archive: UseMutateFunction<any, unknown, number, unknown>;
+  archiveLoading: boolean;
+  softDelete: UseMutateFunction<any, unknown, number, unknown>;
+  softDeleteLoading: boolean;
+  unarchive: UseMutateFunction<any, unknown, number, unknown>;
+  unarchiveLoading: boolean;
+  restore: UseMutateFunction<any, unknown, number, unknown>;
+  restoreLoading: boolean;
+  forceDelete: UseMutateFunction<any, unknown, number, unknown>;
+  forceDeleteLoading: boolean;
+}
+
+type NoteListCardPanelProps = Partial<NoteListCardPanelProperties>;
 
 // Trash
 interface TrashNoteListCardProperties {
@@ -130,12 +142,12 @@ export type {
   InputProps,
   ButtonProps,
   GitHubButtonProps,
-  NotificationProps,
   LoadingProps,
   NoteType,
   NoteListCardProps,
   Note,
   NotesResult,
+  NoteListCardPanelProps,
   TrashNoteListCardProps,
   TrashNote,
   TrashNotesResult,

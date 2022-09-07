@@ -11,7 +11,7 @@ import { userAction } from "@store";
 export default function Authentication({
   children,
 }: {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }): JSX.Element {
   const navigate = useNavigate();
   const userDispatch = useAppDispatch();
@@ -41,5 +41,5 @@ export default function Authentication({
     navigate("/login", { replace: true });
   };
 
-  return children;
+  return <>{children}</>;
 }

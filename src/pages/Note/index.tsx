@@ -8,6 +8,7 @@ import { useGetNotesRequest } from "@requests";
 import { getDocumentTitle } from "@utils";
 import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
+import { Note as NoteType } from "@interfaces";
 
 export default function Note(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout", "note"]);
@@ -31,7 +32,7 @@ export default function Note(): JSX.Element {
       <div className="mx-auto mb-80 flex w-full flex-col gap-4 p-4">
         <NoteCreator className={styles.contentWrapper} />
         {isGetNotesLoading ? (
-          <Loading />
+          <Loading className="my-4" />
         ) : (
           <div
             className={clsx(
@@ -46,8 +47,7 @@ export default function Note(): JSX.Element {
                 <>{t("note:NOTE.NONE")} 👆</>
               )}
             </div>
-
-            {notesData?.notes.map((note) => {
+            {notesData?.notes.map((note: NoteType) => {
               return <NoteListCard key={note.id} note={note} type="note" />;
             })}
           </div>

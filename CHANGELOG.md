@@ -2,6 +2,12 @@
 
 ## v1.1.0
 
+### v1.0.2
+
+- Fix the display of the whitespace error.
+- Add animation feedback after archiving, unarchiving or deleting a note.
+- Add notification after copy note description.
+
 ### v1.0.1
 
 - Fix Firefox compatibility.

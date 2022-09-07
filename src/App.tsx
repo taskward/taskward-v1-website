@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
-import { Authentication, Layout, Loading } from "@components";
+import { Authentication, Layout, Loading, Notification } from "@components";
 import { Home, Note, Archive, Trash, NotFound, Login, Signup } from "@pages";
 
 export default function App(): JSX.Element {
@@ -21,6 +21,7 @@ export default function App(): JSX.Element {
               element={
                 <Authentication>
                   <Layout />
+                  <Notification />
                 </Authentication>
               }
             >

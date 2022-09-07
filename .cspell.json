@@ -13,7 +13,8 @@
     "stylelint",
     "hookform",
     "signup",
-    "tanstack"
+    "tanstack",
+    "unarchiving"
   ],
   "flagWords": []
 }

@@ -1,8 +1,10 @@
-import clsx from "clsx";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import { Header, Sidebar, Loading } from "..";
+import clsx from "clsx";
+
 import styles from "./styles.module.css";
+
+import { Header, Sidebar, Loading } from "..";
 
 export default function Layout(): JSX.Element {
   return (
@@ -24,12 +26,6 @@ export default function Layout(): JSX.Element {
           <Suspense fallback={<Loading />}>
             <Outlet />
           </Suspense>
-          {/* <Notification
-        show={showNotification}
-        className="sticky inset-x-0 bottom-10 m-auto"
-      >
-        {t("common:COPY.SUCCESS")}
-      </Notification> */}
         </div>
       </div>
     </>

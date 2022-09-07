@@ -89,7 +89,7 @@ export default function EditNoteModal({
       </div>
       <form
         className={clsx(
-          "flex max-h-[420px] flex-col gap-4 overflow-y-auto px-4"
+          "flex max-h-[420px] flex-col gap-4 overflow-y-auto overflow-x-hidden px-4"
         )}
         key={`${isEdit}`}
       >
@@ -109,7 +109,7 @@ export default function EditNoteModal({
         />
         <div
           className={clsx(
-            "min-h-[1.25rem] w-full cursor-text select-text resize-none whitespace-pre-wrap break-words px-0 text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:text-noteSecondTextDark dark:placeholder-gray-400",
+            "w-full cursor-text select-text resize-none whitespace-pre-wrap break-words px-0 text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] focus:outline-none dark:text-noteSecondTextDark dark:placeholder-gray-400",
             styles.textarea
           )}
           placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}

@@ -8,6 +8,7 @@ import { getDocumentTitle } from "@utils";
 import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
 import { useGetTrashNotesRequest } from "@requests";
+import { TrashNote } from "@interfaces";
 
 export default function Trash(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout"]);
@@ -33,14 +34,14 @@ export default function Trash(): JSX.Element {
           <Loading />
         </div>
       ) : (
-        <div className="mx-auto mt-4 mb-80 w-full p-4">
+        <div className="mx-auto mb-80 w-full p-4">
           <div
             className={clsx(
               "mx-auto flex flex-col items-center justify-center gap-4",
               styles.contentWrapper
             )}
           >
-            {trashNotesData?.notes.map((note) => {
+            {trashNotesData?.notes.map((note: TrashNote) => {
               return <TrashNoteListCard key={note.id} note={note} />;
             })}
           </div>
