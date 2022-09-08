@@ -6,14 +6,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-import { Button, Icon } from "@components";
+import { Button, Icon, TaskCheckbox } from "@components";
 import {
   CustomComponentProps,
   type NoteFormData,
   NoteFormSchema,
+  TaskSubmitType,
 } from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
 import { useCreateNoteRequest } from "@requests";
+import { generateGUID } from "@utils";
 
 export default function NoteCreator({
   style,
@@ -24,6 +26,7 @@ export default function NoteCreator({
   const { mutate: createNote, isLoading } = useCreateNoteRequest();
 
   const [editable, setEditable] = useState<boolean>(false);
+  const [taskList, setTaskList] = useState<TaskSubmitType[]>([]);
 
   const outsideClickRef = useDetectOutsideClick({
     outsideClickCallback: () => {
@@ -31,6 +34,7 @@ export default function NoteCreator({
     },
     insideClickCallback: () => {
       setEditable(true);
+      setTaskList(getValues("tasks") ?? []);
     },
   });
 
@@ -45,6 +49,37 @@ export default function NoteCreator({
         reset();
       },
     });
+  };
+
+  const removeTaskById = (tasks: TaskSubmitType[], id: string) => {
+    const result = tasks.filter((task) => task.id !== id);
+    setValue("tasks", result);
+    setTaskList(result);
+  };
+
+  const changeChecked = (tasks: TaskSubmitType[], id: string) => {
+    const result = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, finished: !task.finished };
+      }
+      return task;
+    });
+    setValue("tasks", result);
+    setTaskList(result);
+  };
+
+  const changeContent = (
+    tasks: TaskSubmitType[],
+    id: string,
+    content: string
+  ) => {
+    const result = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, content: content };
+      }
+      return task;
+    });
+    setValue("tasks", result);
   };
 
   return (
@@ -90,42 +125,89 @@ export default function NoteCreator({
               }}
               dangerouslySetInnerHTML={{ __html: getValues("description") }}
             />
-            <div className="flex items-center justify-end gap-2.5">
+            <div className="flex flex-col gap-1.5">
+              {taskList.map((task: TaskSubmitType) => {
+                return (
+                  <TaskCheckbox
+                    key={task.id}
+                    checkboxTitle={task.content}
+                    checked={task.finished}
+                    url={task.linkUrl}
+                    removeTask={() => {
+                      removeTaskById(taskList, task.id as string);
+                    }}
+                    changeChecked={() => {
+                      changeChecked(taskList, task.id as string);
+                    }}
+                    changeContent={(content: string) => {
+                      changeContent(taskList, task.id as string, content);
+                    }}
+                  />
+                );
+              })}
+            </div>
+            <div className="flex items-center justify-between">
               <Button
-                type="submit"
+                type="button"
                 size="sm"
-                title={t("common:CREATE")}
-                disabled={isLoading}
-                className={clsx(isLoading && "cursor-not-allowed")}
-                icon={
-                  isLoading ? (
-                    <Icon.Loading width="12" height="12" />
-                  ) : (
-                    <Icon.Add
-                      width="12"
-                      height="12"
-                      className="flex-shrink-0 fill-white"
-                    />
-                  )
-                }
-              />
-              <Button
-                type="submit"
-                size="sm"
-                title={t("common:CANCEL")}
-                color="danger"
+                title={"添加任务"}
                 onClick={() => {
-                  setEditable(false);
-                  reset();
+                  const result = taskList.map((task) => task);
+                  result.push({
+                    id: generateGUID(),
+                    content: "",
+                    linkUrl: "",
+                    finished: false,
+                  });
+                  setValue("tasks", result);
+                  setTaskList(result);
                 }}
                 icon={
-                  <Icon.Close
+                  <Icon.AddTask
                     width="12"
                     height="12"
                     className="flex-shrink-0 fill-white"
                   />
                 }
               />
+              <div className="flex items-center gap-2.5">
+                <Button
+                  type="submit"
+                  size="sm"
+                  title={t("common:CREATE")}
+                  disabled={isLoading}
+                  className={clsx(isLoading && "cursor-not-allowed")}
+                  icon={
+                    isLoading ? (
+                      <Icon.Loading width="12" height="12" />
+                    ) : (
+                      <Icon.Add
+                        width="12"
+                        height="12"
+                        className="flex-shrink-0 fill-white"
+                      />
+                    )
+                  }
+                />
+                <Button
+                  type="button"
+                  size="sm"
+                  title={t("common:CANCEL")}
+                  color="danger"
+                  onClick={() => {
+                    setEditable(false);
+                    reset();
+                    setTaskList([]);
+                  }}
+                  icon={
+                    <Icon.Close
+                      width="12"
+                      height="12"
+                      className="flex-shrink-0 fill-white"
+                    />
+                  }
+                />
+              </div>
             </div>
           </>
         ) : (
