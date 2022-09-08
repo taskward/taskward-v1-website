@@ -16,7 +16,7 @@ interface SidebarState {
 
 const initialState = {
   sidebarMode: "collapse",
-  activeSidebarItem: ActiveSidebarItem.Note,
+  activeSidebarItem: ActiveSidebarItem.None,
 } as SidebarState;
 
 export const sidebarSlice = createSlice({
