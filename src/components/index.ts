@@ -15,4 +15,5 @@ export { default as NoteCreator } from "./NoteCreator";
 export { default as Notification } from "./Notification";
 export { default as TrashNoteListCard } from "./TrashNoteListCard";
 export { default as Modal } from "./Modal";
+export { default as Checkbox } from "./Checkbox";
 export { Icon } from "./Svg";

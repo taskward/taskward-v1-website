@@ -4,6 +4,7 @@
 
 ### v1.0.3
 
+- Brand new feature: the note's tasks.
 - Click outside and note content will not be cleared when create a note.
 
 ### v1.0.2
