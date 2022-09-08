@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 function setClipBoardText(text: string | undefined | null): boolean {
   if (!text) {
     return false;
@@ -10,4 +11,8 @@ function isObjectHaveSameData(a: object, b: object) {
   return JSON.stringify(a) === JSON.stringify(b);
 }
 
-export { setClipBoardText, isObjectHaveSameData };
+function generateGUID(): string {
+  return uuidv4();
+}
+
+export { setClipBoardText, isObjectHaveSameData, generateGUID };
