@@ -27,7 +27,7 @@ export default function GitHubButton({
       )}
       onClick={loginWithGitHub}
     >
-      <span className="text-md flex items-center justify-center gap-1 whitespace-nowrap">
+      <span className="flex items-center justify-center gap-1 whitespace-nowrap text-base">
         <svg
           role="img"
           xmlns="http://www.w3.org/2000/svg"

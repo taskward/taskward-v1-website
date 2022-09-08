@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { TaskSubmitType } from "@interfaces";
 
 interface LoginFormData {
   username: string;
@@ -34,11 +35,19 @@ const signupFormSchema = yup
 interface NoteFormData {
   name: string;
   description: string;
+  tasks: TaskSubmitType[];
 }
 
 const NoteFormSchema = yup.object({
   name: yup.string(),
   description: yup.string(),
+  tasks: yup.array().of(
+    yup.object().shape({
+      content: yup.string(),
+      linkUrl: yup.string(),
+      finished: yup.boolean(),
+    })
+  ),
 });
 
 interface EditNoteFormData extends NoteFormData {

@@ -47,6 +47,7 @@ import Unarchive from "./Unarchive";
 import Update from "./Update";
 import DeleteTime from "./DeleteTime";
 import Task from "./Task";
+import AddTask from "./AddTask";
 
 export const Icon = {
   Archive,
@@ -91,4 +92,5 @@ export const Icon = {
   Update,
   DeleteTime,
   Task,
+  AddTask,
 };

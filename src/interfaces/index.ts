@@ -1,6 +1,7 @@
 export type {
   CustomComponentProps,
   InputProps,
+  CheckboxProps,
   ButtonProps,
   GitHubButtonProps,
   LoadingProps,
@@ -13,6 +14,9 @@ export type {
   TrashNote,
   TrashNotesResult,
   ModalProps,
+  TaskCheckboxProps,
+  Task,
+  TaskSubmitType,
 } from "./components";
 
 export type { OutsideClickType } from "./hooks";

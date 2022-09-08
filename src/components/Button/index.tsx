@@ -24,7 +24,7 @@ export default function Button({
         block ? "w-full" : "w-fit",
         size === "sm" && "py-1 px-1.5 text-xs",
         size === "md" && "py-1.5 px-2.5 text-sm",
-        size === "lg" && "text-md py-2 px-3.5",
+        size === "lg" && "py-2 px-3.5 text-base",
         color === "default" &&
           "bg-gradient-to-br from-emerald-300 to-emerald-600 shadow-emerald-800",
         color === "danger" &&

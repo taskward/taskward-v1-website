@@ -6,7 +6,6 @@ import { NoteFormData } from "@interfaces";
 const useCreateNoteRequest = () => {
   const queryClient = useQueryClient();
   const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
-    /* eslint-disable @typescript-eslint/no-explicit-any */
     async (formData: NoteFormData): Promise<any> => {
       const response = await axiosService({
         method: "POST",

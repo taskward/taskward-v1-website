@@ -4,6 +4,7 @@ export default function Icons(): JSX.Element {
   return (
     <div className="grid grid-flow-row grid-cols-8 gap-4 p-16">
       <Icon.Add /> Add
+      <Icon.AddTask /> AddTask
       <Icon.Archive /> Archive
       <Icon.ArrowDropDown /> ArrowDropDown
       <Icon.Cancel /> Cancel

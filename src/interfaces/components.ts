@@ -15,7 +15,7 @@ interface ComponentCommonProps {
 
 type CustomComponentProps = Partial<ComponentCommonProps>;
 
-// Inputs
+// Input
 interface InputProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputWrapperClassName: string;
   inputClassName: string;
@@ -28,6 +28,16 @@ interface InputProperties extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 type InputProps = Partial<InputProperties> & CustomComponentProps;
+
+// Checkbox
+interface CheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
+  inputClassName: string;
+  inputWrapperClassName: string;
+  checkboxTitle: string;
+  register: object;
+}
+
+type CheckboxProps = Partial<CheckboxProperties> & CustomComponentProps;
 
 // Buttons
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -73,6 +83,7 @@ type Note = {
   priority: number;
   index: number;
   toped: boolean;
+  tasks: Task[];
 };
 
 type NotesResult = {
@@ -137,9 +148,39 @@ interface ModalProperties {
 
 type ModalProps = Partial<ModalProperties>;
 
+// Task Checkbox
+interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
+  inputClassName: string;
+  inputWrapperClassName: string;
+  checkboxTitle: string;
+  register: object;
+  removeTask: () => void;
+}
+
+type TaskCheckboxProps = Partial<TaskCheckboxProperties> & CustomComponentProps;
+
+type Task = {
+  id: number;
+  content: string;
+  linkUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+  finishedAt: Date | null;
+  priority: number;
+  index: number;
+};
+
+type TaskSubmitType = {
+  id?: number | string;
+  content: string;
+  linkUrl: string;
+  finished: boolean;
+};
+
 export type {
   CustomComponentProps,
   InputProps,
+  CheckboxProps,
   ButtonProps,
   GitHubButtonProps,
   LoadingProps,
@@ -152,4 +193,7 @@ export type {
   TrashNote,
   TrashNotesResult,
   ModalProps,
+  TaskCheckboxProps,
+  Task,
+  TaskSubmitType,
 };
