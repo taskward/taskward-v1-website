@@ -133,6 +133,7 @@ export default function NoteCreator({
                     checkboxTitle={task.content}
                     checked={task.finished}
                     url={task.linkUrl}
+                    //draggable
                     removeTask={() => {
                       removeTaskById(taskList, task.id as string);
                     }}

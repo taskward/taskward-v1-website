@@ -10,6 +10,7 @@ export default function TaskCheckbox({
   checkboxTitle,
   url,
   checked,
+  draggable,
   className,
   inputClassName,
   inputWrapperClassName,
@@ -18,12 +19,25 @@ export default function TaskCheckbox({
   changeChecked,
   changeContent,
 }: TaskCheckboxProps): JSX.Element {
+  const [dragOver, setDragOver] = useState<boolean>(false);
   const [showClose, setShowClose] = useState<boolean>(false);
-  const ref = useRef<any>();
 
   return (
     <div
-      className={clsx("flex", className)}
+      className={clsx(
+        "flex transition-[visibility,opacity]",
+        dragOver ? "invisible opacity-0" : "visible opacity-100",
+        className
+      )}
+      draggable={draggable}
+      onDragStart={(e) => {
+        e.stopPropagation();
+        setDragOver(true);
+      }}
+      onDragEnd={(e) => {
+        e.stopPropagation();
+        setDragOver(false);
+      }}
       onMouseEnter={(e) => {
         e.stopPropagation();
         setShowClose(true);
@@ -40,7 +54,6 @@ export default function TaskCheckbox({
         )}
       >
         <input
-          ref={ref}
           id={name}
           type="checkbox"
           name={name}
