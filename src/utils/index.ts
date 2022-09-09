@@ -7,6 +7,7 @@ export {
   setClipBoardText,
   isObjectHaveSameData,
   generateGUID,
+  openWindow,
 } from "./funcUtils";
 
 export { validateTokenExpireTime } from "./jwtUtils";

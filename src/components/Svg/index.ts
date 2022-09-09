@@ -48,6 +48,9 @@ import Update from "./Update";
 import DeleteTime from "./DeleteTime";
 import Task from "./Task";
 import AddTask from "./AddTask";
+import AddLink from "./AddLink";
+import Link from "./Link";
+import LinkOff from "./LinkOff";
 
 export const Icon = {
   Archive,
@@ -93,4 +96,7 @@ export const Icon = {
   DeleteTime,
   Task,
   AddTask,
+  AddLink,
+  Link,
+  LinkOff,
 };
