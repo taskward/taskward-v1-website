@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 
-import { Icon, NoteListCardPanel } from "@components";
+import { Icon, NoteListCardPanel, TaskCheckbox } from "@components";
 import {
   useDeleteTrashNoteRequest,
   useRestoreTrashNoteRequest,
 } from "@requests";
 import { convertUtcToLocalTime, convertUtcToFullLocalTime } from "@utils";
-import { TrashNoteListCardProps } from "@interfaces";
+import type { TrashNoteListCardProps, Task } from "@interfaces";
 
 export default function TrashNoteListCard({
   note,
@@ -55,10 +55,26 @@ export default function TrashNoteListCard({
           {note.name}
         </div>
       )}
-      <p
-        className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide dark:text-noteSecondTextDark"
-        dangerouslySetInnerHTML={{ __html: note.description }}
-      />
+      {note.description && (
+        <p
+          className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide dark:text-noteSecondTextDark"
+          dangerouslySetInnerHTML={{ __html: note.description }}
+        />
+      )}
+      {note.tasks && (
+        <div className="flex flex-col gap-1.5 px-4">
+          {note.tasks.map((task: Task) => {
+            return (
+              <TaskCheckbox
+                key={task.id}
+                checkboxTitle={task.content}
+                checked={task.finishedAt !== null}
+                linkUrl={task.linkUrl}
+              />
+            );
+          })}
+        </div>
+      )}
       <div className="flex flex-col px-2 pb-2">
         <div
           className="flex items-center justify-end gap-0.5 px-2 text-xs font-medium dark:text-noteSecondTextDark"

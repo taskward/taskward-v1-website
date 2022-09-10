@@ -125,6 +125,7 @@ type TrashNote = {
   updatedAt: Date;
   deletedAt: Date;
   archived: boolean;
+  tasks: Task[];
 };
 
 type TrashNotesResult = {
