@@ -29,6 +29,9 @@ export default function TaskCheckbox({
   const [linkEditable, setLinkEditable] = useState<boolean>(
     linkUrl ? true : false
   );
+  const [content, setContent] = useState<string | undefined | null>(
+    checkboxTitle
+  );
 
   return (
     <div
@@ -82,12 +85,13 @@ export default function TaskCheckbox({
           className={clsx(
             styles.inputWidth,
             "cursor-text select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
-            checked && "text-gray-500 line-through opacity-75"
+            checked && content && "text-gray-500 line-through opacity-75"
           )}
           contentEditable={editable}
           onInput={(e) => {
             e.stopPropagation();
-            changeContent && changeContent(e.currentTarget.textContent ?? "");
+            changeContent && changeContent(e.currentTarget.textContent ?? null);
+            setContent(e.currentTarget.textContent ?? null);
           }}
           placeholder={t("note:TASK.PLACEHOLDER.CONTENT")}
           dangerouslySetInnerHTML={{ __html: checkboxTitle ?? "" }}

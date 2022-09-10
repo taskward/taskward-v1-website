@@ -71,7 +71,7 @@ export default function NoteCreator({
   const changeContent = (
     tasks: TaskSubmitType[],
     id: string,
-    content: string
+    content: string | null
   ) => {
     const result = tasks.map((task) => {
       if (task.id === id) {
@@ -155,10 +155,10 @@ export default function NoteCreator({
                     changeChecked={() => {
                       changeChecked(taskList, task.id as string);
                     }}
-                    changeContent={(content: string) => {
+                    changeContent={(content: string | null) => {
                       changeContent(taskList, task.id as string, content);
                     }}
-                    changeLinkUrl={(linkUrl) => {
+                    changeLinkUrl={(linkUrl: string | null) => {
                       changeLinkUrl(taskList, task.id as string, linkUrl);
                     }}
                   />

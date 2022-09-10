@@ -1,7 +1,7 @@
 import { useState } from "react";
 import clsx from "clsx";
 
-import { NoteListCardPanel } from "@components";
+import { NoteListCardPanel, TaskCheckbox } from "@components";
 import {
   useArchiveNoteRequest,
   useDeleteNoteRequest,
@@ -9,7 +9,7 @@ import {
 } from "@requests";
 import { convertUtcToLocalTime, convertUtcToFullLocalTime } from "@utils";
 import { useToggle } from "@hooks";
-import { NoteListCardProps } from "@interfaces";
+import { NoteListCardProps, Task } from "@interfaces";
 
 import EditNoteModal from "./EditNoteModal";
 
@@ -72,6 +72,20 @@ export default function NoteListCard({
           className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide dark:text-noteSecondTextDark"
           dangerouslySetInnerHTML={{ __html: note.description }}
         />
+        {note.tasks && (
+          <div className="flex flex-col gap-1.5 px-4">
+            {note.tasks.map((task: Task) => {
+              return (
+                <TaskCheckbox
+                  key={task.id}
+                  checkboxTitle={task.content}
+                  checked={task.finishedAt !== null}
+                  linkUrl={task.linkUrl}
+                />
+              );
+            })}
+          </div>
+        )}
         <div className="flex flex-col px-2 pb-2">
           <div
             className="flex items-center justify-end px-2 text-xs font-medium dark:text-noteSecondTextDark"

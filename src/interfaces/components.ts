@@ -152,13 +152,13 @@ type ModalProps = Partial<ModalProperties>;
 interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputClassName: string;
   inputWrapperClassName: string;
-  checkboxTitle: string;
+  checkboxTitle: string | null;
   linkUrl: string | null;
   register: object;
   editable: boolean;
   removeTask: () => void;
   changeChecked: () => void;
-  changeContent: (content: string) => void;
+  changeContent: (content: string | null) => void;
   changeLinkUrl: (linkUrl: string | null) => void;
 }
 
@@ -177,7 +177,7 @@ type Task = {
 
 type TaskSubmitType = {
   id?: number | string;
-  content: string;
+  content: string | null;
   linkUrl: string | null;
   finished: boolean;
 };
