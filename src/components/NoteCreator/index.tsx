@@ -169,7 +169,7 @@ export default function NoteCreator({
               <Button
                 type="button"
                 size="sm"
-                title={"添加任务"}
+                title={t("note:TASK.CREATE")}
                 onClick={() => {
                   const result = taskList.map((task) => task);
                   result.push({

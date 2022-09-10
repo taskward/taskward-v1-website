@@ -4,5 +4,9 @@
     "COUNT": "您已经写了 {{count}} 条笔记",
     "NONE": "您还没有写过笔记，请点击上方创建哦"
   },
-  "UNARCHIVE": "取消归档"
+  "UNARCHIVE": "取消归档",
+  "TASK": {
+    "CREATE": "添加任务",
+    "PLACEHOLDER": { "CONTENT": "请输入内容", "LINK": "请输入链接" }
+  }
 }

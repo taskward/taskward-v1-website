@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
@@ -22,6 +23,7 @@ export default function TaskCheckbox({
   changeContent,
   changeLinkUrl,
 }: TaskCheckboxProps): JSX.Element {
+  const { t } = useTranslation(["note"]);
   const [dragOver, setDragOver] = useState<boolean>(false);
   const [showClose, setShowClose] = useState<boolean>(false);
   const [linkEditable, setLinkEditable] = useState<boolean>(
@@ -87,7 +89,7 @@ export default function TaskCheckbox({
             e.stopPropagation();
             changeContent && changeContent(e.currentTarget.textContent ?? "");
           }}
-          placeholder={"请输入内容"}
+          placeholder={t("note:TASK.PLACEHOLDER.CONTENT")}
           dangerouslySetInnerHTML={{ __html: checkboxTitle ?? "" }}
         />
         <div className="flex shrink-0 gap-0.5">
@@ -170,7 +172,7 @@ export default function TaskCheckbox({
                 : "cursor-pointer hover:text-emerald-600 hover:underline active:text-emerald-300 dark:hover:text-emerald-600 dark:active:text-emerald-300",
               "grow select-text whitespace-pre-wrap break-words text-xs font-normal leading-5 tracking-wide outline-none dark:text-noteSecondTextDark"
             )}
-            placeholder={"请输入链接"}
+            placeholder={t("note:TASK.PLACEHOLDER.LINK")}
             contentEditable={editable}
             onInput={(e) => {
               e.stopPropagation();
