@@ -6,13 +6,9 @@ import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
-import {
-  Note,
-  type EditNoteFormData,
-  EditNoteFormSchema,
-  NoteType,
-} from "@interfaces";
-import { Icon, Modal } from "@components";
+import type { Note, EditNoteFormData, NoteType, Task } from "@interfaces";
+import { EditNoteFormSchema } from "@interfaces";
+import { Icon, Modal, TaskCheckbox } from "@components";
 import {
   convertUtcToLocalTime,
   convertUtcToFullLocalTime,
@@ -121,6 +117,32 @@ export default function EditNoteModal({
             });
           }}
         />
+        <div className="flex flex-col gap-1.5">
+          {note.tasks.map((task: Task) => {
+            return (
+              <TaskCheckbox
+                key={task.id}
+                checkboxTitle={task.content}
+                checked={task.finishedAt !== null}
+                linkUrl={task.linkUrl}
+                editable
+                //draggable
+                removeTask={() => {
+                  removeTaskById(taskList, task.id as string);
+                }}
+                changeChecked={() => {
+                  changeChecked(taskList, task.id as string);
+                }}
+                changeContent={(content: string | null) => {
+                  changeContent(taskList, task.id as string, content);
+                }}
+                changeLinkUrl={(linkUrl: string | null) => {
+                  changeLinkUrl(taskList, task.id as string, linkUrl);
+                }}
+              />
+            );
+          })}
+        </div>
       </form>
       <div className="mt-4 flex justify-between px-4 pb-4 text-xs font-medium dark:text-noteSecondTextDark">
         <div

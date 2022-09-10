@@ -69,8 +69,11 @@ export default function TaskCheckbox({
             id={name}
             type="checkbox"
             name={name}
-            defaultChecked={checked}
+            checked={checked}
             onClick={(e) => {
+              e.stopPropagation();
+            }}
+            onChange={(e) => {
               e.stopPropagation();
               changeChecked && changeChecked();
             }}
@@ -84,19 +87,15 @@ export default function TaskCheckbox({
         <div
           className={clsx(
             styles.inputWidth,
-            "cursor-text select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
-            checked && content && "text-gray-500 line-through opacity-75"
+            "cursor-pointer select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
+            checked && content && "text-gray-500 line-through opacity-75",
+            editable && "cursor-auto"
           )}
           contentEditable={editable}
           onInput={(e) => {
             e.stopPropagation();
             changeContent && changeContent(e.currentTarget.textContent);
             setContent(e.currentTarget.textContent);
-          }}
-          onClick={(e) => {
-            e.stopPropagation();
-            if (!editable) {
-            }
           }}
           placeholder={
             editable ? t("note:TASK.PLACEHOLDER.CONTENT") : undefined
