@@ -68,10 +68,12 @@ export default function NoteListCard({
             {note.name}
           </div>
         )}
-        <p
-          className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide dark:text-noteSecondTextDark"
-          dangerouslySetInnerHTML={{ __html: note.description }}
-        />
+        {note.description && (
+          <p
+            className="block whitespace-pre-wrap break-words px-4 text-sm font-normal tracking-wide dark:text-noteSecondTextDark"
+            dangerouslySetInnerHTML={{ __html: note.description }}
+          />
+        )}
         {note.tasks && (
           <div className="flex flex-col gap-1.5 px-4">
             {note.tasks.map((task: Task) => {

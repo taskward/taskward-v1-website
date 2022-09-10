@@ -174,8 +174,8 @@ export default function NoteCreator({
                   const result = taskList.map((task) => task);
                   result.push({
                     id: generateGUID(),
-                    content: "",
-                    linkUrl: "",
+                    content: null,
+                    linkUrl: null,
                     finished: false,
                   });
                   setValue("tasks", result);

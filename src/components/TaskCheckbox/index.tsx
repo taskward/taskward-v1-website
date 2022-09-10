@@ -27,7 +27,7 @@ export default function TaskCheckbox({
   const [dragOver, setDragOver] = useState<boolean>(false);
   const [showClose, setShowClose] = useState<boolean>(false);
   const [linkEditable, setLinkEditable] = useState<boolean>(
-    linkUrl ? true : false
+    typeof linkUrl === "string"
   );
   const [content, setContent] = useState<string | undefined | null>(
     checkboxTitle
@@ -90,8 +90,8 @@ export default function TaskCheckbox({
           contentEditable={editable}
           onInput={(e) => {
             e.stopPropagation();
-            changeContent && changeContent(e.currentTarget.textContent ?? null);
-            setContent(e.currentTarget.textContent ?? null);
+            changeContent && changeContent(e.currentTarget.textContent);
+            setContent(e.currentTarget.textContent);
           }}
           placeholder={t("note:TASK.PLACEHOLDER.CONTENT")}
           dangerouslySetInnerHTML={{ __html: checkboxTitle ?? "" }}
@@ -128,6 +128,7 @@ export default function TaskCheckbox({
               onClick={(e) => {
                 e.stopPropagation();
                 setLinkEditable(true);
+                changeLinkUrl && changeLinkUrl("");
               }}
             >
               <Icon.AddLink
@@ -180,8 +181,7 @@ export default function TaskCheckbox({
             contentEditable={editable}
             onInput={(e) => {
               e.stopPropagation();
-              changeLinkUrl &&
-                changeLinkUrl(e.currentTarget.textContent ?? null);
+              changeLinkUrl && changeLinkUrl(e.currentTarget.textContent);
             }}
             dangerouslySetInnerHTML={{ __html: linkUrl ?? "" }}
           />
