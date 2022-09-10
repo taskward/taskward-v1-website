@@ -79,7 +79,7 @@ export default function TaskCheckbox({
         <div
           className={clsx(
             styles.inputWidth,
-            "cursor-text select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none dark:text-noteSecondTextDark",
+            "cursor-text select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
             checked && "text-gray-500 line-through opacity-75"
           )}
           contentEditable={editable}
@@ -87,6 +87,7 @@ export default function TaskCheckbox({
             e.stopPropagation();
             changeContent && changeContent(e.currentTarget.textContent ?? "");
           }}
+          placeholder={"请输入内容"}
           dangerouslySetInnerHTML={{ __html: checkboxTitle ?? "" }}
         />
         <div className="flex shrink-0 gap-0.5">
@@ -165,10 +166,11 @@ export default function TaskCheckbox({
             }}
             className={clsx(
               editable
-                ? "cursor-text"
+                ? "cursor-text placeholder:text-xs placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400"
                 : "cursor-pointer hover:text-emerald-600 hover:underline active:text-emerald-300 dark:hover:text-emerald-600 dark:active:text-emerald-300",
               "grow select-text whitespace-pre-wrap break-words text-xs font-normal leading-5 tracking-wide outline-none dark:text-noteSecondTextDark"
             )}
+            placeholder={"请输入链接"}
             contentEditable={editable}
             onInput={(e) => {
               e.stopPropagation();
