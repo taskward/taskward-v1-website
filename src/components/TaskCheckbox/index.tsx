@@ -69,8 +69,8 @@ export default function TaskCheckbox({
             id={name}
             type="checkbox"
             name={name}
-            checked={checked}
-            onChange={(e) => {
+            defaultChecked={checked}
+            onClick={(e) => {
               e.stopPropagation();
               changeChecked && changeChecked();
             }}
@@ -93,70 +93,79 @@ export default function TaskCheckbox({
             changeContent && changeContent(e.currentTarget.textContent);
             setContent(e.currentTarget.textContent);
           }}
-          placeholder={t("note:TASK.PLACEHOLDER.CONTENT")}
+          onClick={(e) => {
+            e.stopPropagation();
+            if (!editable) {
+            }
+          }}
+          placeholder={
+            editable ? t("note:TASK.PLACEHOLDER.CONTENT") : undefined
+          }
           dangerouslySetInnerHTML={{ __html: checkboxTitle ?? "" }}
         />
-        <div className="flex shrink-0 gap-0.5">
-          {linkEditable ? (
-            <div
-              className={clsx(
-                "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-                showClose
-                  ? "visible scale-100 opacity-100"
-                  : "invisible scale-0 opacity-0"
-              )}
-              onClick={(e) => {
-                e.stopPropagation();
-                setLinkEditable(false);
-                changeLinkUrl && changeLinkUrl(null);
-              }}
-            >
-              <Icon.LinkOff
-                width="18"
-                height="18"
-                className="fill-black dark:fill-white"
-              />
-            </div>
-          ) : (
-            <div
-              className={clsx(
-                "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-                showClose
-                  ? "visible scale-100 opacity-100"
-                  : "invisible scale-0 opacity-0"
-              )}
-              onClick={(e) => {
-                e.stopPropagation();
-                setLinkEditable(true);
-                changeLinkUrl && changeLinkUrl("");
-              }}
-            >
-              <Icon.AddLink
-                width="18"
-                height="18"
-                className="fill-black dark:fill-white"
-              />
-            </div>
-          )}
-          <div
-            className={clsx(
-              "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-              showClose
-                ? "visible scale-100 opacity-100"
-                : "invisible scale-0 opacity-0"
+        {editable && (
+          <div className="flex shrink-0 gap-0.5">
+            {linkEditable ? (
+              <div
+                className={clsx(
+                  "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                  showClose
+                    ? "visible scale-100 opacity-100"
+                    : "invisible scale-0 opacity-0"
+                )}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLinkEditable(false);
+                  changeLinkUrl && changeLinkUrl(null);
+                }}
+              >
+                <Icon.LinkOff
+                  width="18"
+                  height="18"
+                  className="fill-black dark:fill-white"
+                />
+              </div>
+            ) : (
+              <div
+                className={clsx(
+                  "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                  showClose
+                    ? "visible scale-100 opacity-100"
+                    : "invisible scale-0 opacity-0"
+                )}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLinkEditable(true);
+                  changeLinkUrl && changeLinkUrl("");
+                }}
+              >
+                <Icon.AddLink
+                  width="18"
+                  height="18"
+                  className="fill-black dark:fill-white"
+                />
+              </div>
             )}
-            onClick={(e) => {
-              e.stopPropagation();
-              removeTask && removeTask();
-            }}
-          >
-            <Icon.Close
-              width="20"
-              height="20"
-              className="fill-black dark:fill-white"
-            />
+            <div
+              className={clsx(
+                "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
+                showClose
+                  ? "visible scale-100 opacity-100"
+                  : "invisible scale-0 opacity-0"
+              )}
+              onClick={(e) => {
+                e.stopPropagation();
+                removeTask && removeTask();
+              }}
+            >
+              <Icon.Close
+                width="20"
+                height="20"
+                className="fill-black dark:fill-white"
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {linkEditable && (
         <div className="ml-7 flex gap-2">
@@ -177,7 +186,7 @@ export default function TaskCheckbox({
                 : "cursor-pointer hover:text-emerald-600 hover:underline active:text-emerald-300 dark:hover:text-emerald-600 dark:active:text-emerald-300",
               "grow select-text whitespace-pre-wrap break-words text-xs font-normal leading-5 tracking-wide outline-none dark:text-noteSecondTextDark"
             )}
-            placeholder={t("note:TASK.PLACEHOLDER.LINK")}
+            placeholder={editable ? t("note:TASK.PLACEHOLDER.LINK") : undefined}
             contentEditable={editable}
             onInput={(e) => {
               e.stopPropagation();
