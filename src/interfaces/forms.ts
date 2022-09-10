@@ -44,7 +44,7 @@ const NoteFormSchema = yup.object({
   tasks: yup.array().of(
     yup.object().shape({
       content: yup.string(),
-      linkUrl: yup.string(),
+      linkUrl: yup.string().nullable(),
       finished: yup.boolean(),
     })
   ),

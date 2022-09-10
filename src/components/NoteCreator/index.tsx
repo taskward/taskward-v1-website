@@ -82,6 +82,20 @@ export default function NoteCreator({
     setValue("tasks", result);
   };
 
+  const changeLinkUrl = (
+    tasks: TaskSubmitType[],
+    id: string,
+    linkUrl: string | null
+  ) => {
+    const result = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, linkUrl: linkUrl };
+      }
+      return task;
+    });
+    setValue("tasks", result);
+  };
+
   return (
     <div
       className={clsx(
@@ -132,7 +146,8 @@ export default function NoteCreator({
                     key={task.id}
                     checkboxTitle={task.content}
                     checked={task.finished}
-                    url={task.linkUrl}
+                    linkUrl={task.linkUrl}
+                    editable
                     //draggable
                     removeTask={() => {
                       removeTaskById(taskList, task.id as string);
@@ -142,6 +157,9 @@ export default function NoteCreator({
                     }}
                     changeContent={(content: string) => {
                       changeContent(taskList, task.id as string, content);
+                    }}
+                    changeLinkUrl={(linkUrl) => {
+                      changeLinkUrl(taskList, task.id as string, linkUrl);
                     }}
                   />
                 );

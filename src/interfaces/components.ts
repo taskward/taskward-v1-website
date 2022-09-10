@@ -153,11 +153,13 @@ interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputClassName: string;
   inputWrapperClassName: string;
   checkboxTitle: string;
-  url: string;
+  linkUrl: string | null;
   register: object;
+  editable: boolean;
   removeTask: () => void;
   changeChecked: () => void;
   changeContent: (content: string) => void;
+  changeLinkUrl: (linkUrl: string | null) => void;
 }
 
 type TaskCheckboxProps = Partial<TaskCheckboxProperties> & CustomComponentProps;
@@ -176,7 +178,7 @@ type Task = {
 type TaskSubmitType = {
   id?: number | string;
   content: string;
-  linkUrl: string;
+  linkUrl: string | null;
   finished: boolean;
 };
 
