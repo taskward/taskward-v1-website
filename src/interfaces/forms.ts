@@ -60,7 +60,18 @@ const EditNoteFormSchema = yup.object({
   description: yup.string(),
 });
 
-export type { LoginFormData, SignupFormData, NoteFormData, EditNoteFormData };
+interface UpdateTaskFinishStateFormData {
+  id: number;
+  finished: boolean;
+}
+
+export type {
+  LoginFormData,
+  SignupFormData,
+  NoteFormData,
+  EditNoteFormData,
+  UpdateTaskFinishStateFormData,
+};
 
 export {
   loginFormSchema,

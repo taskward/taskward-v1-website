@@ -80,9 +80,11 @@ export default function NoteListCard({
               return (
                 <TaskCheckbox
                   key={task.id}
+                  taskId={task.id}
                   checkboxTitle={task.content}
                   checked={task.finishedAt !== null}
                   linkUrl={task.linkUrl}
+                  noteType={type}
                 />
               );
             })}

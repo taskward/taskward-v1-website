@@ -26,6 +26,7 @@ export type {
   SignupFormData,
   NoteFormData,
   EditNoteFormData,
+  UpdateTaskFinishStateFormData,
 } from "./forms";
 export {
   loginFormSchema,

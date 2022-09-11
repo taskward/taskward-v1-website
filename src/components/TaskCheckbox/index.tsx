@@ -6,9 +6,11 @@ import styles from "./styles.module.css";
 import { TaskCheckboxProps } from "@interfaces";
 import { Icon } from "@components";
 import { openWindow, setClipBoardText } from "@utils";
+import { useUpdateTaskFinishStateRequest } from "@requests";
 
 export default function TaskCheckbox({
   name,
+  taskId,
   checkboxTitle,
   linkUrl,
   checked,
@@ -18,6 +20,7 @@ export default function TaskCheckbox({
   inputClassName,
   inputWrapperClassName,
   register = {},
+  noteType,
   removeTask,
   changeChecked,
   changeContent,
@@ -32,6 +35,8 @@ export default function TaskCheckbox({
   const [content, setContent] = useState<string | undefined | null>(
     checkboxTitle
   );
+  const { mutate: updateFinishState } =
+    useUpdateTaskFinishStateRequest(noteType);
 
   return (
     <div
@@ -69,13 +74,18 @@ export default function TaskCheckbox({
             id={name}
             type="checkbox"
             name={name}
-            checked={checked}
+            // eslint-disable-next-line react/no-unknown-property
+            defaultChecked={checked}
             onClick={(e) => {
               e.stopPropagation();
             }}
             onChange={(e) => {
               e.stopPropagation();
-              changeChecked && changeChecked();
+              if (editable) {
+                changeChecked && changeChecked();
+              } else {
+                updateFinishState({ id: taskId as number, finished: !checked });
+              }
             }}
             className={clsx(
               "mt-[1px] h-4 w-4 cursor-pointer select-none checked:accent-emerald-700",

@@ -153,10 +153,12 @@ type ModalProps = Partial<ModalProperties>;
 interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputClassName: string;
   inputWrapperClassName: string;
+  taskId: number;
   checkboxTitle: string | null;
   linkUrl: string | null;
   register: object;
   editable: boolean;
+  noteType: NoteType;
   removeTask: () => void;
   changeChecked: () => void;
   changeContent: (content: string | null) => void;
