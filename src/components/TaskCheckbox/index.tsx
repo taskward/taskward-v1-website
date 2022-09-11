@@ -41,7 +41,7 @@ export default function TaskCheckbox({
   return (
     <div
       className={clsx(
-        "flex flex-col gap-1 transition-[visibility,opacity]",
+        "flex flex-col gap-1.5 transition-[visibility,opacity]",
         dragOver ? "invisible opacity-0" : "visible opacity-100",
         className
       )}
@@ -74,7 +74,6 @@ export default function TaskCheckbox({
             id={name}
             type="checkbox"
             name={name}
-            // eslint-disable-next-line react/no-unknown-property
             defaultChecked={checked}
             onClick={(e) => {
               e.stopPropagation();
