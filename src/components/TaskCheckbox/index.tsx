@@ -87,9 +87,9 @@ export default function TaskCheckbox({
         <div
           className={clsx(
             styles.inputWidth,
-            "cursor-pointer select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
+            "select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
             checked && content && "text-gray-500 line-through opacity-75",
-            editable && "cursor-auto"
+            editable ? "cursor-auto" : "cursor-pointer"
           )}
           contentEditable={editable}
           onInput={(e) => {
