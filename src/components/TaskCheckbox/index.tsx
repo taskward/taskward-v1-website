@@ -10,10 +10,7 @@ import { useUpdateTaskFinishStateRequest } from "@requests";
 
 export default function TaskCheckbox({
   name,
-  taskId,
-  checkboxTitle,
-  linkUrl,
-  checked,
+  task,
   editable,
   draggable,
   className,
@@ -25,18 +22,22 @@ export default function TaskCheckbox({
   changeChecked,
   changeContent,
   changeLinkUrl,
-}: TaskCheckboxProps): JSX.Element {
+}: TaskCheckboxProps): JSX.Element | null {
   const { t } = useTranslation(["note"]);
   const [dragOver, setDragOver] = useState<boolean>(false);
   const [showClose, setShowClose] = useState<boolean>(false);
   const [linkEditable, setLinkEditable] = useState<boolean>(
-    typeof linkUrl === "string"
+    typeof task?.linkUrl === "string"
   );
   const [content, setContent] = useState<string | undefined | null>(
-    checkboxTitle
+    task?.content
   );
   const { mutate: updateFinishState } =
     useUpdateTaskFinishStateRequest(noteType);
+
+  if (!task) {
+    return null;
+  }
 
   return (
     <div
@@ -74,7 +75,7 @@ export default function TaskCheckbox({
             id={name}
             type="checkbox"
             name={name}
-            defaultChecked={checked}
+            defaultChecked={task.finished}
             onClick={(e) => {
               e.stopPropagation();
             }}
@@ -83,7 +84,10 @@ export default function TaskCheckbox({
               if (editable) {
                 changeChecked && changeChecked();
               } else {
-                updateFinishState({ id: taskId as number, finished: !checked });
+                updateFinishState({
+                  id: task.id,
+                  finished: !task.finished,
+                });
               }
             }}
             className={clsx(
@@ -97,7 +101,9 @@ export default function TaskCheckbox({
           className={clsx(
             styles.inputWidth,
             "select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
-            checked && content && "text-gray-500 line-through opacity-75",
+            task?.finished &&
+              content &&
+              "text-gray-500 line-through opacity-75",
             editable ? "cursor-auto" : "cursor-pointer"
           )}
           contentEditable={editable}
@@ -109,7 +115,7 @@ export default function TaskCheckbox({
           placeholder={
             editable ? t("note:TASK.PLACEHOLDER.CONTENT") : undefined
           }
-          dangerouslySetInnerHTML={{ __html: checkboxTitle ?? "" }}
+          dangerouslySetInnerHTML={{ __html: task.content ?? "" }}
         />
         {editable && (
           <div className="flex shrink-0 gap-0.5">
@@ -182,11 +188,11 @@ export default function TaskCheckbox({
           </div>
           <div
             onClick={(e) => {
-              if (!linkUrl || editable) {
+              if (!task.linkUrl || editable) {
                 return;
               }
               e.stopPropagation();
-              linkUrl && openWindow(linkUrl);
+              task.linkUrl && openWindow(task.linkUrl);
             }}
             className={clsx(
               editable
@@ -200,7 +206,7 @@ export default function TaskCheckbox({
               e.stopPropagation();
               changeLinkUrl && changeLinkUrl(e.currentTarget.textContent);
             }}
-            dangerouslySetInnerHTML={{ __html: linkUrl ?? "" }}
+            dangerouslySetInnerHTML={{ __html: task.linkUrl ?? "" }}
           />
           <div className="flex shrink-0 gap-0.5">
             <div
@@ -212,7 +218,7 @@ export default function TaskCheckbox({
               )}
               onClick={(e) => {
                 e.stopPropagation();
-                setClipBoardText(linkUrl);
+                setClipBoardText(task.linkUrl);
               }}
             >
               <Icon.Copy
@@ -230,7 +236,7 @@ export default function TaskCheckbox({
               )}
               onClick={(e) => {
                 e.stopPropagation();
-                linkUrl && openWindow(linkUrl);
+                task.linkUrl && openWindow(task.linkUrl);
               }}
             >
               <Icon.OpenLink

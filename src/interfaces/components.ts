@@ -83,8 +83,8 @@ type NoteType = "note" | "archive" | "trash";
 
 type Note = {
   id: number;
-  name: string;
-  description: string;
+  name: string | null;
+  description: string | null;
   createdAt: Date;
   updatedAt: Date | null;
   deletedAt: Date | null;
@@ -127,9 +127,9 @@ type NoteListCardPanelProps = Partial<NoteListCardPanelProperties>;
 
 // Task
 type Task = {
-  id: number;
-  content: string;
-  linkUrl: string;
+  id: number | string;
+  content: string | null;
+  linkUrl: string | null;
   createdAt: Date;
   updatedAt: Date | null;
   finishedAt: Date | null;
@@ -146,7 +146,7 @@ type Tasks = {
 interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputClassName: string;
   inputWrapperClassName: string;
-  task: Task;
+  task: Partial<Task> & { finished?: boolean };
   noteType: NoteType;
   editable: boolean;
   register: object;

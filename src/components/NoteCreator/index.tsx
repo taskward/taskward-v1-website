@@ -7,12 +7,12 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 
 import { Button, Icon, TaskCheckbox } from "@components";
-import {
+import type {
   CustomComponentProps,
-  type NoteFormData,
-  NoteFormSchema,
-  TaskSubmitType,
+  CreateNoteFormData,
+  TaskFormData,
 } from "@interfaces";
+import { CreateNoteFormSchema } from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
 import { useCreateNoteRequest } from "@requests";
 import { generateGUID } from "@utils";
@@ -26,7 +26,7 @@ export default function NoteCreator({
   const { mutate: createNote, isLoading } = useCreateNoteRequest();
 
   const [editable, setEditable] = useState<boolean>(false);
-  const [taskList, setTaskList] = useState<TaskSubmitType[]>([]);
+  const [taskList, setTaskList] = useState<TaskFormData[]>([]);
 
   const outsideClickRef = useDetectOutsideClick({
     outsideClickCallback: () => {
@@ -38,11 +38,12 @@ export default function NoteCreator({
     },
   });
 
-  const { handleSubmit, getValues, setValue, reset } = useForm<NoteFormData>({
-    resolver: yupResolver(NoteFormSchema),
-  });
+  const { handleSubmit, getValues, setValue, reset } =
+    useForm<CreateNoteFormData>({
+      resolver: yupResolver(CreateNoteFormSchema),
+    });
 
-  const handleCreateNote = async (formData: NoteFormData) => {
+  const handleCreateNote = async (formData: CreateNoteFormData) => {
     createNote(formData, {
       onSuccess: () => {
         setEditable(false);
@@ -51,13 +52,13 @@ export default function NoteCreator({
     });
   };
 
-  const removeTaskById = (tasks: TaskSubmitType[], id: string) => {
+  const removeTaskById = (tasks: TaskFormData[], id: string) => {
     const result = tasks.filter((task) => task.id !== id);
     setValue("tasks", result);
     setTaskList(result);
   };
 
-  const changeChecked = (tasks: TaskSubmitType[], id: string) => {
+  const changeChecked = (tasks: TaskFormData[], id: string) => {
     const result = tasks.map((task) => {
       if (task.id === id) {
         return { ...task, finished: !task.finished };
@@ -69,7 +70,7 @@ export default function NoteCreator({
   };
 
   const changeContent = (
-    tasks: TaskSubmitType[],
+    tasks: TaskFormData[],
     id: string,
     content: string | null
   ) => {
@@ -83,7 +84,7 @@ export default function NoteCreator({
   };
 
   const changeLinkUrl = (
-    tasks: TaskSubmitType[],
+    tasks: TaskFormData[],
     id: string,
     linkUrl: string | null
   ) => {
@@ -140,15 +141,12 @@ export default function NoteCreator({
               dangerouslySetInnerHTML={{ __html: getValues("description") }}
             />
             <div className="flex flex-col gap-1.5">
-              {taskList.map((task: TaskSubmitType) => {
+              {taskList.map((task: TaskFormData) => {
                 return (
                   <TaskCheckbox
                     key={task.id}
-                    checkboxTitle={task.content}
-                    checked={task.finished}
-                    linkUrl={task.linkUrl}
+                    task={task}
                     editable
-                    //draggable
                     removeTask={() => {
                       removeTaskById(taskList, task.id as string);
                     }}

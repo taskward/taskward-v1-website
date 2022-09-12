@@ -37,16 +37,17 @@ const signupFormSchema = yup
 interface CreateNoteFormData {
   name: string;
   description: string;
-  tasks: CreateTaskFormData[];
+  tasks: TaskFormData[];
 }
 
 const CreateNoteFormSchema = yup.object({
-  name: yup.string(),
-  description: yup.string(),
+  name: yup.string().nullable(),
+  description: yup.string().nullable(),
   tasks: yup.array().of(
     yup.object().shape({
-      content: yup.string(),
-      linkUrl: yup.string(),
+      id: yup.string(),
+      content: yup.string().nullable(),
+      linkUrl: yup.string().nullable(),
       finished: yup.boolean().required(),
     })
   ),
@@ -54,32 +55,29 @@ const CreateNoteFormSchema = yup.object({
 
 interface EditNoteFormData extends Omit<CreateNoteFormData, "tasks"> {
   id: number;
-  tasks: EditTaskFormData[];
+  tasks: TaskFormData[];
 }
 
 const EditNoteFormSchema = yup.object({
   id: yup.number().moreThan(0).required(),
-  name: yup.string(),
-  description: yup.string(),
+  name: yup.string().nullable(),
+  description: yup.string().nullable(),
   tasks: yup.array().of(
     yup.object().shape({
       id: yup.number().moreThan(0).required(),
-      content: yup.string(),
-      linkUrl: yup.string(),
+      content: yup.string().nullable(),
+      linkUrl: yup.string().nullable(),
       finished: yup.boolean().required(),
     })
   ),
 });
 
 // Task
-interface CreateTaskFormData {
-  content: string;
-  linkUrl: string;
+interface TaskFormData {
+  id?: number | string;
+  content: string | null;
+  linkUrl: string | null;
   finished: boolean;
-}
-
-interface EditTaskFormData extends CreateTaskFormData {
-  id?: number;
 }
 
 interface PatchTaskFinishedFormData {
@@ -92,6 +90,7 @@ export type {
   SignupFormData,
   CreateNoteFormData,
   EditNoteFormData,
+  TaskFormData,
   PatchTaskFinishedFormData,
 };
 

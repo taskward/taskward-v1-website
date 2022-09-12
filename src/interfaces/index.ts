@@ -10,9 +10,6 @@ export type {
   Note,
   Notes,
   NoteListCardPanelProps,
-  TrashNoteListCardProps,
-  TrashNote,
-  TrashNotesResult,
   ModalProps,
   TaskCheckboxProps,
   Task,
@@ -26,6 +23,7 @@ export type {
   SignupFormData,
   CreateNoteFormData,
   EditNoteFormData,
+  TaskFormData,
   PatchTaskFinishedFormData,
 } from "./forms";
 export {
