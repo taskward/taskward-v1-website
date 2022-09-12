@@ -9,7 +9,10 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "react"],
   "root": true,
-  "rules": { "react/react-in-jsx-scope": "off" },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/no-unknown-property": ["off", { "ignore": ["input"] }]
+  },
   "settings": {
     "react": {
       "createClass": "createReactClass", // Regex for Component Factory to use,
