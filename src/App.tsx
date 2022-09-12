@@ -18,7 +18,12 @@ export default function App(): JSX.Element {
   const { i18n } = useTranslation();
 
   return (
-    <div className={clsx("text-black dark:text-white", i18n.language)}>
+    <div
+      className={clsx(
+        "text-black dark:bg-darkMode-darker dark:text-white",
+        i18n.language
+      )}
+    >
       <BrowserRouter>
         <Suspense fallback={<Loading fullScreen />}>
           <Routes>
