@@ -24,4 +24,4 @@ Taskward is a Todo&Task application.
 
 ## Contributor
 
-- Feature Designer&Helper: DZY
+- Feature Helper: DZY
