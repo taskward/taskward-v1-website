@@ -102,6 +102,7 @@ type Notes = {
 interface NoteListCardProperties {
   note: Note;
   type: NoteType;
+  editable: boolean;
 }
 
 type NoteListCardProps = Partial<NoteListCardProperties> & CustomComponentProps;

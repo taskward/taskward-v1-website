@@ -3,6 +3,7 @@
 ## v1.1.0
 
 - Brand new feature: the note's tasks with link.
+- Fix loading background color error in dark mode.
 - Click outside and note content will not be cleared when create a note.
 
 ### v1.0.2

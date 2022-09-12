@@ -1,30 +1,41 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 
-import { NoteListCardPanel, TaskCheckbox } from "@components";
+import { NoteListCardPanel, TaskCheckbox, Icon } from "@components";
 import {
   useArchiveNoteRequest,
   useDeleteNoteRequest,
   useUnarchiveNoteRequest,
+  useDeleteTrashNoteRequest,
+  useRestoreTrashNoteRequest,
 } from "@requests";
 import { convertUtcToLocalTime, convertUtcToFullLocalTime } from "@utils";
 import { useToggle } from "@hooks";
-import { NoteListCardProps, Task } from "@interfaces";
+import type { NoteListCardProps, Task } from "@interfaces";
 
 import EditNoteModal from "./EditNoteModal";
 
 export default function NoteListCard({
   note,
   type,
+  editable,
   className,
   style,
 }: NoteListCardProps): JSX.Element | null {
+  const { t } = useTranslation(["common"]);
+
   const { mutate: archiveNote, isLoading: isArchiveNoteLoading } =
     useArchiveNoteRequest();
   const { mutate: deleteNote, isLoading: isDeleteNoteLoading } =
     useDeleteNoteRequest(type);
   const { mutate: unarchiveNote, isLoading: isUnarchiveNoteLoading } =
     useUnarchiveNoteRequest();
+  const { mutate: restoreTrashNote, isLoading: isRestoreTrashNoteLoading } =
+    useRestoreTrashNoteRequest();
+  const { mutate: deleteTrashNote, isLoading: isDeleteTrashNoteLoading } =
+    useDeleteTrashNoteRequest();
+
   const [isEdit, toggleEdit] = useToggle(false);
 
   const [focused, setFocused] = useState<boolean>(false);
@@ -33,7 +44,13 @@ export default function NoteListCard({
     return null;
   }
 
-  if (isArchiveNoteLoading || isDeleteNoteLoading || isUnarchiveNoteLoading) {
+  if (
+    isArchiveNoteLoading ||
+    isDeleteNoteLoading ||
+    isUnarchiveNoteLoading ||
+    isDeleteTrashNoteLoading ||
+    isRestoreTrashNoteLoading
+  ) {
     return null;
   }
 
@@ -77,26 +94,38 @@ export default function NoteListCard({
         {note.tasks && (
           <div className="flex flex-col gap-1.5 px-4">
             {note.tasks.map((task: Task) => {
-              return (
-                <TaskCheckbox
-                  key={task.id}
-                  taskId={task.id}
-                  checkboxTitle={task.content}
-                  checked={task.finishedAt !== null}
-                  linkUrl={task.linkUrl}
-                  noteType={type}
-                />
-              );
+              return <TaskCheckbox key={task.id} task={task} noteType={type} />;
             })}
           </div>
         )}
         <div className="flex flex-col px-2 pb-2">
-          <div
-            className="flex items-center justify-end px-2 text-xs font-medium dark:text-noteSecondTextDark"
-            title={convertUtcToFullLocalTime(note.createdAt)}
-          >
-            {convertUtcToLocalTime(note.createdAt)}
-          </div>
+          {type === "trash" ? (
+            note.deletedAt && (
+              <div className="flex justify-end px-2">
+                <div
+                  className="flex w-fit items-center gap-0.5 text-xs font-medium dark:text-noteSecondTextDark"
+                  title={convertUtcToFullLocalTime(note.deletedAt)}
+                >
+                  <Icon.DeleteTime
+                    width="16"
+                    height="16"
+                    className="fill-black dark:fill-white"
+                  />
+                  <div className="font-normal">{t("common:DELETED.TIME")}</div>
+                  <div className="ml-0.5">
+                    {convertUtcToLocalTime(note.deletedAt)}
+                  </div>
+                </div>
+              </div>
+            )
+          ) : (
+            <div
+              className="flex items-center justify-end px-2 text-xs font-medium dark:text-noteSecondTextDark"
+              title={convertUtcToFullLocalTime(note.createdAt)}
+            >
+              {convertUtcToLocalTime(note.createdAt)}
+            </div>
+          )}
           {type === "note" && (
             <NoteListCardPanel
               focused={focused}
@@ -117,6 +146,17 @@ export default function NoteListCard({
               unarchiveLoading={isUnarchiveNoteLoading}
               softDelete={deleteNote}
               softDeleteLoading={isDeleteNoteLoading}
+            />
+          )}
+          {type === "trash" && (
+            <NoteListCardPanel
+              focused={focused}
+              note={note}
+              copy
+              restore={restoreTrashNote}
+              restoreLoading={isRestoreTrashNoteLoading}
+              forceDelete={deleteTrashNote}
+              forceDeleteLoading={isDeleteTrashNoteLoading}
             />
           )}
         </div>
