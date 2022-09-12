@@ -35,8 +35,8 @@ const signupFormSchema = yup
 
 // Note
 interface CreateNoteFormData {
-  name: string;
-  description: string;
+  name: string | null;
+  description: string | null;
   tasks: TaskFormData[];
 }
 

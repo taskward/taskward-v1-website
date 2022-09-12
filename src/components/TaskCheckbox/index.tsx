@@ -24,14 +24,17 @@ export default function TaskCheckbox({
   changeLinkUrl,
 }: TaskCheckboxProps): JSX.Element | null {
   const { t } = useTranslation(["note"]);
+  // DND
   const [dragOver, setDragOver] = useState<boolean>(false);
-  const [showClose, setShowClose] = useState<boolean>(false);
+
+  const [showButton, setShowButton] = useState<boolean>(false);
   const [linkEditable, setLinkEditable] = useState<boolean>(
     typeof task?.linkUrl === "string"
   );
   const [content, setContent] = useState<string | undefined | null>(
     task?.content
   );
+
   const { mutate: updateFinishState } =
     useUpdateTaskFinishStateRequest(noteType);
 
@@ -57,11 +60,11 @@ export default function TaskCheckbox({
       }}
       onMouseEnter={(e) => {
         e.stopPropagation();
-        setShowClose(true);
+        setShowButton(true);
       }}
       onMouseLeave={(e) => {
         e.stopPropagation();
-        setShowClose(false);
+        setShowButton(false);
       }}
     >
       <div className="flex gap-2">
@@ -123,7 +126,7 @@ export default function TaskCheckbox({
               <div
                 className={clsx(
                   "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-                  showClose
+                  showButton
                     ? "visible scale-100 opacity-100"
                     : "invisible scale-0 opacity-0"
                 )}
@@ -143,7 +146,7 @@ export default function TaskCheckbox({
               <div
                 className={clsx(
                   "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-                  showClose
+                  showButton
                     ? "visible scale-100 opacity-100"
                     : "invisible scale-0 opacity-0"
                 )}
@@ -163,7 +166,7 @@ export default function TaskCheckbox({
             <div
               className={clsx(
                 "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-                showClose
+                showButton
                   ? "visible scale-100 opacity-100"
                   : "invisible scale-0 opacity-0"
               )}
@@ -186,33 +189,37 @@ export default function TaskCheckbox({
           <div className="flex h-5 w-5 items-center justify-center">
             <Icon.Link width="20" height="20" className="fill-emerald-600" />
           </div>
-          <div
-            onClick={(e) => {
-              if (!task.linkUrl || editable) {
-                return;
+          <div className="grow">
+            <div
+              onClick={(e) => {
+                if (!task.linkUrl || editable) {
+                  return;
+                }
+                e.stopPropagation();
+                task.linkUrl && openWindow(task.linkUrl);
+              }}
+              className={clsx(
+                editable
+                  ? "cursor-text placeholder:text-xs placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400"
+                  : "w-fit cursor-pointer hover:text-emerald-600 hover:underline active:text-emerald-300 dark:hover:text-emerald-600 dark:active:text-emerald-300",
+                "select-text whitespace-pre-wrap break-words text-xs font-normal leading-5 tracking-wide outline-none dark:text-noteSecondTextDark"
+              )}
+              placeholder={
+                editable ? t("note:TASK.PLACEHOLDER.LINK") : undefined
               }
-              e.stopPropagation();
-              task.linkUrl && openWindow(task.linkUrl);
-            }}
-            className={clsx(
-              editable
-                ? "cursor-text placeholder:text-xs placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400"
-                : "cursor-pointer hover:text-emerald-600 hover:underline active:text-emerald-300 dark:hover:text-emerald-600 dark:active:text-emerald-300",
-              "grow select-text whitespace-pre-wrap break-words text-xs font-normal leading-5 tracking-wide outline-none dark:text-noteSecondTextDark"
-            )}
-            placeholder={editable ? t("note:TASK.PLACEHOLDER.LINK") : undefined}
-            contentEditable={editable}
-            onInput={(e) => {
-              e.stopPropagation();
-              changeLinkUrl && changeLinkUrl(e.currentTarget.textContent);
-            }}
-            dangerouslySetInnerHTML={{ __html: task.linkUrl ?? "" }}
-          />
+              contentEditable={editable}
+              onInput={(e) => {
+                e.stopPropagation();
+                changeLinkUrl && changeLinkUrl(e.currentTarget.textContent);
+              }}
+              dangerouslySetInnerHTML={{ __html: task.linkUrl ?? "" }}
+            />
+          </div>
           <div className="flex shrink-0 gap-0.5">
             <div
               className={clsx(
                 "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-                showClose
+                showButton
                   ? "visible scale-100 opacity-100"
                   : "invisible scale-0 opacity-0"
               )}
@@ -230,7 +237,7 @@ export default function TaskCheckbox({
             <div
               className={clsx(
                 "flex h-5 w-5 cursor-pointer select-none items-center justify-center rounded-full p-0.5 transition-[visibility,opacity,background-color,transform] hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",
-                showClose
+                showButton
                   ? "visible scale-100 opacity-100"
                   : "invisible scale-0 opacity-0"
               )}

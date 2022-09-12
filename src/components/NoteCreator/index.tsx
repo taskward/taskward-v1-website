@@ -17,6 +17,8 @@ import { useDetectOutsideClick } from "@hooks";
 import { useCreateNoteRequest } from "@requests";
 import { generateGUID } from "@utils";
 
+import useTaskCreator from "./useTaskCreator";
+
 export default function NoteCreator({
   style,
   className,
@@ -26,7 +28,15 @@ export default function NoteCreator({
   const { mutate: createNote, isLoading } = useCreateNoteRequest();
 
   const [editable, setEditable] = useState<boolean>(false);
-  const [taskList, setTaskList] = useState<TaskFormData[]>([]);
+
+  const {
+    tasksData,
+    setTasksData,
+    removeTask,
+    changeChecked,
+    changeContent,
+    changeLinkUrl,
+  } = useTaskCreator();
 
   const outsideClickRef = useDetectOutsideClick({
     outsideClickCallback: () => {
@@ -34,7 +44,7 @@ export default function NoteCreator({
     },
     insideClickCallback: () => {
       setEditable(true);
-      setTaskList(getValues("tasks") ?? []);
+      setTasksData(getValues("tasks") ?? []);
     },
   });
 
@@ -50,51 +60,6 @@ export default function NoteCreator({
         reset();
       },
     });
-  };
-
-  const removeTaskById = (tasks: TaskFormData[], id: string) => {
-    const result = tasks.filter((task) => task.id !== id);
-    setValue("tasks", result);
-    setTaskList(result);
-  };
-
-  const changeChecked = (tasks: TaskFormData[], id: string) => {
-    const result = tasks.map((task) => {
-      if (task.id === id) {
-        return { ...task, finished: !task.finished };
-      }
-      return task;
-    });
-    setValue("tasks", result);
-    setTaskList(result);
-  };
-
-  const changeContent = (
-    tasks: TaskFormData[],
-    id: string,
-    content: string | null
-  ) => {
-    const result = tasks.map((task) => {
-      if (task.id === id) {
-        return { ...task, content: content };
-      }
-      return task;
-    });
-    setValue("tasks", result);
-  };
-
-  const changeLinkUrl = (
-    tasks: TaskFormData[],
-    id: string,
-    linkUrl: string | null
-  ) => {
-    const result = tasks.map((task) => {
-      if (task.id === id) {
-        return { ...task, linkUrl: linkUrl };
-      }
-      return task;
-    });
-    setValue("tasks", result);
   };
 
   return (
@@ -124,7 +89,7 @@ export default function NoteCreator({
                   shouldValidate: true,
                 });
               }}
-              dangerouslySetInnerHTML={{ __html: getValues("name") }}
+              dangerouslySetInnerHTML={{ __html: getValues("name") ?? "" }}
             />
             <div
               className={clsx(
@@ -138,26 +103,40 @@ export default function NoteCreator({
                   shouldValidate: true,
                 });
               }}
-              dangerouslySetInnerHTML={{ __html: getValues("description") }}
+              dangerouslySetInnerHTML={{
+                __html: getValues("description") ?? "",
+              }}
             />
             <div className="flex flex-col gap-1.5">
-              {taskList.map((task: TaskFormData) => {
+              {tasksData.map((task: TaskFormData) => {
                 return (
                   <TaskCheckbox
                     key={task.id}
                     task={task}
                     editable
                     removeTask={() => {
-                      removeTaskById(taskList, task.id as string);
+                      setValue(
+                        "tasks",
+                        removeTask(tasksData, task.id as string)
+                      );
                     }}
                     changeChecked={() => {
-                      changeChecked(taskList, task.id as string);
+                      setValue(
+                        "tasks",
+                        changeChecked(tasksData, task.id as string)
+                      );
                     }}
                     changeContent={(content: string | null) => {
-                      changeContent(taskList, task.id as string, content);
+                      setValue(
+                        "tasks",
+                        changeContent(tasksData, task.id as string, content)
+                      );
                     }}
                     changeLinkUrl={(linkUrl: string | null) => {
-                      changeLinkUrl(taskList, task.id as string, linkUrl);
+                      setValue(
+                        "tasks",
+                        changeLinkUrl(tasksData, task.id as string, linkUrl)
+                      );
                     }}
                   />
                 );
@@ -169,7 +148,7 @@ export default function NoteCreator({
                 size="sm"
                 title={t("note:TASK.CREATE")}
                 onClick={() => {
-                  const result = taskList.map((task) => task);
+                  const result = [...tasksData];
                   result.push({
                     id: generateGUID(),
                     content: null,
@@ -177,7 +156,7 @@ export default function NoteCreator({
                     finished: false,
                   });
                   setValue("tasks", result);
-                  setTaskList(result);
+                  setTasksData(result);
                 }}
                 icon={
                   <Icon.AddTask
@@ -214,7 +193,7 @@ export default function NoteCreator({
                   onClick={() => {
                     setEditable(false);
                     reset();
-                    setTaskList([]);
+                    setTasksData([]);
                   }}
                   icon={
                     <Icon.Close

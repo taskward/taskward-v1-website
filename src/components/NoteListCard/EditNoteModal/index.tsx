@@ -37,15 +37,13 @@ export default function EditNoteModal({
   const { handleSubmit, setValue, reset } = useForm<EditNoteFormData>({
     defaultValues: {
       id: note.id,
-      name: note.name,
-      description: note.description,
+      name: note.name ?? null,
+      description: note.description ?? null,
     },
     resolver: yupResolver(EditNoteFormSchema),
   });
 
   const handleUpdateNote = async (formData: EditNoteFormData) => {
-    console.log(note.tasks);
-    return;
     const oldData: EditNoteFormData = {
       id: note.id,
       name: note.name,
@@ -98,7 +96,7 @@ export default function EditNoteModal({
           )}
           placeholder={t("common:TITLE")}
           contentEditable
-          dangerouslySetInnerHTML={{ __html: note.name }}
+          dangerouslySetInnerHTML={{ __html: note.name ?? "" }}
           onInput={(e) => {
             setValue("name", e.currentTarget.textContent as string, {
               shouldValidate: true,
@@ -112,7 +110,7 @@ export default function EditNoteModal({
           )}
           placeholder={t("note:NOTE.CREATE.PLACEHOLDER")}
           contentEditable
-          dangerouslySetInnerHTML={{ __html: note.description }}
+          dangerouslySetInnerHTML={{ __html: note.description ?? "" }}
           onInput={(e) => {
             setValue("description", e.currentTarget.textContent as string, {
               shouldValidate: true,
@@ -124,11 +122,8 @@ export default function EditNoteModal({
             return (
               <TaskCheckbox
                 key={task.id}
-                checkboxTitle={task.content}
-                checked={task.finishedAt !== null}
-                linkUrl={task.linkUrl}
+                task={task}
                 editable
-                //draggable
                 removeTask={() => {}}
                 changeChecked={() => {}}
                 changeContent={(content: string | null) => {}}
@@ -150,18 +145,22 @@ export default function EditNoteModal({
           <Icon.Sync width="16" height="16" className="mr-0.5" />
           {t("common:SAVING")}...
         </div>
-        <div
-          className="flex items-center gap-0.5"
-          title={convertUtcToFullLocalTime(note.updatedAt)}
-        >
-          <Icon.Update
-            width="16"
-            height="16"
-            className="fill-black dark:fill-white"
-          />
-          <div className="font-normal">{t("common:UPDATED.TIME")}</div>
-          <div className="ml-0.5">{convertUtcToLocalTime(note.updatedAt)}</div>
-        </div>
+        {note.updatedAt && (
+          <div
+            className="flex items-center gap-0.5"
+            title={convertUtcToFullLocalTime(note.updatedAt)}
+          >
+            <Icon.Update
+              width="16"
+              height="16"
+              className="fill-black dark:fill-white"
+            />
+            <div className="font-normal">{t("common:UPDATED.TIME")}</div>
+            <div className="ml-0.5">
+              {convertUtcToLocalTime(note.updatedAt)}
+            </div>
+          </div>
+        )}
       </div>
     </Modal>
   );
