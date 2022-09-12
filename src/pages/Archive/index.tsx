@@ -42,7 +42,14 @@ export default function Archive(): JSX.Element {
             )}
           >
             {notesData?.notes.map((note: NoteType) => {
-              return <NoteListCard key={note.id} note={note} type="archive" />;
+              return (
+                <NoteListCard
+                  key={note.id}
+                  note={note}
+                  type="archive"
+                  editable
+                />
+              );
             })}
           </div>
         </div>

@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { axiosService, NOTES_KEY, ARCHIVE_KEY, TRASH_KEY } from "@requests";
 
-import type { NoteType, UpdateTaskFinishStateFormData } from "@interfaces";
+import { axiosService, NOTES_KEY, ARCHIVE_KEY, TRASH_KEY } from "@requests";
+import type { NoteType, PatchTaskFinishedFormData } from "@interfaces";
 
 const useUpdateTaskFinishStateRequest = (type?: NoteType) => {
   const queryClient = useQueryClient();
   const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
-    async (formData: UpdateTaskFinishStateFormData): Promise<any> => {
+    async (formData: PatchTaskFinishedFormData): Promise<any> => {
       const response = await axiosService({
         method: "PUT",
         url: `tasks/${formData.id}`,

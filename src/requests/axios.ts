@@ -4,14 +4,15 @@ import { i18n } from "@i18n";
 import { LOCAL_STORAGE_TOKEN } from "@constants";
 import { history } from "@utils";
 
+// Axios instance
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
   timeout: 10000,
 });
 
+// Request interceptors
 axiosService.interceptors.request.use(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (config: any) => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN);
     if (token) {
@@ -22,6 +23,7 @@ axiosService.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+// Response interceptors
 axiosService.interceptors.response.use(
   (response) => response,
   (error) => {

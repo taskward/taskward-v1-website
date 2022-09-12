@@ -42,7 +42,9 @@ export default function Trash(): JSX.Element {
             )}
           >
             {notesData?.notes.map((note: NoteType) => {
-              return <NoteListCard key={note.id} note={note} type="trash" />;
+              return (
+                <NoteListCard key={note.id} note={note} type="trash" editable />
+              );
             })}
           </div>
         </div>

@@ -64,7 +64,7 @@ export default function NoteListCard({
           focused
             ? "drop-shadow-lg dark:drop-shadow-[0_10px_8px_#3a3d41]"
             : "drop-shadow-sm",
-          isEdit
+          isEdit && editable
             ? "invisible scale-0 opacity-0"
             : "visible scale-100 opacity-100"
         )}
@@ -161,12 +161,14 @@ export default function NoteListCard({
           )}
         </div>
       </div>
-      <EditNoteModal
-        isEdit={isEdit}
-        toggle={toggleEdit}
-        note={note}
-        type={type}
-      />
+      {editable && (
+        <EditNoteModal
+          isEdit={isEdit}
+          toggle={toggleEdit}
+          note={note}
+          type={type}
+        />
+      )}
     </>
   );
 }

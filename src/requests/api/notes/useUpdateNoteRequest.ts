@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { axiosService, NOTES_KEY, ARCHIVE_KEY } from "@requests";
 
+import { axiosService, NOTES_KEY, ARCHIVE_KEY } from "@requests";
 import { EditNoteFormData } from "@interfaces";
 import { NoteType } from "@interfaces";
 

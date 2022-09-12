@@ -1,6 +1,5 @@
 import { axiosService } from "@requests";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function getUserInfo(): Promise<any> {
   try {
     const response = await axiosService({
