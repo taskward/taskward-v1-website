@@ -182,10 +182,10 @@ export default function TaskCheckbox({
           </div>
           <div
             onClick={(e) => {
-              e.stopPropagation();
-              if (editable) {
+              if (!linkUrl || editable) {
                 return;
               }
+              e.stopPropagation();
               linkUrl && openWindow(linkUrl);
             }}
             className={clsx(

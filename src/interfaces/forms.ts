@@ -1,6 +1,6 @@
 import * as yup from "yup";
-import { TaskSubmitType } from "@interfaces";
 
+// Login
 interface LoginFormData {
   username: string;
   password: string;
@@ -14,6 +14,7 @@ const loginFormSchema = yup
   })
   .required();
 
+// Signup
 interface SignupFormData extends LoginFormData {
   confirmPassword: string;
 }
@@ -32,35 +33,56 @@ const signupFormSchema = yup
   })
   .required();
 
-interface NoteFormData {
+// Note
+interface CreateNoteFormData {
   name: string;
   description: string;
-  tasks: TaskSubmitType[];
+  tasks: CreateTaskFormData[];
 }
 
-const NoteFormSchema = yup.object({
+const CreateNoteFormSchema = yup.object({
   name: yup.string(),
   description: yup.string(),
   tasks: yup.array().of(
     yup.object().shape({
-      content: yup.string().nullable(),
-      linkUrl: yup.string().nullable(),
-      finished: yup.boolean(),
+      content: yup.string(),
+      linkUrl: yup.string(),
+      finished: yup.boolean().required(),
     })
   ),
 });
 
-interface EditNoteFormData extends NoteFormData {
+interface EditNoteFormData extends Omit<CreateNoteFormData, "tasks"> {
   id: number;
+  tasks: EditTaskFormData[];
 }
 
 const EditNoteFormSchema = yup.object({
   id: yup.number().moreThan(0).required(),
   name: yup.string(),
   description: yup.string(),
+  tasks: yup.array().of(
+    yup.object().shape({
+      id: yup.number().moreThan(0).required(),
+      content: yup.string(),
+      linkUrl: yup.string(),
+      finished: yup.boolean().required(),
+    })
+  ),
 });
 
-interface UpdateTaskFinishStateFormData {
+// Task
+interface CreateTaskFormData {
+  content: string;
+  linkUrl: string;
+  finished: boolean;
+}
+
+interface EditTaskFormData extends CreateTaskFormData {
+  id?: number;
+}
+
+interface PatchTaskFinishedFormData {
   id: number;
   finished: boolean;
 }
@@ -68,14 +90,14 @@ interface UpdateTaskFinishStateFormData {
 export type {
   LoginFormData,
   SignupFormData,
-  NoteFormData,
+  CreateNoteFormData,
   EditNoteFormData,
-  UpdateTaskFinishStateFormData,
+  PatchTaskFinishedFormData,
 };
 
 export {
   loginFormSchema,
   signupFormSchema,
-  NoteFormSchema,
+  CreateNoteFormSchema,
   EditNoteFormSchema,
 };

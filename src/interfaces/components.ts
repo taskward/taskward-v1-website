@@ -66,37 +66,50 @@ interface LoadingProperties {
 
 type LoadingProps = Partial<LoadingProperties> & CustomComponentProps;
 
+// Modal
+interface ModalProperties {
+  children: ReactNode;
+  show: boolean;
+  toggle: () => void;
+  closeModalCallback: (() => Promise<void>) | (() => void);
+  modalClassName: string;
+  backgroundClassName: string;
+}
+
+type ModalProps = Partial<ModalProperties>;
+
 // Note
 type NoteType = "note" | "archive" | "trash";
-
-interface NoteListCardProperties {
-  note: Note;
-  type: NoteType;
-}
 
 type Note = {
   id: number;
   name: string;
   description: string;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt: Date | null;
+  deletedAt: Date | null;
   priority: number;
   index: number;
   toped: boolean;
   tasks: Task[];
 };
 
-type NotesResult = {
+type Notes = {
   notes: Note[];
   count: number;
 };
+
+interface NoteListCardProperties {
+  note: Note;
+  type: NoteType;
+}
 
 type NoteListCardProps = Partial<NoteListCardProperties> & CustomComponentProps;
 
 interface NoteListCardPanelProperties {
   focused: boolean;
-  note: Note | TrashNote;
-  type: "note" | "archive";
+  note: Note;
+  type: NoteType;
   copy: boolean;
   archive: UseMutateFunction<any, unknown, number, unknown>;
   archiveLoading: boolean;
@@ -112,53 +125,31 @@ interface NoteListCardPanelProperties {
 
 type NoteListCardPanelProps = Partial<NoteListCardPanelProperties>;
 
-// Trash
-interface TrashNoteListCardProperties {
-  note: TrashNote;
-}
-
-type TrashNote = {
+// Task
+type Task = {
   id: number;
-  name: string;
-  description: string;
+  content: string;
+  linkUrl: string;
   createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
-  archived: boolean;
-  tasks: Task[];
+  updatedAt: Date | null;
+  finishedAt: Date | null;
+  priority: number;
+  index: number;
 };
 
-type TrashNotesResult = {
-  notes: TrashNote[];
+type Tasks = {
+  tasks: Task[];
   count: number;
 };
-
-type TrashNoteListCardProps = Partial<TrashNoteListCardProperties> &
-  CustomComponentProps;
-
-// Modal
-
-interface ModalProperties {
-  children: ReactNode;
-  show: boolean;
-  toggle: () => void;
-  closeModalCallback: (() => Promise<void>) | (() => void);
-  modalClassName: string;
-  backgroundClassName: string;
-}
-
-type ModalProps = Partial<ModalProperties>;
 
 // Task Checkbox
 interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputClassName: string;
   inputWrapperClassName: string;
-  taskId: number;
-  checkboxTitle: string | null;
-  linkUrl: string | null;
-  register: object;
-  editable: boolean;
+  task: Task;
   noteType: NoteType;
+  editable: boolean;
+  register: object;
   removeTask: () => void;
   changeChecked: () => void;
   changeContent: (content: string | null) => void;
@@ -166,24 +157,6 @@ interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 type TaskCheckboxProps = Partial<TaskCheckboxProperties> & CustomComponentProps;
-
-type Task = {
-  id: number;
-  content: string;
-  linkUrl: string;
-  createdAt: Date;
-  updatedAt: Date;
-  finishedAt: Date | null;
-  priority: number;
-  index: number;
-};
-
-type TaskSubmitType = {
-  id?: number | string;
-  content: string | null;
-  linkUrl: string | null;
-  finished: boolean;
-};
 
 export type {
   CustomComponentProps,
@@ -195,13 +168,10 @@ export type {
   NoteType,
   NoteListCardProps,
   Note,
-  NotesResult,
+  Notes,
   NoteListCardPanelProps,
-  TrashNoteListCardProps,
-  TrashNote,
-  TrashNotesResult,
   ModalProps,
   TaskCheckboxProps,
   Task,
-  TaskSubmitType,
+  Tasks,
 };

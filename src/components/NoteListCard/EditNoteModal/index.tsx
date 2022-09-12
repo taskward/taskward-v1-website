@@ -44,6 +44,8 @@ export default function EditNoteModal({
   });
 
   const handleUpdateNote = async (formData: EditNoteFormData) => {
+    console.log(note.tasks);
+    return;
     const oldData: EditNoteFormData = {
       id: note.id,
       name: note.name,
@@ -127,18 +129,10 @@ export default function EditNoteModal({
                 linkUrl={task.linkUrl}
                 editable
                 //draggable
-                removeTask={() => {
-                  removeTaskById(taskList, task.id as string);
-                }}
-                changeChecked={() => {
-                  changeChecked(taskList, task.id as string);
-                }}
-                changeContent={(content: string | null) => {
-                  changeContent(taskList, task.id as string, content);
-                }}
-                changeLinkUrl={(linkUrl: string | null) => {
-                  changeLinkUrl(taskList, task.id as string, linkUrl);
-                }}
+                removeTask={() => {}}
+                changeChecked={() => {}}
+                changeContent={(content: string | null) => {}}
+                changeLinkUrl={(linkUrl: string | null) => {}}
               />
             );
           })}

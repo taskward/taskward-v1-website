@@ -8,7 +8,7 @@ export type {
   NoteType,
   NoteListCardProps,
   Note,
-  NotesResult,
+  Notes,
   NoteListCardPanelProps,
   TrashNoteListCardProps,
   TrashNote,
@@ -16,7 +16,7 @@ export type {
   ModalProps,
   TaskCheckboxProps,
   Task,
-  TaskSubmitType,
+  Tasks,
 } from "./components";
 
 export type { OutsideClickType } from "./hooks";
@@ -24,14 +24,14 @@ export type { OutsideClickType } from "./hooks";
 export type {
   LoginFormData,
   SignupFormData,
-  NoteFormData,
+  CreateNoteFormData,
   EditNoteFormData,
-  UpdateTaskFinishStateFormData,
+  PatchTaskFinishedFormData,
 } from "./forms";
 export {
   loginFormSchema,
   signupFormSchema,
-  NoteFormSchema,
+  CreateNoteFormSchema,
   EditNoteFormSchema,
 } from "./forms";
 
