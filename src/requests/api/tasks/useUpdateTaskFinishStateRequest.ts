@@ -1,14 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import {
-  axiosService,
-  NOTES_KEY,
-  ARCHIVE_KEY,
-  TRASH_KEY,
-  useGetNotesRequest,
-  useGetArchiveNotesRequest,
-  useGetTrashNotesRequest,
-} from "@requests";
+import { axiosService, NOTES_KEY, ARCHIVE_KEY, TRASH_KEY } from "@requests";
 import type {
   NoteType,
   PatchTaskFinishedFormData,
@@ -20,30 +12,32 @@ import type {
 const useUpdateTaskFinishStateRequest = (type?: NoteType) => {
   const queryClient = useQueryClient();
 
-  const { data: noteData } = useGetNotesRequest();
-  const { data: archiveData } = useGetArchiveNotesRequest();
-  const { data: trashData } = useGetTrashNotesRequest();
-
   const { mutate, mutateAsync, isLoading, isSuccess, isError } = useMutation(
     async (formData: PatchTaskFinishedFormData): Promise<any> => {
       if (type === "note") {
-        noteData &&
-          queryClient.setQueryData(
-            [NOTES_KEY],
-            patchCheckedStatus(noteData, formData)
-          );
+        queryClient.setQueryData(
+          [NOTES_KEY],
+          patchCheckedStatus(
+            queryClient.getQueryData([NOTES_KEY]) as Notes,
+            formData
+          )
+        );
       } else if (type === "archive") {
-        archiveData &&
-          queryClient.setQueryData(
-            [ARCHIVE_KEY],
-            patchCheckedStatus(archiveData, formData)
-          );
+        queryClient.setQueryData(
+          [ARCHIVE_KEY],
+          patchCheckedStatus(
+            queryClient.getQueryData([ARCHIVE_KEY]) as Notes,
+            formData
+          )
+        );
       } else if (type === "trash") {
-        trashData &&
-          queryClient.setQueryData(
-            [TRASH_KEY],
-            patchCheckedStatus(trashData, formData)
-          );
+        queryClient.setQueryData(
+          [TRASH_KEY],
+          patchCheckedStatus(
+            queryClient.getQueryData([TRASH_KEY]) as Notes,
+            formData
+          )
+        );
       }
       const response = await axiosService({
         method: "PUT",
@@ -51,17 +45,6 @@ const useUpdateTaskFinishStateRequest = (type?: NoteType) => {
         data: { finished: formData.finished },
       });
       return response.data;
-    },
-    {
-      onSuccess: () => {
-        if (type === "note") {
-          return queryClient.invalidateQueries([NOTES_KEY]);
-        } else if (type === "archive") {
-          return queryClient.invalidateQueries([ARCHIVE_KEY]);
-        } else if (type === "trash") {
-          return queryClient.invalidateQueries([TRASH_KEY]);
-        }
-      },
     }
   );
 

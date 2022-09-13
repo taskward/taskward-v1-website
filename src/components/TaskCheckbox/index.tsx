@@ -43,7 +43,8 @@ export default function TaskCheckbox({
     if (task) {
       if (task.finished) {
         setChecked(true);
-      } else if (task.finishedAt && task.finishedAt !== null) {
+      }
+      if (task.finishedAt && task.finishedAt !== null) {
         setChecked(true);
       }
       setLinkEditable(typeof task.linkUrl === "string");
