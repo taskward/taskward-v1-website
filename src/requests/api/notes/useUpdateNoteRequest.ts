@@ -25,6 +25,7 @@ const useUpdateNoteRequest = (type?: NoteType) => {
           return queryClient.invalidateQueries([TRASH_KEY]);
         }
       },
+      retry: 3,
     }
   );
 

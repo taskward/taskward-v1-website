@@ -30,7 +30,7 @@ export default function NoteCreator({
   const {
     tasksData,
     setTasksData,
-    removeTask,
+    removeCreatedTask,
     changeChecked,
     changeContent,
     changeLinkUrl,
@@ -47,7 +47,13 @@ export default function NoteCreator({
   });
 
   const { handleSubmit, getValues, setValue, reset } =
-    useForm<CreateNoteFormData>();
+    useForm<CreateNoteFormData>({
+      defaultValues: {
+        name: null,
+        description: null,
+        tasks: [],
+      },
+    });
 
   const handleCreateNote = async (formData: CreateNoteFormData) => {
     createNote(formData, {
@@ -114,25 +120,36 @@ export default function NoteCreator({
                       removeTask={() => {
                         setValue(
                           "tasks",
-                          removeTask(tasksData, task.id as string)
+                          removeCreatedTask(
+                            getValues("tasks"),
+                            task.id as string
+                          )
                         );
                       }}
                       changeChecked={() => {
                         setValue(
                           "tasks",
-                          changeChecked(tasksData, task.id as string)
+                          changeChecked(getValues("tasks"), task.id as string)
                         );
                       }}
                       changeContent={(content: string | null) => {
                         setValue(
                           "tasks",
-                          changeContent(tasksData, task.id as string, content)
+                          changeContent(
+                            getValues("tasks"),
+                            task.id as string,
+                            content
+                          )
                         );
                       }}
                       changeLinkUrl={(linkUrl: string | null) => {
                         setValue(
                           "tasks",
-                          changeLinkUrl(tasksData, task.id as string, linkUrl)
+                          changeLinkUrl(
+                            getValues("tasks"),
+                            task.id as string,
+                            linkUrl
+                          )
                         );
                       }}
                     />

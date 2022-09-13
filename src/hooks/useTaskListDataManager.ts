@@ -4,6 +4,16 @@ import type { TaskFormData } from "@interfaces";
 const useTaskListDataManager = () => {
   const [tasksData, setTasksData] = useState<TaskFormData[]>([]);
 
+  // Only used in NoteCreator
+  const removeCreatedTask = (
+    tasks: TaskFormData[],
+    id: string | number
+  ): TaskFormData[] => {
+    const result = tasks.filter((task) => task.id !== id);
+    setTasksData(result);
+    return result;
+  };
+
   const removeTask = (
     tasks: TaskFormData[],
     id: string | number
@@ -14,6 +24,7 @@ const useTaskListDataManager = () => {
       }
       return task;
     });
+
     return result;
   };
 
@@ -62,6 +73,7 @@ const useTaskListDataManager = () => {
   return {
     tasksData,
     setTasksData,
+    removeCreatedTask,
     removeTask,
     changeChecked,
     changeContent,
