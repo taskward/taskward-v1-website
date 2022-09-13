@@ -26,12 +26,7 @@ export type {
   TaskFormData,
   PatchTaskFinishedFormData,
 } from "./forms";
-export {
-  loginFormSchema,
-  signupFormSchema,
-  CreateNoteFormSchema,
-  EditNoteFormSchema,
-} from "./forms";
+export { loginFormSchema, signupFormSchema } from "./forms";
 
 export type { User, UserTokenModel } from "./user";
 

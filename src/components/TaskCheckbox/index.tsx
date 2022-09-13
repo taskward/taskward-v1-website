@@ -29,9 +29,7 @@ export default function TaskCheckbox({
   const [dragOver, setDragOver] = useState<boolean>(false);
 
   const [showButton, setShowButton] = useState<boolean>(false);
-  const [linkEditable, setLinkEditable] = useState<boolean>(
-    typeof task?.linkUrl === "string"
-  );
+  const [linkEditable, setLinkEditable] = useState<boolean>(false);
 
   const [checked, setChecked] = useState<boolean>(false);
   const [content, setContent] = useState<string | undefined | null>(
@@ -48,6 +46,7 @@ export default function TaskCheckbox({
       } else if (task.finishedAt && task.finishedAt !== null) {
         setChecked(true);
       }
+      setLinkEditable(typeof task.linkUrl === "string");
     }
   }, [task]);
 

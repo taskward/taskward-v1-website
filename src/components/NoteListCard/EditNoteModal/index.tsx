@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 
 import styles from "./styles.module.css";
@@ -13,7 +12,6 @@ import type {
   Task,
   TaskFormData,
 } from "@interfaces";
-import { EditNoteFormSchema } from "@interfaces";
 import { Icon, Modal, TaskCheckbox } from "@components";
 import {
   convertUtcToLocalTime,
@@ -50,15 +48,15 @@ export default function EditNoteModal({
   const { mutateAsync: updateNoteAsync, isLoading: isUpdateNoteLoading } =
     useUpdateNoteRequest(type);
 
-  const { handleSubmit, setValue, reset } = useForm<EditNoteFormData>({
-    defaultValues: {
-      id: note.id,
-      name: note.name,
-      description: note.description,
-      tasks: [],
-    },
-    resolver: yupResolver(EditNoteFormSchema),
-  });
+  const { handleSubmit, getValues, setValue, reset } =
+    useForm<EditNoteFormData>({
+      defaultValues: {
+        id: note.id,
+        name: note.name,
+        description: note.description,
+        tasks: [],
+      },
+    });
 
   const handleUpdateNote = async (formData: EditNoteFormData) => {
     const oldData: EditNoteFormData = {
@@ -166,24 +164,38 @@ export default function EditNoteModal({
                   noteType={type}
                   editable
                   removeTask={() => {
-                    setValue("tasks", removeTask(tasksData, task.id as string));
+                    setValue(
+                      "tasks",
+                      removeTask(getValues("tasks"), task.id as number)
+                    );
+                    setTasksData(
+                      tasksData.filter((taskItem) => taskItem.id !== task.id)
+                    );
                   }}
                   changeChecked={() => {
                     setValue(
                       "tasks",
-                      changeChecked(tasksData, task.id as string)
+                      changeChecked(getValues("tasks"), task.id as number)
                     );
                   }}
                   changeContent={(content: string | null) => {
                     setValue(
                       "tasks",
-                      changeContent(tasksData, task.id as string, content)
+                      changeContent(
+                        getValues("tasks"),
+                        task.id as number,
+                        content
+                      )
                     );
                   }}
                   changeLinkUrl={(linkUrl: string | null) => {
                     setValue(
                       "tasks",
-                      changeLinkUrl(tasksData, task.id as string, linkUrl)
+                      changeLinkUrl(
+                        getValues("tasks"),
+                        task.id as number,
+                        linkUrl
+                      )
                     );
                   }}
                 />

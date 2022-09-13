@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 import clsx from "clsx";
 import styles from "./styles.module.css";
@@ -12,7 +11,6 @@ import type {
   CreateNoteFormData,
   TaskFormData,
 } from "@interfaces";
-import { CreateNoteFormSchema } from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
 import { useCreateNoteRequest } from "@requests";
 import { generateGUID } from "@utils";
@@ -49,9 +47,7 @@ export default function NoteCreator({
   });
 
   const { handleSubmit, getValues, setValue, reset } =
-    useForm<CreateNoteFormData>({
-      resolver: yupResolver(CreateNoteFormSchema),
-    });
+    useForm<CreateNoteFormData>();
 
   const handleCreateNote = async (formData: CreateNoteFormData) => {
     createNote(formData, {

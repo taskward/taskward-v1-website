@@ -40,37 +40,10 @@ interface CreateNoteFormData {
   tasks: TaskFormData[];
 }
 
-const CreateNoteFormSchema = yup.object({
-  name: yup.string().nullable(),
-  description: yup.string().nullable(),
-  tasks: yup.array().of(
-    yup.object().shape({
-      id: yup.string(),
-      content: yup.string().nullable(),
-      linkUrl: yup.string().nullable(),
-      finished: yup.boolean().required(),
-    })
-  ),
-});
-
 interface EditNoteFormData extends Omit<CreateNoteFormData, "tasks"> {
   id: number;
   tasks: TaskFormData[];
 }
-
-const EditNoteFormSchema = yup.object({
-  id: yup.number().moreThan(0).required(),
-  name: yup.string().nullable(),
-  description: yup.string().nullable(),
-  tasks: yup.array().of(
-    yup.object().shape({
-      id: yup.number().moreThan(0).required(),
-      content: yup.string().nullable(),
-      linkUrl: yup.string().nullable(),
-      finished: yup.boolean().required(),
-    })
-  ),
-});
 
 // Task
 interface TaskFormData {
@@ -78,6 +51,8 @@ interface TaskFormData {
   content: string | null;
   linkUrl: string | null;
   finished: boolean;
+  deleted?: boolean;
+  created?: boolean;
 }
 
 interface PatchTaskFinishedFormData {
@@ -94,9 +69,4 @@ export type {
   PatchTaskFinishedFormData,
 };
 
-export {
-  loginFormSchema,
-  signupFormSchema,
-  CreateNoteFormSchema,
-  EditNoteFormSchema,
-};
+export { loginFormSchema, signupFormSchema };

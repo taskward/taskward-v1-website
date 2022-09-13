@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { axiosService, NOTES_KEY, ARCHIVE_KEY } from "@requests";
+import { axiosService, NOTES_KEY, ARCHIVE_KEY, TRASH_KEY } from "@requests";
 import { EditNoteFormData } from "@interfaces";
 import { NoteType } from "@interfaces";
 
@@ -21,6 +21,8 @@ const useUpdateNoteRequest = (type?: NoteType) => {
           return queryClient.invalidateQueries([NOTES_KEY]);
         } else if (type === "archive") {
           return queryClient.invalidateQueries([ARCHIVE_KEY]);
+        } else if (type === "trash") {
+          return queryClient.invalidateQueries([TRASH_KEY]);
         }
       },
     }

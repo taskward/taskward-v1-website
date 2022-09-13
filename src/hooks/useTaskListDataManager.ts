@@ -1,11 +1,13 @@
 import { useState } from "react";
 import type { TaskFormData } from "@interfaces";
 
-// Manage the task list data logic
 const useTaskListDataManager = () => {
   const [tasksData, setTasksData] = useState<TaskFormData[]>([]);
 
-  const removeTask = (tasks: TaskFormData[], id: string): TaskFormData[] => {
+  const removeTask = (
+    tasks: TaskFormData[],
+    id: string | number
+  ): TaskFormData[] => {
     const result = tasks.map((task) => {
       if (task.id === id) {
         return { ...task, deleted: true };
@@ -15,7 +17,10 @@ const useTaskListDataManager = () => {
     return result;
   };
 
-  const changeChecked = (tasks: TaskFormData[], id: string): TaskFormData[] => {
+  const changeChecked = (
+    tasks: TaskFormData[],
+    id: string | number
+  ): TaskFormData[] => {
     const result = tasks.map((task) => {
       if (task.id === id) {
         return { ...task, finished: !task.finished };
@@ -28,7 +33,7 @@ const useTaskListDataManager = () => {
 
   const changeContent = (
     tasks: TaskFormData[],
-    id: string,
+    id: string | number,
     content: string | null
   ): TaskFormData[] => {
     const result = tasks.map((task) => {
@@ -42,7 +47,7 @@ const useTaskListDataManager = () => {
 
   const changeLinkUrl = (
     tasks: TaskFormData[],
-    id: string,
+    id: string | number,
     linkUrl: string | null
   ): TaskFormData[] => {
     const result = tasks.map((task) => {
