@@ -9,7 +9,6 @@ import { openWindow, setClipBoardText } from "@utils";
 import { useUpdateTaskFinishStateRequest } from "@requests";
 
 export default function TaskCheckbox({
-  name,
   task,
   noteType,
   editable,
@@ -88,9 +87,7 @@ export default function TaskCheckbox({
           )}
         >
           <input
-            id={name}
             type="checkbox"
-            name={name}
             checked={checked}
             onClick={(e) => {
               e.stopPropagation();

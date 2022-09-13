@@ -57,7 +57,6 @@ export default function NoteListCard({
   return (
     <>
       <div
-        key={note.id}
         className={clsx(
           "mx-auto flex h-fit w-full cursor-pointer flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 transition-[visibility,opacity,transform] dark:border-neutral-800 dark:bg-noteDark",
           className,
