@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import styles from "./styles.module.css";
@@ -31,12 +31,24 @@ export default function TaskCheckbox({
   const [linkEditable, setLinkEditable] = useState<boolean>(
     typeof task?.linkUrl === "string"
   );
+
+  const [checked, setChecked] = useState<boolean>(false);
   const [content, setContent] = useState<string | undefined | null>(
     task?.content
   );
 
   const { mutate: updateFinishState } =
     useUpdateTaskFinishStateRequest(noteType);
+
+  useEffect(() => {
+    if (task) {
+      if (task.finished) {
+        setChecked(true);
+      } else if (task.finishedAt && task.finishedAt !== null) {
+        setChecked(true);
+      }
+    }
+  }, [task]);
 
   if (!task) {
     return null;
@@ -78,19 +90,22 @@ export default function TaskCheckbox({
             id={name}
             type="checkbox"
             name={name}
-            defaultChecked={task.finished}
+            checked={checked}
             onClick={(e) => {
               e.stopPropagation();
             }}
             onChange={(e) => {
               e.stopPropagation();
+              setChecked(e.currentTarget.checked);
               if (editable) {
                 changeChecked && changeChecked();
               } else {
-                updateFinishState({
-                  id: task.id,
-                  finished: !task.finished,
-                });
+                if (typeof task.id === "number") {
+                  updateFinishState({
+                    id: task.id,
+                    finished: e.currentTarget.checked,
+                  });
+                }
               }
             }}
             className={clsx(
@@ -196,7 +211,7 @@ export default function TaskCheckbox({
                   return;
                 }
                 e.stopPropagation();
-                task.linkUrl && openWindow(task.linkUrl);
+                openWindow(task.linkUrl);
               }}
               className={clsx(
                 editable

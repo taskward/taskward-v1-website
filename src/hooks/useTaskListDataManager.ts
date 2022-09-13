@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { TaskFormData } from "@interfaces";
 
 // Manage the task list data logic
-const useTaskCreator = () => {
+const useTaskListDataManager = () => {
   const [tasksData, setTasksData] = useState<TaskFormData[]>([]);
 
   const removeTask = (tasks: TaskFormData[], id: string): TaskFormData[] => {
@@ -60,4 +60,4 @@ const useTaskCreator = () => {
   };
 };
 
-export default useTaskCreator;
+export default useTaskListDataManager;

@@ -17,7 +17,7 @@ import { useDetectOutsideClick } from "@hooks";
 import { useCreateNoteRequest } from "@requests";
 import { generateGUID } from "@utils";
 
-import useTaskCreator from "./useTaskCreator";
+import { useTaskListDataManager } from "@hooks";
 
 export default function NoteCreator({
   style,
@@ -36,7 +36,7 @@ export default function NoteCreator({
     changeChecked,
     changeContent,
     changeLinkUrl,
-  } = useTaskCreator();
+  } = useTaskListDataManager();
 
   const outsideClickRef = useDetectOutsideClick({
     outsideClickCallback: () => {

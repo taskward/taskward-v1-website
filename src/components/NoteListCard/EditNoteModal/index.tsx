@@ -6,7 +6,13 @@ import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
-import type { Note, EditNoteFormData, NoteType, Task } from "@interfaces";
+import type {
+  Note,
+  EditNoteFormData,
+  NoteType,
+  Task,
+  TaskFormData,
+} from "@interfaces";
 import { EditNoteFormSchema } from "@interfaces";
 import { Icon, Modal, TaskCheckbox } from "@components";
 import {
@@ -15,6 +21,7 @@ import {
   isObjectHaveSameData,
 } from "@utils";
 import { useUpdateNoteRequest } from "@requests";
+import { useTaskListDataManager } from "@hooks";
 
 type EditNoteModalProps = {
   isEdit: boolean;
@@ -30,6 +37,15 @@ export default function EditNoteModal({
   type,
 }: EditNoteModalProps): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
+
+  const {
+    tasksData,
+    setTasksData,
+    removeTask,
+    changeChecked,
+    changeContent,
+    changeLinkUrl,
+  } = useTaskListDataManager();
 
   const { mutateAsync: updateNoteAsync, isLoading: isUpdateNoteLoading } =
     useUpdateNoteRequest(type);
@@ -48,6 +64,14 @@ export default function EditNoteModal({
       id: note.id,
       name: note.name,
       description: note.description,
+      tasks: note.tasks.map((task) => {
+        return {
+          id: task.id,
+          content: task.content,
+          linkUrl: task.linkUrl,
+          finished: task.finishedAt !== null,
+        };
+      }),
     };
     if (!isObjectHaveSameData(oldData, formData)) {
       await updateNoteAsync(formData);
@@ -55,8 +79,26 @@ export default function EditNoteModal({
   };
 
   useEffect(() => {
-    reset({ id: note.id, name: note.name, description: note.description });
+    reset({
+      id: note.id,
+      name: note.name,
+      description: note.description,
+      tasks: note.tasks,
+    });
   }, [isEdit]);
+
+  useEffect(() => {
+    setTasksData(
+      note.tasks.map((task: Task) => {
+        return {
+          id: task.id,
+          content: task.content,
+          linkUrl: task.linkUrl,
+          finished: task.finishedAt !== null,
+        };
+      })
+    );
+  }, [isEdit, note]);
 
   return (
     <Modal
@@ -118,16 +160,34 @@ export default function EditNoteModal({
           }}
         />
         <div className="flex flex-col gap-1.5">
-          {note.tasks.map((task: Task) => {
+          {tasksData.map((task: TaskFormData) => {
             return (
               <TaskCheckbox
                 key={task.id}
                 task={task}
+                noteType={type}
                 editable
-                removeTask={() => {}}
-                changeChecked={() => {}}
-                changeContent={(content: string | null) => {}}
-                changeLinkUrl={(linkUrl: string | null) => {}}
+                removeTask={() => {
+                  setValue("tasks", removeTask(tasksData, task.id as string));
+                }}
+                changeChecked={() => {
+                  setValue(
+                    "tasks",
+                    changeChecked(tasksData, task.id as string)
+                  );
+                }}
+                changeContent={(content: string | null) => {
+                  setValue(
+                    "tasks",
+                    changeContent(tasksData, task.id as string, content)
+                  );
+                }}
+                changeLinkUrl={(linkUrl: string | null) => {
+                  setValue(
+                    "tasks",
+                    changeLinkUrl(tasksData, task.id as string, linkUrl)
+                  );
+                }}
               />
             );
           })}
