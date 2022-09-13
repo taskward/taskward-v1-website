@@ -24,6 +24,7 @@ export default function TaskCheckbox({
   changeLinkUrl,
 }: TaskCheckboxProps): JSX.Element | null {
   const { t } = useTranslation(["note"]);
+
   // DND
   const [dragOver, setDragOver] = useState<boolean>(false);
 

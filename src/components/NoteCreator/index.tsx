@@ -107,41 +107,43 @@ export default function NoteCreator({
                 __html: getValues("description") ?? "",
               }}
             />
-            <div className="flex flex-col gap-1.5">
-              {tasksData.map((task: TaskFormData) => {
-                return (
-                  <TaskCheckbox
-                    key={task.id}
-                    task={task}
-                    editable
-                    removeTask={() => {
-                      setValue(
-                        "tasks",
-                        removeTask(tasksData, task.id as string)
-                      );
-                    }}
-                    changeChecked={() => {
-                      setValue(
-                        "tasks",
-                        changeChecked(tasksData, task.id as string)
-                      );
-                    }}
-                    changeContent={(content: string | null) => {
-                      setValue(
-                        "tasks",
-                        changeContent(tasksData, task.id as string, content)
-                      );
-                    }}
-                    changeLinkUrl={(linkUrl: string | null) => {
-                      setValue(
-                        "tasks",
-                        changeLinkUrl(tasksData, task.id as string, linkUrl)
-                      );
-                    }}
-                  />
-                );
-              })}
-            </div>
+            {tasksData && tasksData.length > 0 && (
+              <div className="flex flex-col gap-1.5">
+                {tasksData.map((task: TaskFormData) => {
+                  return (
+                    <TaskCheckbox
+                      key={task.id}
+                      task={task}
+                      editable
+                      removeTask={() => {
+                        setValue(
+                          "tasks",
+                          removeTask(tasksData, task.id as string)
+                        );
+                      }}
+                      changeChecked={() => {
+                        setValue(
+                          "tasks",
+                          changeChecked(tasksData, task.id as string)
+                        );
+                      }}
+                      changeContent={(content: string | null) => {
+                        setValue(
+                          "tasks",
+                          changeContent(tasksData, task.id as string, content)
+                        );
+                      }}
+                      changeLinkUrl={(linkUrl: string | null) => {
+                        setValue(
+                          "tasks",
+                          changeLinkUrl(tasksData, task.id as string, linkUrl)
+                        );
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            )}
             <div className="flex items-center justify-between">
               <Button
                 type="button"

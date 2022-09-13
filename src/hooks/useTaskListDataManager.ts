@@ -6,8 +6,12 @@ const useTaskListDataManager = () => {
   const [tasksData, setTasksData] = useState<TaskFormData[]>([]);
 
   const removeTask = (tasks: TaskFormData[], id: string): TaskFormData[] => {
-    const result = tasks.filter((task) => task.id !== id);
-    setTasksData(result);
+    const result = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, deleted: true };
+      }
+      return task;
+    });
     return result;
   };
 

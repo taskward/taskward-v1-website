@@ -53,8 +53,9 @@ export default function EditNoteModal({
   const { handleSubmit, setValue, reset } = useForm<EditNoteFormData>({
     defaultValues: {
       id: note.id,
-      name: note.name ?? null,
-      description: note.description ?? null,
+      name: note.name,
+      description: note.description,
+      tasks: [],
     },
     resolver: yupResolver(EditNoteFormSchema),
   });
@@ -83,21 +84,21 @@ export default function EditNoteModal({
       id: note.id,
       name: note.name,
       description: note.description,
-      tasks: note.tasks,
+      tasks: [],
     });
   }, [isEdit]);
 
   useEffect(() => {
-    setTasksData(
-      note.tasks.map((task: Task) => {
-        return {
-          id: task.id,
-          content: task.content,
-          linkUrl: task.linkUrl,
-          finished: task.finishedAt !== null,
-        };
-      })
-    );
+    const result = note.tasks.map((task: Task) => {
+      return {
+        id: task.id,
+        content: task.content,
+        linkUrl: task.linkUrl,
+        finished: task.finishedAt !== null,
+      };
+    });
+    setTasksData(result);
+    setValue("tasks", result);
   }, [isEdit, note]);
 
   return (
@@ -140,9 +141,7 @@ export default function EditNoteModal({
           contentEditable
           dangerouslySetInnerHTML={{ __html: note.name ?? "" }}
           onInput={(e) => {
-            setValue("name", e.currentTarget.textContent as string, {
-              shouldValidate: true,
-            });
+            setValue("name", e.currentTarget.textContent as string);
           }}
         />
         <div
@@ -154,44 +153,44 @@ export default function EditNoteModal({
           contentEditable
           dangerouslySetInnerHTML={{ __html: note.description ?? "" }}
           onInput={(e) => {
-            setValue("description", e.currentTarget.textContent as string, {
-              shouldValidate: true,
-            });
+            setValue("description", e.currentTarget.textContent as string);
           }}
         />
-        <div className="flex flex-col gap-1.5">
-          {tasksData.map((task: TaskFormData) => {
-            return (
-              <TaskCheckbox
-                key={task.id}
-                task={task}
-                noteType={type}
-                editable
-                removeTask={() => {
-                  setValue("tasks", removeTask(tasksData, task.id as string));
-                }}
-                changeChecked={() => {
-                  setValue(
-                    "tasks",
-                    changeChecked(tasksData, task.id as string)
-                  );
-                }}
-                changeContent={(content: string | null) => {
-                  setValue(
-                    "tasks",
-                    changeContent(tasksData, task.id as string, content)
-                  );
-                }}
-                changeLinkUrl={(linkUrl: string | null) => {
-                  setValue(
-                    "tasks",
-                    changeLinkUrl(tasksData, task.id as string, linkUrl)
-                  );
-                }}
-              />
-            );
-          })}
-        </div>
+        {tasksData && tasksData.length > 0 && (
+          <div className="flex flex-col gap-1.5">
+            {tasksData.map((task: TaskFormData) => {
+              return (
+                <TaskCheckbox
+                  key={task.id}
+                  task={task}
+                  noteType={type}
+                  editable
+                  removeTask={() => {
+                    setValue("tasks", removeTask(tasksData, task.id as string));
+                  }}
+                  changeChecked={() => {
+                    setValue(
+                      "tasks",
+                      changeChecked(tasksData, task.id as string)
+                    );
+                  }}
+                  changeContent={(content: string | null) => {
+                    setValue(
+                      "tasks",
+                      changeContent(tasksData, task.id as string, content)
+                    );
+                  }}
+                  changeLinkUrl={(linkUrl: string | null) => {
+                    setValue(
+                      "tasks",
+                      changeLinkUrl(tasksData, task.id as string, linkUrl)
+                    );
+                  }}
+                />
+              );
+            })}
+          </div>
+        )}
       </form>
       <div className="mt-4 flex justify-between px-4 pb-4 text-xs font-medium dark:text-noteSecondTextDark">
         <div

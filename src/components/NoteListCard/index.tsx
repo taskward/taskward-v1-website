@@ -91,7 +91,7 @@ export default function NoteListCard({
             dangerouslySetInnerHTML={{ __html: note.description }}
           />
         )}
-        {note.tasks && (
+        {note.tasks && note.tasks.length > 0 && (
           <div className="flex flex-col gap-1.5 px-4">
             {note.tasks.map((task: Task) => {
               return <TaskCheckbox key={task.id} task={task} noteType={type} />;

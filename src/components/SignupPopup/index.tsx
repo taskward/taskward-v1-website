@@ -133,6 +133,7 @@ export default function SignupPopup(): JSX.Element {
         register={{ ...register("password") }}
         error={errors.password}
         errorMessage={t("request:LOGIN.INVALID.PASSWORD")}
+        autoComplete={showPassword ? "off" : "new-password"}
         rightIcon={
           watch("password")?.length > 0 ? (
             <div
@@ -168,6 +169,7 @@ export default function SignupPopup(): JSX.Element {
         register={{ ...register("confirmPassword") }}
         error={errors.confirmPassword}
         errorMessage={t("request:SIGNUP.INVALID.CONFIRM.PASSWORD")}
+        autoComplete={showPassword ? "off" : "new-password"}
         rightIcon={
           watch("confirmPassword")?.length > 0 ? (
             <div
