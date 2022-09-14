@@ -5,5 +5,9 @@
     "COUNT_other": "Vous avez rédigé {{count}} notes",
     "NONE": "Vous n'avez pas encore écrit de note, veuillez cliquer ci-dessus pour la créer"
   },
-  "UNARCHIVE": "Désarchiver"
+  "UNARCHIVE": "Désarchiver",
+  "TASK": {
+    "CREATE": "Ajouter une tâche",
+    "PLACEHOLDER": { "CONTENT": "Entrez le contenu", "LINK": "Entrer le lien" }
+  }
 }

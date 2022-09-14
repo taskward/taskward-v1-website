@@ -6,7 +6,7 @@
   },
   "UNARCHIVE": "取消归档",
   "TASK": {
-    "CREATE": "添加任务",
+    "CREATE": "添加清单",
     "PLACEHOLDER": { "CONTENT": "请输入内容", "LINK": "请输入链接" }
   }
 }

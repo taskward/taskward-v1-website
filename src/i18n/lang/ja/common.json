@@ -21,5 +21,9 @@
   "SAVING": "保存中",
   "CREATED.TIME": "作成の時間",
   "UPDATED.TIME": "更新の時間",
-  "DELETED.TIME": "削除の時間"
+  "DELETED.TIME": "削除の時間",
+  "OPEN.LINK": "リンクを開く",
+  "ADD.LINK": "リンクを追加",
+  "REMOVE.LINK": "リンクを削除",
+  "CLOSE": "閉める"
 }

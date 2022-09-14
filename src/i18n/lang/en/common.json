@@ -21,5 +21,9 @@
   "SAVING": "Saving",
   "CREATED.TIME": "Creation Time",
   "UPDATED.TIME": "Updated Time",
-  "DELETED.TIME": "Deletion Time"
+  "DELETED.TIME": "Deletion Time",
+  "OPEN.LINK": "Open link",
+  "ADD.LINK": "Add link",
+  "REMOVE.LINK": "Remove link",
+  "CLOSE": "Close"
 }

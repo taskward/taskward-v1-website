@@ -21,5 +21,9 @@
   "SAVING": "Économie",
   "CREATED.TIME": "Temps créé",
   "UPDATED.TIME": "Heure mise à jour",
-  "DELETED.TIME": "Heure supprimée"
+  "DELETED.TIME": "Heure supprimée",
+  "OPEN.LINK": "Ouvrir le lien",
+  "ADD.LINK": "Ajouter un lien",
+  "REMOVE.LINK": "Supprimer le lien",
+  "CLOSE": "Proche"
 }

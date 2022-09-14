@@ -5,5 +5,9 @@
     "COUNT_other": "You have written {{count}} notes",
     "NONE": "You haven't written a note yet, please click above to create"
   },
-  "UNARCHIVE": "Unarchive"
+  "UNARCHIVE": "Unarchive",
+  "TASK": {
+    "CREATE": "Add task",
+    "PLACEHOLDER": { "CONTENT": "Enter the content", "LINK": "Enter the link" }
+  }
 }
