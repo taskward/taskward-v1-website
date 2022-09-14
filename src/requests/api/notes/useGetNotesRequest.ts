@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiosService, NOTES_KEY } from "@requests";
 
-import { NotesResult } from "@interfaces";
+import { Notes } from "@interfaces";
 
 const useGetNotesRequest = () => {
   const { data, refetch, isLoading, isRefetching } = useQuery(
     [NOTES_KEY],
-    async (): Promise<NotesResult> => {
+    async (): Promise<Notes> => {
       const response = await axiosService({
         method: "GET",
         url: "notes",

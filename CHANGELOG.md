@@ -2,9 +2,9 @@
 
 ## v1.1.0
 
-### v1.0.3
-
-- Click outside and note content will not be cleared when create a note.
+- Brand new feature: the note's tasks with links.
+- Fix loading background color error in dark mode.
+- Click outside and note content will not be cleared when creating a note.
 
 ### v1.0.2
 

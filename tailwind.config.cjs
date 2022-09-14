@@ -17,6 +17,11 @@ module.exports = {
           800: "#39814f",
           900: "#2e5f3c",
         },
+        darkMode: {
+          dark: "rgb(54,57,63)",
+          darker: "rgb(47,49,54)",
+          darkest: "rgb(32,34,37)",
+        },
         noteDark: {
           DEFAULT: "#36393f",
         },

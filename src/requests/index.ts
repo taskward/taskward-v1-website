@@ -23,4 +23,6 @@ export {
   useDeleteTrashNoteRequest,
 } from "./api/trash";
 
+export { useUpdateTaskFinishStateRequest } from "./api/tasks";
+
 export { NOTES_KEY, ARCHIVE_KEY, TRASH_KEY } from "./keys";

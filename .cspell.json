@@ -14,7 +14,8 @@
     "hookform",
     "signup",
     "tanstack",
-    "unarchiving"
+    "unarchiving",
+    "uuidv4"
   ],
   "flagWords": []
 }

@@ -3,11 +3,11 @@ import clsx from "clsx";
 
 import { Icon } from "@components";
 import { NoteListCardPanelProps } from "@interfaces";
-import { useCopyText } from "@hooks";
 
 export default function NoteListCardPanel({
   focused,
   note,
+  addTask,
   copy,
   archive,
   archiveLoading,
@@ -21,7 +21,6 @@ export default function NoteListCardPanel({
   forceDeleteLoading,
 }: NoteListCardPanelProps): JSX.Element | null {
   const { t } = useTranslation(["common", "layout", "note"]);
-  const copyDescription = useCopyText();
 
   if (!note) {
     return null;
@@ -37,12 +36,30 @@ export default function NoteListCardPanel({
             : "invisible scale-0 opacity-0"
         )}
       >
+        {addTask && (
+          <div
+            title={t("note:TASK.CREATE")}
+            onClick={(e) => {
+              e.stopPropagation();
+              addTask();
+            }}
+            className={clsx(
+              "flex h-10 w-10 cursor-pointer select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600"
+            )}
+          >
+            <Icon.AddTask
+              width="22"
+              height="22"
+              className="fill-black dark:fill-white"
+            />
+          </div>
+        )}
         {copy && (
           <div
             title={t("common:COPY")}
             onClick={(e) => {
               e.stopPropagation();
-              copyDescription(note.description, t("common:COPY.SUCCESS"));
+              copy();
             }}
             className={clsx(
               "flex h-10 w-10 select-none items-center justify-center rounded-full p-2 transition-colors hover:bg-gray-200 active:bg-gray-100 dark:hover:bg-gray-500 dark:active:bg-gray-600",

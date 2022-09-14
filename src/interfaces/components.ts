@@ -15,7 +15,7 @@ interface ComponentCommonProps {
 
 type CustomComponentProps = Partial<ComponentCommonProps>;
 
-// Inputs
+// Input
 interface InputProperties extends InputHTMLAttributes<HTMLInputElement> {
   inputWrapperClassName: string;
   inputClassName: string;
@@ -28,6 +28,16 @@ interface InputProperties extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 type InputProps = Partial<InputProperties> & CustomComponentProps;
+
+// Checkbox
+interface CheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
+  inputClassName: string;
+  inputWrapperClassName: string;
+  checkboxTitle: string;
+  register: object;
+}
+
+type CheckboxProps = Partial<CheckboxProperties> & CustomComponentProps;
 
 // Buttons
 interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -56,37 +66,62 @@ interface LoadingProperties {
 
 type LoadingProps = Partial<LoadingProperties> & CustomComponentProps;
 
+// Modal
+interface ModalProperties {
+  children: ReactNode;
+  show: boolean;
+  toggle: () => void;
+  closeModalCallback: (() => Promise<void>) | (() => void);
+  modalClassName: string;
+  backgroundClassName: string;
+}
+
+type ModalProps = Partial<ModalProperties>;
+
 // Note
 type NoteType = "note" | "archive" | "trash";
+
+type Note = {
+  id: number;
+  name: string | null;
+  description: string | null;
+  createdAt: Date;
+  updatedAt: Date | null;
+  deletedAt: Date | null;
+  priority: number;
+  index: number;
+  toped: boolean;
+  tasks: Task[];
+};
+
+type Notes = {
+  notes: Note[];
+  count: number;
+};
+
+interface EditNoteModalProperties {
+  isEdit: boolean;
+  toggle: () => void;
+  note: Note;
+  type?: NoteType;
+}
+
+type EditNoteModalProps = EditNoteModalProperties;
 
 interface NoteListCardProperties {
   note: Note;
   type: NoteType;
+  editable: boolean;
 }
-
-type Note = {
-  id: number;
-  name: string;
-  description: string;
-  createdAt: Date;
-  updatedAt: Date;
-  priority: number;
-  index: number;
-  toped: boolean;
-};
-
-type NotesResult = {
-  notes: Note[];
-  count: number;
-};
 
 type NoteListCardProps = Partial<NoteListCardProperties> & CustomComponentProps;
 
 interface NoteListCardPanelProperties {
   focused: boolean;
-  note: Note | TrashNote;
-  type: "note" | "archive";
-  copy: boolean;
+  note: Note;
+  type: NoteType;
+  addTask: () => void | (() => Promise<void>);
+  copy: () => void | (() => Promise<void>);
   archive: UseMutateFunction<any, unknown, number, unknown>;
   archiveLoading: boolean;
   softDelete: UseMutateFunction<any, unknown, number, unknown>;
@@ -101,55 +136,55 @@ interface NoteListCardPanelProperties {
 
 type NoteListCardPanelProps = Partial<NoteListCardPanelProperties>;
 
-// Trash
-interface TrashNoteListCardProperties {
-  note: TrashNote;
-}
-
-type TrashNote = {
-  id: number;
-  name: string;
-  description: string;
+// Task
+type Task = {
+  id: number | string;
+  content: string | null;
+  linkUrl: string | null;
   createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
-  archived: boolean;
+  updatedAt: Date | null;
+  finishedAt: Date | null;
+  priority: number;
+  index: number;
 };
 
-type TrashNotesResult = {
-  notes: TrashNote[];
+type Tasks = {
+  tasks: Task[];
   count: number;
 };
 
-type TrashNoteListCardProps = Partial<TrashNoteListCardProperties> &
-  CustomComponentProps;
-
-// Modal
-
-interface ModalProperties {
-  children: ReactNode;
-  show: boolean;
-  toggle: () => void;
-  closeModalCallback: (() => Promise<void>) | (() => void);
-  modalClassName: string;
-  backgroundClassName: string;
+// Task Checkbox
+interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
+  inputClassName: string;
+  inputWrapperClassName: string;
+  task: Partial<Task> & { finished?: boolean };
+  noteType: NoteType;
+  editable: boolean;
+  register: object;
+  removeTask: () => void;
+  changeChecked: () => void;
+  changeContent: (content: string | null) => void;
+  changeLinkUrl: (linkUrl: string | null) => void;
+  copyLinkUrl: () => void;
 }
 
-type ModalProps = Partial<ModalProperties>;
+type TaskCheckboxProps = Partial<TaskCheckboxProperties> & CustomComponentProps;
 
 export type {
   CustomComponentProps,
   InputProps,
+  CheckboxProps,
   ButtonProps,
   GitHubButtonProps,
   LoadingProps,
   NoteType,
   NoteListCardProps,
+  EditNoteModalProps,
   Note,
-  NotesResult,
+  Notes,
   NoteListCardPanelProps,
-  TrashNoteListCardProps,
-  TrashNote,
-  TrashNotesResult,
   ModalProps,
+  TaskCheckboxProps,
+  Task,
+  Tasks,
 };

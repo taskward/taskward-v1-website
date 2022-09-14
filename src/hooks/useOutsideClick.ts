@@ -7,7 +7,6 @@ const useOutsideClick = ({
   insideClickCallback,
   active = true,
 }: OutsideClickType) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef<any>();
 
   useEffect(() => {

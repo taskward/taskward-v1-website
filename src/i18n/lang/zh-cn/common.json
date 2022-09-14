@@ -21,5 +21,9 @@
   "SAVING": "保存中",
   "CREATED.TIME": "创建时间",
   "UPDATED.TIME": "修改时间",
-  "DELETED.TIME": "删除时间"
+  "DELETED.TIME": "删除时间",
+  "OPEN.LINK": "打开链接",
+  "ADD.LINK": "添加链接",
+  "REMOVE.LINK": "移除链接",
+  "CLOSE": "关闭"
 }

@@ -3,18 +3,18 @@ import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-import { TrashNoteListCard, Loading } from "@components";
+import { NoteListCard, Loading } from "@components";
 import { getDocumentTitle } from "@utils";
 import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
 import { useGetTrashNotesRequest } from "@requests";
-import { TrashNote } from "@interfaces";
+import { Note as NoteType } from "@interfaces";
 
 export default function Trash(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout"]);
   const sidebarDispatch = useAppDispatch();
 
-  const { data: trashNotesData, isLoading: isGetTrashNotesLoading } =
+  const { data: notesData, isLoading: isGetTrashNotesLoading } =
     useGetTrashNotesRequest();
 
   useEffect(() => {
@@ -41,8 +41,10 @@ export default function Trash(): JSX.Element {
               styles.contentWrapper
             )}
           >
-            {trashNotesData?.notes.map((note: TrashNote) => {
-              return <TrashNoteListCard key={note.id} note={note} />;
+            {notesData?.notes.map((note: NoteType) => {
+              return (
+                <NoteListCard key={note.id} note={note} type="trash" editable />
+              );
             })}
           </div>
         </div>

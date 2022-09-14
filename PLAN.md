@@ -29,12 +29,12 @@
   - [x] List view
   - [ ] Card view
   - [ ] Pin
-  - [ ] Todo checkbox list (🚀 In Development)
+  - [x] Todo checkbox list
     - [ ] Add to top
     - [ ] Finish to bottom
-  - [ ] External link (🚀 In Development)
-    - [ ] Copy external link
-    - [ ] Open external link
+  - [x] External link
+    - [x] Copy external link
+    - [x] Open external link
   - [x] Copy content
   - [ ] Create time/Update time
   - [ ] Custom background

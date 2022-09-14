@@ -8,7 +8,7 @@ import { useGetArchiveNotesRequest } from "@requests";
 import { getDocumentTitle } from "@utils";
 import { useAppDispatch } from "@hooks";
 import { sidebarAction, ActiveSidebarItem } from "@store";
-import { Note } from "@interfaces";
+import { Note as NoteType } from "@interfaces";
 
 export default function Archive(): JSX.Element {
   const { t, i18n } = useTranslation(["common", "layout"]);
@@ -41,9 +41,16 @@ export default function Archive(): JSX.Element {
               styles.contentWrapper
             )}
           >
-            {notesData?.notes.map((note: Note) => {
-              return <NoteListCard key={note.id} note={note} type="archive" />;
-            })}{" "}
+            {notesData?.notes.map((note: NoteType) => {
+              return (
+                <NoteListCard
+                  key={note.id}
+                  note={note}
+                  type="archive"
+                  editable
+                />
+              );
+            })}
           </div>
         </div>
       )}

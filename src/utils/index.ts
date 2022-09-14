@@ -3,7 +3,12 @@ export {
   convertUtcToFullLocalTime,
 } from "./dateTimeUtils";
 
-export { setClipBoardText, isObjectHaveSameData } from "./funcUtils";
+export {
+  setClipBoardText,
+  isObjectHaveSameData,
+  generateGUID,
+  openWindow,
+} from "./funcUtils";
 
 export { validateTokenExpireTime } from "./jwtUtils";
 

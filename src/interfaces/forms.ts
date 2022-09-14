@@ -1,5 +1,6 @@
 import * as yup from "yup";
 
+// Login
 interface LoginFormData {
   username: string;
   password: string;
@@ -13,6 +14,7 @@ const loginFormSchema = yup
   })
   .required();
 
+// Signup
 interface SignupFormData extends LoginFormData {
   confirmPassword: string;
 }
@@ -31,31 +33,40 @@ const signupFormSchema = yup
   })
   .required();
 
-interface NoteFormData {
-  name: string;
-  description: string;
+// Note
+interface CreateNoteFormData {
+  name: string | null;
+  description: string | null;
+  tasks: TaskFormData[];
 }
 
-const NoteFormSchema = yup.object({
-  name: yup.string(),
-  description: yup.string(),
-});
-
-interface EditNoteFormData extends NoteFormData {
+interface EditNoteFormData extends Omit<CreateNoteFormData, "tasks"> {
   id: number;
+  tasks: TaskFormData[];
 }
 
-const EditNoteFormSchema = yup.object({
-  id: yup.number().moreThan(0).required(),
-  name: yup.string(),
-  description: yup.string(),
-});
+// Task
+interface TaskFormData {
+  id?: number | string;
+  content: string | null;
+  linkUrl: string | null;
+  finished: boolean;
+  deleted?: boolean;
+  created?: boolean;
+}
 
-export type { LoginFormData, SignupFormData, NoteFormData, EditNoteFormData };
+interface PatchTaskFinishedFormData {
+  id: number;
+  finished: boolean;
+}
 
-export {
-  loginFormSchema,
-  signupFormSchema,
-  NoteFormSchema,
-  EditNoteFormSchema,
+export type {
+  LoginFormData,
+  SignupFormData,
+  CreateNoteFormData,
+  EditNoteFormData,
+  TaskFormData,
+  PatchTaskFinishedFormData,
 };
+
+export { loginFormSchema, signupFormSchema };

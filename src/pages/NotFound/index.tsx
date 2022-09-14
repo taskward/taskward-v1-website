@@ -36,7 +36,7 @@ export default function NotFound(): JSX.Element {
               className="animate-bounce"
             />
           </Link>
-          <div className="text-md">{APPLICATION_NAME}</div>
+          <div className="text-base">{APPLICATION_NAME}</div>
         </div>
         <div className="animate-pulse text-5xl">
           404 {t("app:CUSTOM.PAGE.NOTFOUND")}
