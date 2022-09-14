@@ -6,27 +6,27 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 
 import type {
-  Note,
   EditNoteFormData,
-  NoteType,
   Task,
   TaskFormData,
+  EditNoteModalProps,
 } from "@interfaces";
-import { Icon, Modal, TaskCheckbox } from "@components";
+import { Icon, Modal, TaskCheckbox, NoteListCardPanel } from "@components";
 import {
   convertUtcToLocalTime,
   convertUtcToFullLocalTime,
   isObjectHaveSameData,
+  generateGUID,
 } from "@utils";
-import { useUpdateNoteRequest } from "@requests";
-import { useTaskListDataManager } from "@hooks";
-
-type EditNoteModalProps = {
-  isEdit: boolean;
-  toggle: () => void;
-  note: Note;
-  type?: NoteType;
-};
+import {
+  useUpdateNoteRequest,
+  useArchiveNoteRequest,
+  useDeleteNoteRequest,
+  useUnarchiveNoteRequest,
+  useDeleteTrashNoteRequest,
+  useRestoreTrashNoteRequest,
+} from "@requests";
+import { useTaskListDataManager, useCopyText } from "@hooks";
 
 export default function EditNoteModal({
   isEdit,
@@ -36,6 +36,23 @@ export default function EditNoteModal({
 }: EditNoteModalProps): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
 
+  const { mutateAsync: archiveNoteAsync, isLoading: isArchiveNoteLoading } =
+    useArchiveNoteRequest();
+  const { mutateAsync: deleteNoteAsync, isLoading: isDeleteNoteLoading } =
+    useDeleteNoteRequest(type);
+  const { mutateAsync: unarchiveNoteAsync, isLoading: isUnarchiveNoteLoading } =
+    useUnarchiveNoteRequest();
+  const {
+    mutateAsync: restoreTrashNoteAsync,
+    isLoading: isRestoreTrashNoteLoading,
+  } = useRestoreTrashNoteRequest();
+  const {
+    mutateAsync: deleteTrashNoteAsync,
+    isLoading: isDeleteTrashNoteLoading,
+  } = useDeleteTrashNoteRequest();
+  const { mutateAsync: updateNoteAsync, isLoading: isUpdateNoteLoading } =
+    useUpdateNoteRequest(type);
+
   const {
     tasksData,
     setTasksData,
@@ -43,10 +60,10 @@ export default function EditNoteModal({
     changeChecked,
     changeContent,
     changeLinkUrl,
+    getLinkUrl,
   } = useTaskListDataManager();
 
-  const { mutateAsync: updateNoteAsync, isLoading: isUpdateNoteLoading } =
-    useUpdateNoteRequest(type);
+  const copyText = useCopyText();
 
   const { handleSubmit, getValues, setValue, reset } =
     useForm<EditNoteFormData>({
@@ -126,7 +143,7 @@ export default function EditNoteModal({
       </div>
       <form
         className={clsx(
-          "flex max-h-[420px] flex-col gap-4 overflow-y-auto overflow-x-hidden px-4"
+          "flex max-h-[380px] flex-col gap-4 overflow-y-auto overflow-x-hidden px-4"
         )}
         key={`${isEdit}`}
       >
@@ -198,13 +215,19 @@ export default function EditNoteModal({
                       )
                     );
                   }}
+                  copyLinkUrl={() => {
+                    copyText(
+                      getLinkUrl(getValues("tasks"), task.id as number),
+                      t("common:COPY.SUCCESS")
+                    );
+                  }}
                 />
               );
             })}
           </div>
         )}
       </form>
-      <div className="mt-4 flex justify-between px-4 pb-4 text-xs font-medium dark:text-noteSecondTextDark">
+      <div className="mt-4 flex justify-between px-4 pb-2 text-xs font-medium dark:text-noteSecondTextDark">
         <div
           className={clsx(
             "flex items-center transition-[visibility,transform,opacity]",
@@ -231,6 +254,101 @@ export default function EditNoteModal({
               {convertUtcToLocalTime(note.updatedAt)}
             </div>
           </div>
+        )}
+      </div>
+      <div className="border-t-[1px] border-gray-200 py-1.5 px-2 dark:border-gray-600/90">
+        {type === "note" && (
+          <NoteListCardPanel
+            focused
+            note={note}
+            addTask={() => {
+              const result = [...tasksData];
+              result.push({
+                id: generateGUID(),
+                content: null,
+                linkUrl: null,
+                finished: false,
+                created: true,
+              });
+              setValue("tasks", result);
+              setTasksData(result);
+            }}
+            copy={() => {
+              copyText(getValues("description"), t("common:COPY.SUCCESS"));
+            }}
+            archive={async (id: number) => {
+              await archiveNoteAsync(id);
+              toggle();
+            }}
+            archiveLoading={isArchiveNoteLoading}
+            softDelete={async (id: number) => {
+              await deleteNoteAsync(id);
+              toggle();
+            }}
+            softDeleteLoading={isDeleteNoteLoading}
+          />
+        )}
+        {type === "archive" && (
+          <NoteListCardPanel
+            focused
+            note={note}
+            addTask={() => {
+              const result = [...tasksData];
+              result.push({
+                id: generateGUID(),
+                content: null,
+                linkUrl: null,
+                finished: false,
+                created: true,
+              });
+              setValue("tasks", result);
+              setTasksData(result);
+            }}
+            copy={() => {
+              copyText(getValues("description"), t("common:COPY.SUCCESS"));
+            }}
+            unarchive={async (id: number) => {
+              await unarchiveNoteAsync(id);
+              toggle();
+            }}
+            unarchiveLoading={isUnarchiveNoteLoading}
+            softDelete={async (id: number) => {
+              await deleteNoteAsync(id);
+              toggle();
+            }}
+            softDeleteLoading={isDeleteNoteLoading}
+          />
+        )}
+        {type === "trash" && (
+          <NoteListCardPanel
+            focused
+            note={note}
+            addTask={() => {
+              const result = [...tasksData];
+              result.push({
+                id: generateGUID(),
+                content: null,
+                linkUrl: null,
+                finished: false,
+                created: true,
+              });
+              setValue("tasks", result);
+              setTasksData(result);
+            }}
+            copy={() => {
+              copyText(getValues("description"), t("common:COPY.SUCCESS"));
+            }}
+            restore={async (id: number) => {
+              await restoreTrashNoteAsync(id);
+              toggle();
+            }}
+            restoreLoading={isRestoreTrashNoteLoading}
+            forceDelete={async (id: number) => {
+              await deleteTrashNoteAsync(id);
+              toggle();
+            }}
+            forceDeleteLoading={isDeleteTrashNoteLoading}
+          />
         )}
       </div>
     </Modal>

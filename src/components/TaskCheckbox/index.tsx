@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 
 import { TaskCheckboxProps } from "@interfaces";
 import { Icon } from "@components";
-import { openWindow, setClipBoardText } from "@utils";
+import { openWindow } from "@utils";
 import { useUpdateTaskFinishStateRequest } from "@requests";
 
 export default function TaskCheckbox({
@@ -21,8 +21,9 @@ export default function TaskCheckbox({
   changeChecked,
   changeContent,
   changeLinkUrl,
+  copyLinkUrl,
 }: TaskCheckboxProps): JSX.Element | null {
-  const { t } = useTranslation(["note"]);
+  const { t } = useTranslation(["common", "note"]);
 
   // DND
   const [dragOver, setDragOver] = useState<boolean>(false);
@@ -148,6 +149,7 @@ export default function TaskCheckbox({
                   setLinkEditable(false);
                   changeLinkUrl && changeLinkUrl(null);
                 }}
+                title={t("common:REMOVE.LINK")}
               >
                 <Icon.LinkOff
                   width="18"
@@ -168,6 +170,7 @@ export default function TaskCheckbox({
                   setLinkEditable(true);
                   changeLinkUrl && changeLinkUrl("");
                 }}
+                title={t("common:ADD.LINK")}
               >
                 <Icon.AddLink
                   width="18"
@@ -187,6 +190,7 @@ export default function TaskCheckbox({
                 e.stopPropagation();
                 removeTask && removeTask();
               }}
+              title={t("common:DELETE")}
             >
               <Icon.Close
                 width="20"
@@ -238,8 +242,9 @@ export default function TaskCheckbox({
               )}
               onClick={(e) => {
                 e.stopPropagation();
-                setClipBoardText(task.linkUrl);
+                copyLinkUrl && copyLinkUrl();
               }}
+              title={t("common:COPY")}
             >
               <Icon.Copy
                 width="13"
@@ -258,6 +263,7 @@ export default function TaskCheckbox({
                 e.stopPropagation();
                 task.linkUrl && openWindow(task.linkUrl);
               }}
+              title={t("common:OPEN.LINK")}
             >
               <Icon.OpenLink
                 width="14"

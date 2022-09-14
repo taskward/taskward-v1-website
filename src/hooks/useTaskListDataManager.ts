@@ -70,6 +70,13 @@ const useTaskListDataManager = () => {
     return result;
   };
 
+  const getLinkUrl = (
+    tasks: TaskFormData[],
+    id: string | number
+  ): string | null | undefined => {
+    return tasks.find((task) => task.id === id)?.linkUrl;
+  };
+
   return {
     tasksData,
     setTasksData,
@@ -78,6 +85,7 @@ const useTaskListDataManager = () => {
     changeChecked,
     changeContent,
     changeLinkUrl,
+    getLinkUrl,
   };
 };
 

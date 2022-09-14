@@ -11,7 +11,7 @@ import {
   useRestoreTrashNoteRequest,
 } from "@requests";
 import { convertUtcToLocalTime, convertUtcToFullLocalTime } from "@utils";
-import { useToggle } from "@hooks";
+import { useToggle, useCopyText } from "@hooks";
 import type { NoteListCardProps, Task } from "@interfaces";
 
 import EditNoteModal from "./EditNoteModal";
@@ -36,6 +36,7 @@ export default function NoteListCard({
   const { mutate: deleteTrashNote, isLoading: isDeleteTrashNoteLoading } =
     useDeleteTrashNoteRequest();
 
+  const copyText = useCopyText();
   const [isEdit, toggleEdit] = useToggle(false);
 
   const [focused, setFocused] = useState<boolean>(false);
@@ -93,7 +94,16 @@ export default function NoteListCard({
         {note.tasks && note.tasks.length > 0 && (
           <div className="flex flex-col gap-1.5 px-4">
             {note.tasks.map((task: Task) => {
-              return <TaskCheckbox key={task.id} task={task} noteType={type} />;
+              return (
+                <TaskCheckbox
+                  key={task.id}
+                  task={task}
+                  noteType={type}
+                  copyLinkUrl={() => {
+                    copyText(task.linkUrl, t("common:COPY.SUCCESS"));
+                  }}
+                />
+              );
             })}
           </div>
         )}
@@ -129,7 +139,9 @@ export default function NoteListCard({
             <NoteListCardPanel
               focused={focused}
               note={note}
-              copy
+              copy={() => {
+                copyText(note.description, t("common:COPY.SUCCESS"));
+              }}
               archive={archiveNote}
               archiveLoading={isArchiveNoteLoading}
               softDelete={deleteNote}
@@ -140,7 +152,9 @@ export default function NoteListCard({
             <NoteListCardPanel
               focused={focused}
               note={note}
-              copy
+              copy={() => {
+                copyText(note.description, t("common:COPY.SUCCESS"));
+              }}
               unarchive={unarchiveNote}
               unarchiveLoading={isUnarchiveNoteLoading}
               softDelete={deleteNote}
@@ -151,7 +165,9 @@ export default function NoteListCard({
             <NoteListCardPanel
               focused={focused}
               note={note}
-              copy
+              copy={() => {
+                copyText(note.description, t("common:COPY.SUCCESS"));
+              }}
               restore={restoreTrashNote}
               restoreLoading={isRestoreTrashNoteLoading}
               forceDelete={deleteTrashNote}

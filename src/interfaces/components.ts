@@ -99,6 +99,15 @@ type Notes = {
   count: number;
 };
 
+interface EditNoteModalProperties {
+  isEdit: boolean;
+  toggle: () => void;
+  note: Note;
+  type?: NoteType;
+}
+
+type EditNoteModalProps = EditNoteModalProperties;
+
 interface NoteListCardProperties {
   note: Note;
   type: NoteType;
@@ -111,7 +120,8 @@ interface NoteListCardPanelProperties {
   focused: boolean;
   note: Note;
   type: NoteType;
-  copy: boolean;
+  addTask: () => void | (() => Promise<void>);
+  copy: () => void | (() => Promise<void>);
   archive: UseMutateFunction<any, unknown, number, unknown>;
   archiveLoading: boolean;
   softDelete: UseMutateFunction<any, unknown, number, unknown>;
@@ -155,6 +165,7 @@ interface TaskCheckboxProperties extends InputHTMLAttributes<HTMLInputElement> {
   changeChecked: () => void;
   changeContent: (content: string | null) => void;
   changeLinkUrl: (linkUrl: string | null) => void;
+  copyLinkUrl: () => void;
 }
 
 type TaskCheckboxProps = Partial<TaskCheckboxProperties> & CustomComponentProps;
@@ -168,6 +179,7 @@ export type {
   LoadingProps,
   NoteType,
   NoteListCardProps,
+  EditNoteModalProps,
   Note,
   Notes,
   NoteListCardPanelProps,

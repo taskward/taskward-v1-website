@@ -7,6 +7,7 @@ export type {
   LoadingProps,
   NoteType,
   NoteListCardProps,
+  EditNoteModalProps,
   Note,
   Notes,
   NoteListCardPanelProps,
