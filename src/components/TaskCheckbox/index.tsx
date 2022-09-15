@@ -116,8 +116,9 @@ export default function TaskCheckbox({
         </div>
         <div
           className={clsx(
-            styles.inputWidth,
-            "select-text whitespace-pre-wrap break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
+            styles.textarea,
+            editable ? styles.editableInputWidth : styles.inputWidth,
+            "select-text break-words text-sm font-normal tracking-wide outline-none placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400",
             task?.finished &&
               content &&
               "text-gray-500 line-through opacity-75",
@@ -206,7 +207,7 @@ export default function TaskCheckbox({
           <div className="flex h-5 w-5 items-center justify-center">
             <Icon.Link width="20" height="20" className="fill-emerald-600" />
           </div>
-          <div className="grow">
+          <div className={clsx("grow", !editable && "truncate")}>
             <div
               onClick={(e) => {
                 if (!task.linkUrl || editable) {
@@ -216,10 +217,11 @@ export default function TaskCheckbox({
                 openWindow(task.linkUrl);
               }}
               className={clsx(
+                styles.textarea,
                 editable
-                  ? "cursor-text placeholder:text-xs placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400"
-                  : "w-fit cursor-pointer hover:text-emerald-600 hover:underline active:text-emerald-300 dark:hover:text-emerald-600 dark:active:text-emerald-300",
-                "select-text whitespace-pre-wrap break-words text-xs font-normal leading-5 tracking-wide outline-none dark:text-noteSecondTextDark"
+                  ? "cursor-text break-words break-all placeholder:text-xs placeholder:text-gray-500 empty:before:text-gray-500 empty:before:content-[attr(placeholder)] dark:text-noteSecondTextDark dark:placeholder-gray-400"
+                  : "w-full cursor-pointer hover:text-emerald-600 hover:underline active:text-emerald-300 dark:hover:text-emerald-600 dark:active:text-emerald-300",
+                "select-text text-xs font-normal leading-5 tracking-wide outline-none dark:text-noteSecondTextDark"
               )}
               placeholder={
                 editable ? t("note:TASK.PLACEHOLDER.LINK") : undefined
