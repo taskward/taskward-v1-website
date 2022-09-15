@@ -1,3 +1,12 @@
-.inputWidth {
+.textarea {
+  -webkit-user-modify: read-write-plaintext-only;
+  white-space: break-spaces;
+}
+
+.editableInputWidth {
   width: calc(100% - 4.875rem);
+}
+
+.inputWidth {
+  width: calc(100% - 1.8rem);
 }

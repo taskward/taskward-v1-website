@@ -2,6 +2,10 @@
 
 ## v1.1
 
+## v1.1.2
+
+- Fix the display of the link error.
+
 ## v1.1.1
 
 - Fix loading background color error in dark mode.

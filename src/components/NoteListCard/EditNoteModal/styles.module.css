@@ -1,5 +1,6 @@
 .textarea {
   -webkit-user-modify: read-write-plaintext-only;
+  white-space: break-spaces;
 }
 
 .textarea p {
