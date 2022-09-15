@@ -5,6 +5,7 @@
 ## v1.1.2
 
 - Fix the display of the link error.
+- Fix the whitespace of input error.
 
 ## v1.1.1
 
