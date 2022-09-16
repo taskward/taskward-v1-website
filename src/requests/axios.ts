@@ -8,7 +8,7 @@ import { history } from "@utils";
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
-  timeout: 10000,
+  timeout: 30000,
 });
 
 // Request interceptors
