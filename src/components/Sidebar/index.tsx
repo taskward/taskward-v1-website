@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import SidebarItem from "./SidebarItem";
 import { Icon } from "@components";
-import { useAppSelector } from "@hooks";
-import { ActiveSidebarItem } from "@store";
+import { useAppSelector, useAppDispatch } from "@hooks";
+import { ActiveSidebarItem, sidebarAction } from "@store";
 
 export default function Sidebar(): JSX.Element {
   const { t } = useTranslation(["layout"]);
   const navigate = useNavigate();
   const sidebarMode = useAppSelector((state) => state.sidebar.sidebarMode);
+  const sidebarDispatch = useAppDispatch();
   const activeSidebarItem = useAppSelector(
     (state) => state.sidebar.activeSidebarItem
   );
@@ -22,6 +23,7 @@ export default function Sidebar(): JSX.Element {
     switch (true) {
       case currentItem > 0:
         navigate(`/${ActiveSidebarItem[currentItem].toLowerCase()}`);
+        sidebarDispatch(sidebarAction.changeActiveSidebarItem(currentItem));
         break;
       default:
         return;
