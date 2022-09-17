@@ -20,7 +20,7 @@ export default function App(): JSX.Element {
   return (
     <div
       className={clsx(
-        "text-black dark:bg-darkMode-darker dark:text-white",
+        "text-black transition-[background-color] dark:bg-darkMode-darker dark:text-white",
         i18n.language
       )}
     >
