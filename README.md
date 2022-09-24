@@ -7,7 +7,7 @@ Taskward is a Todo&Task application.
 - React
 - TypeScript
 - Vite
-- TailwindCSS
+- Tailwind
 
 ## Library
 
