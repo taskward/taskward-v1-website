@@ -9,7 +9,6 @@ import { APPLICATION_NAME } from "@constants";
 import { Icon, Loading, Button } from "@components";
 import GitHubIcon from "./GitHubIcon";
 
-import taskward from "@assets/img/taskward.png";
 import homeBackground from "@assets/background/home.jpg";
 import { validateTokenExpireTime } from "@utils";
 
@@ -90,8 +89,8 @@ export default function Home(): JSX.Element {
                 }}
                 icon={
                   <Icon.Login
-                    width="16"
-                    height="16"
+                    width="18"
+                    height="18"
                     className="flex-shrink-0 fill-white"
                   />
                 }
@@ -103,12 +102,12 @@ export default function Home(): JSX.Element {
               onClick={() => {
                 handleClickStartBtn();
               }}
+              spanClassName="gap-[1.5px]"
               icon={
-                <img
-                  src={taskward}
-                  width="16"
-                  height="16"
-                  className="flex-shrink-0"
+                <Icon.Touch
+                  width="18"
+                  height="18"
+                  className="flex-shrink-0 fill-white"
                 />
               }
             />

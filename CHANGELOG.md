@@ -2,6 +2,10 @@
 
 ## v1.1
 
+## v1.1.3
+
+- Update the icon of the start button.
+
 ## v1.1.2
 
 - Fix the display of the link error.
