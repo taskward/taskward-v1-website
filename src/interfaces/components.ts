@@ -47,6 +47,7 @@ interface ButtonProperties extends ButtonHTMLAttributes<HTMLButtonElement> {
   block: boolean;
   size: "sm" | "md" | "lg";
   color: "default" | "danger";
+  spanClassName: string;
 }
 
 type ButtonProps = Partial<ButtonProperties> & CustomComponentProps;

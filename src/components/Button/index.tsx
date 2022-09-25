@@ -13,6 +13,7 @@ export default function Button({
   type,
   size = "md",
   color = "default",
+  spanClassName,
 }: ButtonProps): JSX.Element {
   return (
     <button
@@ -38,7 +39,8 @@ export default function Button({
           "flex items-center justify-center gap-1 whitespace-nowrap",
           size === "sm" && "gap-0.5",
           size === "md" && "gap-0.5",
-          size === "lg" && "gap-1"
+          size === "lg" && "gap-1",
+          spanClassName
         )}
       >
         {icon}

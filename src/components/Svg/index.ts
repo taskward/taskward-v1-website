@@ -51,6 +51,8 @@ import AddTask from "./AddTask";
 import AddLink from "./AddLink";
 import Link from "./Link";
 import LinkOff from "./LinkOff";
+import Touch from "./Touch";
+import Door from "./Door";
 
 export const Icon = {
   Archive,
@@ -99,4 +101,6 @@ export const Icon = {
   AddLink,
   Link,
   LinkOff,
+  Touch,
+  Door,
 };

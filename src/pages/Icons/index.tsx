@@ -15,6 +15,7 @@ export default function Icons(): JSX.Element {
       <Icon.Delete /> Delete
       <Icon.DeleteForever /> DeleteForever
       <Icon.DeleteTime /> DeleteTime
+      <Icon.Door /> Door
       <Icon.Edit /> Edit
       <Icon.ExpandCircle /> ExpandCircle
       <Icon.Face /> Face
@@ -42,6 +43,7 @@ export default function Icons(): JSX.Element {
       <Icon.Sun /> Sun
       <Icon.Sync /> Sync
       <Icon.Task /> Task
+      <Icon.Touch /> Touch
       <Icon.Trash /> Trash
       <Icon.Unarchive /> Unarchive
       <Icon.Unlock /> Unlock
