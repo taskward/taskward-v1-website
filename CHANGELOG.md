@@ -4,7 +4,7 @@
 
 ## v1.1.3
 
-- Update the icon of start button.
+- Update the icon of the start button.
 
 ## v1.1.2
 
