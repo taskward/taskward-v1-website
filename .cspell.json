@@ -2,20 +2,21 @@
   "version": "0.2",
   "language": "en",
   "words": [
-    "tailwindcss",
-    "clsx",
-    "reduxjs",
-    "Taskward",
-    "lottiefiles",
-    "vite",
-    "wechat",
     "arrowParens",
-    "stylelint",
+    "clsx",
+    "daisyui",
     "hookform",
+    "lottiefiles",
+    "reduxjs",
     "signup",
+    "stylelint",
+    "tailwindcss",
     "tanstack",
+    "Taskward",
     "unarchiving",
-    "uuidv4"
+    "uuidv4",
+    "vite",
+    "wechat"
   ],
   "flagWords": []
 }
