@@ -21,7 +21,7 @@ export default function TaskCheckbox({
   changeChecked,
   changeContent,
   changeLinkUrl,
-  copyLinkUrl,
+  copyLinkUrl
 }: TaskCheckboxProps): JSX.Element | null {
   const { t } = useTranslation(["common", "note"]);
 
@@ -102,13 +102,13 @@ export default function TaskCheckbox({
                 if (typeof task.id === "number") {
                   updateFinishState({
                     id: task.id,
-                    finished: e.currentTarget.checked,
+                    finished: e.currentTarget.checked
                   });
                 }
               }
             }}
             className={clsx(
-              "mt-[1px] h-4 w-4 cursor-pointer select-none checked:accent-emerald-700",
+              "daisy-checkbox daisy-checkbox-primary h-4 w-4 rounded-sm",
               inputClassName
             )}
             {...register}
