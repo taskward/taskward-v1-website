@@ -8,7 +8,7 @@ import {
   useDeleteNoteRequest,
   useUnarchiveNoteRequest,
   useDeleteTrashNoteRequest,
-  useRestoreTrashNoteRequest,
+  useRestoreTrashNoteRequest
 } from "@requests";
 import { convertUtcToLocalTime, convertUtcToFullLocalTime } from "@utils";
 import { useToggle, useCopyText } from "@hooks";
@@ -21,7 +21,7 @@ export default function NoteListCard({
   type,
   editable,
   className,
-  style,
+  style
 }: NoteListCardProps): JSX.Element | null {
   const { t } = useTranslation(["common"]);
 
@@ -59,7 +59,7 @@ export default function NoteListCard({
     <>
       <div
         className={clsx(
-          "mx-auto flex h-fit w-full cursor-pointer flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 transition-[visibility,opacity,transform] dark:border-neutral-800 dark:bg-noteDark",
+          "mx-auto flex h-fit w-full cursor-pointer flex-col gap-4 rounded-md border border-gray-200 bg-white pt-4 transition-[visibility,opacity,transform] dark:border-slate-800 dark:bg-noteDark",
           className,
           focused
             ? "drop-shadow-lg dark:drop-shadow-[0_10px_8px_#3a3d41]"
