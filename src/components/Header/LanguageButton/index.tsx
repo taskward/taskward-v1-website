@@ -6,7 +6,7 @@ import { Icon } from "@components";
 import { LanguageType } from "@i18n";
 import { Language } from "@constants";
 
-export default function LanguageIcon() {
+export default function LanguageIcon(): JSX.Element {
   const { t, i18n } = useTranslation();
 
   const [showDropdown, setShowDropdown] = useState<boolean>(false);

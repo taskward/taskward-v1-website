@@ -2,6 +2,8 @@ import axios from "axios";
 
 import { i18n } from "@i18n";
 import { LOCAL_STORAGE_TOKEN } from "@constants";
+import { store, requestAction } from "@store";
+import {} from "@store";
 
 // Axios instance
 const axiosService = axios.create({
@@ -13,6 +15,7 @@ const axiosService = axios.create({
 // Request interceptors
 axiosService.interceptors.request.use(
   (config: any) => {
+    store.dispatch(requestAction.updateRequestState(true));
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN);
     if (token) {
       config.headers.common["Authorization"] = "Bearer " + token;
@@ -24,7 +27,10 @@ axiosService.interceptors.request.use(
 
 // Response interceptors
 axiosService.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    store.dispatch(requestAction.updateRequestState(false));
+    return response;
+  },
   (error) => {
     if (error.message === "timeout of 10000ms exceeded") {
       console.error(i18n.t("request:RESPONSE.ERROR.TIMEOUT"));

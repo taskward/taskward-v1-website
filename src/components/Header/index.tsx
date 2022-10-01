@@ -6,6 +6,7 @@ import LanguageIcon from "./LanguageButton";
 import ThemeModeButton from "./ThemeModeButton";
 import MenuIcon from "./MenuIcon";
 import UserAvatar from "./UserAvatar";
+import SyncIcon from "./SyncIcon";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation(["layout"]);
@@ -39,6 +40,7 @@ export default function Header(): JSX.Element {
         <div className="ml-2">{getActiveSidebarItemTitle()}</div>
       </div>
       <div className="mr-2 flex items-center justify-end gap-2">
+        <SyncIcon />
         <LanguageIcon />
         <ThemeModeButton />
         <UserAvatar />

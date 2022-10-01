@@ -3,7 +3,7 @@ import { Icon } from "@components";
 import { useAppSelector, useAppDispatch } from "@hooks";
 import { styleAction, ThemeMode } from "@store";
 
-export default function ThemeModeButton() {
+export default function ThemeModeButton(): JSX.Element {
   const { t } = useTranslation(["layout"]);
   const styleDispatch = useAppDispatch();
 

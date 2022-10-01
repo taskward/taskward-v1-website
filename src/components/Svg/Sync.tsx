@@ -5,7 +5,7 @@ export default function Sync({
   width = "24",
   height = "24",
   className,
-  onClick,
+  onClick
 }: SvgPropsType): JSX.Element {
   return (
     <svg
