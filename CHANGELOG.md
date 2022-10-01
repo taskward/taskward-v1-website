@@ -5,6 +5,7 @@
 ## v1.1.4
 
 - A brand new UI for task checkbox.
+- Add sync state icon.
 
 ## v1.1.3
 
