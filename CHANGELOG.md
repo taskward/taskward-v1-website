@@ -2,6 +2,10 @@
 
 ## v1.1
 
+## v1.1.4
+
+- A brand new UI for task checkbox.
+
 ## v1.1.3
 
 - Update the icon of the start button.
