@@ -6,6 +6,8 @@
 
 - A brand new UI for task checkbox.
 - Add sync state icon.
+- Refactor react router.
+- Fix the redirect error when get status code 400 and 401.
 
 ## v1.1.3
 
