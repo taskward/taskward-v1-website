@@ -2,6 +2,13 @@
 
 ## v1.1
 
+## v1.1.4
+
+- A brand new UI for the task checkbox.
+- Add sync state icon.
+- Refactor react-router.
+- Fix the redirect error when getting status code 400 and 401.
+
 ## v1.1.3
 
 - Update the icon of the start button.

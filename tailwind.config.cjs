@@ -32,5 +32,25 @@ module.exports = {
     }
   },
   plugins: [require("daisyui")],
-  darkMode: ["class"]
+  darkMode: ["class"],
+  daisyui: {
+    styled: true,
+    themes: [
+      {
+        taskward: {
+          primary: "#16a34a",
+          secondary: "#f6d860",
+          accent: "#50c878",
+          neutral: "#3d4451",
+          "base-100": "#ffffff"
+        }
+      }
+    ],
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "daisy-",
+    darkTheme: "dark"
+  }
 };

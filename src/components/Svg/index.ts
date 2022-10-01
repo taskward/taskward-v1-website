@@ -102,5 +102,5 @@ export const Icon = {
   Link,
   LinkOff,
   Touch,
-  Door,
+  Door
 };

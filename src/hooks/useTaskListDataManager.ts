@@ -24,7 +24,6 @@ const useTaskListDataManager = () => {
       }
       return task;
     });
-
     return result;
   };
 
@@ -85,7 +84,7 @@ const useTaskListDataManager = () => {
     changeChecked,
     changeContent,
     changeLinkUrl,
-    getLinkUrl,
+    getLinkUrl
   };
 };
 

@@ -62,5 +62,5 @@
   - [ ] Theme preference
   - [ ] Language preference
   - [ ] Custom background image
-- [ ] Auto sync/refresh
+- [x] Sync state icon
 - [ ] More App

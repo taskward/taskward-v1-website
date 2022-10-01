@@ -3,7 +3,7 @@ import { useAppDispatch } from "@hooks";
 import { sidebarAction } from "@store";
 import { Icon } from "@components";
 
-export default function MenuIcon() {
+export default function MenuIcon(): JSX.Element {
   const { t } = useTranslation(["layout"]);
   const sidebarDispatch = useAppDispatch();
 

@@ -15,7 +15,7 @@ export default function Input({
   register = {},
   rightIcon,
   error,
-  errorMessage,
+  errorMessage
 }: InputProps): JSX.Element {
   return (
     <div className={className}>

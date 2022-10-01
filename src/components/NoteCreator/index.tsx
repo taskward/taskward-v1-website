@@ -9,7 +9,7 @@ import { Button, Icon, TaskCheckbox } from "@components";
 import type {
   CustomComponentProps,
   CreateNoteFormData,
-  TaskFormData,
+  TaskFormData
 } from "@interfaces";
 import { useDetectOutsideClick } from "@hooks";
 import { useCreateNoteRequest } from "@requests";
@@ -19,7 +19,7 @@ import { useTaskListDataManager } from "@hooks";
 
 export default function NoteCreator({
   style,
-  className,
+  className
 }: CustomComponentProps): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
 
@@ -33,7 +33,7 @@ export default function NoteCreator({
     removeCreatedTask,
     changeChecked,
     changeContent,
-    changeLinkUrl,
+    changeLinkUrl
   } = useTaskListDataManager();
 
   const outsideClickRef = useDetectOutsideClick({
@@ -43,7 +43,7 @@ export default function NoteCreator({
     insideClickCallback: () => {
       setEditable(true);
       setTasksData(getValues("tasks") ?? []);
-    },
+    }
   });
 
   const { handleSubmit, getValues, setValue, reset } =
@@ -51,8 +51,8 @@ export default function NoteCreator({
       defaultValues: {
         name: null,
         description: null,
-        tasks: [],
-      },
+        tasks: []
+      }
     });
 
   const handleCreateNote = async (formData: CreateNoteFormData) => {
@@ -60,14 +60,14 @@ export default function NoteCreator({
       onSuccess: () => {
         setEditable(false);
         reset();
-      },
+      }
     });
   };
 
   return (
     <div
       className={clsx(
-        "mx-auto shrink-0 rounded-lg border border-gray-200 bg-white p-4 ring-0 drop-shadow-lg dark:border-neutral-800 dark:bg-noteDark",
+        "mx-auto shrink-0 rounded-lg border border-gray-200 bg-white p-4 ring-0 drop-shadow-lg dark:border-slate-800 dark:bg-noteDark",
         className
       )}
       style={style}
@@ -88,7 +88,7 @@ export default function NoteCreator({
               contentEditable
               onInput={(e) => {
                 setValue("name", e.currentTarget.textContent as string, {
-                  shouldValidate: true,
+                  shouldValidate: true
                 });
               }}
               dangerouslySetInnerHTML={{ __html: getValues("name") ?? "" }}
@@ -102,11 +102,11 @@ export default function NoteCreator({
               contentEditable
               onInput={(e) => {
                 setValue("description", e.currentTarget.textContent as string, {
-                  shouldValidate: true,
+                  shouldValidate: true
                 });
               }}
               dangerouslySetInnerHTML={{
-                __html: getValues("description") ?? "",
+                __html: getValues("description") ?? ""
               }}
             />
             {tasksData && tasksData.length > 0 && (
@@ -168,7 +168,7 @@ export default function NoteCreator({
                     id: generateGUID(),
                     content: null,
                     linkUrl: null,
-                    finished: false,
+                    finished: false
                   });
                   setValue("tasks", result);
                   setTasksData(result);

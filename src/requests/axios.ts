@@ -1,19 +1,30 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { i18n } from "@i18n";
 import { LOCAL_STORAGE_TOKEN } from "@constants";
-import { history } from "@utils";
+import { store, requestAction } from "@store";
+import { useEffect } from "react";
 
 // Axios instance
 const axiosService = axios.create({
   baseURL: import.meta.env.VITE_BRUCE_WORLD_BASE_URL,
   withCredentials: false,
-  timeout: 30000,
+  timeout: 30000
 });
+
+function nav() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log(1);
+    navigate("/login");
+  }, []);
+}
 
 // Request interceptors
 axiosService.interceptors.request.use(
   (config: any) => {
+    store.dispatch(requestAction.updateRequestState(true));
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN);
     if (token) {
       config.headers.common["Authorization"] = "Bearer " + token;
@@ -25,17 +36,22 @@ axiosService.interceptors.request.use(
 
 // Response interceptors
 axiosService.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    store.dispatch(requestAction.updateRequestState(false));
+    return response;
+  },
   (error) => {
     if (error.message === "timeout of 10000ms exceeded") {
       console.error(i18n.t("request:RESPONSE.ERROR.TIMEOUT"));
     } else if (error.response?.status === 401) {
-      history.replace("/login", { message: i18n.t("request:LOGIN.FAILED") });
       console.error("401: " + error.message);
+      localStorage.removeItem(LOCAL_STORAGE_TOKEN);
+      location.href = "/login";
     } else if (error.response?.status === 400) {
       console.error("400: " + error.message);
     } else if (error.response?.status === 404) {
       console.error("404: " + error.message);
+      location.href = "/notfound";
     } else {
       console.error(error.message);
     }

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import clsx from "clsx";
@@ -9,14 +9,14 @@ import type {
   EditNoteFormData,
   Task,
   TaskFormData,
-  EditNoteModalProps,
+  EditNoteModalProps
 } from "@interfaces";
 import { Icon, Modal, TaskCheckbox, NoteListCardPanel } from "@components";
 import {
   convertUtcToLocalTime,
   convertUtcToFullLocalTime,
   isObjectHaveSameData,
-  generateGUID,
+  generateGUID
 } from "@utils";
 import {
   useUpdateNoteRequest,
@@ -24,7 +24,7 @@ import {
   useDeleteNoteRequest,
   useUnarchiveNoteRequest,
   useDeleteTrashNoteRequest,
-  useRestoreTrashNoteRequest,
+  useRestoreTrashNoteRequest
 } from "@requests";
 import { useTaskListDataManager, useCopyText } from "@hooks";
 
@@ -32,9 +32,11 @@ export default function EditNoteModal({
   isEdit,
   toggle,
   note,
-  type,
+  type
 }: EditNoteModalProps): JSX.Element {
   const { t } = useTranslation(["common", "note"]);
+
+  const scrollRef = useRef(null);
 
   const { mutateAsync: archiveNoteAsync, isLoading: isArchiveNoteLoading } =
     useArchiveNoteRequest();
@@ -44,11 +46,11 @@ export default function EditNoteModal({
     useUnarchiveNoteRequest();
   const {
     mutateAsync: restoreTrashNoteAsync,
-    isLoading: isRestoreTrashNoteLoading,
+    isLoading: isRestoreTrashNoteLoading
   } = useRestoreTrashNoteRequest();
   const {
     mutateAsync: deleteTrashNoteAsync,
-    isLoading: isDeleteTrashNoteLoading,
+    isLoading: isDeleteTrashNoteLoading
   } = useDeleteTrashNoteRequest();
   const { mutateAsync: updateNoteAsync, isLoading: isUpdateNoteLoading } =
     useUpdateNoteRequest(type);
@@ -60,7 +62,7 @@ export default function EditNoteModal({
     changeChecked,
     changeContent,
     changeLinkUrl,
-    getLinkUrl,
+    getLinkUrl
   } = useTaskListDataManager();
 
   const copyText = useCopyText();
@@ -71,8 +73,8 @@ export default function EditNoteModal({
         id: note.id,
         name: note.name,
         description: note.description,
-        tasks: [],
-      },
+        tasks: []
+      }
     });
 
   const handleUpdateNote = async (formData: EditNoteFormData) => {
@@ -85,9 +87,9 @@ export default function EditNoteModal({
           id: task.id,
           content: task.content,
           linkUrl: task.linkUrl,
-          finished: task.finishedAt !== null,
+          finished: task.finishedAt !== null
         };
-      }),
+      })
     };
     if (!isObjectHaveSameData(oldData, formData)) {
       await updateNoteAsync(formData);
@@ -99,7 +101,7 @@ export default function EditNoteModal({
       id: note.id,
       name: note.name,
       description: note.description,
-      tasks: [],
+      tasks: []
     });
   }, [isEdit]);
 
@@ -109,7 +111,7 @@ export default function EditNoteModal({
         id: task.id,
         content: task.content,
         linkUrl: task.linkUrl,
-        finished: task.finishedAt !== null,
+        finished: task.finishedAt !== null
       };
     });
     setTasksData(result);
@@ -145,6 +147,7 @@ export default function EditNoteModal({
         className={clsx(
           "flex max-h-[380px] flex-col gap-4 overflow-y-auto overflow-x-hidden px-4"
         )}
+        ref={scrollRef}
         key={`${isEdit}`}
       >
         <div
@@ -268,10 +271,16 @@ export default function EditNoteModal({
                 content: null,
                 linkUrl: null,
                 finished: false,
-                created: true,
+                created: true
               });
               setValue("tasks", result);
               setTasksData(result);
+              // if (scrollRef.current) {
+              //   scrollRef.current.scroll({
+              //     top: scrollRef.current.clientHeight + 20,
+              //     behavior: "smooth"
+              //   });
+              // }
             }}
             copy={() => {
               copyText(getValues("description"), t("common:COPY.SUCCESS"));
@@ -299,7 +308,7 @@ export default function EditNoteModal({
                 content: null,
                 linkUrl: null,
                 finished: false,
-                created: true,
+                created: true
               });
               setValue("tasks", result);
               setTasksData(result);
@@ -330,7 +339,7 @@ export default function EditNoteModal({
                 content: null,
                 linkUrl: null,
                 finished: false,
-                created: true,
+                created: true
               });
               setValue("tasks", result);
               setTasksData(result);
