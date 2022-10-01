@@ -4,7 +4,7 @@ async function getUserInfo(): Promise<any> {
   try {
     const response = await axiosService({
       method: "GET",
-      url: "user",
+      url: "user"
     });
     if (response.status === 200 && response.data) {
       return response.data;

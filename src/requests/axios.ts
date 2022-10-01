@@ -1,9 +1,10 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { i18n } from "@i18n";
 import { LOCAL_STORAGE_TOKEN } from "@constants";
 import { store, requestAction } from "@store";
-import {} from "@store";
+import { useEffect } from "react";
 
 // Axios instance
 const axiosService = axios.create({
@@ -11,6 +12,14 @@ const axiosService = axios.create({
   withCredentials: false,
   timeout: 30000
 });
+
+function nav() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log(1);
+    navigate("/login");
+  }, []);
+}
 
 // Request interceptors
 axiosService.interceptors.request.use(
@@ -36,10 +45,13 @@ axiosService.interceptors.response.use(
       console.error(i18n.t("request:RESPONSE.ERROR.TIMEOUT"));
     } else if (error.response?.status === 401) {
       console.error("401: " + error.message);
+      localStorage.removeItem(LOCAL_STORAGE_TOKEN);
+      location.href = "/login";
     } else if (error.response?.status === 400) {
       console.error("400: " + error.message);
     } else if (error.response?.status === 404) {
       console.error("404: " + error.message);
+      location.href = "/notfound";
     } else {
       console.error(error.message);
     }
