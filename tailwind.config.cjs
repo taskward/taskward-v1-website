@@ -37,7 +37,7 @@ module.exports = {
     styled: true,
     themes: [
       {
-        taskward: {
+        default: {
           primary: "#16a34a",
           secondary: "#f6d860",
           accent: "#50c878",
