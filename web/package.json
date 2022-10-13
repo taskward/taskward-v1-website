@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "style-lint": "npx stylelint **/*.css",
-    "generate-env": "ts-node-esm src/scripts/generateEnv",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install web/.husky",
+    "generate-env": "ts-node-esm src/scripts/generateEnv"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.7",
