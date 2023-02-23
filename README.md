@@ -24,5 +24,3 @@ Taskward is a Todo&Task application.
 - Icon by Google Material Design Icons
 
 ## Contributor
-
-- Feature Helper: DZY

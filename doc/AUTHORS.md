@@ -1,5 +1,3 @@
 # Authors
 
 Bruce Song
-
-DZY
