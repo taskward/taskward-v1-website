@@ -19,6 +19,10 @@
   --taskward-theme-color-darkest: rgb(32 34 37);
 }
 
+.dark {
+  color-scheme: dark;
+}
+
 .en {
   font-family: "Open Sans", sans-serif;
 }
