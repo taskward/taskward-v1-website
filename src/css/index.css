@@ -1,0 +1,84 @@
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap';
+
+/* français */
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+:root {
+  --taskward-theme-color-dark: rgb(54 57 63);
+  --taskward-theme-color-darker: rgb(47 49 54);
+  --taskward-theme-color-darkest: rgb(32 34 37);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.en {
+  font-family:
+    'Nunito',
+    'Noto Sans SC',
+    system-ui,
+    -apple-system,
+    'Roboto',
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+}
+
+.zh_cn {
+  font-family:
+    'Nunito',
+    'Noto Sans SC',
+    system-ui,
+    -apple-system,
+    'Roboto',
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+}
+
+.ja {
+  font-family:
+    'Nunito',
+    'Noto Sans SC',
+    'M PLUS Rounded 1c',
+    system-ui,
+    -apple-system,
+    'Roboto',
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+}
+
+.fr {
+  font-family:
+    'Nunito',
+    'Noto Sans SC',
+    'Montserrat',
+    system-ui,
+    -apple-system,
+    'Roboto',
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.hideScrollbar {
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
