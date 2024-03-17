@@ -6,6 +6,7 @@
     "prod": "vite --mode production",
     "build": "vite build",
     "preview": "vite preview",
+    "release": "sh scripts/deploy.sh",
     "cspell:check": "cspell **",
     "eslint:check": "eslint .",
     "eslint:fix": "eslint --fix .",
